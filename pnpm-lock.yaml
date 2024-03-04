@@ -111,6 +111,9 @@ importers:
       shadcn-vue:
         specifier: ^0.9.0
         version: 0.9.0(typescript@5.3.3)(vite@5.1.4)(vue@3.4.20)
+      tsx:
+        specifier: ^4.7.1
+        version: 4.7.1
       turbo:
         specifier: ^1.12.4
         version: 1.12.4
@@ -9411,6 +9414,17 @@ packages:
   /tsscmp@1.0.6:
     resolution: {integrity: sha512-LxhtAkPDTkVCMQjt2h6eBVY28KCjikZqZfMcC15YBeNjkgUpdCfBu5HoiOTDu86v6smE8yOjyEktJ8hlbANHQA==}
     engines: {node: '>=0.6.x'}
+    dev: true
+
+  /tsx@4.7.1:
+    resolution: {integrity: sha512-8d6VuibXHtlN5E3zFkgY8u4DX7Y3Z27zvvPKVmLon/D4AjuKzarkUBTLDBgj9iTQ0hg5xM7c/mYiRVM+HETf0g==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
+    dependencies:
+      esbuild: 0.19.12
+      get-tsconfig: 4.7.2
+    optionalDependencies:
+      fsevents: 2.3.3
     dev: true
 
   /tuf-js@2.2.0:

@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "74ea53dd-310c-4754-bbfa-7a56488bc921",
+  "id": "9ad1ea31-9c5c-4a2b-8329-1095532f8b57",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "logs": {
@@ -91,6 +91,21 @@
           ],
           "onDelete": "no action",
           "onUpdate": "no action"
+        },
+        "product_log_fk": {
+          "name": "product_log_fk",
+          "tableFrom": "logs",
+          "tableTo": "products",
+          "columnsFrom": [
+            "city",
+            "name"
+          ],
+          "columnsTo": [
+            "city",
+            "name"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
@@ -102,7 +117,7 @@
         "name": {
           "name": "name",
           "type": "text",
-          "primaryKey": true,
+          "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
@@ -116,7 +131,15 @@
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "products_city_name_pk": {
+          "columns": [
+            "city",
+            "name"
+          ],
+          "name": "products_city_name_pk"
+        }
+      },
       "uniqueConstraints": {}
     },
     "users": {

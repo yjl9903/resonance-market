@@ -8,12 +8,14 @@ CREATE TABLE `logs` (
 	`uploaded_at` integer NOT NULL,
 	`uploader_id` integer NOT NULL,
 	FOREIGN KEY (`name`) REFERENCES `products`(`name`) ON UPDATE no action ON DELETE no action,
-	FOREIGN KEY (`uploader_id`) REFERENCES `users`(`id`) ON UPDATE no action ON DELETE no action
+	FOREIGN KEY (`uploader_id`) REFERENCES `users`(`id`) ON UPDATE no action ON DELETE no action,
+	FOREIGN KEY (`city`,`name`) REFERENCES `products`(`city`,`name`) ON UPDATE no action ON DELETE no action
 );
 --> statement-breakpoint
 CREATE TABLE `products` (
-	`name` text PRIMARY KEY NOT NULL,
-	`city` text NOT NULL
+	`name` text NOT NULL,
+	`city` text NOT NULL,
+	PRIMARY KEY(`city`, `name`)
 );
 --> statement-breakpoint
 CREATE TABLE `users` (
