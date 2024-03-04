@@ -69,6 +69,9 @@ importers:
         specifier: ^3.22.4
         version: 3.22.4
     devDependencies:
+      '@iconify-json/carbon':
+        specifier: ^1.1.31
+        version: 1.1.31
       '@iconify-json/logos':
         specifier: ^1.1.42
         version: 1.1.42
@@ -1446,6 +1449,12 @@ packages:
   /@formkit/tempo@0.0.12:
     resolution: {integrity: sha512-16fs+6KTCaKMUadn6rQ4NwXssyTZd4Ps5K3Yrw1UqT+30kV6Euw6ndR02rxT0TJnpqzlDfvJJx0Dgh0dI29ZEA==}
     dev: false
+
+  /@iconify-json/carbon@1.1.31:
+    resolution: {integrity: sha512-CAvECFfiwGyZmlcuM2JLMRDEN3VsIEZv6lml7Xf+3giQ5oXloADm0b5wiVPFZmONKM5jXERmx+E7YSvAtFJIbw==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
 
   /@iconify-json/logos@1.1.42:
     resolution: {integrity: sha512-/f+frtPm3m3Z30oy8Pk+QqRDkbmAiIaWGPl5CmsCXm15MVfvw9a/V/gD7WzdyuSGAZcFuQaqbHXj92y/n+2ifg==}

@@ -44,6 +44,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@iconify-json/carbon": "^1.1.31",
     "@iconify-json/logos": "^1.1.42",
     "@nuxtjs/color-mode": "^3.3.2",
     "@nuxtjs/tailwindcss": "^6.11.4",

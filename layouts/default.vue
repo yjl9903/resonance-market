@@ -1,10 +1,26 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { sha } from '~build/git';
+</script>
 
 <template>
   <div>
     <main>
       <slot></slot>
     </main>
+
+    <footer class="main block pb8 w-full text-center text-base-500">
+      <div border="b-2 base" mb8></div>
+      <div flex items-center justify-center gap1 align-middle>
+        <a
+          class="flex items-center gap-1 text-gray-500/70 hover:text-gray-500"
+          :href="`https://github.com/yjl9903/resonance-market/tree/${sha}`"
+          target="_blank"
+        >
+          <span i-carbon-logo-github text-lg></span>
+          <span font-mono>yjl9903/resonance-market</span>
+        </a>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -15,6 +31,10 @@
   --c-selection-bg: #cce2ff;
   --c-input-selection-color: rgba(0, 0, 0, 0.87);
   --c-input-selection-bg: #cce2ff;
+}
+
+.main {
+  @apply: mx-auto xl:w-7xl lg:w-4xl md:w-3xl lt-md:w-[95vw] lt-md:px-3 lt-sm:w-[100vw];
 }
 
 /* selection */

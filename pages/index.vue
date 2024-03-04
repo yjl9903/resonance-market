@@ -10,9 +10,3 @@ import { cities } from '~/lib/city';
     </div>
   </div>
 </template>
-
-<style>
-.main {
-  @apply: mx-auto xl:w-7xl lg:w-4xl md:w-3xl lt-md:w-[95vw] lt-md:px-3 lt-sm:w-[100vw];
-}
-</style>
