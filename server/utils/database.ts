@@ -12,14 +12,14 @@ export async function connectDatabase(
   const { cloudflare } = event.context;
   console.log(cloudflare);
 
-  if (cloudflare) {
+  if (import.meta.dev) {
+    const { database } = await import('~/drizzle/connect');
+    return database as any;
+  } else {
     const db = drizzle(cloudflare.env.DATABASE, {
       logger: false,
       schema: { users, products, logs }
     });
     return db;
-  } else {
-    const { database } = await import('~/drizzle/connect');
-    return database as any;
   }
 }
