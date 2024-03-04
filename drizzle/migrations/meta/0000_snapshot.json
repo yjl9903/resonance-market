@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "bff56193-c170-4b51-8080-9272ff274293",
+  "id": "74ea53dd-310c-4754-bbfa-7a56488bc921",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "logs": {
@@ -10,9 +10,9 @@
         "id": {
           "name": "id",
           "type": "integer",
-          "primaryKey": false,
+          "primaryKey": true,
           "notNull": true,
-          "autoincrement": false
+          "autoincrement": true
         },
         "name": {
           "name": "name",
@@ -55,6 +55,13 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
+        },
+        "uploader_id": {
+          "name": "uploader_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
         }
       },
       "indexes": {},
@@ -72,12 +79,12 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "logs_id_users_id_fk": {
-          "name": "logs_id_users_id_fk",
+        "logs_uploader_id_users_id_fk": {
+          "name": "logs_uploader_id_users_id_fk",
           "tableFrom": "logs",
           "tableTo": "users",
           "columnsFrom": [
-            "id"
+            "uploader_id"
           ],
           "columnsTo": [
             "id"
@@ -130,7 +137,15 @@
           "autoincrement": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "users_name_unique": {
+          "name": "users_name_unique",
+          "columns": [
+            "name"
+          ],
+          "isUnique": true
+        }
+      },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
