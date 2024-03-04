@@ -27,9 +27,7 @@ export const logs = sqliteTable(
   'logs',
   {
     id: integer('id').primaryKey({ autoIncrement: true }),
-    name: text('name')
-      .notNull()
-      .references(() => products.name),
+    name: text('name').notNull(),
     city: text('city').notNull(),
     type: text('type').notNull(),
     price: integer('price').notNull(),

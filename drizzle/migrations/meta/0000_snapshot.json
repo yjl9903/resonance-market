@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "9ad1ea31-9c5c-4a2b-8329-1095532f8b57",
+  "id": "a2395eb1-53d5-45cf-a1c5-44bfa732c8f8",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "logs": {
@@ -66,19 +66,6 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "logs_name_products_name_fk": {
-          "name": "logs_name_products_name_fk",
-          "tableFrom": "logs",
-          "tableTo": "products",
-          "columnsFrom": [
-            "name"
-          ],
-          "columnsTo": [
-            "name"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
         "logs_uploader_id_users_id_fk": {
           "name": "logs_uploader_id_users_id_fk",
           "tableFrom": "logs",
