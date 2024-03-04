@@ -1,5 +1,12 @@
 // import { sql } from 'drizzle-orm';
-import { text, integer, primaryKey, foreignKey, sqliteTable } from 'drizzle-orm/sqlite-core';
+import {
+  text,
+  integer,
+  primaryKey,
+  foreignKey,
+  unique,
+  sqliteTable
+} from 'drizzle-orm/sqlite-core';
 
 export const users = sqliteTable('users', {
   id: integer('id').primaryKey({ autoIncrement: true }),
@@ -43,7 +50,8 @@ export const logs = sqliteTable(
       columns: [table.city, table.name],
       foreignColumns: [products.city, products.name],
       name: 'product_log_fk'
-    })
+    }),
+    uniqueLog: unique().on(table.name, table.city, table.uploadedAt)
   })
 );
 
