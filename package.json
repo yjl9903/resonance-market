@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "turbo run build && nuxt build",
+    "build": "nuxt build",
+    "build:cloudflare": "nuxt build --preset=cloudflare_pages",
     "dev": "nuxt dev",
     "format": "prettier --write **/*.{ts,vue}",
     "generate": "nuxt generate",
@@ -26,6 +27,7 @@
     "class-variance-authority": "^0.7.0",
     "clipboard-polyfill": "^4.0.2",
     "clsx": "^2.1.0",
+    "drizzle-orm": "^0.29.4",
     "fastest-levenshtein": "^1.0.16",
     "ip": "^2.0.1",
     "ipx": "^2.0.0",
@@ -44,6 +46,7 @@
     "@unocss/nuxt": "^0.58.5",
     "@unocss/reset": "^0.58.5",
     "bumpp": "latest",
+    "drizzle-kit": "^0.20.14",
     "jsdom": "^24.0.0",
     "lucide-vue-next": "^0.340.0",
     "nuxt": "^3.10.3",
@@ -58,7 +61,8 @@
     "unplugin-info": "^1.1.0",
     "vitest": "^1.3.1",
     "vue": "^3.4.20",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "wrangler": "^3.30.1"
   },
   "packageManager": "pnpm@8.15.4",
   "engines": {

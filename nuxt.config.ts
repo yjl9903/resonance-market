@@ -13,6 +13,11 @@ export default defineNuxtConfig({
     'unplugin-info/nuxt',
     'unplugin-analytics/nuxt'
   ],
+  nitro: {
+    prerender: {
+      autoSubfolderIndex: false
+    }
+  },
   components: [
     {
       path: '~/components/common',
@@ -27,8 +32,7 @@ export default defineNuxtConfig({
       pathPrefix: false
     }
   ],
-  alias: {
-  },
+  alias: {},
   css: ['@unocss/reset/tailwind.css', './assets/fonts.css', './assets/vitepress.css'],
   app: {
     head: {
@@ -42,8 +46,7 @@ export default defineNuxtConfig({
       script: []
     }
   },
-  image: {
-  },
+  image: {},
   unocss: {
     preflight: true
   },
@@ -59,6 +62,5 @@ export default defineNuxtConfig({
       // ...
     }
   },
-  analytics: {
-  }
+  analytics: {}
 });
