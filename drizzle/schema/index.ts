@@ -30,6 +30,7 @@ export const logs = sqliteTable(
     name: text('name').notNull(),
     city: text('city').notNull(),
     type: text('type').notNull(),
+    targetCity: text('target_city').notNull(),
     price: integer('price').notNull(),
     percent: integer('percent').notNull(),
     uploadedAt: integer('uploaded_at', { mode: 'timestamp' }).notNull(),

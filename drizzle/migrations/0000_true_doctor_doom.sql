@@ -3,6 +3,7 @@ CREATE TABLE `logs` (
 	`name` text NOT NULL,
 	`city` text NOT NULL,
 	`type` text NOT NULL,
+	`target_city` text NOT NULL,
 	`price` integer NOT NULL,
 	`percent` integer NOT NULL,
 	`uploaded_at` integer NOT NULL,

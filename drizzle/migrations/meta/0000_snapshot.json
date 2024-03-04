@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "a2395eb1-53d5-45cf-a1c5-44bfa732c8f8",
+  "id": "444952ed-6ff9-46f5-ae3c-ea5d564417f3",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "logs": {
@@ -30,6 +30,13 @@
         },
         "type": {
           "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "target_city": {
+          "name": "target_city",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
