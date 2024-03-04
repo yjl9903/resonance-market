@@ -9,13 +9,15 @@ export async function connectDatabase(
 ): Promise<
   DrizzleD1Database<{ users: typeof users; products: typeof products; logs: typeof logs }>
 > {
-  const { cloudflare } = event.context;
-  console.log(cloudflare, event.context, JSON.stringify(event.context));
-
   if (import.meta.dev) {
     const { database } = await import('~/drizzle/connect');
     return database as any;
   } else {
+    // @ts-ignore
+    const runtime = useRuntimeConfig(event);
+    console.log(runtime, JSON.stringify(runtime));
+    const { cloudflare } = event.context;
+    console.log(cloudflare, event.context, JSON.stringify(event.context));
     const db = drizzle(cloudflare.env.DATABASE, {
       logger: false,
       schema: { users, products, logs }
