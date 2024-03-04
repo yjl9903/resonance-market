@@ -118,11 +118,11 @@ importers:
         specifier: ^0.58.5
         version: 0.58.5(@unocss/webpack@0.58.5)(postcss@8.4.35)(rollup@3.29.4)(vite@5.1.4)
       unplugin-analytics:
-        specifier: ^0.0.1
-        version: 0.0.1(esbuild@0.19.12)(rollup@3.29.4)(vite@5.1.4)(webpack@5.90.0)
+        specifier: ^0.0.8
+        version: 0.0.8(esbuild@0.17.19)(rollup@3.29.4)(vite@5.1.4)(webpack@5.90.0)
       unplugin-info:
         specifier: ^1.1.0
-        version: 1.1.0(esbuild@0.19.12)(rollup@3.29.4)(vite@5.1.4)(webpack@5.90.0)
+        version: 1.1.0(esbuild@0.17.19)(rollup@3.29.4)(vite@5.1.4)(webpack@5.90.0)
       vitest:
         specifier: ^1.3.1
         version: 1.3.1(@types/node@20.11.20)(jsdom@24.0.0)
@@ -2975,14 +2975,14 @@ packages:
       fast-glob: 3.3.2
       magic-string: 0.30.7
       unplugin: 1.7.1
-      webpack: 5.90.0(esbuild@0.19.12)
+      webpack: 5.90.0(esbuild@0.17.19)
       webpack-sources: 3.2.3
     transitivePeerDependencies:
       - rollup
     dev: true
 
-  /@unplugin-analytics/core@0.0.1:
-    resolution: {integrity: sha512-Xg5e6mPxG8IW+A2CO56oGpChtRkgxGaqTSkniu5rj2RAixRA1AzHZ8qIjF8OgawKAOW/F4QcCLD3jgTKcIMdiw==}
+  /@unplugin-analytics/core@0.0.8:
+    resolution: {integrity: sha512-HouEMTEVAj8K7HhTOlxXlBxFdMccZHx5+wIkeX3U1M5WIPEEuiBDElRL77+1lA+VK7fii2sajyDLcq3CguCyrw==}
     engines: {node: '>=v20.10.0'}
     dev: true
 
@@ -9242,7 +9242,7 @@ packages:
       mkdirp: 1.0.4
       yallist: 4.0.0
 
-  /terser-webpack-plugin@5.3.10(esbuild@0.19.12)(webpack@5.90.0):
+  /terser-webpack-plugin@5.3.10(esbuild@0.17.19)(webpack@5.90.0):
     resolution: {integrity: sha512-BKFPWlPDndPs+NGGCr1U59t0XScL5317Y0UReNrHaw9/FwhPENlq6bfgs+4yPfyP51vqC1bQ4rp1EfXW5ZSH9w==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -9259,12 +9259,12 @@ packages:
         optional: true
     dependencies:
       '@jridgewell/trace-mapping': 0.3.22
-      esbuild: 0.19.12
+      esbuild: 0.17.19
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.27.0
-      webpack: 5.90.0(esbuild@0.19.12)
+      webpack: 5.90.0(esbuild@0.17.19)
     dev: true
 
   /terser@5.27.0:
@@ -9694,8 +9694,8 @@ packages:
       - supports-color
     dev: true
 
-  /unplugin-analytics@0.0.1(esbuild@0.19.12)(rollup@3.29.4)(vite@5.1.4)(webpack@5.90.0):
-    resolution: {integrity: sha512-lZM0mGQJGuf11UljkyPyri3Ji6FliemmyBmIvWdAarLxArRJixt9halO3Es8X6ngw9EeL72Yy2NNPIenzycxZQ==}
+  /unplugin-analytics@0.0.8(esbuild@0.17.19)(rollup@3.29.4)(vite@5.1.4)(webpack@5.90.0):
+    resolution: {integrity: sha512-+VcfKrjfIeIEGReeo/U07XuQ3Y+LGyP7tZQpVvta4a/tgeFcw7qnjZVmwT3teAvvpP03IUoX+GCz+tCAZO131w==}
     engines: {node: '>=v20.10.0'}
     peerDependencies:
       '@nuxt/kit': ^3
@@ -9718,17 +9718,17 @@ packages:
       webpack:
         optional: true
     dependencies:
-      '@unplugin-analytics/core': 0.0.1
+      '@unplugin-analytics/core': 0.0.8
       defu: 6.1.4
-      esbuild: 0.19.12
+      esbuild: 0.17.19
       rollup: 3.29.4
       scule: 1.3.0
       unplugin: 1.7.1
       vite: 5.1.4(@types/node@20.11.20)
-      webpack: 5.90.0(esbuild@0.19.12)
+      webpack: 5.90.0(esbuild@0.17.19)
     dev: true
 
-  /unplugin-info@1.1.0(esbuild@0.19.12)(rollup@3.29.4)(vite@5.1.4)(webpack@5.90.0):
+  /unplugin-info@1.1.0(esbuild@0.17.19)(rollup@3.29.4)(vite@5.1.4)(webpack@5.90.0):
     resolution: {integrity: sha512-sJfczOBdpY+6tpJswBrQej0qvyAPLODe7cimnu1PCRgWHOuMnSAwaWUps1BUlBKhnWEXe7nzLjfw9fWOUM/P9Q==}
     peerDependencies:
       '@nuxt/kit': ^3
@@ -9752,13 +9752,13 @@ packages:
         optional: true
     dependencies:
       ci-info: 4.0.0
-      esbuild: 0.19.12
+      esbuild: 0.17.19
       git-url-parse: 14.0.0
       rollup: 3.29.4
       simple-git: 3.22.0
       unplugin: 1.7.1
       vite: 5.1.4(@types/node@20.11.20)
-      webpack: 5.90.0(esbuild@0.19.12)
+      webpack: 5.90.0(esbuild@0.17.19)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -10329,7 +10329,7 @@ packages:
   /webpack-virtual-modules@0.6.1:
     resolution: {integrity: sha512-poXpCylU7ExuvZK8z+On3kX+S8o/2dQ/SVYueKA0D4WEMXROXgY8Ez50/bQEUmvoSMMrWcrJqCHuhAbsiwg7Dg==}
 
-  /webpack@5.90.0(esbuild@0.19.12):
+  /webpack@5.90.0(esbuild@0.17.19):
     resolution: {integrity: sha512-bdmyXRCXeeNIePv6R6tGPyy20aUobw4Zy8r0LUS2EWO+U+Ke/gYDgsCh7bl5rB6jPpr4r0SZa6dPxBxLooDT3w==}
     engines: {node: '>=10.13.0'}
     hasBin: true
@@ -10360,7 +10360,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(esbuild@0.19.12)(webpack@5.90.0)
+      terser-webpack-plugin: 5.3.10(esbuild@0.17.19)(webpack@5.90.0)
       watchpack: 2.4.0
       webpack-sources: 3.2.3
     transitivePeerDependencies:

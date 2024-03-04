@@ -57,7 +57,7 @@
     "typescript": "^5.3.3",
     "unbuild": "^2.0.0",
     "unocss": "^0.58.5",
-    "unplugin-analytics": "^0.0.1",
+    "unplugin-analytics": "^0.0.8",
     "unplugin-info": "^1.1.0",
     "vitest": "^1.3.1",
     "vue": "^3.4.20",

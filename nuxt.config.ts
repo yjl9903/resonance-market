@@ -33,7 +33,7 @@ export default defineNuxtConfig({
     }
   ],
   alias: {},
-  css: ['@unocss/reset/tailwind.css', './assets/fonts.css', './assets/vitepress.css'],
+  css: ['@unocss/reset/tailwind.css'],
   app: {
     head: {
       title: '雷索纳斯市场',
