@@ -1,6 +1,6 @@
 import { sql, eq, and, max } from 'drizzle-orm';
 
-import { products, logs } from '~/drizzle/schema';
+import { products, logs, type Log } from '~/drizzle/schema';
 
 import { connectDatabase } from '../utils/database';
 
@@ -45,6 +45,6 @@ export default defineEventHandler(async (event) => {
     );
 
   return {
-    latest_logs: query
+    latest: query as Log[]
   };
 });

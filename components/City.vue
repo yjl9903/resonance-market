@@ -19,9 +19,12 @@ import {
 
 import { type CityInfo, cities } from '~/lib/city';
 
+import Price from './Price.vue';
 import CreateLog from './CreateLog.vue';
 
 const props = defineProps<{ city: CityInfo }>();
+
+const store = useLatestLogs();
 </script>
 
 <template>
@@ -41,7 +44,9 @@ const props = defineProps<{ city: CityInfo }>();
         <TableBody>
           <TableRow v-for="product in city.products" :key="product.name">
             <TableCell>{{ product.name }}</TableCell>
-            <TableCell v-for="city in cities" :key="city.name"></TableCell>
+            <TableCell v-for="target in cities" :key="target.name"
+              ><Price :log="store.getLatestLog(city.name, product.name, target.name)"></Price
+            ></TableCell>
             <TableCell><CreateLog :city="city" :product="product"></CreateLog></TableCell>
           </TableRow>
         </TableBody>

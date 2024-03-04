@@ -49,6 +49,8 @@ const form = useForm({
   validationSchema: formSchema
 });
 
+const store = useLatestLogs();
+
 const onSubmit = form.handleSubmit(async (values) => {
   try {
     await $fetch(`/api/log`, {
@@ -65,6 +67,7 @@ const onSubmit = form.handleSubmit(async (values) => {
     });
     toast.success(`上传成功`);
     open.value = false;
+    store.fetch();
   } catch {
     toast.error(`上传失败`);
   }

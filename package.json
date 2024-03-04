@@ -24,6 +24,7 @@
   "dependencies": {
     "@formkit/tempo": "^0.0.12",
     "@nuxt/image": "1.2.0",
+    "@pinia/nuxt": "^0.5.1",
     "@vee-validate/zod": "^4.12.5",
     "@vueuse/core": "^10.8.0",
     "@vueuse/nuxt": "^10.8.0",

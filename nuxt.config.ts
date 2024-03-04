@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@nuxt/image',
     '@nuxtjs/color-mode',
+    '@pinia/nuxt',
     'shadcn-nuxt',
     'unplugin-info/nuxt',
     'unplugin-analytics/nuxt'
