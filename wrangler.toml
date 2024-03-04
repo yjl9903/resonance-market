@@ -1,0 +1,14 @@
+name = "resonance-market"
+main = "./.output/server/index.mjs"
+workers_dev = true
+compatibility_date = "2023-12-01"
+
+rules = [{ type = "ESModule", globs = ["**/*.js", "**/*.mjs"] }]
+
+[site]
+bucket = ".output/public"
+
+[[d1_databases]]
+binding = "DATABASE"
+database_name = "resonance-market"
+database_id = "17482adc-c9ff-4c2f-b88b-0c41df784e84"

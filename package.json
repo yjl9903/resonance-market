@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "build:cloudflare": "nuxt build --preset=cloudflare_pages",
+    "deploy": "wrangler deploy",
     "dev": "nuxt dev",
     "drizzle-kit": "drizzle-kit",
     "format": "prettier --write **/*.{ts,vue}",
