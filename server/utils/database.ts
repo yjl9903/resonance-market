@@ -15,7 +15,14 @@ export async function connectDatabase(
   } else {
     // @ts-ignore
     const runtime = useRuntimeConfig(event);
-    console.log(runtime, JSON.stringify(runtime));
+    console.log(
+      // @ts-ignore
+      globalThis.__cf_env__,
+      // @ts-ignore
+      globalThis.__cf_env__?.DATABASE,
+      runtime,
+      JSON.stringify(runtime)
+    );
     const { cloudflare } = event.context;
     console.log(cloudflare, event.context, JSON.stringify(event.context));
     const db = drizzle(cloudflare.env.DATABASE, {
