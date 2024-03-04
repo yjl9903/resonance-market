@@ -16,6 +16,7 @@ export default defineEventHandler(async (event) => {
     .insert(logs)
     .values({
       ...body,
+      uploadedAt: new Date(body.uploadedAt),
       uploaderId: 1
     })
     .returning({ id: logs.id });
