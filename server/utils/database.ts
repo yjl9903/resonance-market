@@ -10,6 +10,7 @@ export async function connectDatabase(
   DrizzleD1Database<{ users: typeof users; products: typeof products; logs: typeof logs }>
 > {
   const { cloudflare } = event.context;
+  console.log(cloudflare);
 
   if (cloudflare) {
     const db = drizzle(cloudflare.env.DATABASE, {
