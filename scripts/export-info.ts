@@ -3,13 +3,13 @@ import { parse } from 'csv-parse/sync';
 
 import type { ProductInfo } from '~/utils/types';
 
-const content = (await fs.readFile(`./scripts/全商品统计.csv`, 'utf-8')).split('\n');
+const content = (await fs.readFile(`./scripts/全商品统计.csv`, 'utf-8'))
+  .replace(/阿妮塔战备工厂\(lv40\)/g, '阿妮塔战备工厂')
+  .replace(/七号自由港/g, '7号自由港')
+  .split('\n');
 
 const header = content[0].split(',');
-const body = content
-  .slice(1)
-  .join('\n')
-  .replace(/阿妮塔战备工厂\(lv40\)/g, '阿妮塔战备工厂');
+const body = content.slice(1).join('\n');
 
 const data = parse(body, {
   columns(input) {

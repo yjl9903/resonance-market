@@ -20,6 +20,13 @@ export const products: ProductInfo[] = [
       {
         name: '发动机',
         sourceCity: '修格里城',
+        targetCity: '7号自由港',
+        mileage: 259,
+        basePrice: 3665
+      },
+      {
+        name: '发动机',
+        sourceCity: '修格里城',
         targetCity: '澄明数据中心',
         mileage: 112,
         basePrice: 3565
@@ -70,6 +77,13 @@ export const products: ProductInfo[] = [
     basePrice: 2147,
     cost: null,
     transactions: [
+      {
+        name: '弹丸加速装置',
+        sourceCity: '修格里城',
+        targetCity: '7号自由港',
+        mileage: 259,
+        basePrice: 2383
+      },
       {
         name: '弹丸加速装置',
         sourceCity: '修格里城',
@@ -129,6 +143,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 65,
         basePrice: 742
+      },
+      {
+        name: '汽配零件',
+        sourceCity: '修格里城',
+        targetCity: '7号自由港',
+        mileage: 259,
+        basePrice: 822
       },
       {
         name: '汽配零件',
@@ -193,6 +214,13 @@ export const products: ProductInfo[] = [
       {
         name: '家电',
         sourceCity: '修格里城',
+        targetCity: '7号自由港',
+        mileage: 259,
+        basePrice: 899
+      },
+      {
+        name: '家电',
+        sourceCity: '修格里城',
         targetCity: '澄明数据中心',
         mileage: 112,
         basePrice: 899
@@ -249,6 +277,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 65,
         basePrice: 709
+      },
+      {
+        name: '红茶',
+        sourceCity: '修格里城',
+        targetCity: '7号自由港',
+        mileage: 259,
+        basePrice: 873
       },
       {
         name: '红茶',
@@ -313,6 +348,13 @@ export const products: ProductInfo[] = [
       {
         name: '沃德烤鸡',
         sourceCity: '修格里城',
+        targetCity: '7号自由港',
+        mileage: 259,
+        basePrice: 464
+      },
+      {
+        name: '沃德烤鸡',
+        sourceCity: '修格里城',
         targetCity: '澄明数据中心',
         mileage: 112,
         basePrice: 381.3
@@ -369,6 +411,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 65,
         basePrice: 108
+      },
+      {
+        name: '罐头',
+        sourceCity: '修格里城',
+        targetCity: '7号自由港',
+        mileage: 259,
+        basePrice: 116
       },
       {
         name: '罐头',
@@ -433,6 +482,13 @@ export const products: ProductInfo[] = [
       {
         name: '沃德山泉',
         sourceCity: '修格里城',
+        targetCity: '7号自由港',
+        mileage: 259,
+        basePrice: 69
+      },
+      {
+        name: '沃德山泉',
+        sourceCity: '修格里城',
         targetCity: '澄明数据中心',
         mileage: 112,
         basePrice: 62
@@ -489,6 +545,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 65,
         basePrice: 368
+      },
+      {
+        name: '高档餐具',
+        sourceCity: '修格里城',
+        targetCity: '7号自由港',
+        mileage: 259,
+        basePrice: 397
       },
       {
         name: '高档餐具',
@@ -553,6 +616,13 @@ export const products: ProductInfo[] = [
       {
         name: '修格里严选礼包',
         sourceCity: '修格里城',
+        targetCity: '7号自由港',
+        mileage: 259,
+        basePrice: 1958
+      },
+      {
+        name: '修格里严选礼包',
+        sourceCity: '修格里城',
         targetCity: '澄明数据中心',
         mileage: 112,
         basePrice: 1874
@@ -613,6 +683,13 @@ export const products: ProductInfo[] = [
       {
         name: '防弹背心',
         sourceCity: '铁盟哨站',
+        targetCity: '7号自由港',
+        mileage: 324,
+        basePrice: 3359
+      },
+      {
+        name: '防弹背心',
+        sourceCity: '铁盟哨站',
         targetCity: '澄明数据中心',
         mileage: 177,
         basePrice: 3132
@@ -663,6 +740,13 @@ export const products: ProductInfo[] = [
     basePrice: 2067,
     cost: null,
     transactions: [
+      {
+        name: '弹丸加速装置',
+        sourceCity: '铁盟哨站',
+        targetCity: '7号自由港',
+        mileage: 324,
+        basePrice: 2383
+      },
       {
         name: '弹丸加速装置',
         sourceCity: '铁盟哨站',
@@ -726,6 +810,13 @@ export const products: ProductInfo[] = [
       {
         name: '精钢',
         sourceCity: '铁盟哨站',
+        targetCity: '7号自由港',
+        mileage: 324,
+        basePrice: 1657
+      },
+      {
+        name: '精钢',
+        sourceCity: '铁盟哨站',
         targetCity: '澄明数据中心',
         mileage: 177,
         basePrice: 1480
@@ -781,6 +872,13 @@ export const products: ProductInfo[] = [
         sourceCity: '铁盟哨站',
         targetCity: '修格里城',
         mileage: 65,
+        basePrice: 0
+      },
+      {
+        name: '炮弹',
+        sourceCity: '铁盟哨站',
+        targetCity: '7号自由港',
+        mileage: 324,
         basePrice: 0
       },
       {
@@ -846,6 +944,13 @@ export const products: ProductInfo[] = [
       {
         name: '塑胶炸药',
         sourceCity: '铁盟哨站',
+        targetCity: '7号自由港',
+        mileage: 324,
+        basePrice: 951
+      },
+      {
+        name: '塑胶炸药',
+        sourceCity: '铁盟哨站',
         targetCity: '澄明数据中心',
         mileage: 177,
         basePrice: 885
@@ -902,6 +1007,13 @@ export const products: ProductInfo[] = [
         targetCity: '修格里城',
         mileage: 65,
         basePrice: 677
+      },
+      {
+        name: '子弹',
+        sourceCity: '铁盟哨站',
+        targetCity: '7号自由港',
+        mileage: 324,
+        basePrice: 757
       },
       {
         name: '子弹',
@@ -966,6 +1078,13 @@ export const products: ProductInfo[] = [
       {
         name: '汽油',
         sourceCity: '铁盟哨站',
+        targetCity: '7号自由港',
+        mileage: 324,
+        basePrice: 656
+      },
+      {
+        name: '汽油',
+        sourceCity: '铁盟哨站',
         targetCity: '澄明数据中心',
         mileage: 177,
         basePrice: 603
@@ -1022,6 +1141,13 @@ export const products: ProductInfo[] = [
         targetCity: '修格里城',
         mileage: 65,
         basePrice: 181
+      },
+      {
+        name: '靛红五月军用食品',
+        sourceCity: '铁盟哨站',
+        targetCity: '7号自由港',
+        mileage: 324,
+        basePrice: 204
       },
       {
         name: '靛红五月军用食品',
@@ -1763,6 +1889,13 @@ export const products: ProductInfo[] = [
       {
         name: '游戏机',
         sourceCity: '澄明数据中心',
+        targetCity: '7号自由港',
+        mileage: 202,
+        basePrice: 3552
+      },
+      {
+        name: '游戏机',
+        sourceCity: '澄明数据中心',
         targetCity: '阿妮塔战备工厂',
         mileage: 135,
         basePrice: 0
@@ -1819,6 +1952,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 177,
         basePrice: 2650
+      },
+      {
+        name: '银矿石',
+        sourceCity: '澄明数据中心',
+        targetCity: '7号自由港',
+        mileage: 202,
+        basePrice: 2725
       },
       {
         name: '银矿石',
@@ -1883,6 +2023,13 @@ export const products: ProductInfo[] = [
       {
         name: '游戏卡带',
         sourceCity: '澄明数据中心',
+        targetCity: '7号自由港',
+        mileage: 202,
+        basePrice: 796
+      },
+      {
+        name: '游戏卡带',
+        sourceCity: '澄明数据中心',
         targetCity: '阿妮塔战备工厂',
         mileage: 135,
         basePrice: 805
@@ -1943,6 +2090,13 @@ export const products: ProductInfo[] = [
       {
         name: '扬声器',
         sourceCity: '澄明数据中心',
+        targetCity: '7号自由港',
+        mileage: 202,
+        basePrice: 1056
+      },
+      {
+        name: '扬声器',
+        sourceCity: '澄明数据中心',
         targetCity: '阿妮塔战备工厂',
         mileage: 135,
         basePrice: 1007
@@ -1998,6 +2152,13 @@ export const products: ProductInfo[] = [
         sourceCity: '澄明数据中心',
         targetCity: '铁盟哨站',
         mileage: 177,
+        basePrice: 543
+      },
+      {
+        name: '录像带',
+        sourceCity: '澄明数据中心',
+        targetCity: '7号自由港',
+        mileage: 202,
         basePrice: 543
       },
       {
@@ -2063,6 +2224,13 @@ export const products: ProductInfo[] = [
       {
         name: '荧光棒',
         sourceCity: '澄明数据中心',
+        targetCity: '7号自由港',
+        mileage: 202,
+        basePrice: 470
+      },
+      {
+        name: '荧光棒',
+        sourceCity: '澄明数据中心',
         targetCity: '阿妮塔战备工厂',
         mileage: 135,
         basePrice: 437
@@ -2123,6 +2291,13 @@ export const products: ProductInfo[] = [
       {
         name: '火车玩具',
         sourceCity: '澄明数据中心',
+        targetCity: '7号自由港',
+        mileage: 202,
+        basePrice: 361
+      },
+      {
+        name: '火车玩具',
+        sourceCity: '澄明数据中心',
         targetCity: '阿妮塔战备工厂',
         mileage: 135,
         basePrice: 336
@@ -2178,6 +2353,13 @@ export const products: ProductInfo[] = [
         sourceCity: '澄明数据中心',
         targetCity: '铁盟哨站',
         mileage: 177,
+        basePrice: 271
+      },
+      {
+        name: '录音带',
+        sourceCity: '澄明数据中心',
+        targetCity: '7号自由港',
+        mileage: 202,
         basePrice: 271
       },
       {
@@ -2243,6 +2425,13 @@ export const products: ProductInfo[] = [
       {
         name: '火澄石',
         sourceCity: '阿妮塔战备工厂',
+        targetCity: '7号自由港',
+        mileage: 116,
+        basePrice: 7384
+      },
+      {
+        name: '火澄石',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '澄明数据中心',
         mileage: 135,
         basePrice: 7385
@@ -2299,6 +2488,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 257,
         basePrice: 0
+      },
+      {
+        name: '负片炮弹',
+        sourceCity: '阿妮塔战备工厂',
+        targetCity: '7号自由港',
+        mileage: 116,
+        basePrice: 4431
       },
       {
         name: '负片炮弹',
@@ -2363,6 +2559,13 @@ export const products: ProductInfo[] = [
       {
         name: '阿妮塔202军用无人机',
         sourceCity: '阿妮塔战备工厂',
+        targetCity: '7号自由港',
+        mileage: 116,
+        basePrice: 3710
+      },
+      {
+        name: '阿妮塔202军用无人机',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '澄明数据中心',
         mileage: 135,
         basePrice: 3710
@@ -2419,6 +2622,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 257,
         basePrice: 3191
+      },
+      {
+        name: '抗污染防护服',
+        sourceCity: '阿妮塔战备工厂',
+        targetCity: '7号自由港',
+        mileage: 116,
+        basePrice: 2996
       },
       {
         name: '抗污染防护服',
@@ -2483,6 +2693,13 @@ export const products: ProductInfo[] = [
       {
         name: '钛合金',
         sourceCity: '阿妮塔战备工厂',
+        targetCity: '7号自由港',
+        mileage: 116,
+        basePrice: 2772
+      },
+      {
+        name: '钛合金',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '澄明数据中心',
         mileage: 135,
         basePrice: 2695
@@ -2539,6 +2756,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 257,
         basePrice: 1596
+      },
+      {
+        name: '碳纤维',
+        sourceCity: '阿妮塔战备工厂',
+        targetCity: '7号自由港',
+        mileage: 116,
+        basePrice: 1498
       },
       {
         name: '碳纤维',
@@ -2603,6 +2827,13 @@ export const products: ProductInfo[] = [
       {
         name: '形态共振瞄准器',
         sourceCity: '阿妮塔战备工厂',
+        targetCity: '7号自由港',
+        mileage: 116,
+        basePrice: 1103
+      },
+      {
+        name: '形态共振瞄准器',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '澄明数据中心',
         mileage: 135,
         basePrice: 1103
@@ -2659,6 +2890,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 257,
         basePrice: 948
+      },
+      {
+        name: '高导磁硅钢片',
+        sourceCity: '阿妮塔战备工厂',
+        targetCity: '7号自由港',
+        mileage: 116,
+        basePrice: 906
       },
       {
         name: '高导磁硅钢片',
@@ -2723,6 +2961,13 @@ export const products: ProductInfo[] = [
       {
         name: '黄铜线圈',
         sourceCity: '阿妮塔战备工厂',
+        targetCity: '7号自由港',
+        mileage: 116,
+        basePrice: 756
+      },
+      {
+        name: '黄铜线圈',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '澄明数据中心',
         mileage: 135,
         basePrice: 756
@@ -2779,6 +3024,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 411,
         basePrice: 7990
+      },
+      {
+        name: '阿妮塔小型桦树发电机',
+        sourceCity: '阿妮塔能源研究所',
+        targetCity: '7号自由港',
+        mileage: 162,
+        basePrice: 7438
       },
       {
         name: '阿妮塔小型桦树发电机',
@@ -2843,6 +3095,13 @@ export const products: ProductInfo[] = [
       {
         name: '石墨烯电池',
         sourceCity: '阿妮塔能源研究所',
+        targetCity: '7号自由港',
+        mileage: 162,
+        basePrice: 4069
+      },
+      {
+        name: '石墨烯电池',
+        sourceCity: '阿妮塔能源研究所',
         targetCity: '澄明数据中心',
         mileage: 290,
         basePrice: 0
@@ -2899,6 +3158,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 411,
         basePrice: 2012
+      },
+      {
+        name: '阿妮塔101民用无人机',
+        sourceCity: '阿妮塔能源研究所',
+        targetCity: '7号自由港',
+        mileage: 162,
+        basePrice: 1659
       },
       {
         name: '阿妮塔101民用无人机',
@@ -2963,6 +3229,13 @@ export const products: ProductInfo[] = [
       {
         name: '家用太阳能电池组',
         sourceCity: '阿妮塔能源研究所',
+        targetCity: '7号自由港',
+        mileage: 162,
+        basePrice: 1244
+      },
+      {
+        name: '家用太阳能电池组',
+        sourceCity: '阿妮塔能源研究所',
         targetCity: '澄明数据中心',
         mileage: 290,
         basePrice: 1394
@@ -3019,6 +3292,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 411,
         basePrice: 944
+      },
+      {
+        name: '锂电池',
+        sourceCity: '阿妮塔能源研究所',
+        targetCity: '7号自由港',
+        mileage: 162,
+        basePrice: 822
       },
       {
         name: '锂电池',
@@ -3083,6 +3363,13 @@ export const products: ProductInfo[] = [
       {
         name: '充电电池',
         sourceCity: '阿妮塔能源研究所',
+        targetCity: '7号自由港',
+        mileage: 162,
+        basePrice: 307
+      },
+      {
+        name: '充电电池',
+        sourceCity: '阿妮塔能源研究所',
         targetCity: '澄明数据中心',
         mileage: 290,
         basePrice: 340
@@ -3139,6 +3426,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 75,
         basePrice: 1700
+      },
+      {
+        name: '孔雀石',
+        sourceCity: '荒原站',
+        targetCity: '7号自由港',
+        mileage: 399,
+        basePrice: 2079
       },
       {
         name: '孔雀石',
@@ -3203,6 +3497,13 @@ export const products: ProductInfo[] = [
       {
         name: '琥珀',
         sourceCity: '荒原站',
+        targetCity: '7号自由港',
+        mileage: 399,
+        basePrice: 2822
+      },
+      {
+        name: '琥珀',
+        sourceCity: '荒原站',
         targetCity: '澄明数据中心',
         mileage: 252,
         basePrice: 2598
@@ -3259,6 +3560,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 75,
         basePrice: 1178
+      },
+      {
+        name: '绿松石',
+        sourceCity: '荒原站',
+        targetCity: '7号自由港',
+        mileage: 399,
+        basePrice: 1487
       },
       {
         name: '绿松石',
@@ -3323,6 +3631,13 @@ export const products: ProductInfo[] = [
       {
         name: '铅矿石',
         sourceCity: '荒原站',
+        targetCity: '7号自由港',
+        mileage: 399,
+        basePrice: 779
+      },
+      {
+        name: '铅矿石',
+        sourceCity: '荒原站',
         targetCity: '澄明数据中心',
         mileage: 252,
         basePrice: 738
@@ -3379,6 +3694,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 75,
         basePrice: 396
+      },
+      {
+        name: '石墨',
+        sourceCity: '荒原站',
+        targetCity: '7号自由港',
+        mileage: 399,
+        basePrice: 452
       },
       {
         name: '石墨',
@@ -3443,6 +3765,13 @@ export const products: ProductInfo[] = [
       {
         name: '土豆',
         sourceCity: '荒原站',
+        targetCity: '7号自由港',
+        mileage: 399,
+        basePrice: 82
+      },
+      {
+        name: '土豆',
+        sourceCity: '荒原站',
         targetCity: '澄明数据中心',
         mileage: 252,
         basePrice: 72
@@ -3499,6 +3828,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 94,
         basePrice: 3256
+      },
+      {
+        name: '图形加速卡',
+        sourceCity: '曼德矿场',
+        targetCity: '7号自由港',
+        mileage: 417,
+        basePrice: 3871
       },
       {
         name: '图形加速卡',
@@ -3563,6 +3899,13 @@ export const products: ProductInfo[] = [
       {
         name: '钛矿石',
         sourceCity: '曼德矿场',
+        targetCity: '7号自由港',
+        mileage: 417,
+        basePrice: 2041
+      },
+      {
+        name: '钛矿石',
+        sourceCity: '曼德矿场',
         targetCity: '澄明数据中心',
         mileage: 270,
         basePrice: 1830
@@ -3619,6 +3962,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 94,
         basePrice: 1112
+      },
+      {
+        name: '铁轨用特种钢材',
+        sourceCity: '曼德矿场',
+        targetCity: '7号自由港',
+        mileage: 417,
+        basePrice: 1328
       },
       {
         name: '铁轨用特种钢材',
@@ -3683,6 +4033,13 @@ export const products: ProductInfo[] = [
       {
         name: '曼德工具箱',
         sourceCity: '曼德矿场',
+        targetCity: '7号自由港',
+        mileage: 417,
+        basePrice: 1285
+      },
+      {
+        name: '曼德工具箱',
+        sourceCity: '曼德矿场',
         targetCity: '澄明数据中心',
         mileage: 270,
         basePrice: 1109
@@ -3739,6 +4096,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 94,
         basePrice: 638
+      },
+      {
+        name: '黄铜',
+        sourceCity: '曼德矿场',
+        targetCity: '7号自由港',
+        mileage: 417,
+        basePrice: 694
       },
       {
         name: '黄铜',
@@ -3803,6 +4167,13 @@ export const products: ProductInfo[] = [
       {
         name: '钢筋混凝土轨枕',
         sourceCity: '曼德矿场',
+        targetCity: '7号自由港',
+        mileage: 417,
+        basePrice: 664
+      },
+      {
+        name: '钢筋混凝土轨枕',
+        sourceCity: '曼德矿场',
         targetCity: '澄明数据中心',
         mileage: 270,
         basePrice: 610
@@ -3859,6 +4230,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 94,
         basePrice: 463
+      },
+      {
+        name: '建材',
+        sourceCity: '曼德矿场',
+        targetCity: '7号自由港',
+        mileage: 417,
+        basePrice: 521
       },
       {
         name: '建材',
@@ -3923,6 +4301,13 @@ export const products: ProductInfo[] = [
       {
         name: '铁矿石',
         sourceCity: '曼德矿场',
+        targetCity: '7号自由港',
+        mileage: 417,
+        basePrice: 392
+      },
+      {
+        name: '铁矿石',
+        sourceCity: '曼德矿场',
         targetCity: '澄明数据中心',
         mileage: 270,
         basePrice: 370
@@ -3972,6 +4357,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 94,
         basePrice: 179
+      },
+      {
+        name: '石材',
+        sourceCity: '曼德矿场',
+        targetCity: '7号自由港',
+        mileage: 417,
+        basePrice: 216
       },
       {
         name: '石材',
@@ -4036,6 +4428,13 @@ export const products: ProductInfo[] = [
       {
         name: '砂石',
         sourceCity: '曼德矿场',
+        targetCity: '7号自由港',
+        mileage: 417,
+        basePrice: 35
+      },
+      {
+        name: '砂石',
+        sourceCity: '曼德矿场',
         targetCity: '澄明数据中心',
         mileage: 270,
         basePrice: 33
@@ -4092,6 +4491,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 191,
         basePrice: 2943
+      },
+      {
+        name: '沙金',
+        sourceCity: '淘金乐园',
+        targetCity: '7号自由港',
+        mileage: 514,
+        basePrice: 3185
       },
       {
         name: '沙金',
@@ -4156,6 +4562,13 @@ export const products: ProductInfo[] = [
       {
         name: '青金石',
         sourceCity: '淘金乐园',
+        targetCity: '7号自由港',
+        mileage: 514,
+        basePrice: 2458
+      },
+      {
+        name: '青金石',
+        sourceCity: '淘金乐园',
         targetCity: '澄明数据中心',
         mileage: 367,
         basePrice: 2265
@@ -4212,6 +4625,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 191,
         basePrice: 1952
+      },
+      {
+        name: '玛瑙',
+        sourceCity: '淘金乐园',
+        targetCity: '7号自由港',
+        mileage: 514,
+        basePrice: 2212
       },
       {
         name: '玛瑙',
@@ -4276,6 +4696,13 @@ export const products: ProductInfo[] = [
       {
         name: '漆黑矿渣',
         sourceCity: '淘金乐园',
+        targetCity: '7号自由港',
+        mileage: 514,
+        basePrice: 738
+      },
+      {
+        name: '漆黑矿渣',
+        sourceCity: '淘金乐园',
         targetCity: '澄明数据中心',
         mileage: 367,
         basePrice: 672
@@ -4336,6 +4763,13 @@ export const products: ProductInfo[] = [
       {
         name: '铁矿石',
         sourceCity: '淘金乐园',
+        targetCity: '7号自由港',
+        mileage: 514,
+        basePrice: 392
+      },
+      {
+        name: '铁矿石',
+        sourceCity: '淘金乐园',
         targetCity: '澄明数据中心',
         mileage: 367,
         basePrice: 370
@@ -4385,6 +4819,13 @@ export const products: ProductInfo[] = [
         targetCity: '铁盟哨站',
         mileage: 191,
         basePrice: 273
+      },
+      {
+        name: '石英矿',
+        sourceCity: '淘金乐园',
+        targetCity: '7号自由港',
+        mileage: 514,
+        basePrice: 321
       },
       {
         name: '石英矿',
@@ -4449,6 +4890,13 @@ export const products: ProductInfo[] = [
       {
         name: '金箔',
         sourceCity: '淘金乐园',
+        targetCity: '7号自由港',
+        mileage: 514,
+        basePrice: 3540
+      },
+      {
+        name: '金箔',
+        sourceCity: '淘金乐园',
         targetCity: '澄明数据中心',
         mileage: 367,
         basePrice: 3360
@@ -4509,6 +4957,13 @@ export const products: ProductInfo[] = [
       {
         name: '纯金线材',
         sourceCity: '淘金乐园',
+        targetCity: '7号自由港',
+        mileage: 514,
+        basePrice: 7277
+      },
+      {
+        name: '纯金线材',
+        sourceCity: '淘金乐园',
         targetCity: '澄明数据中心',
         mileage: 367,
         basePrice: 6961
@@ -4564,6 +5019,13 @@ export const products: ProductInfo[] = [
         sourceCity: '淘金乐园',
         targetCity: '铁盟哨站',
         mileage: 191,
+        basePrice: 0
+      },
+      {
+        name: '镀金线材',
+        sourceCity: '淘金乐园',
+        targetCity: '7号自由港',
+        mileage: 514,
         basePrice: 0
       },
       {
