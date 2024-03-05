@@ -117,6 +117,9 @@ importers:
       lucide-vue-next:
         specifier: ^0.340.0
         version: 0.340.0(vue@3.4.20)
+      nitro-cloudflare-dev:
+        specifier: ^0.0.7
+        version: 0.0.7
       nuxt:
         specifier: ^3.10.3
         version: 3.10.3(@types/node@20.11.20)(rollup@3.29.4)(typescript@5.3.3)(vite@5.1.4)
@@ -7011,6 +7014,13 @@ packages:
 
   /next-tick@1.1.0:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
+    dev: true
+
+  /nitro-cloudflare-dev@0.0.7:
+    resolution: {integrity: sha512-zZAXuVvMUEHZ75abrZoBDfwl8PnuJyofWRczfXJO72VYmbC/vgTDPUTlbefTPjOVh+LX4dTGPwg7EADNMwDfNA==}
+    dependencies:
+      consola: 3.2.3
+      pkg-types: 1.0.3
     dev: true
 
   /nitropack@2.8.1:
