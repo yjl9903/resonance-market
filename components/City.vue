@@ -24,6 +24,8 @@ import CreateLog from './CreateLog.vue';
 
 const props = defineProps<{ city: CityInfo }>();
 
+const timestamp = useTimestamp({ interval: 10 * 1000 });
+
 const store = useLatestLogs();
 </script>
 
@@ -45,7 +47,10 @@ const store = useLatestLogs();
           <TableRow v-for="product in city.products" :key="product.name">
             <TableCell>{{ product.name }}</TableCell>
             <TableCell v-for="target in cities" :key="target.name"
-              ><Price :log="store.getLatestLog(city.name, product.name, target.name)"></Price
+              ><Price
+                :timestamp="timestamp"
+                :log="store.getLatestLog(city.name, product.name, target.name)"
+              ></Price
             ></TableCell>
             <TableCell><CreateLog :city="city" :product="product"></CreateLog></TableCell>
           </TableRow>

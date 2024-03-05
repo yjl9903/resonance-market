@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import type { Log } from '~/drizzle/schema';
 
-defineProps<{ log: Log | undefined }>();
+const props = defineProps<{ timestamp: number; log: Log | undefined }>();
+
+const isOutdated = computed(() => {
+  if (!props.log) return true;
+  const uploadedAt = props.log.uploadedAt.getTime();
+  return props.timestamp - uploadedAt > 3600 * 1000;
+});
 </script>
 
 <template>
-  <div v-if="log">
+  <div v-if="log" :class="{ 'line-through': isOutdated, 'op-50': isOutdated }">
     <div>
       <span>{{ log.price }}</span>
     </div>
