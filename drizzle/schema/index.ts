@@ -85,11 +85,6 @@ export const logs = sqliteTable(
       foreignColumns: [products.city, products.name],
       name: 'product_log_fk'
     }),
-    transactionReference: foreignKey({
-      columns: [table.name, table.sourceCity, table.targetCity],
-      foreignColumns: [transactions.name, transactions.sourceCity, transactions.targetCity],
-      name: 'transaction_log_fk'
-    }),
     uniqueLog: unique().on(table.name, table.sourceCity, table.targetCity, table.uploadedAt)
   })
 );

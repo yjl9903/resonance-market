@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "8f304cf5-0165-44ba-b4c8-68ea9b2d2b13",
+  "id": "acdd6647-fbff-4d58-99af-5c6a68a824f5",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "logs": {
@@ -115,23 +115,6 @@
           "columnsTo": [
             "city",
             "name"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
-        "transaction_log_fk": {
-          "name": "transaction_log_fk",
-          "tableFrom": "logs",
-          "tableTo": "transactions",
-          "columnsFrom": [
-            "name",
-            "source_city",
-            "target_city"
-          ],
-          "columnsTo": [
-            "name",
-            "source_city",
-            "target_city"
           ],
           "onDelete": "no action",
           "onUpdate": "no action"

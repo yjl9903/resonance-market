@@ -10,8 +10,7 @@ CREATE TABLE `logs` (
 	`uploaded_at` integer NOT NULL,
 	`uploader_id` integer NOT NULL,
 	FOREIGN KEY (`uploader_id`) REFERENCES `users`(`id`) ON UPDATE no action ON DELETE no action,
-	FOREIGN KEY (`source_city`,`name`) REFERENCES `products`(`city`,`name`) ON UPDATE no action ON DELETE no action,
-	FOREIGN KEY (`name`,`source_city`,`target_city`) REFERENCES `transactions`(`name`,`source_city`,`target_city`) ON UPDATE no action ON DELETE no action
+	FOREIGN KEY (`source_city`,`name`) REFERENCES `products`(`city`,`name`) ON UPDATE no action ON DELETE no action
 );
 --> statement-breakpoint
 CREATE TABLE `products` (
