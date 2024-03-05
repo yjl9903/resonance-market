@@ -32,8 +32,6 @@ import {
   FormMessage
 } from '@/components/ui/form';
 
-import { cities, type CityInfo, type ProductInfo } from '~/lib/city';
-
 const props = defineProps<{ city: CityInfo; product: ProductInfo }>();
 
 const open = ref(false);
