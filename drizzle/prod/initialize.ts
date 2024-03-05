@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import { products as allProducts } from '../../utils/products';
 
 import { products, transactions, users } from '../schema';
@@ -28,16 +30,16 @@ for (const product of allProducts) {
 }
 
 for (const product of allProducts) {
-  for (const transaction of product.transactions) {
-    await database
-      .insert(transactions)
-      .values({
+  await database
+    .insert(transactions)
+    .values(
+      product.transactions.map((transaction) => ({
         name: transaction.name,
         sourceCity: transaction.sourceCity,
         targetCity: transaction.targetCity,
         mileage: transaction.mileage,
         basePrice: transaction.basePrice
-      })
-      .onConflictDoNothing();
-  }
+      }))
+    )
+    .onConflictDoNothing();
 }
