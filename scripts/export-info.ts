@@ -6,7 +6,10 @@ import type { ProductInfo } from '~/utils/types';
 const content = (await fs.readFile(`./scripts/全商品统计.csv`, 'utf-8')).split('\n');
 
 const header = content[0].split(',');
-const body = content.slice(1).join('\n');
+const body = content
+  .slice(1)
+  .join('\n')
+  .replace(/阿妮塔战备工厂\(lv40\)/g, '阿妮塔战备工厂');
 
 const data = parse(body, {
   columns(input) {
@@ -141,8 +144,4 @@ for (const row of data) {
   products.push(product);
 }
 
-await fs.writeFile(
-  `./data.json`,
-  JSON.stringify(products, null, 2).replace(/阿妮塔战备工厂\(lv40\)/g, '阿妮塔战备工厂'),
-  'utf-8'
-);
+await fs.writeFile(`./data.json`, JSON.stringify(products, null, 2), 'utf-8');
