@@ -16,28 +16,11 @@ export async function connectDatabase(
   } else {
     console.log(
       // @ts-ignore
-      globalThis.__cf_env__,
-      // @ts-ignore
-      globalThis.__cf_env__?.DATABASE,
-      // @ts-ignore
       globalThis.__env__,
       // @ts-ignore
       globalThis.__env__?.DATABASE
     );
 
-    const runtime = useRuntimeConfig();
-    console.log(runtime);
-
-    return connect();
-
-    // @ts-ignore
-    // const runtime = useRuntimeConfig(event);
-    // const { cloudflare } = event.context;
-    // const db = drizzle(cloudflare.env.DATABASE, {
-    //   logger: false,
-    //   schema: { users, products, logs }
-    // });
-
-    // return db;
+    return connect((globalThis as any).__env__);
   }
 }
