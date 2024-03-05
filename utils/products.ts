@@ -1967,7 +1967,7 @@ export const products: ProductInfo[] = [
   },
   {
     name: '火澄石',
-    city: '阿妮塔战备工厂(lv40)',
+    city: '阿妮塔战备工厂',
     type: 'specialty',
     valuable: false,
     baseVolume: 2,
@@ -1976,49 +1976,49 @@ export const products: ProductInfo[] = [
     transactions: [
       {
         name: '火澄石',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '修格里城',
         mileage: 192,
         basePrice: 7560
       },
       {
         name: '火澄石',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '铁盟哨站',
         mileage: 257,
         basePrice: 7770
       },
       {
         name: '火澄石',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '澄明数据中心',
         mileage: 135,
         basePrice: 7385
       },
       {
         name: '火澄石',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '阿妮塔能源研究所',
         mileage: 155,
         basePrice: 0
       },
       {
         name: '火澄石',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '荒原站',
         mileage: 332,
         basePrice: 7735
       },
       {
         name: '火澄石',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '曼德矿场',
         mileage: 350,
         basePrice: 7735
       },
       {
         name: '火澄石',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '淘金乐园',
         mileage: 447,
         basePrice: 7419
@@ -2027,7 +2027,7 @@ export const products: ProductInfo[] = [
   },
   {
     name: '负片炮弹',
-    city: '阿妮塔战备工厂(lv40)',
+    city: '阿妮塔战备工厂',
     type: 'specialty',
     valuable: false,
     baseVolume: 4,
@@ -2036,49 +2036,49 @@ export const products: ProductInfo[] = [
     transactions: [
       {
         name: '负片炮弹',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '修格里城',
         mileage: 192,
         basePrice: 0
       },
       {
         name: '负片炮弹',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '铁盟哨站',
         mileage: 257,
         basePrice: 0
       },
       {
         name: '负片炮弹',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '澄明数据中心',
         mileage: 135,
         basePrice: 0
       },
       {
         name: '负片炮弹',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '阿妮塔能源研究所',
         mileage: 155,
         basePrice: 4430
       },
       {
         name: '负片炮弹',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '荒原站',
         mileage: 332,
         basePrice: 4641
       },
       {
         name: '负片炮弹',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '曼德矿场',
         mileage: 350,
         basePrice: 4641
       },
       {
         name: '负片炮弹',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '淘金乐园',
         mileage: 447,
         basePrice: 4326
@@ -2087,7 +2087,7 @@ export const products: ProductInfo[] = [
   },
   {
     name: '阿妮塔202军用无人机',
-    city: '阿妮塔战备工厂(lv40)',
+    city: '阿妮塔战备工厂',
     type: 'specialty',
     valuable: false,
     baseVolume: 7,
@@ -2096,49 +2096,49 @@ export const products: ProductInfo[] = [
     transactions: [
       {
         name: '阿妮塔202军用无人机',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '修格里城',
         mileage: 192,
         basePrice: 3814
       },
       {
         name: '阿妮塔202军用无人机',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '铁盟哨站',
         mileage: 257,
         basePrice: 3920
       },
       {
         name: '阿妮塔202军用无人机',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '澄明数据中心',
         mileage: 135,
         basePrice: 3710
       },
       {
         name: '阿妮塔202军用无人机',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '阿妮塔能源研究所',
         mileage: 155,
         basePrice: 3710
       },
       {
         name: '阿妮塔202军用无人机',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '荒原站',
         mileage: 332,
         basePrice: 3919
       },
       {
         name: '阿妮塔202军用无人机',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '曼德矿场',
         mileage: 350,
         basePrice: 3920
       },
       {
         name: '阿妮塔202军用无人机',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '淘金乐园',
         mileage: 447,
         basePrice: 3605
@@ -2147,7 +2147,7 @@ export const products: ProductInfo[] = [
   },
   {
     name: '抗污染防护服',
-    city: '阿妮塔战备工厂(lv40)',
+    city: '阿妮塔战备工厂',
     type: 'specialty',
     valuable: false,
     baseVolume: 11,
@@ -2156,49 +2156,49 @@ export const products: ProductInfo[] = [
     transactions: [
       {
         name: '抗污染防护服',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '修格里城',
         mileage: 192,
         basePrice: 3108
       },
       {
         name: '抗污染防护服',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '铁盟哨站',
         mileage: 257,
         basePrice: 3191
       },
       {
         name: '抗污染防护服',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '澄明数据中心',
         mileage: 135,
         basePrice: 3080
       },
       {
         name: '抗污染防护服',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '阿妮塔能源研究所',
         mileage: 155,
         basePrice: 2995
       },
       {
         name: '抗污染防护服',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '荒原站',
         mileage: 332,
         basePrice: 3304
       },
       {
         name: '抗污染防护服',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '曼德矿场',
         mileage: 350,
         basePrice: 3219
       },
       {
         name: '抗污染防护服',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '淘金乐园',
         mileage: 447,
         basePrice: 2967
@@ -2207,7 +2207,7 @@ export const products: ProductInfo[] = [
   },
   {
     name: '钛合金',
-    city: '阿妮塔战备工厂(lv40)',
+    city: '阿妮塔战备工厂',
     type: 'specialty',
     valuable: false,
     baseVolume: 11,
@@ -2216,49 +2216,49 @@ export const products: ProductInfo[] = [
     transactions: [
       {
         name: '钛合金',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '修格里城',
         mileage: 192,
         basePrice: 2796
       },
       {
         name: '钛合金',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '铁盟哨站',
         mileage: 257,
         basePrice: 2872
       },
       {
         name: '钛合金',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '澄明数据中心',
         mileage: 135,
         basePrice: 2695
       },
       {
         name: '钛合金',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '阿妮塔能源研究所',
         mileage: 155,
         basePrice: 2772
       },
       {
         name: '钛合金',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '荒原站',
         mileage: 332,
         basePrice: 2898
       },
       {
         name: '钛合金',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '曼德矿场',
         mileage: 350,
         basePrice: 2897
       },
       {
         name: '钛合金',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '淘金乐园',
         mileage: 447,
         basePrice: 2596
@@ -2267,7 +2267,7 @@ export const products: ProductInfo[] = [
   },
   {
     name: '碳纤维',
-    city: '阿妮塔战备工厂(lv40)',
+    city: '阿妮塔战备工厂',
     type: 'specialty',
     valuable: false,
     baseVolume: 18,
@@ -2276,49 +2276,49 @@ export const products: ProductInfo[] = [
     transactions: [
       {
         name: '碳纤维',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '修格里城',
         mileage: 192,
         basePrice: 1553
       },
       {
         name: '碳纤维',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '铁盟哨站',
         mileage: 257,
         basePrice: 1596
       },
       {
         name: '碳纤维',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '澄明数据中心',
         mileage: 135,
         basePrice: 1498
       },
       {
         name: '碳纤维',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '阿妮塔能源研究所',
         mileage: 155,
         basePrice: 1540
       },
       {
         name: '碳纤维',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '荒原站',
         mileage: 332,
         basePrice: 1610
       },
       {
         name: '碳纤维',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '曼德矿场',
         mileage: 350,
         basePrice: 1610
       },
       {
         name: '碳纤维',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '淘金乐园',
         mileage: 447,
         basePrice: 1441
@@ -2327,7 +2327,7 @@ export const products: ProductInfo[] = [
   },
   {
     name: '形态共振瞄准器',
-    city: '阿妮塔战备工厂(lv40)',
+    city: '阿妮塔战备工厂',
     type: 'normal',
     valuable: false,
     baseVolume: 18,
@@ -2336,49 +2336,49 @@ export const products: ProductInfo[] = [
     transactions: [
       {
         name: '形态共振瞄准器',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '修格里城',
         mileage: 192,
         basePrice: 1155
       },
       {
         name: '形态共振瞄准器',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '铁盟哨站',
         mileage: 257,
         basePrice: 1187
       },
       {
         name: '形态共振瞄准器',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '澄明数据中心',
         mileage: 135,
         basePrice: 1103
       },
       {
         name: '形态共振瞄准器',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '阿妮塔能源研究所',
         mileage: 155,
         basePrice: 1103
       },
       {
         name: '形态共振瞄准器',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '荒原站',
         mileage: 332,
         basePrice: 1239
       },
       {
         name: '形态共振瞄准器',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '曼德矿场',
         mileage: 350,
         basePrice: 1208
       },
       {
         name: '形态共振瞄准器',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '淘金乐园',
         mileage: 447,
         basePrice: 1082
@@ -2387,7 +2387,7 @@ export const products: ProductInfo[] = [
   },
   {
     name: '高导磁硅钢片',
-    city: '阿妮塔战备工厂(lv40)',
+    city: '阿妮塔战备工厂',
     type: 'normal',
     valuable: false,
     baseVolume: 29,
@@ -2396,49 +2396,49 @@ export const products: ProductInfo[] = [
     transactions: [
       {
         name: '高导磁硅钢片',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '修格里城',
         mileage: 192,
         basePrice: 949
       },
       {
         name: '高导磁硅钢片',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '铁盟哨站',
         mileage: 257,
         basePrice: 948
       },
       {
         name: '高导磁硅钢片',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '澄明数据中心',
         mileage: 135,
         basePrice: 907
       },
       {
         name: '高导磁硅钢片',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '阿妮塔能源研究所',
         mileage: 155,
         basePrice: 907
       },
       {
         name: '高导磁硅钢片',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '荒原站',
         mileage: 332,
         basePrice: 966
       },
       {
         name: '高导磁硅钢片',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '曼德矿场',
         mileage: 350,
         basePrice: 1016
       },
       {
         name: '高导磁硅钢片',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '淘金乐园',
         mileage: 447,
         basePrice: 865
@@ -2447,7 +2447,7 @@ export const products: ProductInfo[] = [
   },
   {
     name: '黄铜线圈',
-    city: '阿妮塔战备工厂(lv40)',
+    city: '阿妮塔战备工厂',
     type: 'normal',
     valuable: false,
     baseVolume: 47,
@@ -2456,49 +2456,49 @@ export const products: ProductInfo[] = [
     transactions: [
       {
         name: '黄铜线圈',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '修格里城',
         mileage: 192,
         basePrice: 791
       },
       {
         name: '黄铜线圈',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '铁盟哨站',
         mileage: 257,
         basePrice: 770
       },
       {
         name: '黄铜线圈',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '澄明数据中心',
         mileage: 135,
         basePrice: 756
       },
       {
         name: '黄铜线圈',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '阿妮塔能源研究所',
         mileage: 155,
         basePrice: 755
       },
       {
         name: '黄铜线圈',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '荒原站',
         mileage: 332,
         basePrice: 804
       },
       {
         name: '黄铜线圈',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '曼德矿场',
         mileage: 350,
         basePrice: 805
       },
       {
         name: '黄铜线圈',
-        sourceCity: '阿妮塔战备工厂(lv40)',
+        sourceCity: '阿妮塔战备工厂',
         targetCity: '淘金乐园',
         mileage: 447,
         basePrice: 700

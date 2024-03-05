@@ -141,4 +141,8 @@ for (const row of data) {
   products.push(product);
 }
 
-await fs.writeFile(`./data.json`, JSON.stringify(products, null, 2), 'utf-8');
+await fs.writeFile(
+  `./data.json`,
+  JSON.stringify(products, null, 2).replace(/阿妮塔战备工厂\(lv40\)/g, '阿妮塔战备工厂'),
+  'utf-8'
+);
