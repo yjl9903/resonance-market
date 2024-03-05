@@ -78,11 +78,11 @@ const onSubmit = form.handleSubmit(async (values) => {
         uploadedAt: new Date().getTime()
       }
     });
-    toast.success(`上传成功`);
+    toast.success(`上报成功`);
     open.value = false;
     store.fetch();
   } catch {
-    toast.error(`上传失败`);
+    toast.error(`上报失败`);
   }
 });
 </script>
@@ -90,11 +90,11 @@ const onSubmit = form.handleSubmit(async (values) => {
 <template>
   <Dialog v-model:open="open">
     <DialogTrigger as-child>
-      <Button variant="outline" size="sm">上传</Button>
+      <Button variant="outline" size="sm">上报</Button>
     </DialogTrigger>
     <DialogContent class="sm:max-w-[625px]">
       <DialogHeader>
-        <DialogTitle>上传价格变动</DialogTitle>
+        <DialogTitle>上报价格变动</DialogTitle>
         <!-- <DialogDescription>
           Make changes to your profile here. Click save when you're done.
         </DialogDescription> -->
@@ -190,7 +190,7 @@ const onSubmit = form.handleSubmit(async (values) => {
         </FormField>
 
         <DialogFooter>
-          <Button type="submit">上传</Button>
+          <Button type="submit">上报</Button>
         </DialogFooter>
       </form>
     </DialogContent>
