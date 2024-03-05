@@ -43,7 +43,7 @@ const formSchema = toTypedSchema(
   z.object({
     targetCity: z.string(),
     price: z.number().gt(0),
-    percent: z.array(z.number().gte(0).lte(200)),
+    percent: z.array(z.number().gt(0).lt(200)),
     trend: z.enum(['up', 'same', 'down'])
   })
 );
@@ -61,6 +61,43 @@ watch(open, (open) => {
     form.resetForm();
   }
 });
+
+watch(
+  () => [form.values.targetCity, form.values.price] as const,
+  ([_, price]) => {
+    if (price === '') form.resetField('price');
+    if (price === undefined) return;
+    if (form.isFieldDirty('percent')) return;
+    if (!form.values.targetCity) return;
+    const transaction = props.product.transactions.find(
+      (tr) => tr.targetCity === form.values.targetCity
+    );
+    if (transaction && transaction.basePrice > 0) {
+      const percent = +((100 * price) / transaction.basePrice).toFixed(0);
+      if (percent > 0 && percent < 200) {
+        form.resetField('percent', { value: [percent] });
+      }
+    }
+  }
+);
+
+watch(
+  () => [form.values.targetCity, form.values.percent] as const,
+  ([_, percent]) => {
+    if (percent === undefined) return;
+    if (form.isFieldDirty('price')) return;
+    if (!form.values.targetCity) return;
+    const transaction = props.product.transactions.find(
+      (tr) => tr.targetCity === form.values.targetCity
+    );
+    if (transaction && transaction.basePrice > 0) {
+      const price = +((percent[0] / 100.0) * transaction.basePrice).toFixed(0);
+      if (price > 0) {
+        form.resetField('price', { value: price });
+      }
+    }
+  }
+);
 
 const store = useLatestLogs();
 
@@ -166,14 +203,14 @@ const onSubmit = form.handleSubmit(async (values) => {
               <Slider
                 v-bind="componentField"
                 :default-value="[100]"
-                :max="150"
-                :min="50"
+                :max="199"
+                :min="1"
                 :step="1"
               />
               <FormDescription class="flex justify-between">
                 <span
                   >{{ form.values.targetCity !== city.name ? '售出价位' : '买入价位' }}
-                  {{ form.values.percent[0] }}%</span
+                  {{ form.values.percent?.[0] ?? 100 }}%</span
                 >
               </FormDescription>
             </FormControl>
