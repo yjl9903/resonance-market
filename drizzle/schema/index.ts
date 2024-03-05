@@ -24,10 +24,11 @@ export const products = sqliteTable(
   {
     name: text('name').notNull(),
     city: text('city').notNull(),
-    type: text('type', { enum: ['normal', 'specialty'] }).notNull(),
+    type: text('type', { enum: ['normal', 'specialty', 'manufacture'] }).notNull(),
     valuable: integer('valuable', { mode: 'boolean' }).notNull(),
-    baseVolume: integer('base_volume').notNull(),
-    basePrice: integer('base_price').notNull()
+    baseVolume: integer('base_volume'),
+    basePrice: integer('base_price').notNull(),
+    cost: integer('cost')
   },
   (table) => ({ productPrimaryKey: primaryKey({ columns: [table.city, table.name] }) })
 );
