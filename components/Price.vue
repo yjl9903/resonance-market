@@ -19,12 +19,14 @@ const isOutdated = computed(() => {
       <Tooltip>
         <TooltipTrigger as-child>
           <div>
-            <span>{{ log.price }}</span>
-          </div>
-          <div>
-            <span :class="{ 'text-red': log.percent < 100, 'text-green': log.percent > 100 }"
-              >{{ log.percent }}%</span
-            >
+            <div>
+              <span>{{ log.price }}</span>
+            </div>
+            <div>
+              <span :class="{ 'text-red': log.percent < 100, 'text-green': log.percent > 100 }"
+                >{{ log.percent }}%</span
+              >
+            </div>
           </div>
         </TooltipTrigger>
         <TooltipContent>
