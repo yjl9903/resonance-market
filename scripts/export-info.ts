@@ -63,6 +63,48 @@ for (const row of data) {
   }
 }
 
+const valuable = new Set([
+  '修格里城:发动机',
+  '修格里城:弹丸加速装置',
+  '修格里城:红茶',
+  '修格里城:修格里严选礼包',
+  '铁盟哨站:防弹背心',
+  '铁盟哨站:弹丸加速装置',
+  '铁盟哨站:精钢',
+  '铁盟哨站:炮弹',
+  '铁盟哨站:塑胶炸药',
+  '7号自由港:桦石发财树',
+  '7号自由港:石墨烯',
+  '7号自由港:人工晶花',
+  '7号自由港:班节虾',
+  '7号自由港:年货大礼包',
+  '澄明数据中心:游戏机',
+  '澄明数据中心:银矿石',
+  '澄明数据中心:游戏卡带',
+  '澄明数据中心:扬声器',
+  '阿妮塔战备工厂:火澄石',
+  '阿妮塔战备工厂:负片炮弹',
+  '阿妮塔战备工厂:阿妮塔202军用无人机',
+  '阿妮塔战备工厂:抗污染防护服',
+  '阿妮塔战备工厂:钛合金',
+  '阿妮塔能源研究所:阿妮塔小型桦树发电机',
+  '阿妮塔能源研究所:石墨烯电池',
+  '阿妮塔能源研究所:阿妮塔101民用无人机',
+  '阿妮塔能源研究所:家用太阳能电池组',
+  '荒原站:孔雀石',
+  '荒原站:琥珀',
+  '荒原站:绿松石',
+  '曼德矿场:图形加速卡',
+  '曼德矿场:钛矿石',
+  '曼德矿场:铁轨用特种钢材',
+  '曼德矿场:曼德工具箱',
+  '淘金乐园:沙金',
+  '淘金乐园:青金石',
+  '淘金乐园:玛瑙',
+  '淘金乐园:金箔',
+  '淘金乐园:纯金线材'
+]);
+
 const products: ProductInfo[] = [];
 
 let sourceCity = '';
@@ -74,7 +116,7 @@ for (const row of data) {
     name: row.name,
     city: sourceCity,
     type: row.type === '制造' ? 'manufacture' : row.type === '普通' ? 'normal' : 'specialty',
-    valuable: true,
+    valuable: valuable.has(row.name + ':' + sourceCity),
     baseVolume: row.baseVolume !== 'None' ? +row.baseVolume : null,
     basePrice: row.basePrice !== '' ? +row.basePrice : 0,
     cost: row.cost === '时价' ? null : row.cost !== '' ? +row.cost : 0,
@@ -99,5 +141,4 @@ for (const row of data) {
   products.push(product);
 }
 
-console.log(JSON.stringify(products, null, 2));
 await fs.writeFile(`./data.json`, JSON.stringify(products, null, 2), 'utf-8');
