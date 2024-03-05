@@ -4,6 +4,7 @@ import { toast } from 'vue-sonner';
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 
+import { Slider } from '@/components/ui/slider';
 import {
   Dialog,
   DialogContent,
@@ -42,14 +43,14 @@ const formSchema = toTypedSchema(
   z.object({
     targetCity: z.string(),
     price: z.number().gt(0),
-    percent: z.number().gt(0).lt(200),
+    percent: z.array(z.number().gte(0).lte(200)),
     trend: z.enum(['up', 'same', 'down'])
   })
 );
 
 const form = useForm({
   initialValues: {
-    percent: 100,
+    percent: [100],
     trend: 'same'
   },
   validationSchema: formSchema
@@ -74,7 +75,7 @@ const onSubmit = form.handleSubmit(async (values) => {
         type: props.city.name !== values.targetCity ? 'sell' : 'buy',
         trend: values.trend,
         price: values.price,
-        percent: values.percent,
+        percent: values.percent[0],
         uploadedAt: new Date().getTime()
       }
     });
@@ -144,7 +145,7 @@ const onSubmit = form.handleSubmit(async (values) => {
           </FormItem>
         </FormField>
 
-        <FormField v-slot="{ componentField }" name="percent">
+        <!-- <FormField v-slot="{ componentField }" name="percent">
           <FormItem>
             <FormLabel>价位</FormLabel>
             <FormControl>
@@ -155,6 +156,27 @@ const onSubmit = form.handleSubmit(async (values) => {
               />
             </FormControl>
             <FormDescription></FormDescription>
+            <FormMessage />
+          </FormItem>
+        </FormField> -->
+        <FormField v-slot="{ componentField }" name="percent">
+          <FormItem>
+            <FormLabel>价位</FormLabel>
+            <FormControl>
+              <Slider
+                v-bind="componentField"
+                :default-value="[100]"
+                :max="150"
+                :min="50"
+                :step="1"
+              />
+              <FormDescription class="flex justify-between">
+                <span
+                  >{{ form.values.targetCity !== city.name ? '售出价位' : '买入价位' }}
+                  {{ form.values.percent[0] }}%</span
+                >
+              </FormDescription>
+            </FormControl>
             <FormMessage />
           </FormItem>
         </FormField>
