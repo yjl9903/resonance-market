@@ -9,42 +9,42 @@
 
 Please make sure [git] and [pnpm] are installed.
 
-1. 对本项目进行 git clone。（请注意，git clone下来的程序并不会自动更新，如需长期做本地运行或自行部署，请自行做定期或不定期的git clone，以获取最新版本）
+1. 对本项目进行 git clone;
 
-   Perform git clone on this project. (Please note that the program downloaded by git clone will not be automatically updated. If you need to run it locally for a long time or deploy it yourself, please do regular or irregular git clone yourself to get the latest version)
+   Perform git clone on this project;
 
    ```bash
    git clone https://github.com/yjl9903/resonance-market.git
    cd resonance-market
    ```
 
-2. 使用 pnpm 安装依赖。
+2. 使用 pnpm 安装依赖;
 
-   Use pnpm to install dependencies.
+   Use pnpm to install dependencies;
 
    ```bash
    pnpm install
    ```
 
-3. 准备开发用的 SQLite 数据库
+3. 准备开发用的 SQLite 数据库;
 
-   Prepare development SQLite database
+   Prepare development SQLite database;
 
    ```bash
    pnpm db:prepare:dev
    ```
 
-4. 运行开发测试。
+4. 运行开发服务器;
 
-   Run the development test.
+   Run the development server;
 
    ```bash
    pnpm run dev
    ```
 
-会在 `http://localhost:3000` 启动开发测试。普通用户此时可以在确保网络条件适合的情况下直接使用（在本地运行时，对商家网站的内容请求由运行程序的电脑发出，而不是我们的服务器）。其他开发者可在调整代码后“实时”地查看效果。
+会在 `http://localhost:3000` 启动开发测试。
 
-Start the development server on `http://localhost:3000`. Ordinary users can use it directly at this time after ensuring that the network conditions are suitable (when running locally, content requests for merchant websites are issued by the computer running the program, not our server). Other developers can adjust the code and see the effects "in real time".
+Start the development server on `http://localhost:3000`.
 
 ## 构建 / Build
 
