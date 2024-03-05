@@ -7,6 +7,12 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 
 const props = defineProps<{ timestamp: number; product: ProductInfo; log: Log | undefined }>();
 
+const isOutdated = computed(() => {
+  if (!props.log) return true;
+  props.timestamp;
+  return isLogValid(props.log);
+});
+
 const store = useLatestLogs();
 
 const profit = computed(() => {
@@ -20,10 +26,39 @@ const profit = computed(() => {
   }
 });
 
-const isOutdated = computed(() => {
-  if (!props.log) return true;
-  props.timestamp;
-  return isLogValid(props.log);
+const profitColor = computed(() => {
+  if (profit.value === undefined || isOutdated.value) return undefined;
+  const value = +profit.value;
+  if (value < 0) {
+    const table = [
+      { value: -100, color: 'text-red-200 op-80' },
+      { value: -200, color: 'text-red-200' },
+      { value: -300, color: 'text-red-300' },
+      { value: -400, color: 'text-red-400' },
+      { value: -500, color: 'text-red-500' },
+      { value: -600, color: 'text-red-600' },
+      { value: -700, color: 'text-red-700' },
+      { value: -800, color: 'text-red-800' },
+      { value: Number.MIN_SAFE_INTEGER, color: 'text-red-800' }
+    ];
+    for (const cond of table) {
+      if (value > cond.value) return cond.color;
+    }
+  } else if (value > 0) {
+    const table = [
+      { value: 0, color: 'text-green-400 op-60' },
+      { value: 100, color: 'text-green-400 op-70' },
+      { value: 200, color: 'text-green-400 op-80' },
+      { value: 300, color: 'text-green-400' },
+      { value: 400, color: 'text-green-500' },
+      { value: 600, color: 'text-green-600' },
+      { value: 800, color: 'text-green-700' },
+      { value: 1000, color: 'text-green-700 font-bold' }
+    ];
+    for (const cond of table.reverse()) {
+      if (value > cond.value) return cond.color;
+    }
+  }
 });
 </script>
 
@@ -34,7 +69,8 @@ const isOutdated = computed(() => {
         <TooltipTrigger as-child>
           <div :class="{ 'line-through': isOutdated, 'op-50': isOutdated }">
             <div v-if="log.type === 'sell'" class="h-6 flex gap-1 items-center">
-              <span class="i-icon-park-income-one text-sm"></span><span>{{ profit }}</span>
+              <span class="i-icon-park-income-one text-sm"></span
+              ><span :class="[profitColor]">{{ profit }}</span>
             </div>
             <!-- <div v-else="log.type === 'buy'" class="h-6">
               <span></span><span>{{ log.price }}</span>
