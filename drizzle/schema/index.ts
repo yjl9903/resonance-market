@@ -24,11 +24,12 @@ export const products = sqliteTable(
   {
     name: text('name').notNull(),
     city: text('city').notNull(),
-    valuable: integer('valuable', { mode: 'boolean' }).default(true),
-    baseVolume: integer('base_volume').default(0),
-    basePrice: integer('base_price').default(0)
+    type: text('type', { enum: ['normal', 'specialty'] }).notNull(),
+    valuable: integer('valuable', { mode: 'boolean' }).notNull(),
+    baseVolume: integer('base_volume').notNull(),
+    basePrice: integer('base_price').notNull()
   },
-  (table) => ({ product_pk: primaryKey({ columns: [table.city, table.name] }) })
+  (table) => ({ productPrimaryKey: primaryKey({ columns: [table.city, table.name] }) })
 );
 
 export type Product = typeof products.$inferSelect;
@@ -55,8 +56,9 @@ export const transactions = sqliteTable(
     targetProudctReference: foreignKey({
       columns: [table.targetCity, table.name],
       foreignColumns: [products.city, products.name],
-      name: 'transaction_source_fk'
-    })
+      name: 'transaction_target_fk'
+    }),
+    uniqueTransaction: unique().on(table.name, table.sourceCity, table.targetCity)
   })
 );
 
@@ -70,10 +72,10 @@ export const logs = sqliteTable(
   {
     id: integer('id').primaryKey({ autoIncrement: true }),
     name: text('name').notNull(),
-    city: text('city').notNull(),
+    sourceCity: text('source_city').notNull(),
     targetCity: text('target_city').notNull(),
-    type: text('type').notNull(),
-    trend: text('trend'),
+    type: text('type', { enum: ['buy', 'sell'] }).notNull(),
+    trend: text('trend', { enum: ['up', 'same', 'down'] }).notNull(),
     price: integer('price').notNull(),
     percent: integer('percent').notNull(),
     uploadedAt: integer('uploaded_at', { mode: 'timestamp' }).notNull(),
@@ -83,11 +85,16 @@ export const logs = sqliteTable(
   },
   (table) => ({
     productReference: foreignKey({
-      columns: [table.city, table.name],
+      columns: [table.sourceCity, table.name],
       foreignColumns: [products.city, products.name],
       name: 'product_log_fk'
     }),
-    uniqueLog: unique().on(table.name, table.city, table.uploadedAt)
+    transactionReference: foreignKey({
+      columns: [table.name, table.sourceCity, table.targetCity],
+      foreignColumns: [transactions.name, transactions.sourceCity, transactions.targetCity],
+      name: 'transaction_log_fk'
+    }),
+    uniqueLog: unique().on(table.name, table.sourceCity, table.targetCity, table.uploadedAt)
   })
 );
 
