@@ -54,11 +54,6 @@ export const transactions = sqliteTable(
       foreignColumns: [products.city, products.name],
       name: 'transaction_source_fk'
     }),
-    targetProudctReference: foreignKey({
-      columns: [table.targetCity, table.name],
-      foreignColumns: [products.city, products.name],
-      name: 'transaction_target_fk'
-    }),
     uniqueTransaction: unique().on(table.name, table.sourceCity, table.targetCity)
   })
 );
