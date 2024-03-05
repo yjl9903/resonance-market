@@ -1,1 +1,0 @@
-ALTER TABLE logs ADD `trend` text;

@@ -17,8 +17,6 @@ import {
   TableRow
 } from '@/components/ui/table';
 
-import { type CityInfo, cities } from '~/lib/city';
-
 import Price from './Price.vue';
 import CreateLog from './CreateLog.vue';
 
@@ -50,7 +48,7 @@ const store = useLatestLogs();
           >
         </TableHeader>
         <TableBody>
-          <TableRow v-for="product in city.products" :key="product.name">
+          <TableRow v-for="product in city.products.filter((p) => p.valuable)" :key="product.name">
             <TableCell>{{ product.name }}</TableCell>
             <TableCell class="border-r"
               ><Price

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { cities } from '~/lib/city';
-
 const store = useLatestLogs();
 await store.fetch();
 </script>
