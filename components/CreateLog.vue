@@ -55,6 +55,12 @@ const form = useForm({
   validationSchema: formSchema
 });
 
+watch(open, (open) => {
+  if (open) {
+    form.resetForm();
+  }
+});
+
 const store = useLatestLogs();
 
 const onSubmit = form.handleSubmit(async (values) => {
