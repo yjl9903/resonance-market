@@ -50,7 +50,9 @@
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.31",
+    "@iconify-json/icon-park": "^1.1.13",
     "@iconify-json/logos": "^1.1.42",
+    "@iconify-json/material-symbols": "^1.1.74",
     "@nuxtjs/color-mode": "^3.3.2",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@total-typescript/ts-reset": "^0.5.1",

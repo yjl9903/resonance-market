@@ -8,5 +8,5 @@ export function groupBy<T>(arr: T[], fn: (item: T) => string) {
       map.set(key, [item]);
     }
   }
-  return [...map];
+  return map;
 }

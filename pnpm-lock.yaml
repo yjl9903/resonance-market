@@ -81,9 +81,15 @@ importers:
       '@iconify-json/carbon':
         specifier: ^1.1.31
         version: 1.1.31
+      '@iconify-json/icon-park':
+        specifier: ^1.1.13
+        version: 1.1.13
       '@iconify-json/logos':
         specifier: ^1.1.42
         version: 1.1.42
+      '@iconify-json/material-symbols':
+        specifier: ^1.1.74
+        version: 1.1.74
       '@nuxtjs/color-mode':
         specifier: ^3.3.2
         version: 3.3.2(rollup@3.29.4)
@@ -1468,8 +1474,20 @@ packages:
       '@iconify/types': 2.0.0
     dev: true
 
+  /@iconify-json/icon-park@1.1.13:
+    resolution: {integrity: sha512-7AoB802JUeMwaJBRz1a+3PGfifxDiMiE+mVgbDPZLHgLaLq7WXslQCV0aDs8kQHF0SGIBUp7f8kKTHGUktuFtw==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
   /@iconify-json/logos@1.1.42:
     resolution: {integrity: sha512-/f+frtPm3m3Z30oy8Pk+QqRDkbmAiIaWGPl5CmsCXm15MVfvw9a/V/gD7WzdyuSGAZcFuQaqbHXj92y/n+2ifg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/material-symbols@1.1.74:
+    resolution: {integrity: sha512-cuQKvpGWrMNJq0i3ynO+V6yus0Smiupw92GW8Gq/4MHfYfbl1MrbVmafKQAd8RJVqiEXq4/F084OEcigf77UqQ==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true

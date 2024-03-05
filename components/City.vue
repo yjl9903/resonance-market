@@ -26,6 +26,8 @@ const currentCity = props.city;
 
 const timestamp = useTimestamp({ interval: 10 * 1000 });
 
+const mode = ref<'simple' | 'full' | 'edit'>('simple');
+
 const store = useLatestLogs();
 </script>
 
@@ -53,6 +55,7 @@ const store = useLatestLogs();
             <TableCell class="border-r"
               ><Price
                 :timestamp="timestamp"
+                :product="getProductInfo(city.name, product.name)!"
                 :log="store.getLatestLog(city.name, product.name, currentCity.name)"
               ></Price
             ></TableCell>
@@ -61,6 +64,7 @@ const store = useLatestLogs();
               :key="target.name"
               ><Price
                 :timestamp="timestamp"
+                :product="getProductInfo(city.name, product.name)!"
                 :log="store.getLatestLog(city.name, product.name, target.name)"
               ></Price
             ></TableCell>

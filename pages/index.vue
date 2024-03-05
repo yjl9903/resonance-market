@@ -1,6 +1,10 @@
 <script setup lang="ts">
 const store = useLatestLogs();
 await store.fetch();
+
+useIntervalFn(() => {
+  store.fetch();
+}, 10 * 1000);
 </script>
 
 <template>
