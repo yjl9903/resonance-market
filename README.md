@@ -26,7 +26,15 @@ Please make sure [git] and [pnpm] are installed.
    pnpm install
    ```
 
-3. 运行开发测试。
+3. 准备开发用的 SQLite 数据库
+
+   Prepare development SQLite database
+
+   ```bash
+   pnpm db:prepare:dev
+   ```
+
+4. 运行开发测试。
 
    Run the development test.
 

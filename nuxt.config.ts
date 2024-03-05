@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   debug: false,
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   modules: [
     '@vueuse/nuxt',
     '@unocss/nuxt',
@@ -20,14 +20,14 @@ export default defineNuxtConfig({
     }
   },
   components: [
-    {
-      path: '~/components/common',
-      pathPrefix: false
-    },
-    {
-      path: '~/components/docs',
-      pathPrefix: false
-    },
+    // {
+    //   path: '~/components/common',
+    //   pathPrefix: false
+    // },
+    // {
+    //   path: '~/components/docs',
+    //   pathPrefix: false
+    // },
     {
       path: '~/components',
       pathPrefix: false
@@ -47,6 +47,10 @@ export default defineNuxtConfig({
       script: []
     }
   },
+  runtimeConfig: {
+    TURSO_URL: import.meta.env.TURSO_URL,
+    TURSO_AUTH_TOKEN: import.meta.env.TURSO_AUTH_TOKEN
+  },
   image: {},
   unocss: {
     preflight: true
@@ -63,5 +67,10 @@ export default defineNuxtConfig({
       // ...
     }
   },
-  analytics: {}
+  analytics: {
+    umami: {
+      src: `umami.onekuma.cn`,
+      id: `6d532af3-e9bc-43a1-998b-8d3cae5fcbb6`
+    }
+  }
 });

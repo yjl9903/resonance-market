@@ -1,11 +1,14 @@
-import { migrate } from 'drizzle-orm/better-sqlite3/migrator';
+import { cities } from '../../lib/city';
 
-import { cities } from '../lib/city';
+import { products, users } from '../schema';
 
-import { products } from './schema';
 import { database } from './connect';
 
-migrate(database, { migrationsFolder: './drizzle/migrations' });
+await database
+  .insert(users)
+  .values({ id: 1, name: 'anonymous' })
+  .onConflictDoNothing()
+  .returning({ id: users.id });
 
 for (const city of cities) {
   for (const product of city.products) {

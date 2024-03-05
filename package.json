@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "db:prepare:dev": "tsx drizzle/dev/migrate.ts && tsx drizzle/dev/initialize.ts",
+    "db:prepare:prod": "tsx drizzle/prod/migrate.ts && tsx drizzle/prod/initialize.ts",
     "deploy": "wrangler deploy",
     "dev": "nuxt dev",
     "drizzle-kit": "drizzle-kit",
     "format": "prettier --write **/*.{ts,vue}",
     "generate": "nuxt generate",
     "postinstall": "nuxt prepare",
-    "prepare:sqlite": "tsx drizzle/migrate.ts",
     "preview": "nuxt preview",
     "release": "bumpp package.json packages/*/package.json --commit --push --tag",
     "shadcn": "shadcn-vue",
@@ -23,6 +24,7 @@
   },
   "dependencies": {
     "@formkit/tempo": "^0.0.12",
+    "@libsql/client": "^0.5.2",
     "@nuxt/image": "1.2.0",
     "@pinia/nuxt": "^0.5.1",
     "@vee-validate/zod": "^4.12.5",

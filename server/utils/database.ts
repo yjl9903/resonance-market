@@ -1,7 +1,8 @@
 import type { H3Event } from 'h3';
 
-import { type DrizzleD1Database, drizzle } from 'drizzle-orm/d1';
+import { type DrizzleD1Database } from 'drizzle-orm/d1';
 
+import { connect } from '~/drizzle/prod/connect';
 import { users, products, logs } from '~/drizzle/schema';
 
 export async function connectDatabase(
@@ -10,25 +11,33 @@ export async function connectDatabase(
   DrizzleD1Database<{ users: typeof users; products: typeof products; logs: typeof logs }>
 > {
   if (import.meta.dev) {
-    const { database } = await import('~/drizzle/connect');
+    const { database } = await import('~/drizzle/dev/connect');
     return database as any;
   } else {
-    // @ts-ignore
-    const runtime = useRuntimeConfig(event);
     console.log(
       // @ts-ignore
       globalThis.__cf_env__,
       // @ts-ignore
       globalThis.__cf_env__?.DATABASE,
-      runtime,
-      JSON.stringify(runtime)
+      // @ts-ignore
+      globalThis.__env__,
+      // @ts-ignore
+      globalThis.__env__?.DATABASE
     );
-    const { cloudflare } = event.context;
-    console.log(cloudflare, event.context, JSON.stringify(event.context));
-    const db = drizzle(cloudflare.env.DATABASE, {
-      logger: false,
-      schema: { users, products, logs }
-    });
-    return db;
+
+    const runtime = useRuntimeConfig();
+    console.log(runtime);
+
+    return connect();
+
+    // @ts-ignore
+    // const runtime = useRuntimeConfig(event);
+    // const { cloudflare } = event.context;
+    // const db = drizzle(cloudflare.env.DATABASE, {
+    //   logger: false,
+    //   schema: { users, products, logs }
+    // });
+
+    // return db;
   }
 }
