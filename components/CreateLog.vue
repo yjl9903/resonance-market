@@ -75,7 +75,7 @@ watch(
     if (latest) {
       form.resetField('price', { value: latest.price });
       form.resetField('percent', { value: [latest.percent] });
-      form.resetField('trend', { value: [latest.trend] });
+      form.resetField('trend', { value: latest.trend });
     }
   }
 );
