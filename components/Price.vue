@@ -18,14 +18,19 @@ const isOutdated = computed(() => {
     <TooltipProvider :delayDuration="300" :skipDelayDuration="100">
       <Tooltip>
         <TooltipTrigger as-child>
-          <div>
-            <div>
-              <span>{{ log.price }}</span>
+          <div class="flex gap-1 items-center">
+            <div :class="{ 'text-red': log.percent < 100, 'text-green': log.percent > 100 }">
+              <div>
+                <span>{{ log.price }}</span>
+              </div>
+              <div>
+                <span>{{ log.percent }}%</span>
+              </div>
             </div>
-            <div>
-              <span :class="{ 'text-red': log.percent < 100, 'text-green': log.percent > 100 }"
-                >{{ log.percent }}%</span
-              >
+            <div v-if="!isOutdated" class="text-2xl">
+              <span v-if="log.trend === 'up'" class="i-carbon-arrow-up text-green"></span>
+              <span v-else-if="log.trend === 'down'" class="i-carbon-arrow-down text-red"></span>
+              <span v-else class="w-4"></span>
             </div>
           </div>
         </TooltipTrigger>

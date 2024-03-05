@@ -23,8 +23,9 @@ export default defineEventHandler(async (event) => {
       id: logs.id,
       name: products.name,
       city: products.city,
-      type: logs.type,
       targetCity: logs.targetCity,
+      type: logs.type,
+      trend: logs.trend,
       price: logs.price,
       percent: logs.percent,
       uploadedAt: logs.uploadedAt

@@ -22,6 +22,7 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import {
   FormControl,
   FormDescription,
@@ -41,12 +42,16 @@ const formSchema = toTypedSchema(
   z.object({
     targetCity: z.string(),
     price: z.number().gt(0),
-    percent: z.number().gt(0).lt(200).default(100),
-    trend: z.enum(['up', 'same', 'down']).default('same')
+    percent: z.number().gt(0).lt(200),
+    trend: z.enum(['up', 'same', 'down'])
   })
 );
 
 const form = useForm({
+  initialValues: {
+    percent: 100,
+    trend: 'same'
+  },
   validationSchema: formSchema
 });
 
@@ -61,7 +66,7 @@ const onSubmit = form.handleSubmit(async (values) => {
         name: props.product.name,
         targetCity: values.targetCity,
         type: props.city.name !== values.targetCity ? 'sell' : 'buy',
-        trend: 'same',
+        trend: values.trend,
         price: values.price,
         percent: values.percent,
         uploadedAt: new Date().getTime()
@@ -144,6 +149,36 @@ const onSubmit = form.handleSubmit(async (values) => {
               />
             </FormControl>
             <FormDescription></FormDescription>
+            <FormMessage />
+          </FormItem>
+        </FormField>
+
+        <FormField v-slot="{ componentField }" type="radio" name="trend">
+          <FormItem class="space-y-3">
+            <FormLabel>趋势</FormLabel>
+
+            <FormControl>
+              <RadioGroup class="flex flex-col space-y-0" v-bind="componentField">
+                <FormItem class="flex items-center space-y-0 gap-x-3">
+                  <FormControl>
+                    <RadioGroupItem value="up" />
+                  </FormControl>
+                  <FormLabel class="font-normal text-green">↑</FormLabel>
+                </FormItem>
+                <FormItem class="flex items-center space-y-0 gap-x-3">
+                  <FormControl>
+                    <RadioGroupItem value="same" />
+                  </FormControl>
+                  <FormLabel class="font-normal">-</FormLabel>
+                </FormItem>
+                <FormItem class="flex items-center space-y-0 gap-x-3">
+                  <FormControl>
+                    <RadioGroupItem value="down" />
+                  </FormControl>
+                  <FormLabel class="font-normal text-red">↓</FormLabel>
+                </FormItem>
+              </RadioGroup>
+            </FormControl>
             <FormMessage />
           </FormItem>
         </FormField>
