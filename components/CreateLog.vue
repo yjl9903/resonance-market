@@ -32,6 +32,8 @@ import {
   FormMessage
 } from '@/components/ui/form';
 
+import type { CityInfo, ProductInfo } from '@/utils/types';
+
 const props = defineProps<{ city: CityInfo; product: ProductInfo }>();
 
 const open = ref(false);
@@ -66,8 +68,8 @@ const onSubmit = form.handleSubmit(async (values) => {
     await $fetch(`/api/log`, {
       method: 'POST',
       body: {
-        city: props.city.name,
         name: props.product.name,
+        sourceCity: props.city.name,
         targetCity: values.targetCity,
         type: props.city.name !== values.targetCity ? 'sell' : 'buy',
         trend: values.trend,
