@@ -27,7 +27,7 @@ jobs:
 
       - name: Build
         env:
-          TURSO_URL: 'libsql://backup-yjl9903.turso.io'
+          TURSO_URL: 'libsql://resonance-market-yjl9903.turso.io'
           TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
         run: pnpm build --preset=cloudflare_module
 
