@@ -8,6 +8,9 @@ rules = [{ type = "ESModule", globs = ["**/*.js", "**/*.mjs"] }]
 [site]
 bucket = ".output/public"
 
+[vars]
+TURSO_URL = "libsql://resonance-market-yjl9903.turso.io"
+
 [[d1_databases]]
 binding = "DATABASE"
 database_name = "resonance-market"
