@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import type { Log } from '~/drizzle/schema';
 
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { format } from '@formkit/tempo';
+
 const props = defineProps<{ timestamp: number; log: Log | undefined }>();
 
 const isOutdated = computed(() => {
@@ -12,13 +15,22 @@ const isOutdated = computed(() => {
 
 <template>
   <div v-if="log" :class="{ 'line-through': isOutdated, 'op-50': isOutdated }">
-    <div>
-      <span>{{ log.price }}</span>
-    </div>
-    <div>
-      <span :class="{ 'text-red': log.percent < 100, 'text-green': log.percent > 100 }"
-        >{{ log.percent }}%</span
-      >
-    </div>
+    <TooltipProvider :delayDuration="300" :skipDelayDuration="100">
+      <Tooltip>
+        <TooltipTrigger as-child>
+          <div>
+            <span>{{ log.price }}</span>
+          </div>
+          <div>
+            <span :class="{ 'text-red': log.percent < 100, 'text-green': log.percent > 100 }"
+              >{{ log.percent }}%</span
+            >
+          </div>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>最近更新于 {{ format(log.uploadedAt, { date: 'long', time: 'medium' }) }}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   </div>
 </template>
