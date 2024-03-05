@@ -116,7 +116,7 @@ for (const row of data) {
     name: row.name,
     city: sourceCity,
     type: row.type === '制造' ? 'manufacture' : row.type === '普通' ? 'normal' : 'specialty',
-    valuable: valuable.has(row.name + ':' + sourceCity),
+    valuable: valuable.has(sourceCity + ':' + row.name),
     baseVolume: row.baseVolume !== 'None' ? +row.baseVolume : null,
     basePrice: row.basePrice !== '' ? +row.basePrice : 0,
     cost: row.cost === '时价' ? null : row.cost !== '' ? +row.cost : 0,
