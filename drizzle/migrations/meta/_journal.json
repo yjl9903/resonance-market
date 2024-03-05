@@ -15,6 +15,13 @@
       "when": 1709583814502,
       "tag": "0001_tricky_emma_frost",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1709636484668,
+      "tag": "0002_breezy_ikaris",
+      "breakpoints": true
     }
   ]
 }

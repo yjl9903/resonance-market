@@ -41,7 +41,8 @@ const formSchema = toTypedSchema(
   z.object({
     targetCity: z.string(),
     price: z.number().gt(0),
-    percent: z.number().gt(0).lt(200).default(100)
+    percent: z.number().gt(0).lt(200).default(100),
+    trend: z.enum(['up', 'same', 'down']).default('same')
   })
 );
 
@@ -58,8 +59,9 @@ const onSubmit = form.handleSubmit(async (values) => {
       body: {
         city: props.city.name,
         name: props.product.name,
-        type: props.city.name !== values.targetCity ? 'sell' : 'buy',
         targetCity: values.targetCity,
+        type: props.city.name !== values.targetCity ? 'sell' : 'buy',
+        trend: 'same',
         price: values.price,
         percent: values.percent,
         uploadedAt: new Date().getTime()
