@@ -24,6 +24,8 @@ import CreateLog from './CreateLog.vue';
 
 const props = defineProps<{ city: CityInfo }>();
 
+const currentCity = props.city;
+
 const timestamp = useTimestamp({ interval: 10 * 1000 });
 
 const store = useLatestLogs();
@@ -37,16 +39,28 @@ const store = useLatestLogs();
     <CardContent>
       <Table>
         <TableHeader>
-          <TableRow
+          <TableRow class="boder-t"
             ><TableHead class="w-[120px]">商品</TableHead
-            ><TableHead v-for="city in cities" :key="city.name">{{ city.name }}</TableHead
+            ><TableHead class="border-r">{{ currentCity.name }}</TableHead
+            ><TableHead
+              v-for="city in cities.filter((c) => c.name !== currentCity.name)"
+              :key="city.name"
+              >{{ city.name }}</TableHead
             ><TableHead class="w-[100px]">操作</TableHead></TableRow
           >
         </TableHeader>
         <TableBody>
           <TableRow v-for="product in city.products" :key="product.name">
             <TableCell>{{ product.name }}</TableCell>
-            <TableCell v-for="target in cities" :key="target.name"
+            <TableCell class="border-r"
+              ><Price
+                :timestamp="timestamp"
+                :log="store.getLatestLog(city.name, product.name, currentCity.name)"
+              ></Price
+            ></TableCell>
+            <TableCell
+              v-for="target in cities.filter((c) => c.name !== currentCity.name)"
+              :key="target.name"
               ><Price
                 :timestamp="timestamp"
                 :log="store.getLatestLog(city.name, product.name, target.name)"
