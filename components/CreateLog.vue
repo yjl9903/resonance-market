@@ -64,8 +64,15 @@ watch(open, (open) => {
 
 watch(
   () => [form.values.targetCity, form.values.price] as const,
-  ([_, price]) => {
-    if (price === '') form.resetField('price');
+  ([target, price], prev) => {
+    if (target === prev[0] && price === prev[1]) return;
+
+    // @ts-ignore
+    if (price === '') {
+      form.setFieldValue('price', undefined);
+      return;
+    }
+
     if (price === undefined) return;
     if (form.isFieldDirty('percent')) return;
     if (!form.values.targetCity) return;
@@ -83,7 +90,9 @@ watch(
 
 watch(
   () => [form.values.targetCity, form.values.percent] as const,
-  ([_, percent]) => {
+  ([target, percent], prev) => {
+    if (target === prev[0] && percent?.[0] === prev[1]?.[0]) return;
+
     if (percent === undefined) return;
     if (form.isFieldDirty('price')) return;
     if (!form.values.targetCity) return;
