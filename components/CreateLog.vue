@@ -37,6 +37,8 @@ import type { CityInfo, ProductInfo } from '@/utils/types';
 
 const props = defineProps<{ city: CityInfo; product: ProductInfo }>();
 
+const store = useLatestLogs();
+
 const open = ref(false);
 
 const formSchema = toTypedSchema(
@@ -61,6 +63,22 @@ watch(open, (open) => {
     form.resetForm();
   }
 });
+
+watch(
+  () => form.values.targetCity,
+  (target, prev) => {
+    if (target === prev || !target) return;
+
+    if (form.isFieldDirty('price') || form.isFieldDirty('percent')) return;
+
+    const latest = store.getLatestLog(props.city.name, props.product.name, target);
+    if (latest) {
+      form.resetField('price', { value: latest.price });
+      form.resetField('percent', { value: [latest.percent] });
+      form.resetField('trend', { value: [latest.trend] });
+    }
+  }
+);
 
 watch(
   () => [form.values.targetCity, form.values.price] as const,
@@ -107,8 +125,6 @@ watch(
     }
   }
 );
-
-const store = useLatestLogs();
 
 const onSubmit = form.handleSubmit(async (values) => {
   try {
