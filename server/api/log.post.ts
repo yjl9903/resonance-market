@@ -2,6 +2,7 @@ import * as z from 'zod';
 
 import { logs, type NewLog } from '~/drizzle/schema';
 
+import { cacheProducts } from '../utils/cache';
 import { connectDatabase } from '../utils/database';
 
 const schema = z.object({
@@ -29,6 +30,11 @@ export default defineEventHandler(async (event) => {
         uploaderId: 1
       })
       .returning({ id: logs.id });
+
+    if (resp.length > 0) {
+      // Mark cache invalidated
+      cacheProducts.dirty = true;
+    }
 
     return { count: resp.length };
   } else {
