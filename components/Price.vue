@@ -186,7 +186,7 @@ const shortTime = computed(() => {
               <span>{{ product.basePrice }}</span>
             </p>
             <p>
-              <span class="font-bold mr-2">最近更新于</span>
+              <span class="font-bold mr-2">更新时间</span>
               <span :class="{ 'op-50': isOutdated }">{{
                 format(log.uploadedAt, { date: 'long', time: 'medium' })
               }}</span>
