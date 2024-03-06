@@ -2,6 +2,7 @@ import { sql, eq, and, max } from 'drizzle-orm';
 
 import { products, logs, type Log } from '~/drizzle/schema';
 
+import { cacheProducts } from '../utils/cache';
 import { connectDatabase } from '../utils/database';
 
 export default defineCachedEventHandler(
@@ -47,9 +48,20 @@ export default defineCachedEventHandler(
         )
       );
 
+    cacheProducts.dirty = false;
+
     return {
       latest: query as Log[]
     };
   },
-  { maxAge: 1 }
+  {
+    maxAge: 10,
+    shouldInvalidateCache() {
+      if (cacheProducts.dirty) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
 );
