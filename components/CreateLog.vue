@@ -104,15 +104,23 @@ watch(
     }
 
     if (price === undefined) return;
-    if (form.isFieldDirty('percent')) return;
     if (!form.values.targetCity) return;
-    const transaction = props.product.transactions.find(
-      (tr) => tr.targetCity === form.values.targetCity
-    );
-    if (transaction && transaction.basePrice > 0) {
-      const percent = +((100 * price) / transaction.basePrice).toFixed(0);
+    if (form.isFieldDirty('percent')) return;
+
+    if (target === props.product.city) {
+      const percent = Math.round((100 * price) / props.product.basePrice);
       if (percent > 0 && percent < 200) {
         form.resetField('percent', { value: [percent] });
+      }
+    } else {
+      const transaction = props.product.transactions.find(
+        (tr) => tr.targetCity === form.values.targetCity
+      );
+      if (transaction && transaction.basePrice > 0) {
+        const percent = Math.round((100 * price) / transaction.basePrice);
+        if (percent > 0 && percent < 200) {
+          form.resetField('percent', { value: [percent] });
+        }
       }
     }
   }
@@ -129,10 +137,18 @@ watch(
     const transaction = props.product.transactions.find(
       (tr) => tr.targetCity === form.values.targetCity
     );
-    if (transaction && transaction.basePrice > 0) {
-      const price = +((percent[0] / 100.0) * transaction.basePrice).toFixed(0);
+
+    if (target === props.product.city) {
+      const price = Math.round((percent[0] / 100.0) * props.product.basePrice);
       if (price > 0) {
         form.resetField('price', { value: price });
+      }
+    } else {
+      if (transaction && transaction.basePrice > 0) {
+        const price = Math.round((percent[0] / 100.0) * transaction.basePrice);
+        if (price > 0) {
+          form.resetField('price', { value: price });
+        }
       }
     }
   }
@@ -151,7 +167,9 @@ const onSubmit = form.handleSubmit(async (values) => {
       const eps = Math.max(5, Math.round(basePrice / 100));
       const expetecdPrice = Math.round((basePrice * percent) / 100);
       if (Math.abs(price - expetecdPrice) > eps) {
-        toast.error(`价格偏差过大, 请确认数据是否有误?`);
+        toast.error(`请确认数据是否有误?`, {
+          description: `价格偏差过大, 期望价格范围: [${expetecdPrice - eps}, ${expetecdPrice + eps}]`
+        });
         form.resetField('price');
         form.resetField('percent');
         return;
