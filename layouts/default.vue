@@ -47,13 +47,13 @@ import {
               </MenubarSub>
             </MenubarContent>
           </MenubarMenu>
-          <!-- <MenubarMenu>
+          <MenubarMenu>
             <MenubarTrigger>上报</MenubarTrigger>
             <MenubarContent>
               <MenubarSub>
                 <MenubarSubTrigger>在城市买入</MenubarSubTrigger>
                 <MenubarSubContent>
-                  <MenubarItem v-for="city in cities" :key="city.name" as-child disabled
+                  <MenubarItem v-for="city in cities" :key="city.name" as-child
                     ><NuxtLink :to="`/report/buy/${city.name}`">{{
                       city.name
                     }}</NuxtLink></MenubarItem
@@ -63,7 +63,7 @@ import {
               <MenubarSub>
                 <MenubarSubTrigger>在城市卖出</MenubarSubTrigger>
                 <MenubarSubContent>
-                  <MenubarItem v-for="city in cities" :key="city.name" as-child disabled
+                  <MenubarItem v-for="city in cities" :key="city.name" as-child
                     ><NuxtLink :to="`/report/sell/${city.name}`">{{
                       city.name
                     }}</NuxtLink></MenubarItem
@@ -71,7 +71,7 @@ import {
                 </MenubarSubContent>
               </MenubarSub>
             </MenubarContent>
-          </MenubarMenu> -->
+          </MenubarMenu>
           <MenubarMenu>
             <MenubarTrigger>关于</MenubarTrigger>
             <MenubarContent>

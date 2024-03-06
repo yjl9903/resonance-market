@@ -75,7 +75,8 @@ export function useReportForm(init: ReportFormInit) {
           form.resetField('price', { value: tr.basePrice });
         }
       }
-    }
+    },
+    { immediate: true }
   );
 
   watch(
