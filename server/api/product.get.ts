@@ -56,7 +56,7 @@ export default defineCachedEventHandler(
     };
   },
   {
-    maxAge: 10,
+    maxAge: 1,
     shouldInvalidateCache() {
       // Cache is invalid
       if (cacheProducts.dirty) {
