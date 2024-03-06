@@ -1,3 +1,5 @@
-export const cacheProducts = {
-  dirty: false
-};
+import { queryValuableLogs } from '../api/product.get';
+
+export function invalidateValuableLogsCache() {
+  queryValuableLogs.clear();
+}

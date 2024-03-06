@@ -1,14 +1,12 @@
-import { sql, eq, and, max } from 'drizzle-orm';
+import { eq, and, max } from 'drizzle-orm';
+import { memoAsync } from 'memofunc';
 
 import { products, logs, type Log } from '~/drizzle/schema';
 
-import { cacheProducts } from '../utils/cache';
 import { connectDatabase } from '../utils/database';
 
-export default defineCachedEventHandler(
-  async (event) => {
-    const db = await connectDatabase(event as any);
-
+export const queryValuableLogs = memoAsync(
+  async (db: Awaited<ReturnType<typeof connectDatabase>>) => {
     const latestLogSubQuery = db
       .select({
         name: logs.name,
@@ -48,22 +46,25 @@ export default defineCachedEventHandler(
         )
       );
 
-    // Mark cache refreshed
-    cacheProducts.dirty = false;
-
-    return {
-      latest: query as Log[]
-    };
+    return query as Log[];
   },
   {
-    maxAge: 1,
-    shouldInvalidateCache() {
-      // Cache is invalid
-      if (cacheProducts.dirty) {
-        return true;
-      } else {
-        return false;
-      }
+    serialize() {
+      return [];
     }
   }
 );
+
+setInterval(() => {
+  queryValuableLogs.clear();
+}, 10 * 1000);
+
+export default defineEventHandler(async (event) => {
+  const db = await connectDatabase(event as any);
+
+  const query = await queryValuableLogs(db);
+
+  return {
+    latest: query
+  };
+});

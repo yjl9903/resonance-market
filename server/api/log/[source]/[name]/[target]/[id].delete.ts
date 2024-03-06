@@ -3,6 +3,7 @@ import { sql, eq, and, desc } from 'drizzle-orm';
 import { products, logs, type Log } from '~/drizzle/schema';
 
 import { connectDatabase } from '@/server/utils/database';
+import { invalidateValuableLogsCache } from '@/server/utils/cache';
 
 export default defineEventHandler(async (event) => {
   const sourceCityName = getRouterParam(event, 'source');
@@ -27,6 +28,11 @@ export default defineEventHandler(async (event) => {
       )
     )
     .returning({ id: logs.id });
+
+  if (resp.length > 0) {
+    // Mark cache invalidated
+    invalidateValuableLogsCache();
+  }
 
   return {
     count: resp.length
