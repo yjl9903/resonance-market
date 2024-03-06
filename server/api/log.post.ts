@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
 
     return { count: resp.length };
   } else {
-    setResponseStatus(event, 405);
+    setResponseStatus(event, 400);
     return { count: 0, error: 'Body is invalid' };
   }
 });

@@ -157,6 +157,13 @@ const shortTime = computed(() => {
                 format(log.uploadedAt, { date: 'long', time: 'medium' })
               }}</span>
             </p>
+            <p>
+              <NuxtLink
+                :to="`/transaction/${log.sourceCity}/${log.name}/${log.targetCity}`"
+                class="text-link font-bold"
+                >查看历史记录</NuxtLink
+              >
+            </p>
           </div>
         </TooltipContent>
       </Tooltip>
