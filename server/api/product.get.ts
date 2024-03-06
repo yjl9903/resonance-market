@@ -48,6 +48,7 @@ export default defineCachedEventHandler(
         )
       );
 
+    // Mark cache refreshed
     cacheProducts.dirty = false;
 
     return {
@@ -57,6 +58,7 @@ export default defineCachedEventHandler(
   {
     maxAge: 10,
     shouldInvalidateCache() {
+      // Cache is invalid
       if (cacheProducts.dirty) {
         return true;
       } else {

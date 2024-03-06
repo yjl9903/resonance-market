@@ -32,6 +32,7 @@ export default defineEventHandler(async (event) => {
       .returning({ id: logs.id });
 
     if (resp.length > 0) {
+      // Mark cache invalidated
       cacheProducts.dirty = true;
     }
 
