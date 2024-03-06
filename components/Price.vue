@@ -172,6 +172,10 @@ const shortTime = computed(() => {
               <span class="font-bold mr-2">基础货量</span>
               <span>{{ product.baseVolume }}</span>
             </p>
+            <p v-if="log.type === 'buy' && product.basePrice">
+              <span class="font-bold mr-2">基准价格</span>
+              <span>{{ product.basePrice }}</span>
+            </p>
             <p>
               <span class="font-bold mr-2">最近更新于</span>
               <span :class="{ 'op-50': isOutdated }">{{
