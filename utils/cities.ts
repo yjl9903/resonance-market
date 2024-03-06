@@ -16,3 +16,10 @@ export const cities: CityInfo[] = [...citiesMap].map((i) => ({
 export function getProductInfo(city: string, name: string) {
   return citiesMap.get(city)?.find((p) => p.name === name);
 }
+
+export function getTransactionInfo(source: string, name: string, target: string) {
+  return citiesMap
+    .get(source)
+    ?.find((p) => p.name === name)
+    ?.transactions.find((t) => t.targetCity === target);
+}

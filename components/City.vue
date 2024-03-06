@@ -60,7 +60,8 @@ const store = useLatestLogs();
               ><Price
                 :timestamp="timestamp"
                 :product="getProductInfo(city.name, product.name)!"
-                :log="store.getLatestLog(city.name, product.name, currentCity.name)"
+                :transaction="undefined"
+                :log="store.getLatestLog(city.name, product.name, city.name)"
               ></Price
             ></TableCell>
             <TableCell
@@ -69,6 +70,7 @@ const store = useLatestLogs();
               ><Price
                 :timestamp="timestamp"
                 :product="getProductInfo(city.name, product.name)!"
+                :transaction="getTransactionInfo(city.name, product.name, target.name)"
                 :log="store.getLatestLog(city.name, product.name, target.name)"
               ></Price
             ></TableCell>
