@@ -1,5 +1,20 @@
 <script setup lang="ts">
+import { toast } from 'vue-sonner';
+import { format } from '@formkit/tempo';
+import { Trash } from 'lucide-vue-next';
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from '@/components/ui/table';
+
 const route = useRoute();
+
 const sourceCityName = route.params.source;
 const productName = route.params.name;
 const targetCityName = route.params.target;
@@ -7,6 +22,27 @@ const targetCityName = route.params.target;
 useHead({
   title: `贸易 ${sourceCityName} 一 ${productName} → ${targetCityName} | 雷索纳斯市场`
 });
+
+const { data, refresh } = await useFetch(
+  `/api/log/${sourceCityName}/${productName}/${targetCityName}/`
+);
+
+useIntervalFn(async () => {
+  await refresh();
+}, 10 * 1000);
+
+const onDeleteLog = async (id: number) => {
+  try {
+    await $fetch(`/api/log/${sourceCityName}/${productName}/${targetCityName}/${id}`, {
+      method: 'DELETE'
+    });
+    toast.success('删除成功');
+    await refresh();
+  } catch (error) {
+    console.error(error);
+    toast.error('删除失败');
+  }
+};
 </script>
 
 <template>
@@ -18,7 +54,62 @@ useHead({
       >
       → {{ targetCityName }}
     </h1>
-    <div>施工中...</div>
+    <div v-if="data">
+      <Table>
+        <TableCaption>展示最新 {{ data.latest.length }} 条上报日志</TableCaption>
+        <TableHeader>
+          <TableRow class="boder-t">
+            <!-- <TableHead class="">#</TableHead> -->
+            <TableHead class="">上报时间</TableHead>
+            <TableHead class="">价格</TableHead>
+            <TableHead class="">价位</TableHead>
+            <TableHead class="">趋势</TableHead>
+            <TableHead class="w-[100px]">操作</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow v-for="log in data.latest" :key="log.id">
+            <!-- <TableCell>{{ log.id }}</TableCell> -->
+            <TableCell>{{ format(log.uploadedAt, { date: 'long', time: 'medium' }) }}</TableCell>
+            <TableCell
+              :class="[
+                {
+                  'text-red': log.percent < 100,
+                  'text-green': log.percent > 100
+                },
+                'font-bold'
+              ]"
+              >{{ log.price }}</TableCell
+            >
+            <TableCell
+              :class="[
+                {
+                  'text-red': log.percent < 100,
+                  'text-green': log.percent > 100
+                },
+                'font-bold'
+              ]"
+              >{{ log.percent }}%</TableCell
+            >
+            <TableCell
+              ><span
+                v-if="log.trend === 'up'"
+                class="i-material-symbols-trending-up text-green text-xl"
+              ></span>
+              <span
+                v-else-if="log.trend === 'down'"
+                class="i-material-symbols-trending-down text-red text-xl"
+              ></span>
+              <span v-else class="i-material-symbols-trending-flat text-xl"></span
+            ></TableCell>
+            <TableCell
+              ><Button variant="destructive" size="icon" @click="onDeleteLog(log.id)"
+                ><Trash class="w-4 h-4"></Trash></Button
+            ></TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </div>
     <!-- <ClientOnly>
       <div class="pt-8">
         <Giscus

@@ -144,7 +144,8 @@ const onSubmit = form.handleSubmit(async (values) => {
     toast.success(`上报成功`);
     open.value = false;
     store.fetch();
-  } catch {
+  } catch (error) {
+    console.error(error);
     toast.error(`上报失败`);
   }
 });
