@@ -34,7 +34,7 @@
         "sourceCity": "修格里城",
         "targetCity": "阿妮塔战备工厂",
         "mileage": 192,
-        "basePrice": 0
+        "basePrice": 3589
       },
       {
         "name": "发动机",
@@ -676,7 +676,7 @@
         "sourceCity": "铁盟哨站",
         "targetCity": "修格里城",
         "mileage": 65,
-        "basePrice": 0
+        "basePrice": 2933
       },
       {
         "name": "防弹背心",
@@ -870,14 +870,14 @@
         "sourceCity": "铁盟哨站",
         "targetCity": "修格里城",
         "mileage": 65,
-        "basePrice": 0
+        "basePrice": 1796
       },
       {
         "name": "炮弹",
         "sourceCity": "铁盟哨站",
         "targetCity": "7号自由港",
         "mileage": 324,
-        "basePrice": 0
+        "basePrice": 1914
       },
       {
         "name": "炮弹",
@@ -1279,14 +1279,14 @@
         "sourceCity": "7号自由港",
         "targetCity": "铁盟哨站",
         "mileage": 324,
-        "basePrice": 0
+        "basePrice": 2964
       },
       {
         "name": "石墨烯",
         "sourceCity": "7号自由港",
         "targetCity": "澄明数据中心",
         "mileage": 202,
-        "basePrice": 0
+        "basePrice": 2627
       },
       {
         "name": "石墨烯",
@@ -1903,7 +1903,7 @@
         "sourceCity": "澄明数据中心",
         "targetCity": "阿妮塔能源研究所",
         "mileage": 290,
-        "basePrice": 0
+        "basePrice": 3775
       },
       {
         "name": "游戏机",
@@ -2439,7 +2439,7 @@
         "sourceCity": "阿妮塔战备工厂",
         "targetCity": "阿妮塔能源研究所",
         "mileage": 155,
-        "basePrice": 0
+        "basePrice": 6532
       },
       {
         "name": "火澄石",
@@ -2478,14 +2478,14 @@
         "sourceCity": "阿妮塔战备工厂",
         "targetCity": "修格里城",
         "mileage": 192,
-        "basePrice": 0
+        "basePrice": 4535
       },
       {
         "name": "负片炮弹",
         "sourceCity": "阿妮塔战备工厂",
         "targetCity": "铁盟哨站",
         "mileage": 257,
-        "basePrice": 0
+        "basePrice": 4663
       },
       {
         "name": "负片炮弹",
@@ -2499,14 +2499,14 @@
         "sourceCity": "阿妮塔战备工厂",
         "targetCity": "澄明数据中心",
         "mileage": 135,
-        "basePrice": 0
+        "basePrice": 4431
       },
       {
         "name": "负片炮弹",
         "sourceCity": "阿妮塔战备工厂",
         "targetCity": "阿妮塔能源研究所",
         "mileage": 155,
-        "basePrice": 4430
+        "basePrice": 4432
       },
       {
         "name": "负片炮弹",
@@ -3846,7 +3846,7 @@
         "sourceCity": "曼德矿场",
         "targetCity": "阿妮塔战备工厂",
         "mileage": 350,
-        "basePrice": 0
+        "basePrice": 3625
       },
       {
         "name": "图形加速卡",
@@ -3867,7 +3867,7 @@
         "sourceCity": "曼德矿场",
         "targetCity": "淘金乐园",
         "mileage": 97,
-        "basePrice": 3650
+        "basePrice": 0
       }
     ]
   },
