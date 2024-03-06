@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@formkit/tempo": "^0.0.12",
+    "@giscus/vue": "^3.0.0",
     "@libsql/client": "^0.5.2",
     "@nuxt/image": "1.2.0",
     "@pinia/nuxt": "^0.5.1",
