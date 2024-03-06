@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { toast } from 'vue-sonner';
 import { format } from '@formkit/tempo';
+import { Trash } from 'lucide-vue-next';
 
 import {
   Table,
@@ -101,7 +102,10 @@ const onDeleteLog = async (id: number) => {
               ></span>
               <span v-else class="i-material-symbols-trending-flat text-xl"></span
             ></TableCell>
-            <TableCell><Button @click="onDeleteLog(log.id)">删除</Button></TableCell>
+            <TableCell
+              ><Button variant="destructive" size="icon" @click="onDeleteLog(log.id)"
+                ><Trash class="w-4 h-4"></Trash></Button
+            ></TableCell>
           </TableRow>
         </TableBody>
       </Table>
