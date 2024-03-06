@@ -4,6 +4,11 @@ import Giscus from '@giscus/vue';
 const store = useLatestLogs();
 await store.fetch();
 
+// HACK: fetch data after rendering on client
+onMounted(async () => {
+  await store.fetch();
+});
+
 useIntervalFn(() => {
   store.fetch();
 }, 10 * 1000);
