@@ -60,6 +60,10 @@ const profitColor = computed(() => {
     }
   }
 });
+
+const shortTime = computed(() => {
+  return format(props.log.uploadedAt, 'HH:mm');
+});
 </script>
 
 <template>
@@ -67,7 +71,7 @@ const profitColor = computed(() => {
     <TooltipProvider v-if="log" :delayDuration="300" :skipDelayDuration="100">
       <Tooltip>
         <TooltipTrigger as-child>
-          <div :class="{ 'line-through': isOutdated, 'op-50': isOutdated }">
+          <div :class="[{ 'line-through': isOutdated, 'op-50': isOutdated }, 'space-y-1']">
             <div v-if="log.type === 'sell'" class="h-6 flex gap-1 items-center">
               <span class="i-icon-park-income-one text-sm"></span
               ><span :class="[profitColor]">{{ profit }}</span>
@@ -91,6 +95,10 @@ const profitColor = computed(() => {
                 ></span>
                 <span v-else class="i-material-symbols-trending-flat"></span
               ></span>
+            </div>
+            <div class="flex gap-1 items-center h-6">
+              <span class="i-icon-park-outline-calendar text-sm"></span>
+              <span>{{ shortTime }}</span>
             </div>
           </div>
         </TooltipTrigger>

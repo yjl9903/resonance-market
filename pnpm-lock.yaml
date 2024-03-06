@@ -84,6 +84,9 @@ importers:
       '@iconify-json/icon-park':
         specifier: ^1.1.13
         version: 1.1.13
+      '@iconify-json/icon-park-outline':
+        specifier: ^1.1.15
+        version: 1.1.15
       '@iconify-json/logos':
         specifier: ^1.1.42
         version: 1.1.42
@@ -1470,6 +1473,12 @@ packages:
 
   /@iconify-json/carbon@1.1.31:
     resolution: {integrity: sha512-CAvECFfiwGyZmlcuM2JLMRDEN3VsIEZv6lml7Xf+3giQ5oXloADm0b5wiVPFZmONKM5jXERmx+E7YSvAtFJIbw==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/icon-park-outline@1.1.15:
+    resolution: {integrity: sha512-jQbk/ETARyYPjX6HolkdjSLJHsNCfSBfYUqcUQLXYK/1tfuVnQsUdWG2IM2a7VBpxJtrK7r4n1iwPOFaZ5T46g==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true

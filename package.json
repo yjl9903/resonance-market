@@ -51,6 +51,7 @@
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.31",
     "@iconify-json/icon-park": "^1.1.13",
+    "@iconify-json/icon-park-outline": "^1.1.15",
     "@iconify-json/logos": "^1.1.42",
     "@iconify-json/material-symbols": "^1.1.74",
     "@nuxtjs/color-mode": "^3.3.2",
