@@ -121,7 +121,7 @@ const shortTime = computed(() => {
         <TooltipContent>
           <div v-if="log" class="py-1 space-y-1">
             <p class="flex items-center">
-              <span class="font-bold mr-2">价格</span>
+              <span class="font-bold mr-2">实时价格</span>
               <span
                 :class="[
                   {
