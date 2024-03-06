@@ -82,15 +82,18 @@ const shortTime = computed(() => {
     <TooltipProvider v-if="log && shortTime" :delayDuration="300" :skipDelayDuration="100">
       <Tooltip>
         <TooltipTrigger as-child>
-          <div :class="[{ 'line-through': isOutdated, 'op-50': isOutdated }, 'space-y-1']">
-            <div v-if="log.type === 'sell'" class="h-6 flex gap-1 items-center">
+          <div :class="[{ 'op-50': isOutdated }, 'space-y-1']">
+            <div
+              v-if="log.type === 'sell'"
+              :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]"
+            >
               <span class="i-icon-park-income-one text-sm"></span
               ><span :class="[profitColor]">{{ profit }}</span>
             </div>
             <!-- <div v-else="log.type === 'buy'" class="h-6">
               <span></span><span>{{ log.price }}</span>
             </div> -->
-            <div class="flex gap-1 items-center h-6">
+            <div :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]">
               <span class="i-icon-park:dollar text-sm"></span>
               <span :class="{ 'text-red': log.percent < 100, 'text-green': log.percent > 100 }"
                 >{{ log.percent }}%</span
@@ -107,7 +110,7 @@ const shortTime = computed(() => {
                 <span v-else class="i-material-symbols-trending-flat"></span
               ></span>
             </div>
-            <div class="flex gap-1 items-center h-6 text-base-500">
+            <div :class="['flex gap-1 items-center h-6 text-base-600 no-underline']">
               <span class="i-icon-park-outline-time text-sm"></span>
               <span>{{ shortTime }}</span>
             </div>
