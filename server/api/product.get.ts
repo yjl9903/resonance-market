@@ -51,5 +51,5 @@ export default defineCachedEventHandler(
       latest: query as Log[]
     };
   },
-  { maxAge: 10 }
+  { maxAge: 1 }
 );
