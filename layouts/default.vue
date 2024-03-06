@@ -47,7 +47,7 @@ import {
               </MenubarSub>
             </MenubarContent>
           </MenubarMenu>
-          <MenubarMenu>
+          <!-- <MenubarMenu>
             <MenubarTrigger>上报</MenubarTrigger>
             <MenubarContent>
               <MenubarSub>
@@ -71,7 +71,7 @@ import {
                 </MenubarSubContent>
               </MenubarSub>
             </MenubarContent>
-          </MenubarMenu>
+          </MenubarMenu> -->
           <MenubarMenu>
             <MenubarTrigger>关于</MenubarTrigger>
             <MenubarContent>
