@@ -18,11 +18,11 @@ const store = useLatestLogs();
 const profit = computed(() => {
   if (!props.log || props.log?.type === 'buy') return undefined;
 
-  const productLog = store.getLatestLog(props.log.name, props.log.sourceCity, props.log.sourceCity);
-  if (isLogValid(productLog)) {
+  const productLog = store.getLatestLog(props.log.sourceCity, props.log.name, props.log.sourceCity);
+  if (productLog) {
     return (1.04 * props.log.price - 0.92 * productLog.price).toFixed(0);
   } else {
-    return (1.04 * props.log.price - 0.92 * props.product.basePrice).toFixed(0);
+    return undefined;
   }
 });
 
