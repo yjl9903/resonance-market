@@ -5,7 +5,7 @@ import { sha } from '~build/git';
 <template>
   <div>
     <nav class="main">
-      <div class="mt-12 pb-4 mb-4 text-2xl font-bold border-b">
+      <div class="mt-12 pb-4 mb-4 text-2xl font-bold border-b hover:text-base-600 select-none">
         <NuxtLink to="/">雷索纳斯市场</NuxtLink>
       </div>
     </nav>
