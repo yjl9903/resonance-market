@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   debug: false,
   devtools: { enabled: false },
   modules: [
+    // 'nitro-cloudflare-dev',
     '@vueuse/nuxt',
     '@unocss/nuxt',
     '@nuxt/image',
@@ -71,6 +72,9 @@ export default defineNuxtConfig({
     umami: {
       src: `umami.onekuma.cn`,
       id: `6d532af3-e9bc-43a1-998b-8d3cae5fcbb6`
+    },
+    clarity: {
+      id: 'lbvx2f1py2'
     }
   }
 });

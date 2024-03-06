@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "444952ed-6ff9-46f5-ae3c-ea5d564417f3",
+  "id": "acdd6647-fbff-4d58-99af-5c6a68a824f5",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "logs": {
@@ -21,8 +21,15 @@
           "notNull": true,
           "autoincrement": false
         },
-        "city": {
-          "name": "city",
+        "source_city": {
+          "name": "source_city",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "target_city": {
+          "name": "target_city",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
@@ -35,8 +42,8 @@
           "notNull": true,
           "autoincrement": false
         },
-        "target_city": {
-          "name": "target_city",
+        "trend": {
+          "name": "trend",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
@@ -71,7 +78,18 @@
           "autoincrement": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "logs_name_source_city_target_city_uploaded_at_unique": {
+          "name": "logs_name_source_city_target_city_uploaded_at_unique",
+          "columns": [
+            "name",
+            "source_city",
+            "target_city",
+            "uploaded_at"
+          ],
+          "isUnique": true
+        }
+      },
       "foreignKeys": {
         "logs_uploader_id_users_id_fk": {
           "name": "logs_uploader_id_users_id_fk",
@@ -91,7 +109,7 @@
           "tableFrom": "logs",
           "tableTo": "products",
           "columnsFrom": [
-            "city",
+            "source_city",
             "name"
           ],
           "columnsTo": [
@@ -121,6 +139,41 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "valuable": {
+          "name": "valuable",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "base_volume": {
+          "name": "base_volume",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "base_price": {
+          "name": "base_price",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "cost": {
+          "name": "cost",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
         }
       },
       "indexes": {},
@@ -134,6 +187,83 @@
           "name": "products_city_name_pk"
         }
       },
+      "uniqueConstraints": {}
+    },
+    "transactions": {
+      "name": "transactions",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "source_city": {
+          "name": "source_city",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "target_city": {
+          "name": "target_city",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "mileage": {
+          "name": "mileage",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "base_price": {
+          "name": "base_price",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "transactions_name_source_city_target_city_unique": {
+          "name": "transactions_name_source_city_target_city_unique",
+          "columns": [
+            "name",
+            "source_city",
+            "target_city"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "transaction_source_fk": {
+          "name": "transaction_source_fk",
+          "tableFrom": "transactions",
+          "tableTo": "products",
+          "columnsFrom": [
+            "source_city",
+            "name"
+          ],
+          "columnsTo": [
+            "city",
+            "name"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
     "users": {

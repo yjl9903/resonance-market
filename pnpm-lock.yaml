@@ -11,6 +11,9 @@ importers:
       '@formkit/tempo':
         specifier: ^0.0.12
         version: 0.0.12
+      '@giscus/vue':
+        specifier: ^3.0.0
+        version: 3.0.0(vue@3.4.20)
       '@libsql/client':
         specifier: ^0.5.2
         version: 0.5.2
@@ -44,6 +47,9 @@ importers:
       clsx:
         specifier: ^2.1.0
         version: 2.1.0
+      csv-parse:
+        specifier: ^5.5.5
+        version: 5.5.5
       drizzle-orm:
         specifier: ^0.29.4
         version: 0.29.4(@libsql/client@0.5.2)(@types/better-sqlite3@7.6.9)(better-sqlite3@9.4.3)
@@ -78,9 +84,18 @@ importers:
       '@iconify-json/carbon':
         specifier: ^1.1.31
         version: 1.1.31
+      '@iconify-json/icon-park':
+        specifier: ^1.1.13
+        version: 1.1.13
+      '@iconify-json/icon-park-outline':
+        specifier: ^1.1.15
+        version: 1.1.15
       '@iconify-json/logos':
         specifier: ^1.1.42
         version: 1.1.42
+      '@iconify-json/material-symbols':
+        specifier: ^1.1.74
+        version: 1.1.74
       '@nuxtjs/color-mode':
         specifier: ^3.3.2
         version: 3.3.2(rollup@3.29.4)
@@ -117,6 +132,9 @@ importers:
       lucide-vue-next:
         specifier: ^0.340.0
         version: 0.340.0(vue@3.4.20)
+      nitro-cloudflare-dev:
+        specifier: ^0.0.7
+        version: 0.0.7
       nuxt:
         specifier: ^3.10.3
         version: 3.10.3(@types/node@20.11.20)(rollup@3.29.4)(typescript@5.3.3)(vite@5.1.4)
@@ -1456,14 +1474,41 @@ packages:
     resolution: {integrity: sha512-16fs+6KTCaKMUadn6rQ4NwXssyTZd4Ps5K3Yrw1UqT+30kV6Euw6ndR02rxT0TJnpqzlDfvJJx0Dgh0dI29ZEA==}
     dev: false
 
+  /@giscus/vue@3.0.0(vue@3.4.20):
+    resolution: {integrity: sha512-ZoSUmlc3ee2a+kdumCaXFDZaB4h9b1BYWzsmmRP7zoGEQKYopdAnzGvJK7RdvrYGAzNqZtGUxI0NnBl8/UA6bQ==}
+    peerDependencies:
+      vue: '>=3.2.0'
+    dependencies:
+      giscus: 1.5.0
+      vue: 3.4.20(typescript@5.3.3)
+    dev: false
+
   /@iconify-json/carbon@1.1.31:
     resolution: {integrity: sha512-CAvECFfiwGyZmlcuM2JLMRDEN3VsIEZv6lml7Xf+3giQ5oXloADm0b5wiVPFZmONKM5jXERmx+E7YSvAtFJIbw==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
 
+  /@iconify-json/icon-park-outline@1.1.15:
+    resolution: {integrity: sha512-jQbk/ETARyYPjX6HolkdjSLJHsNCfSBfYUqcUQLXYK/1tfuVnQsUdWG2IM2a7VBpxJtrK7r4n1iwPOFaZ5T46g==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/icon-park@1.1.13:
+    resolution: {integrity: sha512-7AoB802JUeMwaJBRz1a+3PGfifxDiMiE+mVgbDPZLHgLaLq7WXslQCV0aDs8kQHF0SGIBUp7f8kKTHGUktuFtw==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
   /@iconify-json/logos@1.1.42:
     resolution: {integrity: sha512-/f+frtPm3m3Z30oy8Pk+QqRDkbmAiIaWGPl5CmsCXm15MVfvw9a/V/gD7WzdyuSGAZcFuQaqbHXj92y/n+2ifg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/material-symbols@1.1.74:
+    resolution: {integrity: sha512-cuQKvpGWrMNJq0i3ynO+V6yus0Smiupw92GW8Gq/4MHfYfbl1MrbVmafKQAd8RJVqiEXq4/F084OEcigf77UqQ==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
@@ -1684,6 +1729,16 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@lit-labs/ssr-dom-shim@1.2.0:
+    resolution: {integrity: sha512-yWJKmpGE6lUURKAaIltoPIE/wrbY3TEkqQt+X0m+7fQNnAv0keydnYvbiJFP1PnMhizmIWRWOG5KLhYyc/xl+g==}
+    dev: false
+
+  /@lit/reactive-element@2.0.4:
+    resolution: {integrity: sha512-GFn91inaUa2oHLak8awSIigYz0cU0Payr1rcFsrkf5OJ5eSPxElyZfKh0f2p9FsTiZWXQdWGJeXZICEfXXYSXQ==}
+    dependencies:
+      '@lit-labs/ssr-dom-shim': 1.2.0
+    dev: false
 
   /@mapbox/node-pre-gyp@1.0.11:
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
@@ -2853,6 +2908,10 @@ packages:
   /@types/tough-cookie@4.0.5:
     resolution: {integrity: sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==}
     dev: true
+
+  /@types/trusted-types@2.0.7:
+    resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
+    dev: false
 
   /@types/web-bluetooth@0.0.20:
     resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
@@ -4668,6 +4727,10 @@ packages:
   /csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
+  /csv-parse@5.5.5:
+    resolution: {integrity: sha512-erCk7tyU3yLWAhk6wvKxnyPtftuy/6Ak622gOO7BCJ05+TYffnPCJF905wmOQm+BpkX54OdAl8pveJwUdpnCXQ==}
+    dev: false
+
   /d@1.0.2:
     resolution: {integrity: sha512-MOqHvMWF9/9MX6nza0KgvFH4HpMU0EF5uUDXqX/BtxtU8NfB0QzRtJ8Oe/6SuS4kbhyzVJwjd97EA4PKrzJ8bw==}
     engines: {node: '>=0.12'}
@@ -5637,6 +5700,12 @@ packages:
       pathe: 1.1.2
       tar: 6.2.0
 
+  /giscus@1.5.0:
+    resolution: {integrity: sha512-t3LL0qbSO3JXq3uyQeKpF5CegstGfKX/0gI6eDe1cmnI7D56R7j52yLdzw4pdKrg3VnufwCgCM3FDz7G1Qr6lg==}
+    dependencies:
+      lit: 3.1.2
+    dev: false
+
   /git-config-path@2.0.0:
     resolution: {integrity: sha512-qc8h1KIQbJpp+241id3GuAtkdyJ+IK+LIVtkiFTRKRrmddDzs3SI9CvP1QYmWBFvm1I/PWRwj//of8bgAc0ltA==}
     engines: {node: '>=4'}
@@ -6547,6 +6616,28 @@ packages:
       untun: 0.1.3
       uqr: 0.1.2
 
+  /lit-element@4.0.4:
+    resolution: {integrity: sha512-98CvgulX6eCPs6TyAIQoJZBCQPo80rgXR+dVBs61cstJXqtI+USQZAbA4gFHh6L/mxBx9MrgPLHLsUgDUHAcCQ==}
+    dependencies:
+      '@lit-labs/ssr-dom-shim': 1.2.0
+      '@lit/reactive-element': 2.0.4
+      lit-html: 3.1.2
+    dev: false
+
+  /lit-html@3.1.2:
+    resolution: {integrity: sha512-3OBZSUrPnAHoKJ9AMjRL/m01YJxQMf+TMHanNtTHG68ubjnZxK0RFl102DPzsw4mWnHibfZIBJm3LWCZ/LmMvg==}
+    dependencies:
+      '@types/trusted-types': 2.0.7
+    dev: false
+
+  /lit@3.1.2:
+    resolution: {integrity: sha512-VZx5iAyMtX7CV4K8iTLdCkMaYZ7ipjJZ0JcSdJ0zIdGxxyurjIn7yuuSxNBD7QmjvcNJwr0JS4cAdAtsy7gZ6w==}
+    dependencies:
+      '@lit/reactive-element': 2.0.4
+      lit-element: 4.0.4
+      lit-html: 3.1.2
+    dev: false
+
   /loader-runner@4.3.0:
     resolution: {integrity: sha512-3R/1M+yS3j5ou80Me59j7F9IMs4PXs3VqRrm0TU3AbKPxlmpoY1TNscJV/oGJXo8qCatFGTfDbY6W6ipGOYXfg==}
     engines: {node: '>=6.11.5'}
@@ -7011,6 +7102,13 @@ packages:
 
   /next-tick@1.1.0:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
+    dev: true
+
+  /nitro-cloudflare-dev@0.0.7:
+    resolution: {integrity: sha512-zZAXuVvMUEHZ75abrZoBDfwl8PnuJyofWRczfXJO72VYmbC/vgTDPUTlbefTPjOVh+LX4dTGPwg7EADNMwDfNA==}
+    dependencies:
+      consola: 3.2.3
+      pkg-types: 1.0.3
     dev: true
 
   /nitropack@2.8.1:

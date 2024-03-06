@@ -10,26 +10,28 @@ export default defineEventHandler(async (event) => {
   const latestLogSubQuery = db
     .select({
       name: logs.name,
-      city: logs.city,
+      city: logs.sourceCity,
       target_city: logs.targetCity,
       max_uploaded_at: max(logs.uploadedAt).as('max_uploaded_at')
     })
     .from(logs)
-    .groupBy(logs.name, logs.city, logs.targetCity)
+    .groupBy(logs.name, logs.sourceCity, logs.targetCity)
     .as('latest_log');
 
   const query = await db
     .select({
       id: logs.id,
       name: products.name,
-      city: products.city,
-      type: logs.type,
+      sourceCity: products.city,
       targetCity: logs.targetCity,
+      type: logs.type,
+      trend: logs.trend,
       price: logs.price,
       percent: logs.percent,
       uploadedAt: logs.uploadedAt
     })
     .from(products)
+    .where(eq(products.valuable, true))
     .innerJoin(
       latestLogSubQuery,
       and(eq(products.name, latestLogSubQuery.name), eq(products.city, latestLogSubQuery.city))
@@ -38,7 +40,7 @@ export default defineEventHandler(async (event) => {
       logs,
       and(
         eq(logs.name, products.name),
-        eq(logs.city, products.city),
+        eq(logs.sourceCity, products.city),
         eq(logs.targetCity, latestLogSubQuery.target_city),
         eq(logs.uploadedAt, latestLogSubQuery.max_uploaded_at)
       )

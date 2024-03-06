@@ -9,7 +9,7 @@ export const useLatestLogs = defineStore('latest_logs', () => {
     logs.value = resp.latest.map((l) => ({ ...l, uploadedAt: new Date(l.uploadedAt) }));
     maps.clear();
     for (const log of logs.value) {
-      const key = `${log.city} - ${log.name}`;
+      const key = `${log.sourceCity} - ${log.name}`;
       if (!maps.has(key)) {
         maps.set(key, new Map());
       }

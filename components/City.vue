@@ -17,8 +17,6 @@ import {
   TableRow
 } from '@/components/ui/table';
 
-import { type CityInfo, cities } from '~/lib/city';
-
 import Price from './Price.vue';
 import CreateLog from './CreateLog.vue';
 
@@ -27,6 +25,8 @@ const props = defineProps<{ city: CityInfo }>();
 const currentCity = props.city;
 
 const timestamp = useTimestamp({ interval: 10 * 1000 });
+
+const mode = ref<'simple' | 'full' | 'edit'>('simple');
 
 const store = useLatestLogs();
 </script>
@@ -50,11 +50,16 @@ const store = useLatestLogs();
           >
         </TableHeader>
         <TableBody>
-          <TableRow v-for="product in city.products" :key="product.name">
-            <TableCell>{{ product.name }}</TableCell>
+          <TableRow v-for="product in city.products.filter((p) => p.valuable)" :key="product.name">
+            <TableCell
+              ><NuxtLink :to="`/product/${city.name}/${product.name}`">{{
+                product.name
+              }}</NuxtLink></TableCell
+            >
             <TableCell class="border-r"
               ><Price
                 :timestamp="timestamp"
+                :product="getProductInfo(city.name, product.name)!"
                 :log="store.getLatestLog(city.name, product.name, currentCity.name)"
               ></Price
             ></TableCell>
@@ -63,6 +68,7 @@ const store = useLatestLogs();
               :key="target.name"
               ><Price
                 :timestamp="timestamp"
+                :product="getProductInfo(city.name, product.name)!"
                 :log="store.getLatestLog(city.name, product.name, target.name)"
               ></Price
             ></TableCell>
