@@ -161,10 +161,6 @@ const shortTime = computed(() => {
                 >{{ profit }}</span
               >
             </p>
-            <p v-if="log.type === 'sell' && transaction?.basePrice">
-              <span class="font-bold mr-2">基准价格</span>
-              <span>{{ transaction.basePrice }}</span>
-            </p>
             <p v-if="log.type === 'sell' && product.baseVolume">
               <span class="font-bold mr-2">单票利润</span>
               <span
@@ -176,6 +172,10 @@ const shortTime = computed(() => {
                 }"
                 >{{ +(profit ?? 0) * product.baseVolume }}</span
               >
+            </p>
+            <p v-if="log.type === 'sell' && transaction?.basePrice">
+              <span class="font-bold mr-2">基准价格</span>
+              <span>{{ transaction.basePrice }}</span>
             </p>
             <p v-if="log.type === 'buy' && product.baseVolume">
               <span class="font-bold mr-2">基础货量</span>
