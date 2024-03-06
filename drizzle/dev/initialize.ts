@@ -1,4 +1,4 @@
-import { products as allProducts } from '../../utils/products';
+import { products as allProducts } from '../../utils/cities';
 
 import { products, transactions, users } from '../schema';
 

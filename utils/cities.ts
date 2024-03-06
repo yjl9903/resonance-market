@@ -1,7 +1,10 @@
-import type { CityInfo } from './types';
+import type { CityInfo, ProductInfo } from './types';
 
+// @ts-ignore
+import allProducts from './products';
 import { groupBy } from './map';
-import { products } from './products';
+
+export const products = allProducts as ProductInfo[];
 
 const citiesMap = groupBy(products, (p) => p.city);
 

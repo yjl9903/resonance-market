@@ -144,4 +144,4 @@ for (const row of data) {
   products.push(product);
 }
 
-await fs.writeFile(`./data.json`, JSON.stringify(products, null, 2), 'utf-8');
+await fs.writeFile(`./utils/products.json`, JSON.stringify(products, null, 2), 'utf-8');
