@@ -1,36 +1,203 @@
-<template>
-  <div class="price-cell flex-shrink-0 pl-2 pr-2">
-    <div class="city-name">{{ data.cityName }}</div>
-    <div class="price-percent" :class="priceColor">
-      <span class="percent">{{ data.pricePercent }}%</span>
-      <span class="trend-icon">
-        <span v-if="data.trend === 'up'">↑</span>
-        <span v-else-if="data.trend === 'down'">↓</span>
-      </span>
-    </div>
-    <div class="price">{{ data.price }}</div>
-  </div>
-</template>
-  
-<script setup lang='ts'>
-import { computed } from 'vue'
-const { data } = defineProps<{
-  data: CityPrice
+<script setup lang="ts">
+import { format } from '@formkit/tempo'
+
+import type { Log } from '~/drizzle/schema'
+
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+
+const props = defineProps<{
+  city: string
+  timestamp: number
+  product: ProductInfo
+  log: Log | undefined
 }>()
 
-const priceColor = computed(() => {
-  if (data.trend === 'up') {
-    return 'text-green-500'
-  } else if (data.trend === 'down') {
-    return 'text-red-500'
+const openTooltip = ref(false)
+
+const isOutdated = computed(() => {
+  if (!props.log) return true
+  props.timestamp
+  return isLogValid(props.log)
+})
+
+const store = useLatestLogs()
+
+const profit = computed(() => {
+  if (!props.log || props.log?.type === 'buy') return "无数据"
+
+  const productLog = store.getLatestLog(props.log.sourceCity, props.log.name, props.log.sourceCity)
+  if (productLog) {
+    return (1.04 * props.log.price - 0.92 * productLog.price).toFixed(0)
   } else {
-    return 'text-gray-500'
+    return undefined
   }
+})
+
+const profitColor = computed(() => {
+  if (profit.value === undefined || isOutdated.value) return undefined
+  const value = +profit.value
+  if (value < 0) {
+    const table = [
+      { value: -100, color: 'text-red-200 op-80' },
+      { value: -200, color: 'text-red-200' },
+      { value: -300, color: 'text-red-300' },
+      { value: -400, color: 'text-red-400' },
+      { value: -500, color: 'text-red-500' },
+      { value: -600, color: 'text-red-600' },
+      { value: -700, color: 'text-red-700' },
+      { value: -800, color: 'text-red-800' },
+      { value: Number.MIN_SAFE_INTEGER, color: 'text-red-800' }
+    ]
+    for (const cond of table) {
+      if (value > cond.value) return cond.color
+    }
+  } else if (value > 0) {
+    const table = [
+      { value: 0, color: 'text-green-400 op-60' },
+      { value: 100, color: 'text-green-400 op-70' },
+      { value: 200, color: 'text-green-400 op-80' },
+      { value: 300, color: 'text-green-400' },
+      { value: 400, color: 'text-green-500' },
+      { value: 600, color: 'text-green-600' },
+      { value: 800, color: 'text-green-700' },
+      { value: 1000, color: 'text-green-700 font-bold' }
+    ]
+    for (const cond of table.reverse()) {
+      if (value > cond.value) return cond.color
+    }
+  }
+})
+
+const shortTime = computed(() => {
+  if (!props.log) return "无数据"
+  const now = new Date()
+  const offset = now.getTime() - props.log.uploadedAt.getTime()
+  if (offset <= 60 * 1000) {
+    return `刚刚`
+  } else if (offset <= 3600 * 1000) {
+    return `${Math.floor(offset / (60 * 1000))} 分前`
+  } else if (offset <= 24 * 3600 * 1000) {
+    return `${Math.floor(offset / (3600 * 1000))} 小时前`
+  }
+  return undefined
 })
 </script>
 
-<style lang="scss" scoped>
-.price-cell {
-  min-width: 130px;
-}
-</style>
+<template>
+  <TooltipProvider :delayDuration="300" :skipDelayDuration="100">
+    <Tooltip v-model:open="openTooltip">
+      <TooltipTrigger as-child>
+        <div :class="[{ 'op-50': isOutdated }, 'space-y-1']" @touchstart="() => {if(log) openTooltip = true}">
+          <!-- 所在城市 -->
+          <div class="h-6 flex gap-1 items-center w-35">
+            <span class="i-icon-park-city-one text-sm"></span>
+            <span>{{ city }}</span>
+          </div>
+          <!-- 单位利润 -->
+          <div
+            v-if="log?.type === 'sell'"
+            :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]"
+          >
+            <span class="i-icon-park-income-one text-sm"></span>
+            <span :class="[profitColor]">{{ profit }}</span>
+          </div>
+          <!-- 价格涨跌百分比 -->
+          <div :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]">
+            <span class="i-icon-park:dollar text-sm"></span>
+            <span v-if="log == undefined">无数据</span>
+            <template v-else>
+              <span :class="{ 'text-red': log.percent < 100, 'text-green': log.percent > 100 }">
+                {{ log.percent }}%
+              </span>
+              <span class="text-xl mt-1">
+                <span
+                  v-if="log.trend === 'up'"
+                  class="i-material-symbols-trending-up text-green"
+                ></span>
+                <span
+                  v-else-if="log.trend === 'down'"
+                  class="i-material-symbols-trending-down text-red"
+                ></span>
+                <span v-else class="i-material-symbols-trending-flat"></span>
+              </span>
+            </template>
+          </div>
+          <!-- 上次更新时间 -->
+          <div :class="['flex gap-1 items-center h-6 text-base-600 no-underline']">
+            <span class="i-icon-park-outline-time text-sm"></span>
+            <span>{{ shortTime }}</span>
+          </div>
+        </div>
+      </TooltipTrigger>
+      <TooltipContent>
+        <div v-if="log" class="py-1 space-y-1">
+          <p class="flex items-center">
+            <span class="font-bold mr-2">价格</span>
+            <span
+              :class="[
+                {
+                  'text-red': log.percent < 100,
+                  'text-green': log.percent > 100,
+                  'line-through': isOutdated,
+                  'op-50': isOutdated
+                },
+                'mr-2'
+              ]"
+              >{{ log.price }} ({{ log.percent }}%)</span
+            >
+            <span
+              v-if="log.trend === 'up'"
+              class="i-material-symbols-trending-up text-green text-xl"
+            ></span>
+            <span
+              v-else-if="log.trend === 'down'"
+              class="i-material-symbols-trending-down text-red text-xl"
+            ></span>
+            <span v-else class="i-material-symbols-trending-flat text-xl"></span>
+          </p>
+          <p v-if="log.type === 'sell'">
+            <span class="font-bold mr-2">单位利润</span>
+            <span
+              :class="{
+                'text-red': log.percent < 100,
+                'text-green': log.percent > 100,
+                'line-through': isOutdated,
+                'op-50': isOutdated
+              }"
+              >{{ profit }}</span
+            >
+          </p>
+          <p v-if="log.type === 'sell' && product.baseVolume">
+            <span class="font-bold mr-2">单票利润</span>
+            <span
+              :class="{
+                'text-red': log.percent < 100,
+                'text-green': log.percent > 100,
+                'line-through': isOutdated,
+                'op-50': isOutdated
+              }"
+              >{{ +(profit ?? 0) * product.baseVolume }}</span
+            >
+          </p>
+          <p v-if="log.type === 'buy' && product.baseVolume">
+            <span class="font-bold mr-2">基础货量</span>
+            <span>{{ product.baseVolume }}</span>
+          </p>
+          <p>
+            <span class="font-bold mr-2">最近更新于</span>
+            <span :class="{ 'op-50': isOutdated }">{{
+              format(log.uploadedAt, { date: 'long', time: 'medium' })
+            }}</span>
+          </p>
+          <p>
+            <NuxtLink
+              :to="`/transaction/${log.sourceCity}/${log.name}/${log.targetCity}`"
+              class="text-link font-bold"
+              >查看历史记录</NuxtLink
+            >
+          </p>
+        </div>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+</template>
