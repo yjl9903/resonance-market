@@ -71,11 +71,23 @@ watch(
 
     if (form.isFieldDirty('price') || form.isFieldDirty('percent')) return;
 
+    // 使用最新日志
     const latest = store.getLatestLog(props.city.name, props.product.name, target);
     if (latest) {
       form.resetField('price', { value: latest.price });
       form.resetField('percent', { value: [latest.percent] });
       form.resetField('trend', { value: latest.trend });
+      return;
+    }
+
+    // 使用基础数据
+    if (props.city.name === target) {
+      form.resetField('price', { value: props.product.basePrice });
+    } else {
+      const tr = props.product.transactions.find((tr) => tr.targetCity === target);
+      if (tr) {
+        form.resetField('price', { value: tr.basePrice });
+      }
     }
   }
 );
@@ -128,6 +140,24 @@ watch(
 
 const onSubmit = form.handleSubmit(async (values) => {
   try {
+    const basePrice =
+      props.city.name === values.targetCity
+        ? /* 买入 */ props.product.basePrice
+        : /* 卖出 */ props.product.transactions.find((tr) => tr.targetCity === values.targetCity)
+            ?.basePrice;
+    if (basePrice !== undefined) {
+      const price = values.price;
+      const percent = values.percent[0]!;
+      const eps = Math.max(5, Math.round(basePrice / 100));
+      const expetecdPrice = Math.round((basePrice * percent) / 100);
+      if (Math.abs(price - expetecdPrice) > eps) {
+        toast.error(`价格偏差过大, 请确认数据是否有误?`);
+        form.resetField('price');
+        form.resetField('percent');
+        return;
+      }
+    }
+
     await $fetch(`/api/log`, {
       method: 'POST',
       body: {
