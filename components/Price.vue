@@ -62,13 +62,24 @@ const profitColor = computed(() => {
 });
 
 const shortTime = computed(() => {
-  return format(props.log.uploadedAt, 'HH:mm');
+  if (!props.log) return undefined;
+  props.timestamp;
+  const now = new Date();
+  const offset = now.getTime() - props.log.uploadedAt.getTime();
+  if (offset <= 60 * 1000) {
+    return `刚刚`;
+  } else if (offset <= 3600 * 1000) {
+    return `${Math.floor(offset / (60 * 1000))} 分前`;
+  } else if (offset <= 24 * 3600 * 1000) {
+    return `${Math.floor(offset / (3600 * 1000))} 小时前`;
+  }
+  return undefined;
 });
 </script>
 
 <template>
   <div>
-    <TooltipProvider v-if="log" :delayDuration="300" :skipDelayDuration="100">
+    <TooltipProvider v-if="log && shortTime" :delayDuration="300" :skipDelayDuration="100">
       <Tooltip>
         <TooltipTrigger as-child>
           <div :class="[{ 'line-through': isOutdated, 'op-50': isOutdated }, 'space-y-1']">
@@ -96,8 +107,8 @@ const shortTime = computed(() => {
                 <span v-else class="i-material-symbols-trending-flat"></span
               ></span>
             </div>
-            <div class="flex gap-1 items-center h-6">
-              <span class="i-icon-park-outline-calendar text-sm"></span>
+            <div class="flex gap-1 items-center h-6 text-base-500">
+              <span class="i-icon-park-outline-time text-sm"></span>
               <span>{{ shortTime }}</span>
             </div>
           </div>
