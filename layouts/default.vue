@@ -10,7 +10,6 @@ import { sha } from '~build/git';
       </div>
     </nav>
 
-    <StickyHeader />
     <main>
       <slot></slot>
     </main>
