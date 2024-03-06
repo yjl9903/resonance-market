@@ -56,6 +56,7 @@
     "@iconify-json/icon-park-outline": "^1.1.15",
     "@iconify-json/logos": "^1.1.42",
     "@iconify-json/material-symbols": "^1.1.74",
+    "@iconify-json/simple-icons": "^1.1.94",
     "@nuxtjs/color-mode": "^3.3.2",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@total-typescript/ts-reset": "^0.5.1",

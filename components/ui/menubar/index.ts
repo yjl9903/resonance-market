@@ -11,5 +11,6 @@ export { default as MenubarSub } from './MenubarSub.vue';
 export { default as MenubarSubContent } from './MenubarSubContent.vue';
 export { default as MenubarSubTrigger } from './MenubarSubTrigger.vue';
 export { default as MenubarTrigger } from './MenubarTrigger.vue';
+export { default as MenubarButton } from './MenubarButton.vue';
 export { default as MenubarShortcut } from './MenubarShortcut.vue';
 export { default as MenubarLabel } from './MenubarLabel.vue';
