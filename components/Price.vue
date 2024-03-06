@@ -7,6 +7,8 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 
 const props = defineProps<{ timestamp: number; product: ProductInfo; log: Log | undefined }>();
 
+const openTooltip = ref(false);
+
 const isOutdated = computed(() => {
   if (!props.log) return true;
   props.timestamp;
@@ -80,9 +82,9 @@ const shortTime = computed(() => {
 <template>
   <div>
     <TooltipProvider v-if="log && shortTime" :delayDuration="300" :skipDelayDuration="100">
-      <Tooltip>
+      <Tooltip v-model:open="openTooltip">
         <TooltipTrigger as-child>
-          <div :class="[{ 'op-50': isOutdated }, 'space-y-1']">
+          <div :class="[{ 'op-50': isOutdated }, 'space-y-1']" @touchstart="openTooltip = true">
             <div
               v-if="log.type === 'sell'"
               :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]"
