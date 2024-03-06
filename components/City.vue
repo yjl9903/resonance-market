@@ -51,7 +51,11 @@ const store = useLatestLogs();
         </TableHeader>
         <TableBody>
           <TableRow v-for="product in city.products.filter((p) => p.valuable)" :key="product.name">
-            <TableCell>{{ product.name }}</TableCell>
+            <TableCell
+              ><NuxtLink :to="`/product/${city.name}/${product.name}`">{{
+                product.name
+              }}</NuxtLink></TableCell
+            >
             <TableCell class="border-r"
               ><Price
                 :timestamp="timestamp"

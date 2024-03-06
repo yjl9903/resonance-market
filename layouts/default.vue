@@ -4,6 +4,12 @@ import { sha } from '~build/git';
 
 <template>
   <div>
+    <nav class="main">
+      <div class="mt-12 pb-4 mb-4 text-2xl font-bold border-b">
+        <NuxtLink to="/">雷索纳斯市场</NuxtLink>
+      </div>
+    </nav>
+
     <main>
       <slot></slot>
     </main>
@@ -35,6 +41,14 @@ import { sha } from '~build/git';
 
 .main {
   @apply: mx-auto xl:w-7xl lg:w-4xl md:w-3xl lt-md:w-[95vw] lt-md:px-3 lt-sm:w-[100vw];
+}
+
+.text-link {
+  @apply: text-blue hover:text-blue-600;
+}
+
+.text-link-active {
+  @apply: hover:text-blue-600;
 }
 
 /* selection */
