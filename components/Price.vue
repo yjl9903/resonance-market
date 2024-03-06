@@ -154,6 +154,18 @@ const shortTime = computed(() => {
                 >{{ profit }}</span
               >
             </p>
+            <p v-if="log.type === 'sell' && product.baseVolume">
+              <span class="font-bold mr-2">单票利润</span>
+              <span
+                :class="{
+                  'text-red': log.percent < 100,
+                  'text-green': log.percent > 100,
+                  'line-through': isOutdated,
+                  'op-50': isOutdated
+                }"
+                >{{ +(profit ?? 0) * product.baseVolume }}</span
+              >
+            </p>
             <p>
               <span class="font-bold mr-2">最近更新于</span>
               <span :class="{ 'op-50': isOutdated }">{{
