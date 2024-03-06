@@ -48,7 +48,7 @@ import {
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>
-            <MenubarTrigger>上报</MenubarTrigger>
+            <MenubarTrigger>上报价格</MenubarTrigger>
             <MenubarContent>
               <MenubarSub>
                 <MenubarSubTrigger>在城市买入</MenubarSubTrigger>
