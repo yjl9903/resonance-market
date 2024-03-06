@@ -58,19 +58,49 @@ const onDeleteLog = async (id: number) => {
         <TableCaption>展示最新 {{ data.latest.length }} 条上报日志</TableCaption>
         <TableHeader>
           <TableRow class="boder-t">
-            <TableHead class="">#</TableHead>
+            <!-- <TableHead class="">#</TableHead> -->
             <TableHead class="">上报时间</TableHead>
             <TableHead class="">价格</TableHead>
             <TableHead class="">价位</TableHead>
+            <TableHead class="">趋势</TableHead>
             <TableHead class="w-[100px]">操作</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           <TableRow v-for="log in data.latest" :key="log.id">
-            <TableCell>{{ log.id }}</TableCell>
+            <!-- <TableCell>{{ log.id }}</TableCell> -->
             <TableCell>{{ format(log.uploadedAt, { date: 'long', time: 'medium' }) }}</TableCell>
-            <TableCell>{{ log.price }}</TableCell>
-            <TableCell>{{ log.percent }}%</TableCell>
+            <TableCell
+              :class="[
+                {
+                  'text-red': log.percent < 100,
+                  'text-green': log.percent > 100
+                },
+                'font-bold'
+              ]"
+              >{{ log.price }}</TableCell
+            >
+            <TableCell
+              :class="[
+                {
+                  'text-red': log.percent < 100,
+                  'text-green': log.percent > 100
+                },
+                'font-bold'
+              ]"
+              >{{ log.percent }}%</TableCell
+            >
+            <TableCell
+              ><span
+                v-if="log.trend === 'up'"
+                class="i-material-symbols-trending-up text-green text-xl"
+              ></span>
+              <span
+                v-else-if="log.trend === 'down'"
+                class="i-material-symbols-trending-down text-red text-xl"
+              ></span>
+              <span v-else class="i-material-symbols-trending-flat text-xl"></span
+            ></TableCell>
             <TableCell><Button @click="onDeleteLog(log.id)">删除</Button></TableCell>
           </TableRow>
         </TableBody>
