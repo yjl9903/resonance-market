@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { sha } from '~build/git';
-import StickyHeader from '~/components/StickyHeader.vue';
 </script>
 
 <template>

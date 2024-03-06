@@ -10,7 +10,7 @@ export async function connectDatabase(
 ): Promise<
   DrizzleD1Database<{ users: typeof users; products: typeof products; logs: typeof logs }>
 > {
-  if (import.meta.dev && false) {
+  if (import.meta.dev || false) {
     const { database } = await import('~/drizzle/dev/connect');
     return database as any;
   } else {
