@@ -2,7 +2,8 @@ import type { H3Event } from 'h3';
 
 import { type DrizzleD1Database } from 'drizzle-orm/d1';
 
-import { connect } from '~/drizzle/prod/connect';
+import { connect } from '~/drizzle/d1/connect';
+import { initialize } from '~/drizzle/d1/initialize';
 import { users, products, logs } from '~/drizzle/schema';
 
 export async function connectDatabase(
@@ -21,6 +22,8 @@ export async function connectDatabase(
       globalThis.__env__?.DATABASE
     );
 
-    return connect((globalThis as any).__env__);
+    const db = connect((globalThis as any).__env__);
+    await initialize(db);
+    return db;
   }
 }

@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   debug: false,
   devtools: { enabled: false },
   modules: [
-    // 'nitro-cloudflare-dev',
+    'nitro-cloudflare-dev',
     '@vueuse/nuxt',
     '@unocss/nuxt',
     '@nuxt/image',
