@@ -31,7 +31,7 @@ export default defineEventHandler(async (event) => {
 
   if (resp.length > 0) {
     // Mark cache invalidated
-    invalidateValuableLogsCache();
+    await invalidateValuableLogsCache();
   }
 
   return {
