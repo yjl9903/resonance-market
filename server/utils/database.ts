@@ -15,13 +15,6 @@ export async function connectDatabase(): Promise<
     const { database } = await import('~/drizzle/dev/connect');
     return database as any;
   } else {
-    console.log(
-      // @ts-ignore
-      globalThis.__env__,
-      // @ts-ignore
-      globalThis.__env__?.DATABASE
-    );
-
     const db = connect((globalThis as any).__env__);
     // await initialize(db);
 

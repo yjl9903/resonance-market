@@ -64,23 +64,19 @@ export const queryValuableLogs = memoExternal(
       async remove() {
         const storage = connectStorage();
         await storage.removeItem(`api:products`);
-      },
-      async clear() {
-        const storage = connectStorage();
-        await storage.removeItem(`api:products`);
       }
     }
   }
 );
 
 setInterval(async () => {
-  await queryValuableLogs.clear();
+  await queryValuableLogs.remove(undefined as any);
 }, 10 * 1000);
 
 export default defineEventHandler(async (event) => {
   const db = await connectDatabase();
 
-  const query = await queryValuableLogs.raw(db);
+  const query = await queryValuableLogs(db);
 
   return {
     latest: query
