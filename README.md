@@ -34,6 +34,8 @@ Please make sure [git] and [pnpm] are installed.
    pnpm db:prepare:dev
    ```
 
+   参考此 PR 改一下代码：https://github.com/yjl9903/resonance-market/pull/8
+
 4. 运行开发服务器;
 
    Run the development server;
