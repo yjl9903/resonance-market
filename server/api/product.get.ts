@@ -55,7 +55,7 @@ export const queryValuableLogs = memoExternal(
     external: {
       async get() {
         const storage = connectStorage();
-        const date = await storage.getItem<Log[]>(`api:products`);
+        const data = await storage.getItem<Log[]>(`api:products`);
         if (data) {
           console.log(`Hit cache at ${new Date()}`);
         }
@@ -73,10 +73,6 @@ export const queryValuableLogs = memoExternal(
     }
   }
 );
-
-setInterval(async () => {
-  await queryValuableLogs.remove(undefined as any);
-}, 10 * 1000);
 
 export default defineEventHandler(async (event) => {
   const db = await connectDatabase();
