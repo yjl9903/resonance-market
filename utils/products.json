@@ -2736,7 +2736,7 @@
     "name": "碳纤维",
     "city": "阿妮塔战备工厂",
     "type": "specialty",
-    "valuable": false,
+    "valuable": true,
     "baseVolume": 18,
     "basePrice": 1400,
     "cost": null,
