@@ -94,14 +94,14 @@ const shortTime = computed(() => {
               v-if="log.type === 'sell'"
               :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]"
             >
-              <span class="i-icon-park-income-one text-sm"></span
-              ><span :class="[profitColor]">{{ profit }}</span>
+              <span class="i-icon-park-outline-income-one text-base-600 text-sm"></span>
+              <span :class="[profitColor]">{{ profit }}</span>
             </div>
             <!-- <div v-else="log.type === 'buy'" class="h-6">
               <span></span><span>{{ log.price }}</span>
             </div> -->
             <div :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]">
-              <span class="i-icon-park:dollar text-sm"></span>
+              <span class="i-icon-park-outline-dollar text-base-600 text-sm"></span>
               <span :class="{ 'text-red': log.percent < 100, 'text-green': log.percent > 100 }"
                 >{{ log.percent }}%</span
               >
