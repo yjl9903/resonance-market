@@ -63,8 +63,8 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       memofunc:
-        specifier: ^0.0.8
-        version: 0.0.8
+        specifier: ^0.1.0
+        version: 0.1.0
       radix-vue:
         specifier: ^1.4.9
         version: 1.4.9(vue@3.4.20)
@@ -6818,8 +6818,8 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
-  /memofunc@0.0.8:
-    resolution: {integrity: sha512-W7YF0sRFeB1s2uhArCPWf2Y0L2KdbbDZwLKf3LMFBQO4jyOEWf8qKTU0xfzGWXbP7OVof5pwfpRout+WVqd8xA==}
+  /memofunc@0.1.0:
+    resolution: {integrity: sha512-xTOKT0cIiq75U6EYslM54rJDpVb6UgqN4y7c562QEkiC+kt9o7lN41himJ01XlBjbjKrWmQ1mYcLUT+un7IC4w==}
     dev: false
 
   /memoizee@0.4.15:

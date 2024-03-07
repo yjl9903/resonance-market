@@ -1,11 +1,11 @@
 import { eq, and, max } from 'drizzle-orm';
-import { memoAsync } from 'memofunc';
+import { memoExternal } from 'memofunc';
 
 import { products, logs, type Log } from '~/drizzle/schema';
 
 import { connectDatabase, connectStorage } from '../utils/database';
 
-export const queryValuableLogs = memoAsync(
+export const queryValuableLogs = memoExternal(
   async (db: Awaited<ReturnType<typeof connectDatabase>>) => {
     const latestLogSubQuery = db
       .select({
@@ -73,8 +73,8 @@ export const queryValuableLogs = memoAsync(
   }
 );
 
-setInterval(() => {
-  queryValuableLogs.clear();
+setInterval(async () => {
+  await queryValuableLogs.clear();
 }, 10 * 1000);
 
 export default defineEventHandler(async (event) => {
