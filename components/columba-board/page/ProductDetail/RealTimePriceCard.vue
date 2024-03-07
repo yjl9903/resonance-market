@@ -28,11 +28,11 @@ const updateTime = computed(() => {
   if (offset <= 60 * 1000) {
     return `刚刚`
   } else if (offset <= 3600 * 1000) {
-    return `${Math.floor(offset / (60 * 1000))} 分前`
+    return `${Math.floor(offset / (60 * 1000))}分前`
   } else if (offset <= 24 * 3600 * 1000) {
-    return `${Math.floor(offset / (3600 * 1000))} 小时前`
+    return `${Math.floor(offset / (3600 * 1000))}小时前`
   }
-  return "太久了"
+  return "很久以前"
 })
 </script>
 
@@ -45,7 +45,7 @@ const updateTime = computed(() => {
     <div class="mt-2 grid grid-cols-3 gap-4">
       <!-- 当前价格百分比 -->
       <div class="flex flex-col">
-        <div :class="['text-2xl font-bold', { 'line-through': isOutdated }]">
+        <div :class="['text-2xl font-bold', { 'line-through op-50': isOutdated }]">
           <div
             v-if="latestLog"
             class="flex items-center"
@@ -72,7 +72,7 @@ const updateTime = computed(() => {
       
       <!-- 当前实际价格 -->
       <div class="flex flex-col">
-        <div :class="['text-2xl font-bold', { 'line-through': isOutdated }]">{{ latestLog?.price }}</div>
+        <div :class="['text-2xl font-bold', { 'line-through op-50': isOutdated }]">{{ latestLog?.price }}</div>
         <div class="text-sm text-gray-500">当前实际价格</div>
       </div>
 
