@@ -1,5 +1,14 @@
+<script setup lang="ts">
+const { title } = defineProps<{
+  title?: string
+}>()
+</script>
+
 <template>
-  <div class="card-box rounded-lg p-2 mb-3 bg-white">
+  <div class="card-box rounded-lg p-3 mb-3 bg-white">
+    <slot name="title">
+      <div v-if="title" class="text-lg mb-2">{{ title }}</div>
+    </slot>
     <slot></slot>
   </div>
 </template>
