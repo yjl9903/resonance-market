@@ -80,7 +80,7 @@ setInterval(async () => {
 export default defineEventHandler(async (event) => {
   const db = await connectDatabase();
 
-  const query = await queryValuableLogs.get(db);
+  const query = await queryValuableLogs.raw(db);
 
   return {
     latest: query
