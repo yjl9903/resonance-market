@@ -29,7 +29,7 @@ const profit = computed(() => {
   if (productLog) {
     return (1.04 * props.log.price - 0.92 * productLog.price).toFixed(0)
   } else {
-    return undefined
+    return "无数据"
   }
 })
 
@@ -79,7 +79,7 @@ const shortTime = computed(() => {
   } else if (offset <= 24 * 3600 * 1000) {
     return `${Math.floor(offset / (3600 * 1000))} 小时前`
   }
-  return undefined
+  return "很久以前"
 })
 </script>
 
@@ -90,7 +90,7 @@ const shortTime = computed(() => {
         <div :class="[{ 'op-50': isOutdated }, 'space-y-1']" @touchstart="() => {if(log) openTooltip = true}">
           <!-- 所在城市 -->
           <div class="h-6 flex gap-1 items-center w-35">
-            <span class="i-icon-park-city-one text-sm"></span>
+            <span class="i-icon-park-outline-city-one text-sm"></span>
             <span>{{ city }}</span>
           </div>
           <!-- 单位利润 -->
@@ -98,12 +98,12 @@ const shortTime = computed(() => {
             v-if="log?.type === 'sell'"
             :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]"
           >
-            <span class="i-icon-park-income-one text-sm"></span>
+            <span class="i-icon-park-outline-income-one text-sm"></span>
             <span :class="[profitColor]">{{ profit }}</span>
           </div>
           <!-- 价格涨跌百分比 -->
           <div :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]">
-            <span class="i-icon-park:dollar text-sm"></span>
+            <span class="i-icon-park-outline-dollar text-sm"></span>
             <span v-if="log == undefined">无数据</span>
             <template v-else>
               <span :class="{ 'text-red': log.percent < 100, 'text-green': log.percent > 100 }">

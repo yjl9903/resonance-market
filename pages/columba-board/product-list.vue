@@ -8,7 +8,6 @@ await store.fetch()
 
 onMounted(async () => {
   await store.fetch()
-  console.log(cities)
 })
 
 useIntervalFn(() => {
