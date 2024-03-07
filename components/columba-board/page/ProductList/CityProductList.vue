@@ -26,13 +26,10 @@ const store = useLatestLogs()
 
 
 // 返回根据getLatestLog中的percent对比排序后的城市列表
-const sortCitesByPercent = (cities, sourceCityName, productName) => {
+const sortCitesByPercent = (cities: CityInfo[], sourceCityName: string, productName: string) => {
   const sortedCities = cities.sort((a, b) => {
     const aLog = store.getLatestLog(sourceCityName, productName, a.name)
     const bLog = store.getLatestLog(sourceCityName, productName, b.name)
-    if(sourceCityName == "修格里城") {
-      console.log(aLog, bLog)
-    }
     return (bLog?.percent || 0) - (aLog?.percent || 0)
   })
   return sortedCities
@@ -57,7 +54,7 @@ const sortCitesByPercent = (cities, sourceCityName, productName) => {
           <TableRow v-for="product in city.products.filter((p) => p.valuable)" :key="product.name">
             <!-- 商品名称 -->
             <TableCell>
-              <NuxtLink :to="`/columba-board/product/${city.name}/${product.name}`">
+              <NuxtLink :to="`/columba-board/product/${product.name}`">
                 {{ product.name}}
               </NuxtLink>
             </TableCell>
