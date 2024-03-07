@@ -1,5 +1,5 @@
 import { queryValuableLogs } from '../api/product.get';
 
-export function invalidateValuableLogsCache() {
-  queryValuableLogs.clear();
+export async function invalidateValuableLogsCache() {
+  await queryValuableLogs.clear();
 }

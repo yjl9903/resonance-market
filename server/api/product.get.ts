@@ -3,7 +3,7 @@ import { memoAsync } from 'memofunc';
 
 import { products, logs, type Log } from '~/drizzle/schema';
 
-import { connectDatabase } from '../utils/database';
+import { connectDatabase, connectStorage } from '../utils/database';
 
 export const queryValuableLogs = memoAsync(
   async (db: Awaited<ReturnType<typeof connectDatabase>>) => {
@@ -51,6 +51,24 @@ export const queryValuableLogs = memoAsync(
   {
     serialize() {
       return [];
+    },
+    external: {
+      async get() {
+        const storage = connectStorage();
+        return await storage.getItem<Log[]>(`api:products`);
+      },
+      async set(params, value) {
+        const storage = connectStorage();
+        await storage.setItem(`api:products`, value);
+      },
+      async remove() {
+        const storage = connectStorage();
+        await storage.removeItem(`api:products`);
+      },
+      async clear() {
+        const storage = connectStorage();
+        await storage.removeItem(`api:products`);
+      }
     }
   }
 );
@@ -60,7 +78,7 @@ setInterval(() => {
 }, 10 * 1000);
 
 export default defineEventHandler(async (event) => {
-  const db = await connectDatabase(event as any);
+  const db = await connectDatabase();
 
   const query = await queryValuableLogs.raw(db);
 

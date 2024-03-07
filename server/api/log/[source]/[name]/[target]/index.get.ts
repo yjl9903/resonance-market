@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
   const page = typeof query.page === 'string' && /^\d+&/.test(query.page) ? +query.page : 1;
   const pageSize = 100;
 
-  const db = await connectDatabase(event);
+  const db = await connectDatabase();
 
   const latestLogs = await db
     .select({

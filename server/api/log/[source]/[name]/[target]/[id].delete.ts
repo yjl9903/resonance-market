@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
     return { latest: [], error: 'Body is invalid' };
   }
 
-  const db = await connectDatabase(event);
+  const db = await connectDatabase();
 
   const resp = await db
     .delete(logs)
