@@ -23,7 +23,8 @@ export async function connectDatabase(
     );
 
     const db = connect((globalThis as any).__env__);
-    await initialize(db);
+    // await initialize(db);
+
     return db;
   }
 }
