@@ -25,13 +25,20 @@ const mode = ref<'simple' | 'full' | 'edit'>('simple')
 const store = useLatestLogs()
 
 
-// 返回根据getLatestLog中的percent对比排序后的城市列表
-const sortCitesByPercent = (cities: CityInfo[], sourceCityName: string, productName: string) => {
-  const sortedCities = cities.sort((a, b) => {
-    const aLog = store.getLatestLog(sourceCityName, productName, a.name)
-    const bLog = store.getLatestLog(sourceCityName, productName, b.name)
-    return (bLog?.percent || 0) - (aLog?.percent || 0)
-  })
+// 返回对各城市利润排序后的城市列表
+const sortCitesByPercent = (filteredCities: CityInfo[], sourceCityName: string, productName: string) => {
+  const sourceCityPrice = store.getLatestLog(sourceCityName, productName, sourceCityName)?.price || 0
+
+  // 计算各城市货物利润
+  let citiesProfitMap: {[key: string]: number} = {}
+  filteredCities.map(city => {
+    const latestLog = store.getLatestLog(sourceCityName, productName, city.name)
+    const profit = !Boolean(isLogValid(latestLog)) && latestLog && sourceCityPrice ? latestLog.price - sourceCityPrice : -9999
+    return { cityName: city.name, profit }
+  }).forEach(cityProfit => citiesProfitMap[cityProfit.cityName] = cityProfit.profit)
+  if(sourceCityName == '修格里城') console.log({sourceCityName, productName, citiesProfitMap})
+
+  const sortedCities = filteredCities.sort((a, b) => citiesProfitMap[b.name] - citiesProfitMap[a.name])
   return sortedCities
 }
 </script>
@@ -47,7 +54,7 @@ const sortCitesByPercent = (cities: CityInfo[], sourceCityName: string, productN
           <TableRow class="boder-t">
             <TableHead><div class="w-30">商品</div></TableHead>
             <TableHead class="border-r"><div class="w-30">原产地采购价</div></TableHead>
-            <TableHead :col-span="cities.length - 1">城市售卖报价</TableHead>
+            <TableHead :col-span="cities.length - 1">城市售卖报价(按利润高低从左到右降序排序)</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
