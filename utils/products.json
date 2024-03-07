@@ -695,13 +695,6 @@
       {
         "name": "防弹背心",
         "sourceCity": "铁盟哨站",
-        "targetCity": "阿妮塔战备工厂",
-        "mileage": 257,
-        "basePrice": 0
-      },
-      {
-        "name": "防弹背心",
-        "sourceCity": "铁盟哨站",
         "targetCity": "阿妮塔能源研究所",
         "mileage": 411,
         "basePrice": 3586
@@ -885,27 +878,6 @@
         "targetCity": "澄明数据中心",
         "mileage": 177,
         "basePrice": 1813
-      },
-      {
-        "name": "炮弹",
-        "sourceCity": "铁盟哨站",
-        "targetCity": "阿妮塔战备工厂",
-        "mileage": 257,
-        "basePrice": 0
-      },
-      {
-        "name": "炮弹",
-        "sourceCity": "铁盟哨站",
-        "targetCity": "阿妮塔能源研究所",
-        "mileage": 411,
-        "basePrice": 0
-      },
-      {
-        "name": "炮弹",
-        "sourceCity": "铁盟哨站",
-        "targetCity": "荒原站",
-        "mileage": 75,
-        "basePrice": 0
       },
       {
         "name": "炮弹",
@@ -1287,13 +1259,6 @@
         "targetCity": "澄明数据中心",
         "mileage": 202,
         "basePrice": 2627
-      },
-      {
-        "name": "石墨烯",
-        "sourceCity": "7号自由港",
-        "targetCity": "阿妮塔战备工厂",
-        "mileage": 116,
-        "basePrice": 0
       },
       {
         "name": "石墨烯",
@@ -1894,13 +1859,6 @@
       {
         "name": "游戏机",
         "sourceCity": "澄明数据中心",
-        "targetCity": "阿妮塔战备工厂",
-        "mileage": 135,
-        "basePrice": 0
-      },
-      {
-        "name": "游戏机",
-        "sourceCity": "澄明数据中心",
         "targetCity": "阿妮塔能源研究所",
         "mileage": 290,
         "basePrice": 3775
@@ -1957,13 +1915,6 @@
         "targetCity": "7号自由港",
         "mileage": 202,
         "basePrice": 2725
-      },
-      {
-        "name": "银矿石",
-        "sourceCity": "澄明数据中心",
-        "targetCity": "阿妮塔战备工厂",
-        "mileage": 135,
-        "basePrice": 0
       },
       {
         "name": "银矿石",
@@ -3040,13 +2991,6 @@
       {
         "name": "阿妮塔小型桦树发电机",
         "sourceCity": "阿妮塔能源研究所",
-        "targetCity": "阿妮塔战备工厂",
-        "mileage": 155,
-        "basePrice": 0
-      },
-      {
-        "name": "阿妮塔小型桦树发电机",
-        "sourceCity": "阿妮塔能源研究所",
         "targetCity": "荒原站",
         "mileage": 486,
         "basePrice": 7990
@@ -3096,20 +3040,6 @@
         "targetCity": "7号自由港",
         "mileage": 162,
         "basePrice": 4069
-      },
-      {
-        "name": "石墨烯电池",
-        "sourceCity": "阿妮塔能源研究所",
-        "targetCity": "澄明数据中心",
-        "mileage": 290,
-        "basePrice": 0
-      },
-      {
-        "name": "石墨烯电池",
-        "sourceCity": "阿妮塔能源研究所",
-        "targetCity": "阿妮塔战备工厂",
-        "mileage": 155,
-        "basePrice": 0
       },
       {
         "name": "石墨烯电池",
@@ -3442,13 +3372,6 @@
       {
         "name": "孔雀石",
         "sourceCity": "荒原站",
-        "targetCity": "阿妮塔战备工厂",
-        "mileage": 332,
-        "basePrice": 0
-      },
-      {
-        "name": "孔雀石",
-        "sourceCity": "荒原站",
         "targetCity": "阿妮塔能源研究所",
         "mileage": 486,
         "basePrice": 2112
@@ -3505,13 +3428,6 @@
         "targetCity": "澄明数据中心",
         "mileage": 252,
         "basePrice": 2598
-      },
-      {
-        "name": "琥珀",
-        "sourceCity": "荒原站",
-        "targetCity": "阿妮塔战备工厂",
-        "mileage": 332,
-        "basePrice": 0
       },
       {
         "name": "琥珀",
@@ -3861,13 +3777,6 @@
         "targetCity": "荒原站",
         "mileage": 109,
         "basePrice": 3318
-      },
-      {
-        "name": "图形加速卡",
-        "sourceCity": "曼德矿场",
-        "targetCity": "淘金乐园",
-        "mileage": 97,
-        "basePrice": 0
       }
     ]
   },
@@ -4881,13 +4790,6 @@
       {
         "name": "金箔",
         "sourceCity": "淘金乐园",
-        "targetCity": "铁盟哨站",
-        "mileage": 191,
-        "basePrice": 0
-      },
-      {
-        "name": "金箔",
-        "sourceCity": "淘金乐园",
         "targetCity": "7号自由港",
         "mileage": 514,
         "basePrice": 3540
@@ -4898,13 +4800,6 @@
         "targetCity": "澄明数据中心",
         "mileage": 367,
         "basePrice": 3360
-      },
-      {
-        "name": "金箔",
-        "sourceCity": "淘金乐园",
-        "targetCity": "阿妮塔战备工厂",
-        "mileage": 447,
-        "basePrice": 0
       },
       {
         "name": "金箔",
@@ -4948,13 +4843,6 @@
       {
         "name": "纯金线材",
         "sourceCity": "淘金乐园",
-        "targetCity": "铁盟哨站",
-        "mileage": 191,
-        "basePrice": 0
-      },
-      {
-        "name": "纯金线材",
-        "sourceCity": "淘金乐园",
         "targetCity": "7号自由港",
         "mileage": 514,
         "basePrice": 7277
@@ -4965,13 +4853,6 @@
         "targetCity": "澄明数据中心",
         "mileage": 367,
         "basePrice": 6961
-      },
-      {
-        "name": "纯金线材",
-        "sourceCity": "淘金乐园",
-        "targetCity": "阿妮塔战备工厂",
-        "mileage": 447,
-        "basePrice": 0
       },
       {
         "name": "纯金线材",
@@ -5004,63 +4885,6 @@
     "baseVolume": null,
     "basePrice": 0,
     "cost": 0,
-    "transactions": [
-      {
-        "name": "镀金线材",
-        "sourceCity": "淘金乐园",
-        "targetCity": "修格里城",
-        "mileage": 256,
-        "basePrice": 0
-      },
-      {
-        "name": "镀金线材",
-        "sourceCity": "淘金乐园",
-        "targetCity": "铁盟哨站",
-        "mileage": 191,
-        "basePrice": 0
-      },
-      {
-        "name": "镀金线材",
-        "sourceCity": "淘金乐园",
-        "targetCity": "7号自由港",
-        "mileage": 514,
-        "basePrice": 0
-      },
-      {
-        "name": "镀金线材",
-        "sourceCity": "淘金乐园",
-        "targetCity": "澄明数据中心",
-        "mileage": 367,
-        "basePrice": 0
-      },
-      {
-        "name": "镀金线材",
-        "sourceCity": "淘金乐园",
-        "targetCity": "阿妮塔战备工厂",
-        "mileage": 447,
-        "basePrice": 0
-      },
-      {
-        "name": "镀金线材",
-        "sourceCity": "淘金乐园",
-        "targetCity": "阿妮塔能源研究所",
-        "mileage": 513,
-        "basePrice": 0
-      },
-      {
-        "name": "镀金线材",
-        "sourceCity": "淘金乐园",
-        "targetCity": "荒原站",
-        "mileage": 206,
-        "basePrice": 0
-      },
-      {
-        "name": "镀金线材",
-        "sourceCity": "淘金乐园",
-        "targetCity": "曼德矿场",
-        "mileage": 97,
-        "basePrice": 0
-      }
-    ]
+    "transactions": []
   }
 ]

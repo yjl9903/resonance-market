@@ -128,7 +128,7 @@ for (const row of data) {
   };
 
   for (const city of cities) {
-    if (!row[`${city}_mileage`]) continue;
+    if (!row[`${city}_mileage`] || row[`${city}_basePrice`] === '') continue;
     const trans = {
       name: product.name,
       sourceCity: product.city,
