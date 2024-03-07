@@ -36,7 +36,6 @@ const sortCitesByPercent = (filteredCities: CityInfo[], sourceCityName: string, 
     const profit = !Boolean(isLogValid(latestLog)) && latestLog && sourceCityPrice ? latestLog.price - sourceCityPrice : -9999
     return { cityName: city.name, profit }
   }).forEach(cityProfit => citiesProfitMap[cityProfit.cityName] = cityProfit.profit)
-  if(sourceCityName == '修格里城') console.log({sourceCityName, productName, citiesProfitMap})
 
   const sortedCities = filteredCities.sort((a, b) => citiesProfitMap[b.name] - citiesProfitMap[a.name])
   return sortedCities
