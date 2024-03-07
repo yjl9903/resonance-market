@@ -1,3 +1,5 @@
+import { products } from '../schema';
+
 import { connect } from './connect';
 import { initialize } from './initialize';
 
@@ -6,6 +8,11 @@ export default {
     const database = connect(env);
     await initialize(database);
 
-    return new Response(`OK`);
+    const prods = await database.select().from(products);
+    const trans = await database.select().from(products);
+
+    return new Response(JSON.stringify({ products: prods, transactions: trans }, null, 2), {
+      headers: { 'content-type': 'application/json' }
+    });
   }
 };
