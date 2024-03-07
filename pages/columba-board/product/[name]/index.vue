@@ -21,12 +21,14 @@ const productInfo = computed(() => {
   <NuxtLayout name="child-page" :title="pageTitle" header-background-color-class="bg-blue-400" >
     <div class="flex flex-col">
       <ProductInfo :product-info="productInfo" />
-      <CardBox class="grid grid-cols-1 md:grid-cols-2">
-        <RealTimePriceCard
-          v-for="city in productInfo.originCities"
-          :product-info="productInfo"
-          :city="city"
-        />
+      <CardBox title="入手行情">
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <RealTimePriceCard
+            v-for="city in productInfo.originCities"
+            :product-info="productInfo"
+            :city="city"
+          />
+        </div>
       </CardBox>
       <CardBox title="出手行情">
       </CardBox>
