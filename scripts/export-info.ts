@@ -16,43 +16,53 @@ const data = parse(body, {
     const expand: string[] = [];
     for (let id = 0; id < input.length; id++) {
       const item = input[id];
-      if (item === '产地') {
-        expand.push('sourceCity');
-      } else if (item === '商品') {
-        expand.push('name');
-      } else if (item === '基础货量') {
-        expand.push('baseVolume');
-      } else if (item === '基准价格' && id < 6) {
-        expand.push('basePrice');
-      } else if (item === '类型') {
-        expand.push('type');
-      } else if (item === '解锁条件') {
-        expand.push('condition');
-      } else if (item === '成本') {
-        expand.push('cost');
-      } else {
-        const city = (() => {
-          for (let i = id; i >= 0; i--) {
-            if (header[i]) {
-              return header[i];
+      switch (item) {
+        case '产地':
+          expand.push('sourceCity');
+          break;
+        case '商品':
+          expand.push('name');
+          break;
+        case '基础货量':
+          expand.push('baseVolume');
+          break;
+        case '基准价格' && id < 6:
+          expand.push('basePrice');
+          break;
+        case '类型':
+          expand.push('type');
+          break;
+        case '解锁条件':
+          expand.push('condition');
+          break;
+        case '成本':
+          expand.push('cost');
+          break;
+        default:
+          const city = (() => {
+            for (let i = id; i >= 0; i--) {
+              if (header[i]) {
+                return header[i];
+              }
             }
-          }
-          throw new Error('');
-        })();
-        const key = (() => {
-          if (item === '里程(km)') {
-            return 'mileage';
-          } else if (item === '基准价格') {
-            return 'basePrice';
-          } else if (item === '净差值') {
-            return 'delta';
-          } else if (item === '里程加值') {
-            return 'addition';
-          } else {
             throw new Error('');
-          }
-        })();
-        expand.push(city + '_' + key);
+          })();
+          const key = (() => {
+            switch (item) {
+              case '里程(km)':
+                return 'mileage';
+              case '基准价格':
+                return 'basePrice';
+              case '净差值':
+                return 'delta';
+              case '里程加值':
+                return 'addition';
+              default:
+                throw new Error('');
+            }
+          })();
+          expand.push(city + '_' + key);
+          break;
       }
     }
     return expand;
