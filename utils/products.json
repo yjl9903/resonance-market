@@ -3337,17 +3337,46 @@
     "city": "荒原站",
     "type": "specialty",
     "valuable": true,
-    "baseVolume": 0,
-    "basePrice": 0,
+    "baseVolume": 23,
+    "basePrice": 750,
     "cost": null,
-    "transactions": []
+    "transactions": [
+      {
+        "name": "棉花",
+        "sourceCity": "荒原站",
+        "targetCity": "7号自由港",
+        "mileage": 399,
+        "basePrice": 1095
+      },
+      {
+        "name": "棉花",
+        "sourceCity": "荒原站",
+        "targetCity": "阿妮塔能源研究所",
+        "mileage": 486,
+        "basePrice": 1193
+      },
+      {
+        "name": "棉花",
+        "sourceCity": "荒原站",
+        "targetCity": "曼德矿场",
+        "mileage": 109,
+        "basePrice": 848
+      },
+      {
+        "name": "棉花",
+        "sourceCity": "荒原站",
+        "targetCity": "淘金乐园",
+        "mileage": 206,
+        "basePrice": 945
+      }
+    ]
   },
   {
     "name": "孔雀石",
     "city": "荒原站",
     "type": "specialty",
     "valuable": true,
-    "baseVolume": 31,
+    "baseVolume": 13,
     "basePrice": 1650,
     "cost": null,
     "transactions": [
@@ -3407,7 +3436,7 @@
     "city": "荒原站",
     "type": "specialty",
     "valuable": true,
-    "baseVolume": 23,
+    "baseVolume": 17,
     "basePrice": 2240,
     "cost": null,
     "transactions": [
