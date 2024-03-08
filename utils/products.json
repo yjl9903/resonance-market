@@ -3333,6 +3333,16 @@
     ]
   },
   {
+    "name": "棉花",
+    "city": "荒原站",
+    "type": "specialty",
+    "valuable": true,
+    "baseVolume": 0,
+    "basePrice": 0,
+    "cost": null,
+    "transactions": []
+  },
+  {
     "name": "孔雀石",
     "city": "荒原站",
     "type": "specialty",

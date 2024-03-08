@@ -26,9 +26,6 @@ const data = parse(body, {
         case '基础货量':
           expand.push('baseVolume');
           break;
-        case '基准价格' && id < 6:
-          expand.push('basePrice');
-          break;
         case '类型':
           expand.push('type');
           break;
@@ -38,6 +35,11 @@ const data = parse(body, {
         case '成本':
           expand.push('cost');
           break;
+        case '基准价格':
+          if (id < 6) {
+            expand.push('basePrice');
+            break;
+          }
         default:
           const city = (() => {
             for (let i = id; i >= 0; i--) {
@@ -105,6 +107,7 @@ const valuable = new Set([
   '阿妮塔能源研究所:石墨烯电池',
   '阿妮塔能源研究所:阿妮塔101民用无人机',
   '阿妮塔能源研究所:家用太阳能电池组',
+  '荒原站:棉花',
   '荒原站:孔雀石',
   '荒原站:琥珀',
   '荒原站:绿松石',
@@ -136,6 +139,7 @@ for (const row of data) {
     cost: row.cost === '时价' ? null : row.cost !== '' ? +row.cost : 0,
     transactions: []
   };
+  console.log(row);
 
   for (const city of cities) {
     if (!row[`${city}_mileage`] || row[`${city}_basePrice`] === '') continue;

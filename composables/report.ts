@@ -160,7 +160,7 @@ export function useReportForm(init: ReportFormInit) {
           ? /* 买入 */ product.basePrice
           : /* 卖出 */ product.transactions.find((tr) => tr.targetCity === values.targetCity)
               ?.basePrice;
-      if (basePrice !== undefined) {
+      if (basePrice !== undefined && basePrice !== 0) {
         const price = values.price;
         const percent = values.percent[0]!;
         const eps = Math.max(5, Math.round(basePrice / 100));
