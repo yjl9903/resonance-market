@@ -17,6 +17,8 @@ import {
   MenubarTrigger,
   MenubarButton
 } from '@/components/ui/menubar';
+
+const settingStore = useSettingStore()
 </script>
 
 <template>
@@ -85,6 +87,35 @@ import {
                   ><span i-simple-icons-bilibili mr-1 block w-4></span
                   ><span>雷索纳斯官方 Bilibili</span></a
                 >
+              </MenubarItem>
+            </MenubarContent>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger>列表排序</MenubarTrigger>
+            <MenubarContent>
+              <MenubarItem as-child>
+                <a
+                  class="hover:bg-gray-100 cursor-pointer flex justify-between"
+                  @click="settingStore.switchListSortModeTo('byCity')"
+                >
+                  <div class="flex items-center">
+                    <span class="i-icon-park-outline-city-one mr-1 block w-4"></span>
+                    <span>按城市排序</span>
+                  </div>
+                  <span v-if="settingStore.listSortMode === 'byCity'" class="i-material-symbols-check"></span>
+                </a>
+              </MenubarItem>
+              <MenubarItem as-child>
+                <a
+                  class="hover:bg-gray-100 cursor-pointer flex justify-between"
+                  @click="settingStore.switchListSortModeTo('byProfit')"
+                >
+                  <div class="flex items-center">
+                    <span class="i-icon-park-outline-income-one mr-1 block w-4"></span>
+                    <span>按利润排序</span>
+                  </div>
+                  <span v-if="settingStore.listSortMode === 'byProfit'" class="i-material-symbols-check"></span>
+                </a>
               </MenubarItem>
             </MenubarContent>
           </MenubarMenu>
