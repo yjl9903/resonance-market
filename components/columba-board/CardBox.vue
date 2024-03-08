@@ -7,7 +7,7 @@ const { title } = defineProps<{
 <template>
   <div class="card-box rounded-lg p-3 mb-3 bg-white">
     <slot name="title">
-      <div v-if="title" class="text-lg mb-2">{{ title }}</div>
+      <div v-if="title" class="text-lg text-base-600 mb-2">{{ title }}</div>
     </slot>
     <slot></slot>
   </div>

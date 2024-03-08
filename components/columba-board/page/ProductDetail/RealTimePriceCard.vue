@@ -37,9 +37,9 @@ const updateTime = computed(() => {
 </script>
 
 <template>
-  <CardBox>
+  <CardBox class="shadow-lg p-4">
     <!-- 报价城市名称 -->
-    <div class="pb-2 border-b">
+    <div class="mb-3 text-base-400">
       {{ props.city.name }}
     </div>
     <div class="mt-2 grid grid-cols-3 gap-4">
@@ -80,6 +80,32 @@ const updateTime = computed(() => {
       <div class="flex flex-col">
         <div class="text-2xl font-bold">{{ updateTime }}</div>
         <div class="text-sm text-gray-500">更新时间</div>
+      </div>
+    </div>
+
+    <div class="flex gap-4">
+      <!-- 趋势图表 -->
+      <div class="flex-grow">
+        <div v-if="latestLog" id="chart" class="h-full w-full"></div>
+        <div v-else class="flex justify-center items-center h-40 text-base-400">
+          暂无数据
+        </div>
+      </div>
+
+      <div class="flex flex-col justify-between">
+        <!-- 实时价格 -->
+        <div class="text-3xl font-bold">
+          {{ latestLog?.percent || "--" }}
+        </div>
+        <div class="text-base-400">
+          {{ latestLog?.price || "--" }}
+        </div>
+        <div class="text-base-400">
+          {{ updateTime }}
+        </div>
+        <div class="text-base-400">
+          <span v-if="isOutdated" class="text-red-500">已失效</span>
+        </div>
       </div>
     </div>
   </CardBox>
