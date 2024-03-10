@@ -94,7 +94,7 @@ const shortTime = computed(() => {
     <TooltipProvider v-if="log && shortTime" :delayDuration="300" :skipDelayDuration="100">
       <Tooltip v-model:open="openTooltip">
         <TooltipTrigger as-child>
-          <div :class="[{ 'op-50': isOutdated }, 'space-y-1']" @touchstart="openTooltip = true">
+          <div :class="[{ 'op-50': isOutdated }, 'space-y-1']" @click="openTooltip = true">
             <!-- 所在城市 -->
             <div v-if="sortMode == 'byProfit'" class="flex gap-1 items-center text-base-600">
               <span class="i-icon-park-outline-city-one text-sm"></span>
