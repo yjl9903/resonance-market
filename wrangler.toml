@@ -11,6 +11,10 @@ bucket = ".output/public"
 [vars]
 TURSO_URL = "libsql://resonance-market-yjl9903.turso.io"
 
+[[kv_namespaces]]
+binding = "STORAGE"
+id = "c3a87eb4bdf74f8081d6bb6902377117"
+
 [[d1_databases]]
 binding = "DATABASE"
 database_name = "resonance-market"

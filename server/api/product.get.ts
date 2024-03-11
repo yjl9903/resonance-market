@@ -1,11 +1,11 @@
 import { eq, and, max } from 'drizzle-orm';
-import { memoAsync } from 'memofunc';
+import { memoExternal } from 'memofunc';
 
 import { products, logs, type Log } from '~/drizzle/schema';
 
-import { connectDatabase } from '../utils/database';
+import { connectDatabase, connectStorage } from '../utils/database';
 
-export const queryValuableLogs = memoAsync(
+export const queryValuableLogs = memoExternal(
   async (db: Awaited<ReturnType<typeof connectDatabase>>) => {
     const latestLogSubQuery = db
       .select({
@@ -51,16 +51,31 @@ export const queryValuableLogs = memoAsync(
   {
     serialize() {
       return [];
+    },
+    external: {
+      async get() {
+        const storage = connectStorage();
+        const data = await storage.getItem<Log[]>(`api:products`);
+        if (data) {
+          console.log(`Hit cache at ${new Date()}`);
+        }
+        return data;
+      },
+      async set(params, value) {
+        const storage = connectStorage();
+        await storage.setItem(`api:products`, value);
+        console.log(`Set cache at ${new Date()}`);
+      },
+      async remove() {
+        const storage = connectStorage();
+        await storage.removeItem(`api:products`);
+      }
     }
   }
 );
 
-setInterval(() => {
-  queryValuableLogs.clear();
-}, 10 * 1000);
-
 export default defineEventHandler(async (event) => {
-  const db = await connectDatabase(event as any);
+  const db = await connectDatabase();
 
   const query = await queryValuableLogs.get(db);
 

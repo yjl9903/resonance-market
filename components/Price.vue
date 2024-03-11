@@ -5,7 +5,13 @@ import type { Log } from '~/drizzle/schema';
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
-const props = defineProps<{ timestamp: number; product: ProductInfo; log: Log | undefined }>();
+const props = defineProps<{
+  sortMode: 'byProfit' | 'byCity';
+  timestamp: number;
+  product: ProductInfo;
+  transaction: TransactionInfo | undefined;
+  log: Log | undefined;
+}>();
 
 const openTooltip = ref(false);
 
@@ -22,7 +28,11 @@ const profit = computed(() => {
 
   const productLog = store.getLatestLog(props.log.sourceCity, props.log.name, props.log.sourceCity);
   if (productLog) {
-    return (1.04 * props.log.price - 0.92 * productLog.price).toFixed(0);
+    return Math.round(
+      1.06 * props.log.price -
+        0.85 * productLog.price -
+        (1.06 * props.log.price - 0.85 * productLog.price) * 0.06
+    );
   } else {
     return undefined;
   }
@@ -84,19 +94,24 @@ const shortTime = computed(() => {
     <TooltipProvider v-if="log && shortTime" :delayDuration="300" :skipDelayDuration="100">
       <Tooltip v-model:open="openTooltip">
         <TooltipTrigger as-child>
-          <div :class="[{ 'op-50': isOutdated }, 'space-y-1']" @touchstart="openTooltip = true">
+          <div :class="[{ 'op-50': isOutdated }, 'space-y-1']" @click="openTooltip = true">
+            <!-- 所在城市 -->
+            <div v-if="sortMode == 'byProfit'" class="flex gap-1 items-center text-base-600">
+              <span class="i-icon-park-outline-city-one text-sm"></span>
+              <span >{{ log.targetCity }}</span>
+            </div>
             <div
               v-if="log.type === 'sell'"
               :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]"
             >
-              <span class="i-icon-park-income-one text-sm"></span
-              ><span :class="[profitColor]">{{ profit }}</span>
+              <span class="i-icon-park-outline-income-one text-base-600 text-sm"></span>
+              <span :class="[profitColor]">{{ profit }}</span>
             </div>
             <!-- <div v-else="log.type === 'buy'" class="h-6">
               <span></span><span>{{ log.price }}</span>
             </div> -->
             <div :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]">
-              <span class="i-icon-park:dollar text-sm"></span>
+              <span class="i-icon-park-outline-dollar text-base-600 text-sm"></span>
               <span :class="{ 'text-red': log.percent < 100, 'text-green': log.percent > 100 }"
                 >{{ log.percent }}%</span
               >
@@ -121,7 +136,7 @@ const shortTime = computed(() => {
         <TooltipContent>
           <div v-if="log" class="py-1 space-y-1">
             <p class="flex items-center">
-              <span class="font-bold mr-2">价格</span>
+              <span class="font-bold mr-2">实时价格</span>
               <span
                 :class="[
                   {
@@ -168,12 +183,20 @@ const shortTime = computed(() => {
                 >{{ +(profit ?? 0) * product.baseVolume }}</span
               >
             </p>
+            <p v-if="log.type === 'sell' && transaction?.basePrice">
+              <span class="font-bold mr-2">基准价格</span>
+              <span>{{ transaction.basePrice }}</span>
+            </p>
             <p v-if="log.type === 'buy' && product.baseVolume">
               <span class="font-bold mr-2">基础货量</span>
               <span>{{ product.baseVolume }}</span>
             </p>
+            <p v-if="log.type === 'buy' && product.basePrice">
+              <span class="font-bold mr-2">基准价格</span>
+              <span>{{ product.basePrice }}</span>
+            </p>
             <p>
-              <span class="font-bold mr-2">最近更新于</span>
+              <span class="font-bold mr-2">更新时间</span>
               <span :class="{ 'op-50': isOutdated }">{{
                 format(log.uploadedAt, { date: 'long', time: 'medium' })
               }}</span>

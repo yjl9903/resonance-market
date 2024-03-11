@@ -37,164 +37,19 @@ import type { CityInfo, ProductInfo } from '@/utils/types';
 
 const props = defineProps<{ city: CityInfo; product: ProductInfo }>();
 
-const store = useLatestLogs();
-
 const open = ref(false);
 
-const formSchema = toTypedSchema(
-  z.object({
-    targetCity: z.string(),
-    price: z.number().gt(0),
-    percent: z.array(z.number().gt(0).lt(200)),
-    trend: z.enum(['up', 'same', 'down'])
-  })
-);
-
-const form = useForm({
-  initialValues: {
-    percent: [100],
-    trend: 'same'
-  },
-  validationSchema: formSchema
+const { form, onSubmit } = useReportForm({
+  sourceCity: props.city.name,
+  name: props.product.name,
+  onSubmitSuccess() {
+    open.value = false;
+  }
 });
 
 watch(open, (open) => {
   if (open) {
     form.resetForm();
-  }
-});
-
-watch(
-  () => form.values.targetCity,
-  (target, prev) => {
-    if (target === prev || !target) return;
-
-    if (form.isFieldDirty('price') || form.isFieldDirty('percent')) return;
-
-    // 使用最新日志
-    const latest = store.getLatestLog(props.city.name, props.product.name, target);
-    if (latest) {
-      form.resetField('price', { value: latest.price });
-      form.resetField('percent', { value: [latest.percent] });
-      form.resetField('trend', { value: latest.trend });
-      return;
-    }
-
-    // 使用基础数据
-    if (props.city.name === target) {
-      form.resetField('price', { value: props.product.basePrice });
-    } else {
-      const tr = props.product.transactions.find((tr) => tr.targetCity === target);
-      if (tr) {
-        form.resetField('price', { value: tr.basePrice });
-      }
-    }
-  }
-);
-
-watch(
-  () => [form.values.targetCity, form.values.price] as const,
-  ([target, price], prev) => {
-    if (target === prev[0] && price === prev[1]) return;
-
-    // @ts-ignore
-    if (price === '') {
-      form.setFieldValue('price', undefined);
-      return;
-    }
-
-    if (price === undefined) return;
-    if (!form.values.targetCity) return;
-    if (form.isFieldDirty('percent')) return;
-
-    if (target === props.product.city) {
-      const percent = Math.round((100 * price) / props.product.basePrice);
-      if (percent > 0 && percent < 200) {
-        form.resetField('percent', { value: [percent] });
-      }
-    } else {
-      const transaction = props.product.transactions.find(
-        (tr) => tr.targetCity === form.values.targetCity
-      );
-      if (transaction && transaction.basePrice > 0) {
-        const percent = Math.round((100 * price) / transaction.basePrice);
-        if (percent > 0 && percent < 200) {
-          form.resetField('percent', { value: [percent] });
-        }
-      }
-    }
-  }
-);
-
-watch(
-  () => [form.values.targetCity, form.values.percent] as const,
-  ([target, percent], prev) => {
-    if (target === prev[0] && percent?.[0] === prev[1]?.[0]) return;
-
-    if (percent === undefined) return;
-    if (form.isFieldDirty('price')) return;
-    if (!form.values.targetCity) return;
-    const transaction = props.product.transactions.find(
-      (tr) => tr.targetCity === form.values.targetCity
-    );
-
-    if (target === props.product.city) {
-      const price = Math.round((percent[0] / 100.0) * props.product.basePrice);
-      if (price > 0) {
-        form.resetField('price', { value: price });
-      }
-    } else {
-      if (transaction && transaction.basePrice > 0) {
-        const price = Math.round((percent[0] / 100.0) * transaction.basePrice);
-        if (price > 0) {
-          form.resetField('price', { value: price });
-        }
-      }
-    }
-  }
-);
-
-const onSubmit = form.handleSubmit(async (values) => {
-  try {
-    const basePrice =
-      props.city.name === values.targetCity
-        ? /* 买入 */ props.product.basePrice
-        : /* 卖出 */ props.product.transactions.find((tr) => tr.targetCity === values.targetCity)
-            ?.basePrice;
-    if (basePrice !== undefined) {
-      const price = values.price;
-      const percent = values.percent[0]!;
-      const eps = Math.max(5, Math.round(basePrice / 100));
-      const expetecdPrice = Math.round((basePrice * percent) / 100);
-      if (Math.abs(price - expetecdPrice) > eps) {
-        toast.error(`请确认数据是否有误?`, {
-          description: `价格偏差过大, 期望价格范围: [${expetecdPrice - eps}, ${expetecdPrice + eps}]`
-        });
-        form.resetField('price');
-        form.resetField('percent');
-        return;
-      }
-    }
-
-    await $fetch(`/api/log`, {
-      method: 'POST',
-      body: {
-        name: props.product.name,
-        sourceCity: props.city.name,
-        targetCity: values.targetCity,
-        type: props.city.name !== values.targetCity ? 'sell' : 'buy',
-        trend: values.trend,
-        price: values.price,
-        percent: values.percent[0],
-        uploadedAt: new Date().getTime()
-      }
-    });
-    toast.success(`上报成功`);
-    open.value = false;
-    store.fetch();
-  } catch (error) {
-    console.error(error);
-    toast.error(`上报失败`);
   }
 });
 </script>

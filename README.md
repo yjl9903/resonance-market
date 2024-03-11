@@ -26,7 +26,7 @@ Please make sure [git] and [pnpm] are installed.
    pnpm install
    ```
 
-3. 准备开发用的 SQLite 数据库;
+3. 准备开发用的 SQLite 本地数据库（位于：`./sqlite.db`）;
 
    Prepare development SQLite database;
 

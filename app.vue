@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { toast } from 'vue-sonner';
 
+import '@/utils/info';
 import { Toaster } from '@/components/ui/sonner';
 
 onMounted(() => {

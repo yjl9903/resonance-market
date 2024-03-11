@@ -5,7 +5,7 @@ import { logs, type NewLog } from '~/drizzle/schema';
 import { connectDatabase } from '../utils/database';
 import { invalidateValuableLogsCache } from '../utils/cache';
 
-const schema = z.object({
+export const schema = z.object({
   name: z.string(),
   sourceCity: z.string(),
   targetCity: z.string(),
@@ -17,7 +17,7 @@ const schema = z.object({
 });
 
 export default defineEventHandler(async (event) => {
-  const db = await connectDatabase(event);
+  const db = await connectDatabase();
   const body = await readBody<Omit<NewLog, 'uploaderId'>>(event);
 
   const data = schema.safeParse(body);
@@ -33,7 +33,7 @@ export default defineEventHandler(async (event) => {
 
     if (resp.length > 0) {
       // Mark cache invalidated
-      invalidateValuableLogsCache();
+      await invalidateValuableLogsCache();
     }
 
     return { count: resp.length };
