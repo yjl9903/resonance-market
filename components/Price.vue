@@ -15,6 +15,8 @@ const props = defineProps<{
 
 const openTooltip = ref(false);
 
+const reportDialogVisible = ref(false);
+
 const isOutdated = computed(() => {
   if (!props.log) return true;
   props.timestamp;
@@ -91,7 +93,7 @@ const shortTime = computed(() => {
 
 <template>
   <div>
-    <TooltipProvider v-if="log && shortTime" :delayDuration="300" :skipDelayDuration="100">
+    <TooltipProvider v-if="log && shortTime" :delayDuration="300" :skipDelayDuration="100" :disableClosingTrigger="true">
       <Tooltip v-model:open="openTooltip">
         <TooltipTrigger as-child>
           <div :class="[{ 'op-50': isOutdated }, 'space-y-1']" @click="openTooltip = true">
@@ -205,12 +207,20 @@ const shortTime = computed(() => {
               <NuxtLink
                 :to="`/transaction/${log.sourceCity}/${log.name}/${log.targetCity}`"
                 class="text-link font-bold"
-                >查看历史记录</NuxtLink
-              >
+              >查看历史记录</NuxtLink>
+              <span class="text-link font-bold ml-4 cursor-pointer" @click="reportDialogVisible = true">快速上报价格</span>
             </p>
           </div>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
+    
+    <CreateLog
+      v-if="log"
+      :source-city-name="log.sourceCity"
+      :target-city-name="log.targetCity"
+      :product="product"
+      v-model:open="reportDialogVisible"
+    />
   </div>
 </template>
