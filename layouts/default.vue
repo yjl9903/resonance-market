@@ -75,23 +75,7 @@ const settingStore = useSettingStore()
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>
-            <MenubarTrigger>关于</MenubarTrigger>
-            <MenubarContent>
-              <MenubarItem as-child>
-                <a href="https://github.com/yjl9903/resonance-market" target="_blank"
-                  ><span i-carbon-logo-github mr-1 block w-4></span><span>GitHub</span></a
-                >
-              </MenubarItem>
-              <MenubarItem as-child>
-                <a href="https://space.bilibili.com/1631015691" target="_blank"
-                  ><span i-simple-icons-bilibili mr-1 block w-4></span
-                  ><span>雷索纳斯官方 Bilibili</span></a
-                >
-              </MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-          <MenubarMenu>
-            <MenubarTrigger>列表排序</MenubarTrigger>
+            <MenubarTrigger>设置</MenubarTrigger>
             <MenubarContent>
               <MenubarItem as-child>
                 <a
@@ -116,6 +100,22 @@ const settingStore = useSettingStore()
                   </div>
                   <span v-if="settingStore.listSortMode === 'byProfit'" class="i-material-symbols-check"></span>
                 </a>
+              </MenubarItem>
+            </MenubarContent>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger>关于</MenubarTrigger>
+            <MenubarContent>
+              <MenubarItem as-child>
+                <a href="https://github.com/yjl9903/resonance-market" target="_blank"
+                  ><span i-carbon-logo-github mr-1 block w-4></span><span>GitHub</span></a
+                >
+              </MenubarItem>
+              <MenubarItem as-child>
+                <a href="https://space.bilibili.com/1631015691" target="_blank"
+                  ><span i-simple-icons-bilibili mr-1 block w-4></span
+                  ><span>雷索纳斯官方 Bilibili</span></a
+                >
               </MenubarItem>
             </MenubarContent>
           </MenubarMenu>
