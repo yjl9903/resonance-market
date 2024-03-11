@@ -33,14 +33,21 @@ import {
   FormMessage
 } from '@/components/ui/form';
 
-import type { CityInfo, ProductInfo } from '@/utils/types';
+import type { ProductInfo } from '@/utils/types';
 
-const props = defineProps<{ city: CityInfo; product: ProductInfo }>();
+const props = defineProps<{
+  sourceCityName: string // 原产地城市
+  targetCityName?: string // 目标城市
+  product: ProductInfo // 货物信息
+}>();
 
-const open = ref(false);
+const open = defineModel('open', {
+  type: Boolean,
+  default: false
+});
 
 const { form, onSubmit } = useReportForm({
-  sourceCity: props.city.name,
+  sourceCity: props.sourceCityName,
   name: props.product.name,
   onSubmitSuccess() {
     open.value = false;
@@ -50,6 +57,9 @@ const { form, onSubmit } = useReportForm({
 watch(open, (open) => {
   if (open) {
     form.resetForm();
+    if (props.targetCityName) {
+      form.setFieldValue("targetCity", props.targetCityName)
+    }
   }
 });
 </script>
@@ -57,7 +67,7 @@ watch(open, (open) => {
 <template>
   <Dialog v-model:open="open">
     <DialogTrigger as-child>
-      <Button variant="outline" size="sm">上报</Button>
+      <slot><div></div></slot>
     </DialogTrigger>
     <DialogContent class="sm:max-w-[625px]">
       <DialogHeader>
@@ -69,7 +79,7 @@ watch(open, (open) => {
       <form class="grid gap-4 py-4" @submit="onSubmit">
         <div class="space-x-2 text-sm">
           <span class="text-right font-bold">商品</span>
-          <span class="">{{ city.name }} - {{ product.name }}</span>
+          <span class="">{{ sourceCityName }} - {{ product.name }}</span>
         </div>
 
         <FormField v-slot="{ componentField }" name="targetCity">
@@ -83,14 +93,14 @@ watch(open, (open) => {
               </FormControl>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem v-for="city in cities" :key="city.name" :value="city.name">{{
-                    city.name
-                  }}</SelectItem>
+                  <SelectItem v-for="city in cities" :key="city.name" :value="city.name">
+                    {{ city.name }}
+                  </SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
             <FormDescription>{{
-              form.values.targetCity !== city.name ? '售出商品到该城市' : '从该城市买入商品'
+              form.values.targetCity !== sourceCityName ? '售出商品到该城市' : '从该城市买入商品'
             }}</FormDescription>
             <FormMessage />
           </FormItem>
@@ -102,7 +112,7 @@ watch(open, (open) => {
             <FormControl>
               <Input
                 type="number"
-                :placeholder="form.values.targetCity !== city.name ? '售出价格' : '买入价格'"
+                :placeholder="form.values.targetCity !== sourceCityName ? '售出价格' : '买入价格'"
                 v-bind="componentField"
               />
             </FormControl>
@@ -117,7 +127,7 @@ watch(open, (open) => {
             <FormControl>
               <Input
                 type="number"
-                :placeholder="form.values.targetCity !== city.name ? '售出价位' : '买入价位'"
+                :placeholder="form.values.targetCity !== sourceCityName ? '售出价位' : '买入价位'"
                 v-bind="componentField"
               />
             </FormControl>
@@ -138,7 +148,7 @@ watch(open, (open) => {
               />
               <FormDescription class="flex justify-between">
                 <span
-                  >{{ form.values.targetCity !== city.name ? '售出价位' : '买入价位' }}
+                  >{{ form.values.targetCity !== sourceCityName ? '售出价位' : '买入价位' }}
                   {{ form.values.percent?.[0] ?? 100 }}%</span
                 >
               </FormDescription>

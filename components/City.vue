@@ -129,7 +129,9 @@ const sortCitesByPercent = (filteredCities: CityInfo[], sourceCityName: string, 
             </template>
             <!-- 操作单元格 -->
             <TableCell>
-              <CreateLog :city="city" :product="product"></CreateLog>
+              <CreateLog :source-city-name="city.name" :product="product">
+                <Button variant="outline" size="sm">上报</Button>
+              </CreateLog>
             </TableCell>
           </TableRow>
         </TableBody>
