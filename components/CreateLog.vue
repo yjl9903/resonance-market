@@ -158,27 +158,25 @@ const changePricePercent = (type: 'add' | 'reduce') => {
 
         <FormField v-slot="{ componentField }" type="radio" name="trend">
           <FormItem class="space-y-3">
-            <FormLabel>趋势</FormLabel>
+            <FormLabel>涨跌趋势</FormLabel>
 
             <FormControl>
-              <RadioGroup class="flex flex-col space-y-0" v-bind="componentField">
-                <FormItem class="flex items-center space-y-0 gap-x-3">
+              <RadioGroup class="flex space-x-4" v-bind="componentField">
+                <FormItem class="flex items-center space-y-0">
                   <FormControl>
                     <RadioGroupItem value="up" />
+                    <FormLabel class="flex items-center font-normal text-xl text-green pl-2 cursor-pointer">
+                      <span class="i-material-symbols-trending-up text-green"></span>
+                    </FormLabel>
                   </FormControl>
-                  <FormLabel class="font-normal text-green">↑</FormLabel>
                 </FormItem>
-                <FormItem class="flex items-center space-y-0 gap-x-3">
-                  <FormControl>
-                    <RadioGroupItem value="same" />
-                  </FormControl>
-                  <FormLabel class="font-normal">-</FormLabel>
-                </FormItem>
-                <FormItem class="flex items-center space-y-0 gap-x-3">
+                <FormItem class="flex items-center space-y-0">
                   <FormControl>
                     <RadioGroupItem value="down" />
+                    <FormLabel class="flex items-center font-normal text-xl text-red pl-2 cursor-pointer">
+                      <span class="i-material-symbols-trending-down text-red"></span>
+                    </FormLabel>
                   </FormControl>
-                  <FormLabel class="font-normal text-red">↓</FormLabel>
                 </FormItem>
               </RadioGroup>
             </FormControl>
