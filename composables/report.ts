@@ -20,7 +20,7 @@ export function useReportForm(init: ReportFormInit) {
       name: z.string(),
       targetCity: z.string(),
       price: z.number().gt(0),
-      percent: z.array(z.number().gt(0).lt(200)),
+      percent: z.array(z.number().gt(70).lt(130)),
       trend: z.enum(['up', 'same', 'down'])
     })
   );

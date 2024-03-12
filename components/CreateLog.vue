@@ -33,14 +33,21 @@ import {
   FormMessage
 } from '@/components/ui/form';
 
-import type { CityInfo, ProductInfo } from '@/utils/types';
+import type { ProductInfo } from '@/utils/types';
 
-const props = defineProps<{ city: CityInfo; product: ProductInfo }>();
+const props = defineProps<{
+  sourceCityName: string // 原产地城市
+  targetCityName?: string // 目标城市
+  product: ProductInfo // 货物信息
+}>();
 
-const open = ref(false);
+const open = defineModel('open', {
+  type: Boolean,
+  default: false
+});
 
 const { form, onSubmit } = useReportForm({
-  sourceCity: props.city.name,
+  sourceCity: props.sourceCityName,
   name: props.product.name,
   onSubmitSuccess() {
     open.value = false;
@@ -50,26 +57,40 @@ const { form, onSubmit } = useReportForm({
 watch(open, (open) => {
   if (open) {
     form.resetForm();
+    if (props.targetCityName) {
+      form.setFieldValue("targetCity", props.targetCityName)
+    }
   }
 });
+
+const changePricePercent = (type: 'add' | 'reduce') => {
+  const percent = form.values.percent?.[0] ?? 100;
+  if (type === 'add') {
+    form.setFieldValue('percent', [percent + 1]);
+  } else {
+    form.setFieldValue('percent', [percent - 1]);
+  }
+}
 </script>
 
 <template>
   <Dialog v-model:open="open">
     <DialogTrigger as-child>
-      <Button variant="outline" size="sm">上报</Button>
+      <slot><div></div></slot>
     </DialogTrigger>
     <DialogContent class="sm:max-w-[625px]">
       <DialogHeader>
         <DialogTitle>上报价格变动</DialogTitle>
-        <!-- <DialogDescription>
-          Make changes to your profile here. Click save when you're done.
-        </DialogDescription> -->
       </DialogHeader>
       <form class="grid gap-4 py-4" @submit="onSubmit">
         <div class="space-x-2 text-sm">
           <span class="text-right font-bold">商品</span>
-          <span class="">{{ city.name }} - {{ product.name }}</span>
+          <span class="text-black">
+            从 
+            <span class="text-gray-400">{{ sourceCityName }}</span>
+            购买的 
+            <span class="text-gray-400">{{ product.name }}</span>
+          </span>
         </div>
 
         <FormField v-slot="{ componentField }" name="targetCity">
@@ -83,15 +104,19 @@ watch(open, (open) => {
               </FormControl>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem v-for="city in cities" :key="city.name" :value="city.name">{{
-                    city.name
-                  }}</SelectItem>
+                  <SelectItem v-for="city in cities" :key="city.name" :value="city.name">
+                    {{ city.name }}
+                  </SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
-            <FormDescription>{{
-              form.values.targetCity !== city.name ? '售出商品到该城市' : '从该城市买入商品'
-            }}</FormDescription>
+            <FormDescription>
+              {{
+                form.values.targetCity !== sourceCityName 
+                ? `出售 ${product.name} 到 ${form.values.targetCity ?? '--'}`
+                : `从 ${form.values.targetCity} 购买 ${product.name}`
+              }}
+            </FormDescription>
             <FormMessage />
           </FormItem>
         </FormField>
@@ -102,7 +127,7 @@ watch(open, (open) => {
             <FormControl>
               <Input
                 type="number"
-                :placeholder="form.values.targetCity !== city.name ? '售出价格' : '买入价格'"
+                :placeholder="form.values.targetCity !== sourceCityName ? '售出价格' : '买入价格'"
                 v-bind="componentField"
               />
             </FormControl>
@@ -111,36 +136,26 @@ watch(open, (open) => {
           </FormItem>
         </FormField>
 
-        <!-- <FormField v-slot="{ componentField }" name="percent">
-          <FormItem>
-            <FormLabel>价位</FormLabel>
-            <FormControl>
-              <Input
-                type="number"
-                :placeholder="form.values.targetCity !== city.name ? '售出价位' : '买入价位'"
-                v-bind="componentField"
-              />
-            </FormControl>
-            <FormDescription></FormDescription>
-            <FormMessage />
-          </FormItem>
-        </FormField> -->
         <FormField v-slot="{ componentField }" name="percent">
           <FormItem>
-            <FormLabel>价位</FormLabel>
+            <FormLabel>价位百分比</FormLabel>
             <FormControl>
-              <Slider
-                v-bind="componentField"
-                :default-value="[100]"
-                :max="199"
-                :min="1"
-                :step="1"
-              />
+              <div class="flex items-center space-x-2">
+                <span class="i-icon-park-outline-reduce-one text-xl cursor-pointer" @click="changePricePercent('reduce')"></span>
+                <Slider
+                  v-bind="componentField"
+                  :default-value="[100]"
+                  :max="130"
+                  :min="70"
+                  :step="1"
+                />
+                <span class="i-icon-park-outline-add-one text-xl cursor-pointer" @click="changePricePercent('add')"></span>
+              </div>
               <FormDescription class="flex justify-between">
-                <span
-                  >{{ form.values.targetCity !== city.name ? '售出价位' : '买入价位' }}
-                  {{ form.values.percent?.[0] ?? 100 }}%</span
-                >
+                <span>
+                  {{ form.values.targetCity !== sourceCityName ? '售出价位' : '买入价位' }}
+                  {{ form.values.percent?.[0] ?? 100 }}%
+                </span>
               </FormDescription>
             </FormControl>
             <FormMessage />
@@ -149,27 +164,25 @@ watch(open, (open) => {
 
         <FormField v-slot="{ componentField }" type="radio" name="trend">
           <FormItem class="space-y-3">
-            <FormLabel>趋势</FormLabel>
+            <FormLabel>涨跌趋势</FormLabel>
 
             <FormControl>
-              <RadioGroup class="flex flex-col space-y-0" v-bind="componentField">
-                <FormItem class="flex items-center space-y-0 gap-x-3">
+              <RadioGroup class="flex space-x-4" v-bind="componentField">
+                <FormItem class="flex items-center space-y-0">
                   <FormControl>
                     <RadioGroupItem value="up" />
+                    <FormLabel class="flex items-center font-normal text-xl text-green pl-2 cursor-pointer">
+                      <span class="i-material-symbols-trending-up text-green"></span>
+                    </FormLabel>
                   </FormControl>
-                  <FormLabel class="font-normal text-green">↑</FormLabel>
                 </FormItem>
-                <FormItem class="flex items-center space-y-0 gap-x-3">
-                  <FormControl>
-                    <RadioGroupItem value="same" />
-                  </FormControl>
-                  <FormLabel class="font-normal">-</FormLabel>
-                </FormItem>
-                <FormItem class="flex items-center space-y-0 gap-x-3">
+                <FormItem class="flex items-center space-y-0">
                   <FormControl>
                     <RadioGroupItem value="down" />
+                    <FormLabel class="flex items-center font-normal text-xl text-red pl-2 cursor-pointer">
+                      <span class="i-material-symbols-trending-down text-red"></span>
+                    </FormLabel>
                   </FormControl>
-                  <FormLabel class="font-normal text-red">↓</FormLabel>
                 </FormItem>
               </RadioGroup>
             </FormControl>
