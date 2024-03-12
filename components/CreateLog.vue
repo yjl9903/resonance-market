@@ -81,14 +81,16 @@ const changePricePercent = (type: 'add' | 'reduce') => {
     <DialogContent class="sm:max-w-[625px]">
       <DialogHeader>
         <DialogTitle>上报价格变动</DialogTitle>
-        <!-- <DialogDescription>
-          Make changes to your profile here. Click save when you're done.
-        </DialogDescription> -->
       </DialogHeader>
       <form class="grid gap-4 py-4" @submit="onSubmit">
         <div class="space-x-2 text-sm">
           <span class="text-right font-bold">商品</span>
-          <span class="">{{ sourceCityName }} - {{ product.name }}</span>
+          <span class="text-black">
+            从 
+            <span class="text-gray-400">{{ sourceCityName }}</span>
+            购买的 
+            <span class="text-gray-400">{{ product.name }}</span>
+          </span>
         </div>
 
         <FormField v-slot="{ componentField }" name="targetCity">
@@ -108,9 +110,13 @@ const changePricePercent = (type: 'add' | 'reduce') => {
                 </SelectGroup>
               </SelectContent>
             </Select>
-            <FormDescription>{{
-              form.values.targetCity !== sourceCityName ? '售出商品到该城市' : '从该城市买入商品'
-            }}</FormDescription>
+            <FormDescription>
+              {{
+                form.values.targetCity !== sourceCityName 
+                ? `出售 ${product.name} 到 ${form.values.targetCity ?? '--'}`
+                : `从 ${form.values.targetCity} 购买 ${product.name}`
+              }}
+            </FormDescription>
             <FormMessage />
           </FormItem>
         </FormField>
@@ -132,7 +138,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
 
         <FormField v-slot="{ componentField }" name="percent">
           <FormItem>
-            <FormLabel>价位</FormLabel>
+            <FormLabel>价位百分比</FormLabel>
             <FormControl>
               <div class="flex items-center space-x-2">
                 <span class="i-icon-park-outline-reduce-one text-base cursor-pointer" @click="changePricePercent('reduce')"></span>
