@@ -141,7 +141,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
             <FormLabel>价位百分比</FormLabel>
             <FormControl>
               <div class="flex items-center space-x-2">
-                <span class="i-icon-park-outline-reduce-one text-base cursor-pointer" @click="changePricePercent('reduce')"></span>
+                <span class="i-icon-park-outline-reduce-one text-xl cursor-pointer" @click="changePricePercent('reduce')"></span>
                 <Slider
                   v-bind="componentField"
                   :default-value="[100]"
@@ -149,7 +149,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
                   :min="70"
                   :step="1"
                 />
-                <span class="i-icon-park-outline-add-one text-base cursor-pointer" @click="changePricePercent('add')"></span>
+                <span class="i-icon-park-outline-add-one text-xl cursor-pointer" @click="changePricePercent('add')"></span>
               </div>
               <FormDescription class="flex justify-between">
                 <span>
