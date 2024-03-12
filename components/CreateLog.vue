@@ -62,6 +62,15 @@ watch(open, (open) => {
     }
   }
 });
+
+const changePricePercent = (type: 'add' | 'reduce') => {
+  const percent = form.values.percent?.[0] ?? 100;
+  if (type === 'add') {
+    form.setFieldValue('percent', [percent + 1]);
+  } else {
+    form.setFieldValue('percent', [percent - 1]);
+  }
+}
 </script>
 
 <template>
@@ -121,36 +130,26 @@ watch(open, (open) => {
           </FormItem>
         </FormField>
 
-        <!-- <FormField v-slot="{ componentField }" name="percent">
-          <FormItem>
-            <FormLabel>价位</FormLabel>
-            <FormControl>
-              <Input
-                type="number"
-                :placeholder="form.values.targetCity !== sourceCityName ? '售出价位' : '买入价位'"
-                v-bind="componentField"
-              />
-            </FormControl>
-            <FormDescription></FormDescription>
-            <FormMessage />
-          </FormItem>
-        </FormField> -->
         <FormField v-slot="{ componentField }" name="percent">
           <FormItem>
             <FormLabel>价位</FormLabel>
             <FormControl>
-              <Slider
-                v-bind="componentField"
-                :default-value="[100]"
-                :max="199"
-                :min="1"
-                :step="1"
-              />
+              <div class="flex items-center space-x-2">
+                <span class="i-icon-park-outline-reduce-one text-base cursor-pointer" @click="changePricePercent('reduce')"></span>
+                <Slider
+                  v-bind="componentField"
+                  :default-value="[100]"
+                  :max="130"
+                  :min="70"
+                  :step="1"
+                />
+                <span class="i-icon-park-outline-add-one text-base cursor-pointer" @click="changePricePercent('add')"></span>
+              </div>
               <FormDescription class="flex justify-between">
-                <span
-                  >{{ form.values.targetCity !== sourceCityName ? '售出价位' : '买入价位' }}
-                  {{ form.values.percent?.[0] ?? 100 }}%</span
-                >
+                <span>
+                  {{ form.values.targetCity !== sourceCityName ? '售出价位' : '买入价位' }}
+                  {{ form.values.percent?.[0] ?? 100 }}%
+                </span>
               </FormDescription>
             </FormControl>
             <FormMessage />
