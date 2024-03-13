@@ -854,8 +854,8 @@
     "city": "铁盟哨站",
     "type": "normal",
     "valuable": true,
-    "baseVolume": 29,
-    "basePrice": 1761,
+    "baseVolume": 15,
+    "basePrice": 1710,
     "cost": null,
     "transactions": [
       {
@@ -884,7 +884,7 @@
         "sourceCity": "铁盟哨站",
         "targetCity": "曼德矿场",
         "mileage": 94,
-        "basePrice": 2043
+        "basePrice": 1761
       },
       {
         "name": "炮弹",
@@ -1235,8 +1235,8 @@
     "city": "7号自由港",
     "type": "specialty",
     "valuable": true,
-    "baseVolume": 10,
-    "basePrice": 2300,
+    "baseVolume": 7,
+    "basePrice": 2304,
     "cost": null,
     "transactions": [
       {
@@ -1295,7 +1295,7 @@
     "city": "7号自由港",
     "type": "specialty",
     "valuable": true,
-    "baseVolume": 16,
+    "baseVolume": 14,
     "basePrice": 1777,
     "cost": null,
     "transactions": [
@@ -1363,7 +1363,7 @@
     "type": "specialty",
     "valuable": true,
     "baseVolume": 35,
-    "basePrice": 588,
+    "basePrice": 587,
     "cost": null,
     "transactions": [
       {
@@ -1429,7 +1429,7 @@
     "city": "7号自由港",
     "type": "normal",
     "valuable": false,
-    "baseVolume": 21,
+    "baseVolume": 29,
     "basePrice": 1024,
     "cost": null,
     "transactions": [
@@ -1496,7 +1496,7 @@
     "city": "7号自由港",
     "type": "normal",
     "valuable": false,
-    "baseVolume": 28,
+    "baseVolume": 39,
     "basePrice": 777,
     "cost": null,
     "transactions": [
@@ -3764,7 +3764,7 @@
     "city": "曼德矿场",
     "type": "specialty",
     "valuable": true,
-    "baseVolume": 17,
+    "baseVolume": 12,
     "basePrice": 3071,
     "cost": null,
     "transactions": [
