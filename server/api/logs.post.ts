@@ -13,26 +13,41 @@ export default defineEventHandler(async (event) => {
 
   const data = z.array(schema).safeParse(body);
   if (data.success) {
-    const resp = await db
-      .insert(logs)
-      .values(
-        data.data.map((data) => ({
-          ...data,
-          // anonymous
-          uploaderId: 1
-        }))
-      )
-      .onConflictDoNothing()
-      .returning({ id: logs.id });
+    let count = 0;
+    const chunks = chunkize(data.data, 10);
 
-    if (resp.length > 0) {
+    for (const chunk of chunks) {
+      const resp = await db
+        .insert(logs)
+        .values(
+          chunk.map((data) => ({
+            ...data,
+            // anonymous
+            uploaderId: 1
+          }))
+        )
+        .onConflictDoNothing()
+        .returning({ id: logs.id });
+
+      count += resp.length;
+    }
+
+    if (count > 0) {
       // Mark cache invalidated
       await invalidateValuableLogsCache();
     }
 
-    return { count: resp.length };
+    return { count };
   } else {
     setResponseStatus(event, 400);
     return { count: 0, error: 'Body is invalid' };
   }
 });
+
+function chunkize<T>(arr: T[], chunkSize: number) {
+  const result: T[][] = [];
+  for (let i = 0; i < arr.length; i += chunkSize) {
+    result.push(arr.slice(i, i + chunkSize));
+  }
+  return result;
+}
