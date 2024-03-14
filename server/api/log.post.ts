@@ -18,27 +18,51 @@ export const schema = z.object({
 
 export default defineEventHandler(async (event) => {
   const db = await connectDatabase();
-  const body = await readBody<Omit<NewLog, 'uploaderId'>>(event);
+  const body = await readBody<Omit<NewLog, 'uploaderId'> | Omit<NewLog, 'uploaderId'>[]>(event);
 
-  const data = schema.safeParse(body);
-  if (data.success) {
-    const resp = await db
-      .insert(logs)
-      .values({
-        ...data.data,
-        // anonymous
-        uploaderId: 1
-      })
-      .returning({ id: logs.id });
+  if (Array.isArray(body)) {
+    const data = z.array(schema).safeParse(body);
+    if (data.success) {
+      const resp = await db
+        .insert(logs)
+        .values(
+          data.data.map((data) => ({
+            ...data,
+            // anonymous
+            uploaderId: 1
+          }))
+        )
+        .onConflictDoNothing()
+        .returning({ id: logs.id });
 
-    if (resp.length > 0) {
-      // Mark cache invalidated
-      await invalidateValuableLogsCache();
+      if (resp.length > 0) {
+        // Mark cache invalidated
+        await invalidateValuableLogsCache();
+      }
+
+      return { count: resp.length };
     }
-
-    return { count: resp.length };
   } else {
-    setResponseStatus(event, 400);
-    return { count: 0, error: 'Body is invalid' };
+    const data = schema.safeParse(body);
+    if (data.success) {
+      const resp = await db
+        .insert(logs)
+        .values({
+          ...data.data,
+          // anonymous
+          uploaderId: 1
+        })
+        .returning({ id: logs.id });
+
+      if (resp.length > 0) {
+        // Mark cache invalidated
+        await invalidateValuableLogsCache();
+      }
+
+      return { count: resp.length };
+    }
   }
+
+  setResponseStatus(event, 400);
+  return { count: 0, error: 'Body is invalid' };
 });
