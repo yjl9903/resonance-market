@@ -5,7 +5,7 @@ import { logs, type NewLog } from '~/drizzle/schema';
 import { connectDatabase } from '../utils/database';
 import { invalidateValuableLogsCache } from '../utils/cache';
 
-export const schema = z.object({
+const schema = z.object({
   name: z.string(),
   sourceCity: z.string(),
   targetCity: z.string(),
@@ -23,46 +23,73 @@ export default defineEventHandler(async (event) => {
   if (Array.isArray(body)) {
     const data = z.array(schema).safeParse(body);
     if (data.success) {
-      const resp = await db
-        .insert(logs)
-        .values(
-          data.data.map((data) => ({
-            ...data,
-            // anonymous
-            uploaderId: 1
-          }))
-        )
-        .onConflictDoNothing()
-        .returning({ id: logs.id });
+      let count = 0;
+      const chunks = chunkize(data.data, 10);
 
-      if (resp.length > 0) {
-        // Mark cache invalidated
-        await invalidateValuableLogsCache();
+      try {
+        for (const chunk of chunks) {
+          const resp = await db
+            .insert(logs)
+            .values(
+              chunk.map((data) => ({
+                ...data,
+                // anonymous
+                uploaderId: 1
+              }))
+            )
+            .onConflictDoNothing()
+            .returning({ id: logs.id });
+
+          count += resp.length;
+        }
+      } catch (error) {
+        console.error(error);
+        setResponseStatus(event, 500);
+        return { count, error: (error as any).message };
+      } finally {
+        if (count > 0) {
+          // Mark cache invalidated
+          await invalidateValuableLogsCache();
+        }
       }
 
-      return { count: resp.length };
+      return { count };
     }
   } else {
     const data = schema.safeParse(body);
     if (data.success) {
-      const resp = await db
-        .insert(logs)
-        .values({
-          ...data.data,
-          // anonymous
-          uploaderId: 1
-        })
-        .returning({ id: logs.id });
+      try {
+        const resp = await db
+          .insert(logs)
+          .values({
+            ...data.data,
+            // anonymous
+            uploaderId: 1
+          })
+          .returning({ id: logs.id });
 
-      if (resp.length > 0) {
-        // Mark cache invalidated
-        await invalidateValuableLogsCache();
+        if (resp.length > 0) {
+          // Mark cache invalidated
+          await invalidateValuableLogsCache();
+        }
+
+        return { count: resp.length };
+      } catch (error) {
+        console.error(error);
+        setResponseStatus(event, 500);
+        return { count: 0, error: (error as any).message };
       }
-
-      return { count: resp.length };
     }
   }
 
   setResponseStatus(event, 400);
   return { count: 0, error: 'Body is invalid' };
 });
+
+function chunkize<T>(arr: T[], chunkSize: number) {
+  const result: T[][] = [];
+  for (let i = 0; i < arr.length; i += chunkSize) {
+    result.push(arr.slice(i, i + chunkSize));
+  }
+  return result;
+}
