@@ -6,6 +6,7 @@ import type { ProductInfo } from '~/utils/types';
 const content = (await fs.readFile(`./scripts/全商品统计.csv`, 'utf-8'))
   .replace(/阿妮塔战备工厂\(lv40\)/g, '阿妮塔战备工厂')
   .replace(/七号自由港/g, '7号自由港')
+  .replace(/班节虾/g, '斑节虾')
   .split('\n');
 
 const header = content[0].split(',');
@@ -91,7 +92,7 @@ const valuable = new Set([
   '7号自由港:桦石发财树',
   '7号自由港:石墨烯',
   '7号自由港:人工晶花',
-  '7号自由港:班节虾',
+  '7号自由港:斑节虾',
   '7号自由港:年货大礼包',
   '澄明数据中心:游戏机',
   '澄明数据中心:银矿石',
@@ -139,7 +140,6 @@ for (const row of data) {
     cost: row.cost === '时价' ? null : row.cost !== '' ? +row.cost : 0,
     transactions: []
   };
-  console.log(row);
 
   for (const city of cities) {
     if (!row[`${city}_mileage`] || row[`${city}_basePrice`] === '') continue;

@@ -1358,7 +1358,7 @@
     ]
   },
   {
-    "name": "班节虾",
+    "name": "斑节虾",
     "city": "7号自由港",
     "type": "specialty",
     "valuable": true,
@@ -1367,56 +1367,56 @@
     "cost": null,
     "transactions": [
       {
-        "name": "班节虾",
+        "name": "斑节虾",
         "sourceCity": "7号自由港",
         "targetCity": "修格里城",
         "mileage": 259,
         "basePrice": 782
       },
       {
-        "name": "班节虾",
+        "name": "斑节虾",
         "sourceCity": "7号自由港",
         "targetCity": "铁盟哨站",
         "mileage": 324,
         "basePrice": 869
       },
       {
-        "name": "班节虾",
+        "name": "斑节虾",
         "sourceCity": "7号自由港",
         "targetCity": "澄明数据中心",
         "mileage": 202,
         "basePrice": 782
       },
       {
-        "name": "班节虾",
+        "name": "斑节虾",
         "sourceCity": "7号自由港",
         "targetCity": "阿妮塔战备工厂",
         "mileage": 116,
         "basePrice": 694
       },
       {
-        "name": "班节虾",
+        "name": "斑节虾",
         "sourceCity": "7号自由港",
         "targetCity": "阿妮塔能源研究所",
         "mileage": 162,
         "basePrice": 694
       },
       {
-        "name": "班节虾",
+        "name": "斑节虾",
         "sourceCity": "7号自由港",
         "targetCity": "荒原站",
         "mileage": 399,
         "basePrice": 958
       },
       {
-        "name": "班节虾",
+        "name": "斑节虾",
         "sourceCity": "7号自由港",
         "targetCity": "曼德矿场",
         "mileage": 417,
         "basePrice": 958
       },
       {
-        "name": "班节虾",
+        "name": "斑节虾",
         "sourceCity": "7号自由港",
         "targetCity": "淘金乐园",
         "mileage": 514,
