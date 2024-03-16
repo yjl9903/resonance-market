@@ -78,8 +78,6 @@ const sortCitesByPercent = (filteredCities: CityInfo[], sourceCityName: string, 
               <TableHead class="border-r"><div class="w-30">原产地采购价</div></TableHead>
               <TableHead :colspan="sellCities.length">城市售卖报价(按利润高低从左到右降序排序)</TableHead>
             </template>
-            <!-- 操作列 -->
-            <TableHead class="w-[100px]">操作</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -127,12 +125,6 @@ const sortCitesByPercent = (filteredCities: CityInfo[], sourceCityName: string, 
                 />
               </TableCell>
             </template>
-            <!-- 操作单元格 -->
-            <TableCell>
-              <CreateLog :source-city-name="city.name" :product="product">
-                <Button variant="outline" size="sm">上报</Button>
-              </CreateLog>
-            </TableCell>
           </TableRow>
         </TableBody>
       </Table>
