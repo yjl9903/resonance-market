@@ -53,25 +53,21 @@ const { form, onSubmit } = useReportForm({
       </FormItem>
     </FormField>
 
-    <!-- <FormField v-slot="{ componentField }" name="percent">
-          <FormItem>
-            <FormLabel>价位</FormLabel>
-            <FormControl>
-              <Input
-                type="number"
-                :placeholder="form.values.targetCity !== city.name ? '售出价位' : '买入价位'"
-                v-bind="componentField"
-              />
-            </FormControl>
-            <FormDescription></FormDescription>
-            <FormMessage />
-          </FormItem>
-        </FormField> -->
     <FormField v-slot="{ componentField }" name="percent">
       <FormItem>
         <FormLabel>价位</FormLabel>
         <FormControl>
-          <Slider v-bind="componentField" :default-value="[100]" :max="199" :min="1" :step="1" />
+          <div class="flex items-center space-x-2">
+            <span class="i-icon-park-outline-reduce-one text-xl cursor-pointer" @click="changePricePercent('reduce')"></span>
+            <Slider
+              v-bind="componentField"
+              :default-value="[100]"
+              :max="130"
+              :min="70"
+              :step="1"
+            />
+            <span class="i-icon-park-outline-add-one text-xl cursor-pointer" @click="changePricePercent('add')"></span>
+          </div>
           <FormDescription class="flex justify-between">
             <span>{{ '售出价位' }} {{ form.values.percent?.[0] ?? 100 }}%</span>
           </FormDescription>
@@ -82,27 +78,25 @@ const { form, onSubmit } = useReportForm({
 
     <FormField v-slot="{ componentField }" type="radio" name="trend">
       <FormItem class="space-y-3">
-        <FormLabel>趋势</FormLabel>
+        <FormLabel>涨跌趋势</FormLabel>
 
         <FormControl>
-          <RadioGroup class="flex flex-col space-y-0" v-bind="componentField">
-            <FormItem class="flex items-center space-y-0 gap-x-3">
+          <RadioGroup class="flex space-x-4" v-bind="componentField">
+            <FormItem class="flex items-center space-y-0">
               <FormControl>
                 <RadioGroupItem value="up" />
+                <FormLabel class="flex items-center font-normal text-xl text-green pl-2 cursor-pointer">
+                  <span class="i-material-symbols-trending-up text-green"></span>
+                </FormLabel>
               </FormControl>
-              <FormLabel class="font-normal text-green">↑</FormLabel>
             </FormItem>
-            <FormItem class="flex items-center space-y-0 gap-x-3">
-              <FormControl>
-                <RadioGroupItem value="same" />
-              </FormControl>
-              <FormLabel class="font-normal">-</FormLabel>
-            </FormItem>
-            <FormItem class="flex items-center space-y-0 gap-x-3">
+            <FormItem class="flex items-center space-y-0">
               <FormControl>
                 <RadioGroupItem value="down" />
+                <FormLabel class="flex items-center font-normal text-xl text-red pl-2 cursor-pointer">
+                  <span class="i-material-symbols-trending-down text-red"></span>
+                </FormLabel>
               </FormControl>
-              <FormLabel class="font-normal text-red">↓</FormLabel>
             </FormItem>
           </RadioGroup>
         </FormControl>
