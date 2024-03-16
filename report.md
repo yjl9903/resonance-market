@@ -4,7 +4,7 @@
 
 在 `${url}/api/log` 这一 endpoint 上, 接受 POST 请求，请求体为 JSON 格式的对象, 包含以下字段:
 
-```JSON
+```TypeScript
 {
     "name": ProductName,
     "sourceCity": CityName,
@@ -50,7 +50,7 @@
 
 在 `${url}/api/logs` 这一 endpoint 上, 接受 POST 请求，请求体为 JSON 格式的列表, 列表中每一个对象与单次上传的格式相同:
 
-```JSON
+```TypeScript
 [
     {
         "name": ProductName,
@@ -72,7 +72,7 @@
 
 预期响应为 `200 OK`, 响应体为
 
-```JSON
+```TypeScript
 {
     "count": number
 }
