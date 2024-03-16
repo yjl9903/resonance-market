@@ -85,7 +85,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
       <form class="grid gap-4 py-4" @submit="onSubmit">
         <div class="space-x-2 text-sm">
           <span class="text-right font-bold">商品</span>
-          <span class="text-black">
+          <span class="text-base">
             从 
             <span class="text-gray-400">{{ sourceCityName }}</span>
             购买的 
