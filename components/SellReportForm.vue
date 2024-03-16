@@ -28,6 +28,15 @@ const { form, onSubmit } = useReportForm({
   name: props.product.name,
   targetCity: props.target.name
 });
+
+const changePricePercent = (type: 'add' | 'reduce') => {
+  const percent = form.values.percent?.[0] ?? 100;
+  if (type === 'add') {
+    form.setFieldValue('percent', [percent + 1]);
+  } else {
+    form.setFieldValue('percent', [percent - 1]);
+  }
+}
 </script>
 
 <template>
