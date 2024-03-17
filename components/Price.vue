@@ -28,13 +28,9 @@ const store = useLatestLogs();
 const profit = computed(() => {
   if (!props.log || props.log?.type === 'buy') return undefined;
 
-  const productLog = store.getLatestLog(props.log.sourceCity, props.log.name, props.log.sourceCity);
-  if (productLog) {
-    return Math.round(
-      1.06 * props.log.price -
-        0.85 * productLog.price -
-        (1.06 * props.log.price - 0.85 * productLog.price) * 0.06
-    );
+  const sourceCityLatestLog = store.getLatestLog(props.log.sourceCity, props.log.name, props.log.sourceCity);
+  if (sourceCityLatestLog) {
+    return Math.round(props.log.price - sourceCityLatestLog.price)
   } else {
     return undefined;
   }
