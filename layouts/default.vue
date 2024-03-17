@@ -17,6 +17,7 @@ import {
   MenubarTrigger,
   MenubarButton
 } from '@/components/ui/menubar';
+import { toast } from 'vue-sonner';
 
 const settingStore = useSettingStore()
 </script>
@@ -26,9 +27,7 @@ const settingStore = useSettingStore()
     <nav class="border-b pt-12 mb-4">
       <div class="main">
         <div>
-          <NuxtLink to="/" class="text-2xl font-bold hover:text-base-600 select-none"
-            >雷索纳斯市场</NuxtLink
-          >
+          <NuxtLink to="/" class="text-2xl font-bold hover:text-base-600 select-none">雷索纳斯市场</NuxtLink>
         </div>
         <Menubar class="mt-4">
           <MenubarButton>
@@ -41,9 +40,7 @@ const settingStore = useSettingStore()
                 <MenubarSubTrigger>{{ city.name }}</MenubarSubTrigger>
                 <MenubarSubContent>
                   <MenubarItem v-for="product in city.products" :key="product.name" as-child>
-                    <NuxtLink :to="`/product/${city.name}/${product.name}`">{{
-                      product.name
-                    }}</NuxtLink>
+                    <NuxtLink :to="`/product/${city.name}/${product.name}`">{{ product.name }}</NuxtLink>
                   </MenubarItem>
                 </MenubarSubContent>
               </MenubarSub>
@@ -55,21 +52,17 @@ const settingStore = useSettingStore()
               <MenubarSub>
                 <MenubarSubTrigger>在城市买入</MenubarSubTrigger>
                 <MenubarSubContent>
-                  <MenubarItem v-for="city in cities" :key="city.name" as-child
-                    ><NuxtLink :to="`/report/buy/${city.name}`">{{
-                      city.name
-                    }}</NuxtLink></MenubarItem
-                  >
+                  <MenubarItem v-for="city in cities" :key="city.name" as-child>
+                    <NuxtLink :to="`/report/buy/${city.name}`">{{ city.name }}</NuxtLink>
+                  </MenubarItem>
                 </MenubarSubContent>
               </MenubarSub>
               <MenubarSub>
                 <MenubarSubTrigger>在城市卖出</MenubarSubTrigger>
                 <MenubarSubContent>
-                  <MenubarItem v-for="city in cities" :key="city.name" as-child
-                    ><NuxtLink :to="`/report/sell/${city.name}`">{{
-                      city.name
-                    }}</NuxtLink></MenubarItem
-                  >
+                  <MenubarItem v-for="city in cities" :key="city.name" as-child>
+                    <NuxtLink :to="`/report/sell/${city.name}`">{{ city.name }}</NuxtLink>
+                  </MenubarItem>
                 </MenubarSubContent>
               </MenubarSub>
             </MenubarContent>
@@ -77,100 +70,106 @@ const settingStore = useSettingStore()
           <MenubarMenu>
             <MenubarTrigger>设置</MenubarTrigger>
             <MenubarContent>
-              <MenubarItem as-child>
-                <a
-                  class="hover:bg-gray-100 cursor-pointer flex justify-between"
-                  @click="settingStore.switchListSortModeTo('byCity')"
-                >
-                  <div class="flex items-center">
-                    <span class="i-icon-park-outline-city-one mr-1 block w-4"></span>
-                    <span>按城市排序</span>
-                  </div>
-                  <span v-if="settingStore.listSortMode === 'byCity'" class="i-material-symbols-check"></span>
-                </a>
-              </MenubarItem>
-              <MenubarItem as-child>
-                <a
-                  class="hover:bg-gray-100 cursor-pointer flex justify-between"
-                  @click="settingStore.switchListSortModeTo('byProfit')"
-                >
-                  <div class="flex items-center">
-                    <span class="i-icon-park-outline-income-one mr-1 block w-4"></span>
-                    <span>按利润排序</span>
-                  </div>
-                  <span v-if="settingStore.listSortMode === 'byProfit'" class="i-material-symbols-check"></span>
-                </a>
-              </MenubarItem>
+              <MenubarSub>
+                <MenubarSubTrigger>售出排序依据</MenubarSubTrigger>
+                <MenubarSubContent>
+                  <MenubarItem as-child>
+                    <a
+                      class="hover:bg-gray-100 cursor-pointer flex justify-between"
+                      @click="settingStore.switchListSortModeTo('byCity')"
+                    >
+                      <div class="flex items-center mr-2">
+                        <span class="i-icon-park-outline-city-one mr-1 block w-4"></span>
+                        <span>按城市排序</span>
+                      </div>
+                      <span v-if="settingStore.listSortMode === 'byCity'" class="i-material-symbols-check"></span>
+                    </a>
+                  </MenubarItem>
+                  <MenubarItem as-child>
+                    <a
+                      class="hover:bg-gray-100 cursor-pointer flex justify-between"
+                      @click="settingStore.switchListSortModeTo('byProfit')"
+                    >
+                      <div class="flex items-center mr-2">
+                        <span class="i-icon-park-outline-income-one mr-1 block w-4"></span>
+                        <span>按单位利润排序</span>
+                      </div>
+                      <span v-if="settingStore.listSortMode === 'byProfit'" class="i-material-symbols-check"></span>
+                    </a>
+                  </MenubarItem>
+                  <MenubarItem as-child>
+                    <a
+                      class="hover:bg-gray-100 cursor-pointer flex justify-between"
+                      @click="settingStore.switchListSortModeTo('byPerTicketProfit')"
+                    >
+                      <div class="flex items-center mr-2">
+                        <span class="i-icon-park-outline-ticket mr-1 block w-4"></span>
+                        <span>按单票利润排序</span>
+                      </div>
+                      <span v-if="settingStore.listSortMode === 'byPerTicketProfit'" class="i-material-symbols-check"></span>
+                    </a>
+                  </MenubarItem>
+                </MenubarSubContent>
+                <MenubarSub>
+                  <MenubarSubTrigger>利润计算规则</MenubarSubTrigger>
+                  <MenubarSubContent>
+                    <MenubarItem as-child>
+                      <a
+                        class="hover:bg-gray-100 cursor-pointer flex justify-between"
+                        @click="toast('功能正在开发中，敬请期待')"
+                      >
+                        <div class="flex items-center mr-2">
+                          <span class="i-icon-park-outline-positive-dynamics mr-1 block w-4"></span>
+                          <span>最大砍价抬价</span>
+                        </div>
+                        <span v-if="settingStore.profitComputeRule === 'maxPriceChange'" class="i-material-symbols-check"></span>
+                      </a>
+                    </MenubarItem>
+                    <MenubarItem as-child>
+                      <a
+                        class="hover:bg-gray-100 cursor-pointer flex justify-between"
+                        @click="settingStore.switchProfitComputeRuleTo('noChange')"
+                      >
+                        <div class="flex items-center mr-2">
+                          <span class="i-icon-park-outline-negative-dynamics mr-1 block w-4"></span>
+                          <span>不砍价不抬价</span>
+                        </div>
+                        <span v-if="settingStore.profitComputeRule === 'noChange'" class="i-material-symbols-check"></span>
+                      </a>
+                    </MenubarItem>
+                    <MenubarItem as-child>
+                      <a
+                        class="hover:bg-gray-100 cursor-pointer flex justify-between"
+                        @click="toast('功能正在开发中，敬请期待')"
+                      >
+                        <div class="flex items-center mr-2">
+                          <span class="i-icon-park-outline-percentage mr-1 block w-4"></span>
+                          <span>不计算税收</span>
+                        </div>
+                        <span class="i-material-symbols-check"></span>
+                      </a>
+                    </MenubarItem>
+                  </MenubarSubContent>
+                </MenubarSub>
+              </MenubarSub>
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>
             <MenubarTrigger>关于</MenubarTrigger>
             <MenubarContent>
               <MenubarItem as-child>
-                <a href="https://github.com/yjl9903/resonance-market" target="_blank"
-                  ><span i-carbon-logo-github mr-1 block w-4></span><span>GitHub</span></a
-                >
+                <a href="https://github.com/yjl9903/resonance-market" target="_blank">
+                  <span i-carbon-logo-github mr-1 block w-4></span><span>GitHub</span>
+                </a>
               </MenubarItem>
               <MenubarItem as-child>
-                <a href="https://space.bilibili.com/1631015691" target="_blank"
-                  ><span i-simple-icons-bilibili mr-1 block w-4></span
-                  ><span>雷索纳斯官方 Bilibili</span></a
-                >
+                <a href="https://space.bilibili.com/1631015691" target="_blank">
+                  <span i-simple-icons-bilibili mr-1 block w-4></span>
+                  <span>雷索纳斯官方 Bilibili</span>
+                </a>
               </MenubarItem>
             </MenubarContent>
           </MenubarMenu>
-          <!-- <MenubarMenu>
-            <MenubarTrigger>Edit</MenubarTrigger>
-            <MenubarContent>
-              <MenubarItem> Undo <MenubarShortcut>⌘Z</MenubarShortcut> </MenubarItem>
-              <MenubarItem> Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut> </MenubarItem>
-              <MenubarSeparator />
-              <MenubarSub>
-                <MenubarSubTrigger>Find</MenubarSubTrigger>
-                <MenubarSubContent>
-                  <MenubarItem>Search the web</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Find...</MenubarItem>
-                  <MenubarItem>Find Next</MenubarItem>
-                  <MenubarItem>Find Previous</MenubarItem>
-                </MenubarSubContent>
-              </MenubarSub>
-              <MenubarSeparator />
-              <MenubarItem>Cut</MenubarItem>
-              <MenubarItem>Copy</MenubarItem>
-              <MenubarItem>Paste</MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-          <MenubarMenu>
-            <MenubarTrigger>View</MenubarTrigger>
-            <MenubarContent>
-              <MenubarCheckboxItem>Always Show Bookmarks Bar</MenubarCheckboxItem>
-              <MenubarCheckboxItem checked> Always Show Full URLs </MenubarCheckboxItem>
-              <MenubarSeparator />
-              <MenubarItem inset> Reload <MenubarShortcut>⌘R</MenubarShortcut> </MenubarItem>
-              <MenubarItem disabled inset>
-                Force Reload <MenubarShortcut>⇧⌘R</MenubarShortcut>
-              </MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem inset> Toggle Fullscreen </MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem inset> Hide Sidebar </MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-          <MenubarMenu>
-            <MenubarTrigger>Profiles</MenubarTrigger>
-            <MenubarContent>
-              <MenubarRadioGroup value="benoit">
-                <MenubarRadioItem value="andy"> Andy </MenubarRadioItem>
-                <MenubarRadioItem value="benoit"> Benoit </MenubarRadioItem>
-                <MenubarRadioItem value="Luis"> Luis </MenubarRadioItem>
-              </MenubarRadioGroup>
-              <MenubarSeparator />
-              <MenubarItem inset> Edit... </MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem inset> Add Profile... </MenubarItem>
-            </MenubarContent>
-          </MenubarMenu> -->
         </Menubar>
       </div>
     </nav>

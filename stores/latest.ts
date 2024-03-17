@@ -6,7 +6,7 @@ export const useLatestLogs = defineStore('latest_logs', () => {
 
   const fetch = async () => {
     const resp = await $fetch(`/api/product`, { retry: 3 });
-    logs.value = resp.latest.map((l) => ({ ...l, uploadedAt: new Date(l.uploadedAt) }));
+    logs.value = resp.latest.map(log => ({ ...log, uploadedAt: new Date(log.uploadedAt) }));
     maps.clear();
     for (const log of logs.value) {
       const key = `${log.sourceCity} - ${log.name}`;
