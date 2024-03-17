@@ -116,8 +116,12 @@ const sortCitesByPerTicketProfit = (filteredCities: CityInfo[], sourceCityName: 
             <!-- 按利润排序 -->
             <template v-else>
               <TableHead class="border-r"><div class="w-30">原产地采购价</div></TableHead>
-              <TableHead v-if="settingStore.listSortMode === 'byProfit'" :colspan="sellCities.length">城市售卖报价(按单位利润高低从左到右降序排序)</TableHead>
-              <TableHead v-if="settingStore.listSortMode === 'byPerTicketProfit'" :colspan="sellCities.length">城市售卖报价(按单票利润高低从左到右降序排序)</TableHead>
+              <TableHead :colspan="sellCities.length">
+                城市售卖报价(按
+                {{ settingStore.listSortMode === 'byProfit' ? "单位" : "" }}
+                {{ settingStore.listSortMode === 'byPerTicketProfit' ? "单票" : "" }}
+                利润高低从左到右降序排序)
+              </TableHead>
             </template>
           </TableRow>
         </TableHeader>
@@ -136,14 +140,14 @@ const sortCitesByPerTicketProfit = (filteredCities: CityInfo[], sourceCityName: 
             </TableCell>
             <!-- 被排序过的售出城市列表 -->
             <TableCell
-              v-for="target in sortCitesWithSetting(sellCities, city.name, product.name)"
-              :key="target.name"
+              v-for="targetCity in sortCitesWithSetting(sellCities, city.name, product.name)"
+              :key="`${product.name}-${targetCity.name}`"
             >
               <Price
                 :timestamp="timestamp"
                 :product="getProductInfo(city.name, product.name)!"
-                :transaction="getTransactionInfo(city.name, product.name, target.name)"
-                :log="store.getLatestLog(city.name, product.name, target.name)"
+                :transaction="getTransactionInfo(city.name, product.name, targetCity.name)"
+                :log="store.getLatestLog(city.name, product.name, targetCity.name)"
               />
             </TableCell>
           </TableRow>
