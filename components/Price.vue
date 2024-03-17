@@ -14,17 +14,20 @@ const props = defineProps<{
 
 const settingStore = useSettingStore()
 
+const store = useLatestLogs();
+
+// 受控的 Tooltip 打开状态
 const openTooltip = ref(false);
 
+// 受控的 上报价格对话框 打开状态
 const reportDialogVisible = ref(false);
 
+// 记录是否已过期
 const isOutdated = computed(() => {
   if (!props.log) return true;
   props.timestamp;
   return isLogValid(props.log);
 });
-
-const store = useLatestLogs();
 
 // 单位利润
 const profit = computed(() => {
@@ -44,6 +47,7 @@ const perTicketProfit = computed(() => {
   return (profit.value ?? 0) * (props.product.baseVolume ?? 0);
 });
 
+// 单位利润颜色
 const profitColor = computed(() => {
   if (profit.value === undefined || isOutdated.value) return undefined;
   const value = +profit.value;
@@ -131,11 +135,9 @@ const shortTime = computed(() => {
             <!-- 涨跌百分比 -->
             <div :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]">
               <span class="i-icon-park-outline-chart-line text-base-600 text-sm"></span>
-              <span :class="{ 'text-red': log.percent < 100, 'text-green': log.percent > 100 }"
-                >{{ log.percent }}%</span
-              >
-              <span class="text-xl mt-1"
-                ><span
+              <span :class="{ 'text-red': log.percent < 100, 'text-green': log.percent > 100 }">{{ log.percent }}%</span>
+              <span class="text-xl mt-1">
+                <span
                   v-if="log.trend === 'up'"
                   class="i-material-symbols-trending-up text-green"
                 ></span>
@@ -143,8 +145,8 @@ const shortTime = computed(() => {
                   v-else-if="log.trend === 'down'"
                   class="i-material-symbols-trending-down text-red"
                 ></span>
-                <span v-else class="i-material-symbols-trending-flat"></span
-              ></span>
+                <span v-else class="i-material-symbols-trending-flat"></span>
+              </span>
             </div>
             <div :class="['flex gap-1 items-center h-6 text-base-600 no-underline']">
               <span class="i-icon-park-outline-time text-sm"></span>
@@ -166,8 +168,7 @@ const shortTime = computed(() => {
                   },
                   'mr-2'
                 ]"
-                >{{ log.price }} ({{ log.percent }}%)</span
-              >
+              >{{ log.price }} ({{ log.percent }}%)</span>
               <span
                 v-if="log.trend === 'up'"
                 class="i-material-symbols-trending-up text-green text-xl"
@@ -187,8 +188,7 @@ const shortTime = computed(() => {
                   'line-through': isOutdated,
                   'op-50': isOutdated
                 }"
-                >{{ profit }}</span
-              >
+                >{{ profit }}</span>
             </p>
             <p v-if="log.type === 'sell' && product.baseVolume">
               <span class="font-bold mr-2">单票利润</span>
@@ -199,8 +199,7 @@ const shortTime = computed(() => {
                   'line-through': isOutdated,
                   'op-50': isOutdated
                 }"
-                >{{ +(profit ?? 0) * product.baseVolume }}</span
-              >
+              >{{ +(profit ?? 0) * product.baseVolume }}</span>
             </p>
             <p v-if="log.type === 'sell' && transaction?.basePrice">
               <span class="font-bold mr-2">基准价格</span>
@@ -216,9 +215,9 @@ const shortTime = computed(() => {
             </p>
             <p>
               <span class="font-bold mr-2">更新时间</span>
-              <span :class="{ 'op-50': isOutdated }">{{
-                format(log.uploadedAt, { date: 'long', time: 'medium' })
-              }}</span>
+              <span :class="{ 'op-50': isOutdated }">
+                {{ format(log.uploadedAt, { date: 'long', time: 'medium' }) }}
+              </span>
             </p>
             <p>
               <NuxtLink
