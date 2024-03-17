@@ -114,8 +114,6 @@ const sortCitesByPerTicketProfit = (filteredCities: CityInfo[], sourceCityName: 
               <TableHead v-if="settingStore.listSortMode === 'byProfit'" :colspan="sellCities.length">城市售卖报价(按单位利润高低从左到右降序排序)</TableHead>
               <TableHead v-if="settingStore.listSortMode === 'byPerTicketProfit'" :colspan="sellCities.length">城市售卖报价(按单票利润高低从左到右降序排序)</TableHead>
             </template>
-            <!-- 操作列 -->
-            <TableHead class="w-[100px]">操作</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>

@@ -3,6 +3,10 @@
 [![resonance-market](https://img.shields.io/endpoint?url=https://pages.onekuma.cn/project/resonance-market&label=在线访问)](https://resonance.breadio.wiki/)
 [![CI](https://github.com/yjl9903/resonance-market/actions/workflows/ci.yml/badge.svg)](https://github.com/yjl9903/resonance-market/actions/workflows/ci.yml)
 
+## 数据上报接口文档
+
+见 [此处](./report.md)
+
 ## 本地运行 或 开发测试 / Run locally or Development Test
 
 请确保已安装 [git] 和 [pnpm]。
