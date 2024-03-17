@@ -5,8 +5,11 @@ export type ListSortMode = 'byCity' | 'byProfit' | 'byPerTicketProfit'
 export type ProfitComputeRule = 'maxPriceChange' | 'noChange'
 
 export const useSettingStore = defineStore('setting', () => {
-  const listSortMode = useStorage<ListSortMode>('listSortMode', 'byCity')
-  const profitComputeRule = useStorage<ProfitComputeRule>('profitComputeRule', 'noChange')
+  // const listSortMode = useStorage<ListSortMode>('listSortMode', 'byCity')
+  // const profitComputeRule = useStorage<ProfitComputeRule>('profitComputeRule', 'noChange')
+  
+  const listSortMode = ref<ListSortMode>('byCity')
+  const profitComputeRule = ref<ProfitComputeRule>('noChange')
 
   // 切换列表排序模式
   const switchListSortModeTo = (targetMode: ListSortMode) => {
@@ -19,9 +22,11 @@ export const useSettingStore = defineStore('setting', () => {
   }
 
   return {
-    listSortMode: skipHydrate(listSortMode),
+    listSortMode: listSortMode,
+    // listSortMode: skipHydrate(listSortMode),
     switchListSortModeTo,
-    profitComputeRule: skipHydrate(profitComputeRule),
+    profitComputeRule: listSortMode,
+    // profitComputeRule: skipHydrate(profitComputeRule),
     switchProfitComputeRuleTo
   }
 })
