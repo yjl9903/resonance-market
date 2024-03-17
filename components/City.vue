@@ -58,7 +58,7 @@ const sortCitesByPercent = (filteredCities: CityInfo[], sourceCityName: string, 
   let citiesProfitMap: {[key: string]: number} = {}
   filteredCities.map(city => {
     const latestLog = store.getLatestLog(sourceCityName, productName, city.name)
-    // 如果最新交易记录无效，且有最新交易记录和原产地价格，则计算利润
+    // 如果最新交易记录有效，且有最新交易记录和原产地价格，则计算利润
     const profit = !Boolean(isLogValid(latestLog)) && latestLog && sourceCityPrice ? latestLog.price - sourceCityPrice : -9999
     return { cityName: city.name, profit }
   }).forEach(cityProfit => citiesProfitMap[cityProfit.cityName] = cityProfit.profit)
@@ -76,7 +76,7 @@ const sortCitesByPerTicketProfit = (filteredCities: CityInfo[], sourceCityName: 
   let citiesProfitMap: {[key: string]: number} = {}
   filteredCities.map(city => {
     const latestLog = store.getLatestLog(sourceCityName, productName, city.name)
-    // 如果最新交易记录无效，且有最新交易记录和原产地价格，则计算利润
+    // 如果最新交易记录有效，且有最新交易记录和原产地价格，则计算利润
     const profit = !Boolean(isLogValid(latestLog)) && latestLog && sourceCityPrice ? latestLog.price - sourceCityPrice : -9999
     return { cityName: city.name, profit }
   }).forEach(cityProfit => citiesProfitMap[cityProfit.cityName] = cityProfit.profit)
@@ -133,7 +133,6 @@ const sortCitesByPerTicketProfit = (filteredCities: CityInfo[], sourceCityName: 
             <TableCell
               v-for="target in sortCitesWithSetting(sellCities, city.name, product.name)"
               :key="target.name"
-              :class="{'w-40': settingStore.listSortMode !== 'byCity'}"
             >
               <Price
                 :timestamp="timestamp"
@@ -142,19 +141,9 @@ const sortCitesByPerTicketProfit = (filteredCities: CityInfo[], sourceCityName: 
                 :log="store.getLatestLog(city.name, product.name, target.name)"
               />
             </TableCell>
-            <!-- 操作单元格 -->
-            <TableCell>
-              <CreateLog :source-city-name="city.name" :product="product">
-                <Button variant="outline" size="sm">上报</Button>
-              </CreateLog>
-            </TableCell>
           </TableRow>
         </TableBody>
       </Table>
     </CardContent>
-    <!-- <CardFooter class="flex justify-between px-6 pb-6">
-      <Button variant="outline"> Cancel </Button>
-      <Button>Deploy</Button>
-    </CardFooter> -->
   </Card>
 </template>
