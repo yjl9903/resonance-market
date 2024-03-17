@@ -69,30 +69,47 @@ const settingStore = useSettingStore()
           <MenubarMenu>
             <MenubarTrigger>设置</MenubarTrigger>
             <MenubarContent>
-              <MenubarItem as-child>
-                <a
-                  class="hover:bg-gray-100 cursor-pointer flex justify-between"
-                  @click="settingStore.switchListSortModeTo('byCity')"
-                >
-                  <div class="flex items-center">
-                    <span class="i-icon-park-outline-city-one mr-1 block w-4"></span>
-                    <span>按城市排序</span>
-                  </div>
-                  <span v-if="settingStore.listSortMode === 'byCity'" class="i-material-symbols-check"></span>
-                </a>
-              </MenubarItem>
-              <MenubarItem as-child>
-                <a
-                  class="hover:bg-gray-100 cursor-pointer flex justify-between"
-                  @click="settingStore.switchListSortModeTo('byProfit')"
-                >
-                  <div class="flex items-center">
-                    <span class="i-icon-park-outline-income-one mr-1 block w-4"></span>
-                    <span>按利润排序</span>
-                  </div>
-                  <span v-if="settingStore.listSortMode === 'byProfit'" class="i-material-symbols-check"></span>
-                </a>
-              </MenubarItem>
+              <MenubarSub>
+                <MenubarSubTrigger>售出排序依据</MenubarSubTrigger>
+                <MenubarSubContent>
+                  <MenubarItem as-child>
+                    <a
+                      class="hover:bg-gray-100 cursor-pointer flex justify-between"
+                      @click="settingStore.switchListSortModeTo('byCity')"
+                    >
+                      <div class="flex items-center mr-2">
+                        <span class="i-icon-park-outline-city-one mr-1 block w-4"></span>
+                        <span>按城市排序</span>
+                      </div>
+                      <span v-if="settingStore.listSortMode === 'byCity'" class="i-material-symbols-check"></span>
+                    </a>
+                  </MenubarItem>
+                  <MenubarItem as-child>
+                    <a
+                      class="hover:bg-gray-100 cursor-pointer flex justify-between"
+                      @click="settingStore.switchListSortModeTo('byProfit')"
+                    >
+                      <div class="flex items-center mr-2">
+                        <span class="i-icon-park-outline-income-one mr-1 block w-4"></span>
+                        <span>按单位利润排序</span>
+                      </div>
+                      <span v-if="settingStore.listSortMode === 'byProfit'" class="i-material-symbols-check"></span>
+                    </a>
+                  </MenubarItem>
+                  <MenubarItem as-child>
+                    <a
+                      class="hover:bg-gray-100 cursor-pointer flex justify-between"
+                      @click="settingStore.switchListSortModeTo('byPerTicketProfit')"
+                    >
+                      <div class="flex items-center mr-2">
+                        <span class="i-icon-park-outline-ticket mr-1 block w-4"></span>
+                        <span>按单票利润排序</span>
+                      </div>
+                      <span v-if="settingStore.listSortMode === 'byPerTicketProfit'" class="i-material-symbols-check"></span>
+                    </a>
+                  </MenubarItem>
+                </MenubarSubContent>
+              </MenubarSub>
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>

@@ -1,7 +1,7 @@
 import { skipHydrate  } from 'pinia'
 import { useStorage } from '@vueuse/core'
 
-export type ListSortMode = 'byCity' | 'byProfit'
+export type ListSortMode = 'byCity' | 'byProfit' | 'byPerTicketProfit'
 
 export const useSettingStore = defineStore('setting', () => {
   const listSortMode = useStorage<ListSortMode>('listSortMode', 'byCity')

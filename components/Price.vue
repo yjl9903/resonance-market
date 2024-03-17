@@ -6,12 +6,13 @@ import type { Log } from '~/drizzle/schema';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const props = defineProps<{
-  sortMode: 'byProfit' | 'byCity';
   timestamp: number;
   product: ProductInfo;
   transaction: TransactionInfo | undefined;
   log: Log | undefined;
 }>();
+
+const settingStore = useSettingStore()
 
 const openTooltip = ref(false);
 
@@ -25,6 +26,7 @@ const isOutdated = computed(() => {
 
 const store = useLatestLogs();
 
+// 单位利润
 const profit = computed(() => {
   if (!props.log || props.log?.type === 'buy') return undefined;
 
@@ -34,6 +36,12 @@ const profit = computed(() => {
   } else {
     return undefined;
   }
+});
+
+// 单票利润
+const perTicketProfit = computed(() => {
+  if (!props.product || props.log?.type === 'buy') return undefined;
+  return (profit.value ?? 0) * (props.product.baseVolume ?? 0);
 });
 
 const profitColor = computed(() => {
@@ -94,22 +102,35 @@ const shortTime = computed(() => {
         <TooltipTrigger as-child>
           <div :class="[{ 'op-50': isOutdated }, 'space-y-1']" @click="openTooltip = true">
             <!-- 所在城市 -->
-            <div v-if="sortMode == 'byProfit'" class="flex gap-1 items-center text-base-600">
+            <div v-if="['byProfit', 'byPerTicketProfit'].includes(settingStore.listSortMode)" class="flex gap-1 items-center text-base-600">
               <span class="i-icon-park-outline-city-one text-sm"></span>
               <span >{{ log.targetCity }}</span>
             </div>
+            <!-- 基准单位利润 -->
             <div
-              v-if="log.type === 'sell'"
+              v-if="['byCity', 'byProfit'].includes(settingStore.listSortMode) && log.type === 'sell'"
               :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]"
             >
               <span class="i-icon-park-outline-income-one text-base-600 text-sm"></span>
               <span :class="[profitColor]">{{ profit }}</span>
             </div>
-            <!-- <div v-else="log.type === 'buy'" class="h-6">
-              <span></span><span>{{ log.price }}</span>
-            </div> -->
+            <!-- 基准单票利润 -->
+            <div
+              v-if="settingStore.listSortMode == 'byPerTicketProfit' && log.type === 'sell' && product.baseVolume"
+              :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]"
+            >
+              <span class="i-icon-park-outline-ticket text-base-600 text-sm"></span>
+              <span
+                :class="{
+                  'text-red': log.percent < 100,
+                  'text-green': log.percent > 100,
+                  'op-50': isOutdated
+                }"
+              >{{ perTicketProfit }}</span>
+            </div>
+            <!-- 涨跌百分比 -->
             <div :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]">
-              <span class="i-icon-park-outline-dollar text-base-600 text-sm"></span>
+              <span class="i-icon-park-outline-chart-line text-base-600 text-sm"></span>
               <span :class="{ 'text-red': log.percent < 100, 'text-green': log.percent > 100 }"
                 >{{ log.percent }}%</span
               >
