@@ -70,20 +70,25 @@ const sortCitesByPercent = (filteredCities: CityInfo[], sourceCityName: string, 
 // 按单票利润排序城市
 const sortCitesByPerTicketProfit = (filteredCities: CityInfo[], sourceCityName: string, productName: string) => {
   const sourceCityPrice = store.getLatestLog(sourceCityName, productName, sourceCityName)?.price || 0
-  const baseVolume = getProductInfo(sourceCityName, productName)?.baseVolume || 0
+  const baseVolume = getProductInfo(sourceCityName, productName)?.baseVolume || 1
 
   // 计算各城市货物利润
   let citiesProfitMap: {[key: string]: number} = {}
   filteredCities.map(city => {
     const latestLog = store.getLatestLog(sourceCityName, productName, city.name)
-    // 如果最新交易记录有效，且有最新交易记录和原产地价格，则计算利润
-    const profit = !Boolean(isLogValid(latestLog)) && latestLog && sourceCityPrice ? latestLog.price - sourceCityPrice : -9999
-    return { cityName: city.name, profit }
+    
+    // 如果最新交易记录无效，排名靠最后
+    if (!latestLog) return { cityName: city.name, profit: -9999 }
+    // 如果原产地价格无效，排名靠最后
+    else if (!sourceCityPrice) return { cityName: city.name, profit: -9998 }
+    // 如果最新交易记录无效，排名在原产地价格之下
+    else if(!Boolean(isLogValid(latestLog))) return { cityName: city.name, profit: latestLog.price - sourceCityPrice - 999 }
+    else return { cityName: city.name, profit: latestLog.price - sourceCityPrice }
   }).forEach(cityProfit => citiesProfitMap[cityProfit.cityName] = cityProfit.profit)
 
   const sortedCities = filteredCities.sort((a, b) => {
-    const aProfit = citiesProfitMap[a.name] * (baseVolume ?? 0)
-    const bProfit = citiesProfitMap[b.name] * (baseVolume ?? 0)
+    const aProfit = citiesProfitMap[a.name] * baseVolume
+    const bProfit = citiesProfitMap[b.name] * baseVolume
     return bProfit - aProfit
   })
   return sortedCities
