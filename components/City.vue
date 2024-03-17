@@ -100,7 +100,7 @@ const sortCitesByPerTicketProfit = (filteredCities: CityInfo[], sourceCityName: 
         <TableHeader>
           <TableRow class="boder-t">
             <TableHead class="w-[120px]">商品</TableHead>
-            <!-- 按城市纬度排序 -->
+            <!-- 按城市维度排序 -->
             <template v-if="settingStore.listSortMode === 'byCity'">
               <TableHead class="border-r">{{ currentCity.name }}</TableHead>
               <TableHead
