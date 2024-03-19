@@ -1,34 +1,36 @@
 <script setup lang="ts">
-import Giscus from '@giscus/vue';
-
 const store = useLatestLogs();
 await store.fetch();
 
 useIntervalFn(async () => {
   await store.fetch();
 }, 10 * 1000);
+
+const selectedCity = ref<CityInfo[]>(cities)
+
+const switchCityFilter = (targetCity: CityInfo) => {
+  if (selectedCity.value.find(city => city.name == targetCity.name)) {
+    selectedCity.value = selectedCity.value.filter(city => city.name !== targetCity.name);
+  } else {
+    selectedCity.value = [...selectedCity.value, targetCity];
+  }
+};
 </script>
 
 <template>
   <div class="main pb-12">
-    <div class="space-y-4">
-      <City v-for="city in cities" :key="city.name" :city="city"></City>
+    <div class="flex space-x-4 mb-4">
+      <Button
+        v-for="city in cities"
+        :key="city.name"
+        @click="switchCityFilter(city)"
+        :variant="selectedCity.find(item => item.name == city.name) ? 'default' : 'outline'"
+        size="sm"
+      >{{ city.name }}</Button>
     </div>
-    <ClientOnly>
-      <div class="pt-8">
-        <Giscus
-          id="comments"
-          repo="yjl9903/resonance-market"
-          repoId="R_kgDOLbiZ1A"
-          mapping="number"
-          term="7"
-          reactionsEnabled="0"
-          emitMetadata="0"
-          inputPosition="bottom"
-          theme="preferred_color_scheme"
-          lang="zh-CN"
-        />
-      </div>
-    </ClientOnly>
+
+    <div class="space-y-4">
+      <City v-for="city in selectedCity" :key="city.name" :city="city"></City>
+    </div>
   </div>
 </template>

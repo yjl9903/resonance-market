@@ -73,8 +73,7 @@ const sortCitesByProfit = (filteredCities: CityInfo[], sourceCityName: string, p
     // 如果最新交易记录有效，按利润高低排名
     else return { cityName: city.name, profit: Math.round(latestLog.price * 1.2 * 0.98 - sourceCityPrice * 0.8 * 1.08) }
   }).forEach(cityProfit => citiesProfitMap[cityProfit.cityName] = cityProfit.profit)
-
-  console.log(productName, citiesProfitMap)
+  
   const sortedCities = filteredCities.toSorted((a, b) => citiesProfitMap[b.name] - citiesProfitMap[a.name])
   return sortedCities
 }

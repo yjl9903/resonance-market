@@ -171,6 +171,9 @@ const settingStore = useSettingStore()
               </MenubarSub>
             </MenubarContent>
           </MenubarMenu>
+          <MenubarButton>
+            <NuxtLink to="/discussions">讨论区</NuxtLink>
+          </MenubarButton>
           <MenubarMenu>
             <MenubarTrigger>关于</MenubarTrigger>
             <MenubarContent>
