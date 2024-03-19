@@ -6,7 +6,7 @@ useIntervalFn(async () => {
   await store.fetch();
 }, 10 * 1000);
 
-const selectedCity = ref<CityInfo[]>([cities[0]])
+const selectedCity = ref<CityInfo[]>(cities)
 
 const switchCityFilter = (targetCity: CityInfo) => {
   if (selectedCity.value.find(city => city.name == targetCity.name)) {
