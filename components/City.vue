@@ -42,55 +42,40 @@ const sortCitesWithSetting = (filteredCities: CityInfo[], sourceCityName: string
   if (settingStore.listSortMode === 'byCity') {
     return filteredCities
   } else if (settingStore.listSortMode === 'byProfit') {
-    return sortCitesByPercent(filteredCities, sourceCityName, productName)
-  } else if (settingStore.listSortMode === 'byPerTicketProfit') {
-    return sortCitesByPerTicketProfit(filteredCities, sourceCityName, productName)
+    return sortCitesByProfit(filteredCities, sourceCityName, productName)
   } else {
     return filteredCities
   }
 }
 
 // 按单位利润排序城市
-const sortCitesByPercent = (filteredCities: CityInfo[], sourceCityName: string, productName: string) => {
+const sortCitesByProfit = (filteredCities: CityInfo[], sourceCityName: string, productName: string) => {
   const sourceCityPrice = store.getLatestLog(sourceCityName, productName, sourceCityName)?.price || 0
-
-  // 计算各城市货物利润
-  let citiesProfitMap: {[key: string]: number} = {}
-  filteredCities.map(city => {
-    const latestLog = store.getLatestLog(sourceCityName, productName, city.name)
-    // 如果最新交易记录有效，且有最新交易记录和原产地价格，则计算利润
-    const profit = !Boolean(isLogValid(latestLog)) && latestLog && sourceCityPrice ? latestLog.price - sourceCityPrice : -9999
-    return { cityName: city.name, profit }
-  }).forEach(cityProfit => citiesProfitMap[cityProfit.cityName] = cityProfit.profit)
-
-  const sortedCities = filteredCities.sort((a, b) => citiesProfitMap[b.name] - citiesProfitMap[a.name])
-  return sortedCities
-}
-
-// 按单票利润排序城市
-const sortCitesByPerTicketProfit = (filteredCities: CityInfo[], sourceCityName: string, productName: string) => {
-  const sourceCityPrice = store.getLatestLog(sourceCityName, productName, sourceCityName)?.price || 0
-  const baseVolume = getProductInfo(sourceCityName, productName)?.baseVolume || 1
 
   // 计算各城市货物利润
   let citiesProfitMap: {[key: string]: number} = {}
   filteredCities.map(city => {
     const latestLog = store.getLatestLog(sourceCityName, productName, city.name)
     
-    // 如果最新交易记录无效，排名靠最后
-    if (!latestLog) return { cityName: city.name, profit: -9999 }
-    // 如果原产地价格无效，排名靠最后
-    else if (!sourceCityPrice) return { cityName: city.name, profit: -9998 }
-    // 如果最新交易记录无效，排名在原产地价格之下
-    else if(!Boolean(isLogValid(latestLog))) return { cityName: city.name, profit: latestLog.price - sourceCityPrice - 999 }
-    else return { cityName: city.name, profit: latestLog.price - sourceCityPrice }
+    /**
+     * 如果满足以下条件之一，排名最后
+     * 1. 最新交易记录不存在
+     * 2. 最新交易记录距离现在超过 1 天
+     * 3. 原产地价格不存在
+     */
+    if (
+      !latestLog ||
+      (Date.now() - new Date(latestLog.uploadedAt).valueOf()) > (1 * 24 * 60 * 60 * 1000) ||
+      !sourceCityPrice
+    ) return { cityName: city.name, profit: -9999 }
+    // 如果最新交易记录无效，排名在有效记录之后，且按顺序排列
+    else if(Boolean(isLogValid(latestLog))) return { cityName: city.name, profit: Math.round(latestLog.price * 1.2 * 0.98 - sourceCityPrice * 0.8 * 1.08) - 9000 }
+    // 如果最新交易记录有效，按利润高低排名
+    else return { cityName: city.name, profit: Math.round(latestLog.price * 1.2 * 0.98 - sourceCityPrice * 0.8 * 1.08) }
   }).forEach(cityProfit => citiesProfitMap[cityProfit.cityName] = cityProfit.profit)
 
-  const sortedCities = filteredCities.sort((a, b) => {
-    const aProfit = citiesProfitMap[a.name] * baseVolume
-    const bProfit = citiesProfitMap[b.name] * baseVolume
-    return bProfit - aProfit
-  })
+  console.log(productName, citiesProfitMap)
+  const sortedCities = filteredCities.toSorted((a, b) => citiesProfitMap[b.name] - citiesProfitMap[a.name])
   return sortedCities
 }
 </script>
@@ -117,10 +102,7 @@ const sortCitesByPerTicketProfit = (filteredCities: CityInfo[], sourceCityName: 
             <template v-else>
               <TableHead class="border-r"><div class="w-30">原产地采购价</div></TableHead>
               <TableHead :colspan="sellCities.length">
-                城市售卖报价(按
-                {{ settingStore.listSortMode === 'byProfit' ? "单位" : "" }}
-                {{ settingStore.listSortMode === 'byPerTicketProfit' ? "单票" : "" }}
-                利润高低从左到右降序排序)
+                城市售卖报价(按利润高低从左到右降序排序)
               </TableHead>
             </template>
           </TableRow>

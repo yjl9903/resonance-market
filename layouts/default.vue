@@ -92,65 +92,82 @@ const settingStore = useSettingStore()
                     >
                       <div class="flex items-center mr-2">
                         <span class="i-icon-park-outline-income-one mr-1 block w-4"></span>
-                        <span>按单位利润排序</span>
+                        <span>按利润排序</span>
                       </div>
                       <span v-if="settingStore.listSortMode === 'byProfit'" class="i-material-symbols-check"></span>
+                    </a>
+                  </MenubarItem>
+                </MenubarSubContent>
+              </MenubarSub>
+              <MenubarSub>
+                <MenubarSubTrigger>数据展示</MenubarSubTrigger>
+                <MenubarSubContent>
+                  <MenubarItem as-child>
+                    <a
+                      class="hover:bg-gray-100 cursor-pointer flex justify-between"
+                      @click="settingStore.switchDataDisplayItems('profit')"
+                    >
+                      <div class="flex items-center mr-2">
+                        <span class="i-icon-park-outline-box mr-1 block w-4"></span>
+                        <span>单位利润</span>
+                      </div>
+                      <span v-show="settingStore.dataDisplayItems.includes('profit')" class="i-material-symbols-check"></span>
                     </a>
                   </MenubarItem>
                   <MenubarItem as-child>
                     <a
                       class="hover:bg-gray-100 cursor-pointer flex justify-between"
-                      @click="settingStore.switchListSortModeTo('byPerTicketProfit')"
+                      @click="settingStore.switchDataDisplayItems('perTicketProfit')"
                     >
                       <div class="flex items-center mr-2">
                         <span class="i-icon-park-outline-ticket mr-1 block w-4"></span>
-                        <span>按单票利润排序</span>
+                        <span>单票利润</span>
                       </div>
-                      <span v-if="settingStore.listSortMode === 'byPerTicketProfit'" class="i-material-symbols-check"></span>
+                      <span v-show="settingStore.dataDisplayItems.includes('perTicketProfit')" class="i-material-symbols-check"></span>
                     </a>
                   </MenubarItem>
                 </MenubarSubContent>
-                <MenubarSub>
-                  <MenubarSubTrigger>利润计算规则</MenubarSubTrigger>
-                  <MenubarSubContent>
-                    <MenubarItem as-child>
-                      <a
-                        class="hover:bg-gray-100 cursor-pointer flex justify-between"
-                        @click="toast('功能正在开发中，敬请期待')"
-                      >
-                        <div class="flex items-center mr-2">
-                          <span class="i-icon-park-outline-positive-dynamics mr-1 block w-4"></span>
-                          <span>最大砍价抬价</span>
-                        </div>
-                        <span v-if="settingStore.profitComputeRule === 'maxPriceChange'" class="i-material-symbols-check"></span>
-                      </a>
-                    </MenubarItem>
-                    <MenubarItem as-child>
-                      <a
-                        class="hover:bg-gray-100 cursor-pointer flex justify-between"
-                        @click="settingStore.switchProfitComputeRuleTo('noChange')"
-                      >
-                        <div class="flex items-center mr-2">
-                          <span class="i-icon-park-outline-negative-dynamics mr-1 block w-4"></span>
-                          <span>不砍价不抬价</span>
-                        </div>
-                        <span v-if="settingStore.profitComputeRule === 'noChange'" class="i-material-symbols-check"></span>
-                      </a>
-                    </MenubarItem>
-                    <MenubarItem as-child>
-                      <a
-                        class="hover:bg-gray-100 cursor-pointer flex justify-between"
-                        @click="toast('功能正在开发中，敬请期待')"
-                      >
-                        <div class="flex items-center mr-2">
-                          <span class="i-icon-park-outline-percentage mr-1 block w-4"></span>
-                          <span>不计算税收</span>
-                        </div>
-                        <span class="i-material-symbols-check"></span>
-                      </a>
-                    </MenubarItem>
-                  </MenubarSubContent>
-                </MenubarSub>
+              </MenubarSub>
+              <MenubarSub>
+                <MenubarSubTrigger>利润计算规则</MenubarSubTrigger>
+                <MenubarSubContent>
+                  <MenubarItem as-child>
+                    <a
+                      class="hover:bg-gray-100 cursor-pointer flex justify-between"
+                      @click="toast('功能正在开发中，敬请期待')"
+                    >
+                      <div class="flex items-center mr-2">
+                        <span class="i-icon-park-outline-percentage mr-1 block w-4"></span>
+                        <span>买卖税收8%</span>
+                      </div>
+                      <span class="i-material-symbols-check"></span>
+                    </a>
+                  </MenubarItem>
+                  <MenubarItem as-child>
+                    <a
+                      class="hover:bg-gray-100 cursor-pointer flex justify-between"
+                      @click="toast('功能正在开发中，敬请期待')"
+                    >
+                      <div class="flex items-center mr-2">
+                        <span class="i-icon-park-outline-positive-dynamics mr-1 block w-4"></span>
+                        <span>最大砍价抬价</span>
+                      </div>
+                      <span v-if="settingStore.profitComputeRule === 'maxPriceChange'" class="i-material-symbols-check"></span>
+                    </a>
+                  </MenubarItem>
+                  <MenubarItem as-child>
+                    <a
+                      class="hover:bg-gray-100 cursor-pointer flex justify-between"
+                      @click="toast('功能正在开发中，敬请期待')"
+                    >
+                      <div class="flex items-center mr-2">
+                        <span class="i-icon-park-outline-negative-dynamics mr-1 block w-4"></span>
+                        <span>不砍价不抬价</span>
+                      </div>
+                      <span v-if="settingStore.profitComputeRule === 'noChange'" class="i-material-symbols-check"></span>
+                    </a>
+                  </MenubarItem>
+                </MenubarSubContent>
               </MenubarSub>
             </MenubarContent>
           </MenubarMenu>
