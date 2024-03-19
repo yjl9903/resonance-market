@@ -9,7 +9,7 @@ export const useSettingStore = defineStore('setting', () => {
   // const profitComputeRule = useStorage<ProfitComputeRule>('profitComputeRule', 'noChange')
   
   const listSortMode = ref<ListSortMode>('byCity')
-  const profitComputeRule = ref<ProfitComputeRule>('noChange')
+  const profitComputeRule = ref<ProfitComputeRule>('maxPriceChange')
 
   // 切换列表排序模式
   const switchListSortModeTo = (targetMode: ListSortMode) => {
@@ -25,7 +25,7 @@ export const useSettingStore = defineStore('setting', () => {
     listSortMode: listSortMode,
     // listSortMode: skipHydrate(listSortMode),
     switchListSortModeTo,
-    profitComputeRule: listSortMode,
+    profitComputeRule: profitComputeRule,
     // profitComputeRule: skipHydrate(profitComputeRule),
     switchProfitComputeRuleTo
   }

@@ -128,7 +128,7 @@ const settingStore = useSettingStore()
                     <MenubarItem as-child>
                       <a
                         class="hover:bg-gray-100 cursor-pointer flex justify-between"
-                        @click="settingStore.switchProfitComputeRuleTo('noChange')"
+                        @click="toast('功能正在开发中，敬请期待')"
                       >
                         <div class="flex items-center mr-2">
                           <span class="i-icon-park-outline-negative-dynamics mr-1 block w-4"></span>
