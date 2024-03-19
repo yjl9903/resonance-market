@@ -109,17 +109,17 @@ const shortTime = computed(() => {
             <span class="i-icon-park-outline-city-one text-sm"></span>
             <span >{{ log.targetCity }}</span>
           </div>
-          <!-- 基准单位利润 -->
+          <!-- 单位利润 -->
           <div
-            v-if="['byCity', 'byProfit'].includes(settingStore.listSortMode) && log.type === 'sell'"
+            v-if="settingStore.dataDisplayItems.includes('profit') && log.type === 'sell'"
             :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]"
           >
             <span class="i-icon-park-outline-income-one text-base-600 text-sm"></span>
             <span :class="[profitColor]">{{ profit }}</span>
           </div>
-          <!-- 基准单票利润 -->
+          <!-- 单票利润 -->
           <div
-            v-if="settingStore.listSortMode == 'byPerTicketProfit' && log.type === 'sell' && product.baseVolume"
+            v-if="settingStore.dataDisplayItems.includes('perTicketProfit') && log.type === 'sell' && product.baseVolume"
             :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]"
           >
             <span class="i-icon-park-outline-ticket text-base-600 text-sm"></span>
