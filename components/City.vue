@@ -16,7 +16,9 @@ import {
 
 import Price from './Price.vue'
 
-const { city: currentCity } = defineProps<{ city: CityInfo }>()
+const props = defineProps<{ city: CityInfo }>()
+
+const currentCity = props.city
 
 const timestamp = useTimestamp({ interval: 10 * 1000 })
 
