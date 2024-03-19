@@ -107,3 +107,6 @@ Thumbs.db
 # Ignore built ts files
 __tests__/runner/*
 .wrangler/state/v3
+
+# Ignore the tailwindcss Config file
+tailwind.config.js
