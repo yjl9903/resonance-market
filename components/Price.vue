@@ -35,7 +35,7 @@ const profit = computed(() => {
 
   const sourceCityLatestLog = store.getLatestLog(props.log.sourceCity, props.log.name, props.log.sourceCity);
   if (sourceCityLatestLog) {
-    return Math.round((props.log.price * 1.2) * 0.98 - (sourceCityLatestLog.price * 0.8) * 1.08)
+    return Math.round(props.log.price * 1.2 * 0.98 - sourceCityLatestLog.price * 0.8 * 1.08)
   } else {
     return undefined;
   }
