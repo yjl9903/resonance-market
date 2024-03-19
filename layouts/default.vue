@@ -119,6 +119,18 @@ const settingStore = useSettingStore()
                         @click="toast('功能正在开发中，敬请期待')"
                       >
                         <div class="flex items-center mr-2">
+                          <span class="i-icon-park-outline-percentage mr-1 block w-4"></span>
+                          <span>买卖税收8%</span>
+                        </div>
+                        <span class="i-material-symbols-check"></span>
+                      </a>
+                    </MenubarItem>
+                    <MenubarItem as-child>
+                      <a
+                        class="hover:bg-gray-100 cursor-pointer flex justify-between"
+                        @click="toast('功能正在开发中，敬请期待')"
+                      >
+                        <div class="flex items-center mr-2">
                           <span class="i-icon-park-outline-positive-dynamics mr-1 block w-4"></span>
                           <span>最大砍价抬价</span>
                         </div>
@@ -135,18 +147,6 @@ const settingStore = useSettingStore()
                           <span>不砍价不抬价</span>
                         </div>
                         <span v-if="settingStore.profitComputeRule === 'noChange'" class="i-material-symbols-check"></span>
-                      </a>
-                    </MenubarItem>
-                    <MenubarItem as-child>
-                      <a
-                        class="hover:bg-gray-100 cursor-pointer flex justify-between"
-                        @click="toast('功能正在开发中，敬请期待')"
-                      >
-                        <div class="flex items-center mr-2">
-                          <span class="i-icon-park-outline-percentage mr-1 block w-4"></span>
-                          <span>不计算税收</span>
-                        </div>
-                        <span class="i-material-symbols-check"></span>
                       </a>
                     </MenubarItem>
                   </MenubarSubContent>
