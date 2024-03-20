@@ -19,7 +19,7 @@ const switchCityFilter = (targetCity: CityInfo) => {
 
 <template>
   <div class="main pb-12">
-    <div class="flex space-x-4 mb-4">
+    <div class="flex flex-wrap gap-4 mb-4">
       <Button
         v-for="city in cities"
         :key="city.name"
