@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "build:cloudflare": "nuxt build --preset=cloudflare_module",
     "db:generate": "drizzle-kit generate:sqlite",
     "db:prepare:dev": "tsx drizzle/dev/migrate.ts && tsx drizzle/dev/initialize.ts",
     "db:prepare:prod": "tsx drizzle/prod/migrate.ts && tsx drizzle/prod/initialize.ts",

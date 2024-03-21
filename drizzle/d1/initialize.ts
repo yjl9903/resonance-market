@@ -1,12 +1,12 @@
-// import 'dotenv/config';
-
-import { and, eq } from 'drizzle-orm';
+// import { and, eq } from 'drizzle-orm';
 
 import { products as allProducts } from '../../utils/cities';
 
 import { products, transactions, users } from '../schema';
 
-export async function initialize(database: any) {
+import { connect } from './connect';
+
+export async function initialize(database: Awaited<ReturnType<typeof connect>>) {
   await database
     .insert(users)
     .values({ id: 1, name: 'anonymous' })
@@ -28,12 +28,16 @@ export async function initialize(database: any) {
       .onConflictDoNothing();
   }
 
+  // Clear transactions
+  await database.delete(transactions).returning({ id: transactions.id });
+
+  // Insert transactions
   for (const product of allProducts) {
     if (product.transactions.length === 0) {
       continue;
     }
 
-    const resp = await database
+    await database
       .insert(transactions)
       .values(
         product.transactions.map((transaction) => ({
@@ -46,27 +50,5 @@ export async function initialize(database: any) {
       )
       .returning({ id: transactions.id })
       .onConflictDoNothing();
-
-    // Do update
-    if (resp.length === 0) {
-      for (const transaction of product.transactions) {
-        await database
-          .update(transactions)
-          .set({
-            name: transaction.name,
-            sourceCity: transaction.sourceCity,
-            targetCity: transaction.targetCity,
-            mileage: transaction.mileage,
-            basePrice: transaction.basePrice
-          })
-          .where(
-            and(
-              eq(transactions.name, transaction.name),
-              eq(transactions.sourceCity, transaction.sourceCity),
-              eq(transactions.targetCity, transaction.targetCity)
-            )
-          );
-      }
-    }
   }
 }
