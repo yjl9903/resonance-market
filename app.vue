@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import '@/utils/info'
-import { Toaster } from '@/components/ui/sonner'
+import '@/utils/info';
+import { Toaster } from '@/components/ui/sonner';
 </script>
 
 <template>

@@ -36,9 +36,9 @@ import {
 import type { ProductInfo } from '@/utils/types';
 
 const props = defineProps<{
-  sourceCityName: string // 原产地城市
-  targetCityName?: string // 目标城市
-  product: ProductInfo // 货物信息
+  sourceCityName: string; // 原产地城市
+  targetCityName?: string; // 目标城市
+  product: ProductInfo; // 货物信息
 }>();
 
 const open = defineModel('open', {
@@ -58,7 +58,7 @@ watch(open, (open) => {
   if (open) {
     form.resetForm();
     if (props.targetCityName) {
-      form.setFieldValue("targetCity", props.targetCityName)
+      form.setFieldValue('targetCity', props.targetCityName);
     }
   }
 });
@@ -70,7 +70,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
   } else {
     form.setFieldValue('percent', [percent - 1]);
   }
-}
+};
 </script>
 
 <template>
@@ -86,9 +86,9 @@ const changePricePercent = (type: 'add' | 'reduce') => {
         <div class="space-x-2 text-sm">
           <span class="text-right font-bold">商品</span>
           <span class="text-base">
-            从 
+            从
             <span class="text-gray-400">{{ sourceCityName }}</span>
-            购买的 
+            购买的
             <span class="text-gray-400">{{ product.name }}</span>
           </span>
         </div>
@@ -112,9 +112,9 @@ const changePricePercent = (type: 'add' | 'reduce') => {
             </Select>
             <FormDescription>
               {{
-                form.values.targetCity !== sourceCityName 
-                ? `出售 ${product.name} 到 ${form.values.targetCity ?? '--'}`
-                : `从 ${form.values.targetCity} 购买 ${product.name}`
+                form.values.targetCity !== sourceCityName
+                  ? `出售 ${product.name} 到 ${form.values.targetCity ?? '--'}`
+                  : `从 ${form.values.targetCity} 购买 ${product.name}`
               }}
             </FormDescription>
             <FormMessage />
@@ -141,7 +141,10 @@ const changePricePercent = (type: 'add' | 'reduce') => {
             <FormLabel>价位百分比</FormLabel>
             <FormControl>
               <div class="flex items-center space-x-2">
-                <span class="i-icon-park-outline-reduce-one text-xl cursor-pointer" @click="changePricePercent('reduce')"></span>
+                <span
+                  class="i-icon-park-outline-reduce-one text-xl cursor-pointer"
+                  @click="changePricePercent('reduce')"
+                ></span>
                 <Slider
                   v-bind="componentField"
                   :default-value="[100]"
@@ -149,7 +152,10 @@ const changePricePercent = (type: 'add' | 'reduce') => {
                   :min="70"
                   :step="1"
                 />
-                <span class="i-icon-park-outline-add-one text-xl cursor-pointer" @click="changePricePercent('add')"></span>
+                <span
+                  class="i-icon-park-outline-add-one text-xl cursor-pointer"
+                  @click="changePricePercent('add')"
+                ></span>
               </div>
               <FormDescription class="flex justify-between">
                 <span>
@@ -171,7 +177,9 @@ const changePricePercent = (type: 'add' | 'reduce') => {
                 <FormItem class="flex items-center space-y-0">
                   <FormControl>
                     <RadioGroupItem value="up" />
-                    <FormLabel class="flex items-center font-normal text-xl text-green pl-2 cursor-pointer">
+                    <FormLabel
+                      class="flex items-center font-normal text-xl text-green pl-2 cursor-pointer"
+                    >
                       <span class="i-material-symbols-trending-up text-green"></span>
                     </FormLabel>
                   </FormControl>
@@ -179,7 +187,9 @@ const changePricePercent = (type: 'add' | 'reduce') => {
                 <FormItem class="flex items-center space-y-0">
                   <FormControl>
                     <RadioGroupItem value="down" />
-                    <FormLabel class="flex items-center font-normal text-xl text-red pl-2 cursor-pointer">
+                    <FormLabel
+                      class="flex items-center font-normal text-xl text-red pl-2 cursor-pointer"
+                    >
                       <span class="i-material-symbols-trending-down text-red"></span>
                     </FormLabel>
                   </FormControl>

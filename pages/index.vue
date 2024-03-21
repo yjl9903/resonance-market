@@ -1,12 +1,12 @@
 <script setup lang="ts">
-const logStore = useLatestLogs()
-await logStore.startGetData()
+const logStore = useLatestLogs();
+await logStore.startGetData();
 
-const selectedCity = ref<CityInfo[]>(cities)
+const selectedCity = ref<CityInfo[]>(cities);
 
 const switchCityFilter = (targetCity: CityInfo) => {
-  if (selectedCity.value.find(city => city.name == targetCity.name)) {
-    selectedCity.value = selectedCity.value.filter(city => city.name !== targetCity.name);
+  if (selectedCity.value.find((city) => city.name == targetCity.name)) {
+    selectedCity.value = selectedCity.value.filter((city) => city.name !== targetCity.name);
   } else {
     selectedCity.value = [...selectedCity.value, targetCity];
   }
@@ -20,9 +20,10 @@ const switchCityFilter = (targetCity: CityInfo) => {
         v-for="city in cities"
         :key="city.name"
         @click="switchCityFilter(city)"
-        :variant="selectedCity.find(item => item.name == city.name) ? 'default' : 'outline'"
+        :variant="selectedCity.find((item) => item.name == city.name) ? 'default' : 'outline'"
         size="sm"
-      >{{ city.name }}</Button>
+        >{{ city.name }}</Button
+      >
     </div>
 
     <div class="space-y-4">

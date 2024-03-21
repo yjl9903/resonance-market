@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle
-} from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Table,
   TableBody,
@@ -12,65 +7,87 @@ import {
   TableHead,
   TableHeader,
   TableRow
-} from '@/components/ui/table'
+} from '@/components/ui/table';
 
-import Price from './Price.vue'
+import Price from './Price.vue';
 
-const props = defineProps<{ city: CityInfo }>()
+const props = defineProps<{ city: CityInfo }>();
 
-const currentCity = props.city
+const currentCity = props.city;
 
-const timestamp = useTimestamp({ interval: 10 * 1000 })
+const timestamp = useTimestamp({ interval: 10 * 1000 });
 
-const logStore = useLatestLogs()
+const logStore = useLatestLogs();
 
-const settingStore = useSettingStore()
+const settingStore = useSettingStore();
 
 // 售出城市列表
 const sellCities = computed(() => {
-  return cities.filter((c) => c.name !== currentCity.name)
-})
+  return cities.filter((c) => c.name !== currentCity.name);
+});
 
 // 按设置排序后的城市列表
-const sortCitesWithSetting = (filteredCities: CityInfo[], sourceCityName: string, productName: string) => {
+const sortCitesWithSetting = (
+  filteredCities: CityInfo[],
+  sourceCityName: string,
+  productName: string
+) => {
   if (settingStore.listSortMode === 'byCity') {
-    return filteredCities
+    return filteredCities;
   } else if (settingStore.listSortMode === 'byProfit') {
-    return sortCitesByProfit(filteredCities, sourceCityName, productName)
+    return sortCitesByProfit(filteredCities, sourceCityName, productName);
   } else {
-    return filteredCities
+    return filteredCities;
   }
-}
+};
 
 // 按单位利润排序城市
-const sortCitesByProfit = (filteredCities: CityInfo[], sourceCityName: string, productName: string) => {
-  const sourceCityPrice = logStore.getLatestLog(sourceCityName, productName, sourceCityName)?.price || 0
+const sortCitesByProfit = (
+  filteredCities: CityInfo[],
+  sourceCityName: string,
+  productName: string
+) => {
+  const sourceCityPrice =
+    logStore.getLatestLog(sourceCityName, productName, sourceCityName)?.price || 0;
 
   // 计算各城市货物利润
-  let citiesProfitMap: {[key: string]: number} = {}
-  filteredCities.map(city => {
-    const latestLog = logStore.getLatestLog(sourceCityName, productName, city.name)
-    
-    /**
-     * 如果满足以下条件之一，排名最后
-     * 1. 最新交易记录不存在
-     * 2. 最新交易记录距离现在超过 1 天
-     * 3. 原产地价格不存在
-     */
-    if (
-      !latestLog ||
-      (Date.now() - new Date(latestLog.uploadedAt).valueOf()) > (1 * 24 * 60 * 60 * 1000) ||
-      !sourceCityPrice
-    ) return { cityName: city.name, profit: -9999 }
-    // 如果最新交易记录无效，排名在有效记录之后，且按顺序排列
-    else if(Boolean(isLogValid(latestLog))) return { cityName: city.name, profit: Math.round(latestLog.price * 1.2 * 0.98 - sourceCityPrice * 0.8 * 1.08) - 9000 }
-    // 如果最新交易记录有效，按利润高低排名
-    else return { cityName: city.name, profit: Math.round(latestLog.price * 1.2 * 0.98 - sourceCityPrice * 0.8 * 1.08) }
-  }).forEach(cityProfit => citiesProfitMap[cityProfit.cityName] = cityProfit.profit)
+  let citiesProfitMap: { [key: string]: number } = {};
+  filteredCities
+    .map((city) => {
+      const latestLog = logStore.getLatestLog(sourceCityName, productName, city.name);
 
-  const sortedCities = filteredCities.toSorted((a, b) => citiesProfitMap[b.name] - citiesProfitMap[a.name])
-  return sortedCities
-}
+      /**
+       * 如果满足以下条件之一，排名最后
+       * 1. 最新交易记录不存在
+       * 2. 最新交易记录距离现在超过 1 天
+       * 3. 原产地价格不存在
+       */
+      if (
+        !latestLog ||
+        Date.now() - new Date(latestLog.uploadedAt).valueOf() > 1 * 24 * 60 * 60 * 1000 ||
+        !sourceCityPrice
+      )
+        return { cityName: city.name, profit: -9999 };
+      // 如果最新交易记录无效，排名在有效记录之后，且按顺序排列
+      else if (Boolean(isLogValid(latestLog)))
+        return {
+          cityName: city.name,
+          profit: Math.round(latestLog.price * 1.2 * 0.98 - sourceCityPrice * 0.8 * 1.08) - 9000
+        };
+      // 如果最新交易记录有效，按利润高低排名
+      else
+        return {
+          cityName: city.name,
+          profit: Math.round(latestLog.price * 1.2 * 0.98 - sourceCityPrice * 0.8 * 1.08)
+        };
+    })
+    .forEach((cityProfit) => (citiesProfitMap[cityProfit.cityName] = cityProfit.profit));
+
+  const sortedCities = filteredCities.toSorted(
+    (a, b) => citiesProfitMap[b.name] - citiesProfitMap[a.name]
+  );
+  return sortedCities;
+};
 </script>
 
 <template>
@@ -86,10 +103,7 @@ const sortCitesByProfit = (filteredCities: CityInfo[], sourceCityName: string, p
             <!-- 按城市维度排序 -->
             <template v-if="settingStore.listSortMode === 'byCity'">
               <TableHead class="border-r">{{ currentCity.name }}</TableHead>
-              <TableHead
-                v-for="city in sellCities"
-                :key="city.name"
-              >{{ city.name }}</TableHead>
+              <TableHead v-for="city in sellCities" :key="city.name">{{ city.name }}</TableHead>
             </template>
             <!-- 按利润排序 -->
             <template v-else>

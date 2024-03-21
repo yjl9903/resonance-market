@@ -36,7 +36,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
   } else {
     form.setFieldValue('percent', [percent - 1]);
   }
-}
+};
 </script>
 
 <template>
@@ -67,15 +67,15 @@ const changePricePercent = (type: 'add' | 'reduce') => {
         <FormLabel>价位</FormLabel>
         <FormControl>
           <div class="flex items-center space-x-2">
-            <span class="i-icon-park-outline-reduce-one text-xl cursor-pointer" @click="changePricePercent('reduce')"></span>
-            <Slider
-              v-bind="componentField"
-              :default-value="[100]"
-              :max="130"
-              :min="70"
-              :step="1"
-            />
-            <span class="i-icon-park-outline-add-one text-xl cursor-pointer" @click="changePricePercent('add')"></span>
+            <span
+              class="i-icon-park-outline-reduce-one text-xl cursor-pointer"
+              @click="changePricePercent('reduce')"
+            ></span>
+            <Slider v-bind="componentField" :default-value="[100]" :max="130" :min="70" :step="1" />
+            <span
+              class="i-icon-park-outline-add-one text-xl cursor-pointer"
+              @click="changePricePercent('add')"
+            ></span>
           </div>
           <FormDescription class="flex justify-between">
             <span>{{ '售出价位' }} {{ form.values.percent?.[0] ?? 100 }}%</span>
@@ -94,7 +94,9 @@ const changePricePercent = (type: 'add' | 'reduce') => {
             <FormItem class="flex items-center space-y-0">
               <FormControl>
                 <RadioGroupItem value="up" />
-                <FormLabel class="flex items-center font-normal text-xl text-green pl-2 cursor-pointer">
+                <FormLabel
+                  class="flex items-center font-normal text-xl text-green pl-2 cursor-pointer"
+                >
                   <span class="i-material-symbols-trending-up text-green"></span>
                 </FormLabel>
               </FormControl>
@@ -102,7 +104,9 @@ const changePricePercent = (type: 'add' | 'reduce') => {
             <FormItem class="flex items-center space-y-0">
               <FormControl>
                 <RadioGroupItem value="down" />
-                <FormLabel class="flex items-center font-normal text-xl text-red pl-2 cursor-pointer">
+                <FormLabel
+                  class="flex items-center font-normal text-xl text-red pl-2 cursor-pointer"
+                >
                   <span class="i-material-symbols-trending-down text-red"></span>
                 </FormLabel>
               </FormControl>

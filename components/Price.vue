@@ -12,7 +12,7 @@ const props = defineProps<{
   log: Log | undefined;
 }>();
 
-const settingStore = useSettingStore()
+const settingStore = useSettingStore();
 
 const store = useLatestLogs();
 
@@ -33,9 +33,13 @@ const isOutdated = computed(() => {
 const profit = computed(() => {
   if (!props.log || props.log?.type === 'buy') return undefined;
 
-  const sourceCityLatestLog = store.getLatestLog(props.log.sourceCity, props.log.name, props.log.sourceCity);
+  const sourceCityLatestLog = store.getLatestLog(
+    props.log.sourceCity,
+    props.log.name,
+    props.log.sourceCity
+  );
   if (sourceCityLatestLog) {
-    return Math.round(props.log.price * 1.2 * 0.98 - sourceCityLatestLog.price * 0.8 * 1.08)
+    return Math.round(props.log.price * 1.2 * 0.98 - sourceCityLatestLog.price * 0.8 * 1.08);
   } else {
     return undefined;
   }
@@ -100,14 +104,22 @@ const shortTime = computed(() => {
 </script>
 
 <template>
-  <TooltipProvider v-if="log && shortTime" :delayDuration="300" :skipDelayDuration="100" :disableClosingTrigger="true">
+  <TooltipProvider
+    v-if="log && shortTime"
+    :delayDuration="300"
+    :skipDelayDuration="100"
+    :disableClosingTrigger="true"
+  >
     <Tooltip v-model:open="openTooltip">
       <TooltipTrigger as-child>
         <div :class="[{ 'op-50': isOutdated }, 'space-y-1']" @click="openTooltip = true">
           <!-- 所在城市 -->
-          <div v-if="['byProfit', 'byPerTicketProfit'].includes(settingStore.listSortMode)" class="flex gap-1 items-center text-base-600">
+          <div
+            v-if="['byProfit', 'byPerTicketProfit'].includes(settingStore.listSortMode)"
+            class="flex gap-1 items-center text-base-600"
+          >
             <span class="i-icon-park-outline-city-one text-sm"></span>
-            <span >{{ log.targetCity }}</span>
+            <span>{{ log.targetCity }}</span>
           </div>
           <!-- 单位利润 -->
           <div
@@ -119,7 +131,11 @@ const shortTime = computed(() => {
           </div>
           <!-- 单票利润 -->
           <div
-            v-if="settingStore.dataDisplayItems.includes('perTicketProfit') && log.type === 'sell' && product.baseVolume"
+            v-if="
+              settingStore.dataDisplayItems.includes('perTicketProfit') &&
+              log.type === 'sell' &&
+              product.baseVolume
+            "
             :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]"
           >
             <span class="i-icon-park-outline-ticket text-base-600 text-sm"></span>
@@ -129,12 +145,15 @@ const shortTime = computed(() => {
                 'text-green': perTicketProfit > 0,
                 'op-50': isOutdated
               }"
-            >{{ perTicketProfit }}</span>
+              >{{ perTicketProfit }}</span
+            >
           </div>
           <!-- 涨跌百分比 -->
           <div :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]">
             <span class="i-icon-park-outline-chart-line text-base-600 text-sm"></span>
-            <span :class="{ 'text-red': log.percent < 100, 'text-green': log.percent > 100 }">{{ log.percent }}%</span>
+            <span :class="{ 'text-red': log.percent < 100, 'text-green': log.percent > 100 }"
+              >{{ log.percent }}%</span
+            >
             <span class="text-xl mt-1">
               <span
                 v-if="log.trend === 'up'"
@@ -167,7 +186,8 @@ const shortTime = computed(() => {
                 },
                 'mr-2'
               ]"
-            >{{ log.price }} ({{ log.percent }}%)</span>
+              >{{ log.price }} ({{ log.percent }}%)</span
+            >
             <span
               v-if="log.trend === 'up'"
               class="i-material-symbols-trending-up text-green text-xl"
@@ -187,7 +207,8 @@ const shortTime = computed(() => {
                 'line-through': isOutdated,
                 'op-50': isOutdated
               }"
-              >{{ profit }}</span>
+              >{{ profit }}</span
+            >
           </p>
           <p v-if="log.type === 'sell' && product.baseVolume">
             <span class="font-bold mr-2">单票利润</span>
@@ -198,7 +219,8 @@ const shortTime = computed(() => {
                 'line-through': isOutdated,
                 'op-50': isOutdated
               }"
-            >{{ +(profit ?? 0) * product.baseVolume }}</span>
+              >{{ +(profit ?? 0) * product.baseVolume }}</span
+            >
           </p>
           <p v-if="log.type === 'sell' && transaction?.basePrice">
             <span class="font-bold mr-2">基准价格</span>
@@ -222,14 +244,19 @@ const shortTime = computed(() => {
             <NuxtLink
               :to="`/transaction/${log.sourceCity}/${log.name}/${log.targetCity}`"
               class="text-link font-bold"
-            >查看历史记录</NuxtLink>
-            <span class="text-link font-bold ml-4 cursor-pointer" @click="reportDialogVisible = true">快速上报价格</span>
+              >查看历史记录</NuxtLink
+            >
+            <span
+              class="text-link font-bold ml-4 cursor-pointer"
+              @click="reportDialogVisible = true"
+              >快速上报价格</span
+            >
           </p>
         </div>
       </TooltipContent>
     </Tooltip>
   </TooltipProvider>
-  
+
   <CreateLog
     v-if="log"
     :source-city-name="log.sourceCity"

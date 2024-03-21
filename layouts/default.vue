@@ -19,7 +19,7 @@ import {
 } from '@/components/ui/menubar';
 import { toast } from 'vue-sonner';
 
-const settingStore = useSettingStore()
+const settingStore = useSettingStore();
 </script>
 
 <template>
@@ -27,7 +27,9 @@ const settingStore = useSettingStore()
     <nav class="border-b pt-12 mb-4">
       <div class="main">
         <div>
-          <NuxtLink to="/" class="text-2xl font-bold hover:text-base-600 select-none">雷索纳斯市场</NuxtLink>
+          <NuxtLink to="/" class="text-2xl font-bold hover:text-base-600 select-none"
+            >雷索纳斯市场</NuxtLink
+          >
         </div>
         <Menubar class="mt-4">
           <MenubarButton>
@@ -40,7 +42,9 @@ const settingStore = useSettingStore()
                 <MenubarSubTrigger>{{ city.name }}</MenubarSubTrigger>
                 <MenubarSubContent>
                   <MenubarItem v-for="product in city.products" :key="product.name" as-child>
-                    <NuxtLink :to="`/product/${city.name}/${product.name}`">{{ product.name }}</NuxtLink>
+                    <NuxtLink :to="`/product/${city.name}/${product.name}`">{{
+                      product.name
+                    }}</NuxtLink>
                   </MenubarItem>
                 </MenubarSubContent>
               </MenubarSub>
@@ -82,7 +86,10 @@ const settingStore = useSettingStore()
                         <span class="i-icon-park-outline-city-one mr-1 block w-4"></span>
                         <span>按城市排序</span>
                       </div>
-                      <span v-if="settingStore.listSortMode === 'byCity'" class="i-material-symbols-check"></span>
+                      <span
+                        v-if="settingStore.listSortMode === 'byCity'"
+                        class="i-material-symbols-check"
+                      ></span>
                     </a>
                   </MenubarItem>
                   <MenubarItem as-child>
@@ -94,7 +101,10 @@ const settingStore = useSettingStore()
                         <span class="i-icon-park-outline-income-one mr-1 block w-4"></span>
                         <span>按利润排序</span>
                       </div>
-                      <span v-if="settingStore.listSortMode === 'byProfit'" class="i-material-symbols-check"></span>
+                      <span
+                        v-if="settingStore.listSortMode === 'byProfit'"
+                        class="i-material-symbols-check"
+                      ></span>
                     </a>
                   </MenubarItem>
                 </MenubarSubContent>
@@ -111,7 +121,10 @@ const settingStore = useSettingStore()
                         <span class="i-icon-park-outline-box mr-1 block w-4"></span>
                         <span>单位利润</span>
                       </div>
-                      <span v-show="settingStore.dataDisplayItems.includes('profit')" class="i-material-symbols-check"></span>
+                      <span
+                        v-show="settingStore.dataDisplayItems.includes('profit')"
+                        class="i-material-symbols-check"
+                      ></span>
                     </a>
                   </MenubarItem>
                   <MenubarItem as-child>
@@ -123,7 +136,10 @@ const settingStore = useSettingStore()
                         <span class="i-icon-park-outline-ticket mr-1 block w-4"></span>
                         <span>单票利润</span>
                       </div>
-                      <span v-show="settingStore.dataDisplayItems.includes('perTicketProfit')" class="i-material-symbols-check"></span>
+                      <span
+                        v-show="settingStore.dataDisplayItems.includes('perTicketProfit')"
+                        class="i-material-symbols-check"
+                      ></span>
                     </a>
                   </MenubarItem>
                 </MenubarSubContent>
@@ -152,7 +168,10 @@ const settingStore = useSettingStore()
                         <span class="i-icon-park-outline-positive-dynamics mr-1 block w-4"></span>
                         <span>最大砍价抬价</span>
                       </div>
-                      <span v-if="settingStore.profitComputeRule === 'maxPriceChange'" class="i-material-symbols-check"></span>
+                      <span
+                        v-if="settingStore.profitComputeRule === 'maxPriceChange'"
+                        class="i-material-symbols-check"
+                      ></span>
                     </a>
                   </MenubarItem>
                   <MenubarItem as-child>
@@ -164,7 +183,10 @@ const settingStore = useSettingStore()
                         <span class="i-icon-park-outline-negative-dynamics mr-1 block w-4"></span>
                         <span>不砍价不抬价</span>
                       </div>
-                      <span v-if="settingStore.profitComputeRule === 'noChange'" class="i-material-symbols-check"></span>
+                      <span
+                        v-if="settingStore.profitComputeRule === 'noChange'"
+                        class="i-material-symbols-check"
+                      ></span>
                     </a>
                   </MenubarItem>
                 </MenubarSubContent>

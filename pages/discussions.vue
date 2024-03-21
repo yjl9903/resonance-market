@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Giscus from '@giscus/vue'
+import Giscus from '@giscus/vue';
 </script>
 
 <template>
