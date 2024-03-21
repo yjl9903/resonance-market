@@ -684,6 +684,120 @@
     ]
   },
   {
+    "name": "年货大礼包",
+    "city": "7号自由港",
+    "valuable": true,
+    "type": "manufacture",
+    "baseVolume": 1,
+    "basePrice": 3064,
+    "transactions": [
+      {
+        "name": "年货大礼包",
+        "sourceCity": "7号自由港",
+        "targetCity": "修格里城",
+        "basePrice": 2688,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "年货大礼包",
+        "sourceCity": "7号自由港",
+        "targetCity": "岚心城",
+        "basePrice": 2849,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "年货大礼包",
+        "sourceCity": "7号自由港",
+        "targetCity": "曼德矿场",
+        "basePrice": 2957,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "年货大礼包",
+        "sourceCity": "7号自由港",
+        "targetCity": "沃德镇",
+        "basePrice": 2930,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "年货大礼包",
+        "sourceCity": "7号自由港",
+        "targetCity": "海角城",
+        "basePrice": 3387,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "年货大礼包",
+        "sourceCity": "7号自由港",
+        "targetCity": "淘金乐园",
+        "basePrice": 3064,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "年货大礼包",
+        "sourceCity": "7号自由港",
+        "targetCity": "澄明数据中心",
+        "basePrice": 2957,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "年货大礼包",
+        "sourceCity": "7号自由港",
+        "targetCity": "荒原站",
+        "basePrice": 2957,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "年货大礼包",
+        "sourceCity": "7号自由港",
+        "targetCity": "贡露城",
+        "basePrice": 2849,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "年货大礼包",
+        "sourceCity": "7号自由港",
+        "targetCity": "铁盟哨站",
+        "basePrice": 2849,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "年货大礼包",
+        "sourceCity": "7号自由港",
+        "targetCity": "阿妮塔发射中心",
+        "basePrice": 3279,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "年货大礼包",
+        "sourceCity": "7号自由港",
+        "targetCity": "阿妮塔战备工厂",
+        "basePrice": 3064,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "年货大礼包",
+        "sourceCity": "7号自由港",
+        "targetCity": "阿妮塔能源研究所",
+        "basePrice": 3279,
+        "mileage": 0,
+        "valuable": true
+      }
+    ]
+  },
+  {
     "name": "啤酒",
     "city": "7号自由港",
     "valuable": false,
@@ -2038,6 +2152,120 @@
         "sourceCity": "修格里城",
         "targetCity": "阿妮塔能源研究所",
         "basePrice": 90,
+        "mileage": 0,
+        "valuable": true
+      }
+    ]
+  },
+  {
+    "name": "修格里严选礼包",
+    "city": "修格里城",
+    "valuable": true,
+    "type": "manufacture",
+    "baseVolume": 1,
+    "basePrice": 1688,
+    "transactions": [
+      {
+        "name": "修格里严选礼包",
+        "sourceCity": "修格里城",
+        "targetCity": "7号自由港",
+        "basePrice": 1958,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "修格里严选礼包",
+        "sourceCity": "修格里城",
+        "targetCity": "岚心城",
+        "basePrice": 1789,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "修格里严选礼包",
+        "sourceCity": "修格里城",
+        "targetCity": "曼德矿场",
+        "basePrice": 1874,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "修格里严选礼包",
+        "sourceCity": "修格里城",
+        "targetCity": "沃德镇",
+        "basePrice": 1840,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "修格里严选礼包",
+        "sourceCity": "修格里城",
+        "targetCity": "海角城",
+        "basePrice": 2211,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "修格里严选礼包",
+        "sourceCity": "修格里城",
+        "targetCity": "淘金乐园",
+        "basePrice": 1958,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "修格里严选礼包",
+        "sourceCity": "修格里城",
+        "targetCity": "澄明数据中心",
+        "basePrice": 1874,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "修格里严选礼包",
+        "sourceCity": "修格里城",
+        "targetCity": "荒原站",
+        "basePrice": 1874,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "修格里严选礼包",
+        "sourceCity": "修格里城",
+        "targetCity": "贡露城",
+        "basePrice": 1789,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "修格里严选礼包",
+        "sourceCity": "修格里城",
+        "targetCity": "铁盟哨站",
+        "basePrice": 1789,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "修格里严选礼包",
+        "sourceCity": "修格里城",
+        "targetCity": "阿妮塔发射中心",
+        "basePrice": 2127,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "修格里严选礼包",
+        "sourceCity": "修格里城",
+        "targetCity": "阿妮塔战备工厂",
+        "basePrice": 1958,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "修格里严选礼包",
+        "sourceCity": "修格里城",
+        "targetCity": "阿妮塔能源研究所",
+        "basePrice": 2127,
         "mileage": 0,
         "valuable": true
       }
@@ -5792,6 +6020,234 @@
         "sourceCity": "海角城",
         "targetCity": "阿妮塔能源研究所",
         "basePrice": 4280,
+        "mileage": 0,
+        "valuable": true
+      }
+    ]
+  },
+  {
+    "name": "纯金线材",
+    "city": "淘金乐园",
+    "valuable": true,
+    "type": "manufacture",
+    "baseVolume": 1,
+    "basePrice": 6300,
+    "transactions": [
+      {
+        "name": "纯金线材",
+        "sourceCity": "淘金乐园",
+        "targetCity": "7号自由港",
+        "basePrice": 7277,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "纯金线材",
+        "sourceCity": "淘金乐园",
+        "targetCity": "修格里城",
+        "basePrice": 6615,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "纯金线材",
+        "sourceCity": "淘金乐园",
+        "targetCity": "岚心城",
+        "basePrice": 6489,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "纯金线材",
+        "sourceCity": "淘金乐园",
+        "targetCity": "曼德矿场",
+        "basePrice": 6458,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "纯金线材",
+        "sourceCity": "淘金乐园",
+        "targetCity": "沃德镇",
+        "basePrice": 6300,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "纯金线材",
+        "sourceCity": "淘金乐园",
+        "targetCity": "海角城",
+        "basePrice": 6300,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "纯金线材",
+        "sourceCity": "淘金乐园",
+        "targetCity": "澄明数据中心",
+        "basePrice": 6962,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "纯金线材",
+        "sourceCity": "淘金乐园",
+        "targetCity": "荒原站",
+        "basePrice": 6615,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "纯金线材",
+        "sourceCity": "淘金乐园",
+        "targetCity": "贡露城",
+        "basePrice": 6300,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "纯金线材",
+        "sourceCity": "淘金乐园",
+        "targetCity": "铁盟哨站",
+        "basePrice": 6615,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "纯金线材",
+        "sourceCity": "淘金乐园",
+        "targetCity": "阿妮塔发射中心",
+        "basePrice": 6489,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "纯金线材",
+        "sourceCity": "淘金乐园",
+        "targetCity": "阿妮塔战备工厂",
+        "basePrice": 6489,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "纯金线材",
+        "sourceCity": "淘金乐园",
+        "targetCity": "阿妮塔能源研究所",
+        "basePrice": 7592,
+        "mileage": 0,
+        "valuable": true
+      }
+    ]
+  },
+  {
+    "name": "金箔",
+    "city": "淘金乐园",
+    "valuable": true,
+    "type": "manufacture",
+    "baseVolume": 1,
+    "basePrice": 3000,
+    "transactions": [
+      {
+        "name": "金箔",
+        "sourceCity": "淘金乐园",
+        "targetCity": "7号自由港",
+        "basePrice": 3540,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "金箔",
+        "sourceCity": "淘金乐园",
+        "targetCity": "修格里城",
+        "basePrice": 3270,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "金箔",
+        "sourceCity": "淘金乐园",
+        "targetCity": "岚心城",
+        "basePrice": 3180,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "金箔",
+        "sourceCity": "淘金乐园",
+        "targetCity": "曼德矿场",
+        "basePrice": 3180,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "金箔",
+        "sourceCity": "淘金乐园",
+        "targetCity": "沃德镇",
+        "basePrice": 3090,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "金箔",
+        "sourceCity": "淘金乐园",
+        "targetCity": "海角城",
+        "basePrice": 3090,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "金箔",
+        "sourceCity": "淘金乐园",
+        "targetCity": "澄明数据中心",
+        "basePrice": 3360,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "金箔",
+        "sourceCity": "淘金乐园",
+        "targetCity": "荒原站",
+        "basePrice": 3270,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "金箔",
+        "sourceCity": "淘金乐园",
+        "targetCity": "贡露城",
+        "basePrice": 3180,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "金箔",
+        "sourceCity": "淘金乐园",
+        "targetCity": "铁盟哨站",
+        "basePrice": 3270,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "金箔",
+        "sourceCity": "淘金乐园",
+        "targetCity": "阿妮塔发射中心",
+        "basePrice": 3090,
+        "mileage": 0,
+        "valuable": false
+      },
+      {
+        "name": "金箔",
+        "sourceCity": "淘金乐园",
+        "targetCity": "阿妮塔战备工厂",
+        "basePrice": 3090,
+        "mileage": 0,
+        "valuable": true
+      },
+      {
+        "name": "金箔",
+        "sourceCity": "淘金乐园",
+        "targetCity": "阿妮塔能源研究所",
+        "basePrice": 3810,
         "mileage": 0,
         "valuable": true
       }
