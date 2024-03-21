@@ -2,33 +2,27 @@
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
-  CardDescription,
   CardTitle
-} from '@/components/ui/card';
+} from '@/components/ui/card'
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow
-} from '@/components/ui/table';
+} from '@/components/ui/table'
 
-import Price from './Price.vue';
-import CreateLog from './CreateLog.vue';
+import Price from './Price.vue'
 
-const props = defineProps<{ city: CityInfo }>();
+const props = defineProps<{ city: CityInfo }>()
 
-const currentCity = props.city;
+const currentCity = props.city
 
-const timestamp = useTimestamp({ interval: 10 * 1000 });
+const timestamp = useTimestamp({ interval: 10 * 1000 })
 
-const mode = ref<'simple' | 'full' | 'edit'>('simple');
-
-const store = useLatestLogs();
+const logStore = useLatestLogs()
 
 const settingStore = useSettingStore()
 
@@ -50,12 +44,12 @@ const sortCitesWithSetting = (filteredCities: CityInfo[], sourceCityName: string
 
 // 按单位利润排序城市
 const sortCitesByProfit = (filteredCities: CityInfo[], sourceCityName: string, productName: string) => {
-  const sourceCityPrice = store.getLatestLog(sourceCityName, productName, sourceCityName)?.price || 0
+  const sourceCityPrice = logStore.getLatestLog(sourceCityName, productName, sourceCityName)?.price || 0
 
   // 计算各城市货物利润
   let citiesProfitMap: {[key: string]: number} = {}
   filteredCities.map(city => {
-    const latestLog = store.getLatestLog(sourceCityName, productName, city.name)
+    const latestLog = logStore.getLatestLog(sourceCityName, productName, city.name)
     
     /**
      * 如果满足以下条件之一，排名最后
@@ -73,7 +67,7 @@ const sortCitesByProfit = (filteredCities: CityInfo[], sourceCityName: string, p
     // 如果最新交易记录有效，按利润高低排名
     else return { cityName: city.name, profit: Math.round(latestLog.price * 1.2 * 0.98 - sourceCityPrice * 0.8 * 1.08) }
   }).forEach(cityProfit => citiesProfitMap[cityProfit.cityName] = cityProfit.profit)
-  
+
   const sortedCities = filteredCities.toSorted((a, b) => citiesProfitMap[b.name] - citiesProfitMap[a.name])
   return sortedCities
 }
@@ -116,7 +110,7 @@ const sortCitesByProfit = (filteredCities: CityInfo[], sourceCityName: string, p
                 :timestamp="timestamp"
                 :product="getProductInfo(city.name, product.name)!"
                 :transaction="undefined"
-                :log="store.getLatestLog(city.name, product.name, city.name)"
+                :log="logStore.getLatestLog(city.name, product.name, city.name)"
               />
             </TableCell>
             <!-- 被排序过的售出城市列表 -->
@@ -128,7 +122,7 @@ const sortCitesByProfit = (filteredCities: CityInfo[], sourceCityName: string, p
                 :timestamp="timestamp"
                 :product="getProductInfo(city.name, product.name)!"
                 :transaction="getTransactionInfo(city.name, product.name, targetCity.name)"
-                :log="store.getLatestLog(city.name, product.name, targetCity.name)"
+                :log="logStore.getLatestLog(city.name, product.name, targetCity.name)"
               />
             </TableCell>
           </TableRow>

@@ -1,10 +1,6 @@
 <script setup lang="ts">
-const store = useLatestLogs();
-await store.fetch();
-
-useIntervalFn(async () => {
-  await store.fetch();
-}, 10 * 1000);
+const logStore = useLatestLogs()
+await logStore.startGetData()
 
 const selectedCity = ref<CityInfo[]>(cities)
 
