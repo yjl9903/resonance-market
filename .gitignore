@@ -1,5 +1,6 @@
 # Secrets
 .env
+scripts/env.py
 
 # Dependency directory
 node_modules
