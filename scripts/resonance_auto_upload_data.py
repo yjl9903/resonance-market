@@ -27,8 +27,8 @@ def product_metadata_to_transaction_meatadata(product_metadata=[]):
     })
     # 遍历商品交易元数据
     for transaction in product["transactions"]:
-      # 如果此交易链路不是要展示的，则跳过
-      if not transaction["valuable"]:
+      # 如果此交易链路不是要展示的，则跳过，若此字段不存在则默认为True
+      if not transaction.get("valuable", True):
         continue
       # 添加售出交易元数据
       transaction_meatadata.append({
