@@ -91,13 +91,9 @@ def filter_products_to_upload(sisuo_data=[], transaction_meatadata=[], product_l
       continue
     # 如果思索学会数据中的价格和当前市场最新上报数据中的价格一致，则跳过
     if target_product_latestdata and target_product_latestdata["price"] == target_sisuo_data["price"]:
-      latest_log_timestamp = (datetime.strptime(target_product_latestdata['uploadedAt'], '%Y-%m-%dT%H:%M:%S.%fZ').timestamp())
+      latest_log_timestamp = datetime.strptime(target_product_latestdata['uploadedAt'], '%Y-%m-%dT%H:%M:%S.%fZ').timestamp() + 8 * 60 * 60
       # 如果当前市场最新上报数据更新时间和思索学会数据更新时间相隔在60分钟内，则跳过
-      if latest_log_timestamp - target_sisuo_data["update_timestamp"] < 60 * 60:
-        # print(
-        #   f"({data_key})在当前市场最新上报数据中价格未发生变化，不上报。" + 
-        #   f"当前市场最新数据更新时间: {time.strftime('%Y-%m-%d %H:%M:%S', time.strptime(target_product_latestdata['uploadedAt'], '%Y-%m-%dT%H:%M:%S.%fZ'))}"
-        # )
+      if target_sisuo_data["update_timestamp"] - latest_log_timestamp < 60 * 60:
         no_change_data_count += 1
         continue
     # 添加商品数据
@@ -153,10 +149,10 @@ while True:
     # 检查POST请求是否成功
     if response.status_code == 200:
       print(f"市场数据上报成功")
+      print(f"数据上报完成, 本次上报数据条数：{len(filtered_data)}条")
     else:
       print(f"市场数据上报失败，HTTP Code: {response.status_code}", "\n元数据：", filtered_data)
     
-    print(f"数据上报完成, 本次上报数据条数：{len(filtered_data)}条")
     print(f"下一次上报时间：{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time() + 300))}")
   except Exception as e:
     print("数据上报失败，错误信息：", e)
