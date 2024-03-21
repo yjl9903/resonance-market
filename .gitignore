@@ -110,3 +110,9 @@ __tests__/runner/*
 
 # Ignore the tailwindcss Config file
 tailwind.config.js
+
+# Ignore the scripts env.py file
+scripts/env.py
+
+# Ignore python cache files
+__pycache__/
