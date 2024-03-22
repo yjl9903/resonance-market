@@ -1,9 +1,8 @@
-import { eq, and, max } from 'drizzle-orm';
-import { memoExternal } from 'memofunc';
+import { and, eq, max } from 'drizzle-orm'
+import { memoExternal } from 'memofunc'
 
-import { products, logs, type Log } from '~/drizzle/schema';
-
-import { connectDatabase, connectStorage } from '../utils/database';
+import { connectDatabase, connectStorage } from '../utils/database'
+import { type Log, logs, products } from '~/drizzle/schema'
 
 export const queryValuableLogs = memoExternal(
   async (db: Awaited<ReturnType<typeof connectDatabase>>) => {
@@ -12,11 +11,11 @@ export const queryValuableLogs = memoExternal(
         name: logs.name,
         city: logs.sourceCity,
         target_city: logs.targetCity,
-        max_uploaded_at: max(logs.uploadedAt).as('max_uploaded_at')
+        max_uploaded_at: max(logs.uploadedAt).as('max_uploaded_at'),
       })
       .from(logs)
       .groupBy(logs.name, logs.sourceCity, logs.targetCity)
-      .as('latest_log');
+      .as('latest_log')
 
     const query = await db
       .select({
@@ -28,13 +27,13 @@ export const queryValuableLogs = memoExternal(
         trend: logs.trend,
         price: logs.price,
         percent: logs.percent,
-        uploadedAt: logs.uploadedAt
+        uploadedAt: logs.uploadedAt,
       })
       .from(products)
       .where(eq(products.valuable, true))
       .innerJoin(
         latestLogSubQuery,
-        and(eq(products.name, latestLogSubQuery.name), eq(products.city, latestLogSubQuery.city))
+        and(eq(products.name, latestLogSubQuery.name), eq(products.city, latestLogSubQuery.city)),
       )
       .innerJoin(
         logs,
@@ -42,44 +41,46 @@ export const queryValuableLogs = memoExternal(
           eq(logs.name, products.name),
           eq(logs.sourceCity, products.city),
           eq(logs.targetCity, latestLogSubQuery.target_city),
-          eq(logs.uploadedAt, latestLogSubQuery.max_uploaded_at)
-        )
-      );
+          eq(logs.uploadedAt, latestLogSubQuery.max_uploaded_at),
+        ),
+      )
 
-    return query as Log[];
+    return query as Log[]
   },
   {
     serialize() {
-      return [];
+      return []
     },
     external: {
       async get() {
-        const storage = connectStorage();
-        const data = await storage.getItem<Log[]>(`api:products`);
-        if (data) {
-          console.log(`Hit cache at ${new Date()}`);
-        }
-        return data;
+        const storage = connectStorage()
+        const data = await storage.getItem<Log[]>('api:products')
+        if (data)
+          console.log(`Hit cache at ${new Date()}`)
+
+        return data
       },
       async set(params, value) {
-        const storage = connectStorage();
-        await storage.setItem(`api:products`, value);
-        console.log(`Set cache at ${new Date()}`);
+        const storage = connectStorage()
+
+        await storage.setItem('api:products', value)
+        console.log(`Set cache at ${new Date()}`)
       },
       async remove() {
-        const storage = connectStorage();
-        await storage.removeItem(`api:products`);
-      }
-    }
-  }
-);
+        const storage = connectStorage()
 
-export default defineEventHandler(async (event) => {
-  const db = await connectDatabase();
+        await storage.removeItem('api:products')
+      },
+    },
+  },
+)
 
-  const query = await queryValuableLogs.get(db);
+export default defineEventHandler(async event => {
+  const db = await connectDatabase()
+
+  const query = await queryValuableLogs.get(db)
 
   return {
-    latest: query
-  };
-});
+    latest: query,
+  }
+})

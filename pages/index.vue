@@ -1,16 +1,30 @@
 <script setup lang="ts">
-const logStore = useLatestLogs();
-await logStore.startGetData();
+import { useStorage } from '@vueuse/core'
 
-const selectedCity = ref<CityInfo[]>(cities);
+const logStore = useLatestLogs()
+
+await logStore.startGetData()
+
+const selectedCity = ref<CityInfo[]>(cities)
+
+const blockCities = useStorage<string[]>('blockCities', [])
 
 const switchCityFilter = (targetCity: CityInfo) => {
-  if (selectedCity.value.find((city) => city.name == targetCity.name)) {
-    selectedCity.value = selectedCity.value.filter((city) => city.name !== targetCity.name);
-  } else {
-    selectedCity.value = [...selectedCity.value, targetCity];
+  if (selectedCity.value.find(city => city.name === targetCity.name)) {
+    selectedCity.value = selectedCity.value.filter(city => city.name !== targetCity.name)
+    blockCities.value.push(targetCity.name)
   }
-};
+  else {
+    selectedCity.value = [...selectedCity.value, targetCity]
+    blockCities.value = blockCities.value.filter(city => city !== targetCity.name)
+  }
+}
+
+onMounted(() => {
+  blockCities.value.forEach(cityName => {
+    selectedCity.value = selectedCity.value.filter(city => city.name !== cityName)
+  })
+})
 </script>
 
 <template>
@@ -19,15 +33,20 @@ const switchCityFilter = (targetCity: CityInfo) => {
       <Button
         v-for="city in cities"
         :key="city.name"
-        @click="switchCityFilter(city)"
-        :variant="selectedCity.find((item) => item.name == city.name) ? 'default' : 'outline'"
+        :variant="selectedCity.find((item) => item.name === city.name) ? 'default' : 'outline'"
         size="sm"
-        >{{ city.name }}</Button
+        @click="switchCityFilter(city)"
       >
+        {{ city.name }}
+      </Button>
     </div>
 
     <div class="space-y-4">
-      <City v-for="city in selectedCity" :key="city.name" :city="city"></City>
+      <City
+        v-for="city in selectedCity"
+        :key="city.name"
+        :city="city"
+      />
     </div>
   </div>
 </template>

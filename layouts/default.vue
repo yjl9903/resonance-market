@@ -1,25 +1,20 @@
 <script setup lang="ts">
-import { sha } from '~build/git';
+import { toast } from 'vue-sonner'
+import { sha } from '~build/git'
 
 import {
   Menubar,
-  MenubarCheckboxItem,
+  MenubarButton,
   MenubarContent,
   MenubarItem,
   MenubarMenu,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarSeparator,
-  MenubarShortcut,
   MenubarSub,
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-  MenubarButton
-} from '@/components/ui/menubar';
-import { toast } from 'vue-sonner';
+} from '@/components/ui/menubar'
 
-const settingStore = useSettingStore();
+const settingStore = useSettingStore()
 </script>
 
 <template>
@@ -27,24 +22,38 @@ const settingStore = useSettingStore();
     <nav class="border-b pt-12 mb-4">
       <div class="main">
         <div>
-          <NuxtLink to="/" class="text-2xl font-bold hover:text-base-600 select-none"
-            >雷索纳斯市场</NuxtLink
+          <NuxtLink
+            to="/"
+            class="text-2xl font-bold hover:text-base-600 select-none"
           >
+            雷索纳斯市场
+          </NuxtLink>
         </div>
         <Menubar class="mt-4">
           <MenubarButton>
-            <NuxtLink to="/">首页</NuxtLink>
+            <NuxtLink to="/">
+              首页
+            </NuxtLink>
           </MenubarButton>
           <MenubarMenu>
             <MenubarTrigger>商品</MenubarTrigger>
             <MenubarContent>
-              <MenubarSub v-for="city in cities" :key="city.name">
+              <MenubarSub
+                v-for="city in cities"
+                :key="city.name"
+              >
                 <MenubarSubTrigger>{{ city.name }}</MenubarSubTrigger>
                 <MenubarSubContent>
-                  <MenubarItem v-for="product in city.products" :key="product.name" as-child>
-                    <NuxtLink :to="`/product/${city.name}/${product.name}`">{{
-                      product.name
-                    }}</NuxtLink>
+                  <MenubarItem
+                    v-for="product in city.products"
+                    :key="product.name"
+                    as-child
+                  >
+                    <NuxtLink :to="`/product/${city.name}/${product.name}`">
+                      {{
+                        product.name
+                      }}
+                    </NuxtLink>
                   </MenubarItem>
                 </MenubarSubContent>
               </MenubarSub>
@@ -56,16 +65,28 @@ const settingStore = useSettingStore();
               <MenubarSub>
                 <MenubarSubTrigger>在城市买入</MenubarSubTrigger>
                 <MenubarSubContent>
-                  <MenubarItem v-for="city in cities" :key="city.name" as-child>
-                    <NuxtLink :to="`/report/buy/${city.name}`">{{ city.name }}</NuxtLink>
+                  <MenubarItem
+                    v-for="city in cities"
+                    :key="city.name"
+                    as-child
+                  >
+                    <NuxtLink :to="`/report/buy/${city.name}`">
+                      {{ city.name }}
+                    </NuxtLink>
                   </MenubarItem>
                 </MenubarSubContent>
               </MenubarSub>
               <MenubarSub>
                 <MenubarSubTrigger>在城市卖出</MenubarSubTrigger>
                 <MenubarSubContent>
-                  <MenubarItem v-for="city in cities" :key="city.name" as-child>
-                    <NuxtLink :to="`/report/sell/${city.name}`">{{ city.name }}</NuxtLink>
+                  <MenubarItem
+                    v-for="city in cities"
+                    :key="city.name"
+                    as-child
+                  >
+                    <NuxtLink :to="`/report/sell/${city.name}`">
+                      {{ city.name }}
+                    </NuxtLink>
                   </MenubarItem>
                 </MenubarSubContent>
               </MenubarSub>
@@ -83,13 +104,13 @@ const settingStore = useSettingStore();
                       @click="settingStore.switchListSortModeTo('byCity')"
                     >
                       <div class="flex items-center mr-2">
-                        <span class="i-icon-park-outline-city-one mr-1 block w-4"></span>
+                        <span class="i-icon-park-outline-city-one mr-1 block w-4" />
                         <span>按城市排序</span>
                       </div>
                       <span
                         v-if="settingStore.listSortMode === 'byCity'"
                         class="i-material-symbols-check"
-                      ></span>
+                      />
                     </a>
                   </MenubarItem>
                   <MenubarItem as-child>
@@ -98,13 +119,13 @@ const settingStore = useSettingStore();
                       @click="settingStore.switchListSortModeTo('byProfit')"
                     >
                       <div class="flex items-center mr-2">
-                        <span class="i-icon-park-outline-income-one mr-1 block w-4"></span>
+                        <span class="i-icon-park-outline-income-one mr-1 block w-4" />
                         <span>按利润排序</span>
                       </div>
                       <span
                         v-if="settingStore.listSortMode === 'byProfit'"
                         class="i-material-symbols-check"
-                      ></span>
+                      />
                     </a>
                   </MenubarItem>
                 </MenubarSubContent>
@@ -118,13 +139,13 @@ const settingStore = useSettingStore();
                       @click="settingStore.switchDataDisplayItems('profit')"
                     >
                       <div class="flex items-center mr-2">
-                        <span class="i-icon-park-outline-box mr-1 block w-4"></span>
+                        <span class="i-icon-park-outline-box mr-1 block w-4" />
                         <span>单位利润</span>
                       </div>
                       <span
                         v-show="settingStore.dataDisplayItems.includes('profit')"
                         class="i-material-symbols-check"
-                      ></span>
+                      />
                     </a>
                   </MenubarItem>
                   <MenubarItem as-child>
@@ -133,13 +154,13 @@ const settingStore = useSettingStore();
                       @click="settingStore.switchDataDisplayItems('perTicketProfit')"
                     >
                       <div class="flex items-center mr-2">
-                        <span class="i-icon-park-outline-ticket mr-1 block w-4"></span>
+                        <span class="i-icon-park-outline-ticket mr-1 block w-4" />
                         <span>单票利润</span>
                       </div>
                       <span
                         v-show="settingStore.dataDisplayItems.includes('perTicketProfit')"
                         class="i-material-symbols-check"
-                      ></span>
+                      />
                     </a>
                   </MenubarItem>
                 </MenubarSubContent>
@@ -153,10 +174,10 @@ const settingStore = useSettingStore();
                       @click="toast('功能正在开发中，敬请期待')"
                     >
                       <div class="flex items-center mr-2">
-                        <span class="i-icon-park-outline-percentage mr-1 block w-4"></span>
+                        <span class="i-icon-park-outline-percentage mr-1 block w-4" />
                         <span>买卖税收8%</span>
                       </div>
-                      <span class="i-material-symbols-check"></span>
+                      <span class="i-material-symbols-check" />
                     </a>
                   </MenubarItem>
                   <MenubarItem as-child>
@@ -165,13 +186,13 @@ const settingStore = useSettingStore();
                       @click="toast('功能正在开发中，敬请期待')"
                     >
                       <div class="flex items-center mr-2">
-                        <span class="i-icon-park-outline-positive-dynamics mr-1 block w-4"></span>
+                        <span class="i-icon-park-outline-positive-dynamics mr-1 block w-4" />
                         <span>最大砍价抬价</span>
                       </div>
                       <span
                         v-if="settingStore.profitComputeRule === 'maxPriceChange'"
                         class="i-material-symbols-check"
-                      ></span>
+                      />
                     </a>
                   </MenubarItem>
                   <MenubarItem as-child>
@@ -180,13 +201,13 @@ const settingStore = useSettingStore();
                       @click="toast('功能正在开发中，敬请期待')"
                     >
                       <div class="flex items-center mr-2">
-                        <span class="i-icon-park-outline-negative-dynamics mr-1 block w-4"></span>
+                        <span class="i-icon-park-outline-negative-dynamics mr-1 block w-4" />
                         <span>不砍价不抬价</span>
                       </div>
                       <span
                         v-if="settingStore.profitComputeRule === 'noChange'"
                         class="i-material-symbols-check"
-                      ></span>
+                      />
                     </a>
                   </MenubarItem>
                 </MenubarSubContent>
@@ -194,19 +215,37 @@ const settingStore = useSettingStore();
             </MenubarContent>
           </MenubarMenu>
           <MenubarButton>
-            <NuxtLink to="/discussions">讨论区</NuxtLink>
+            <NuxtLink to="/discussions">
+              讨论区
+            </NuxtLink>
           </MenubarButton>
           <MenubarMenu>
             <MenubarTrigger>关于</MenubarTrigger>
             <MenubarContent>
               <MenubarItem as-child>
-                <a href="https://github.com/yjl9903/resonance-market" target="_blank">
-                  <span i-carbon-logo-github mr-1 block w-4></span><span>GitHub</span>
+                <a
+                  href="https://github.com/yjl9903/resonance-market"
+                  target="_blank"
+                >
+                  <span
+                    i-carbon-logo-github
+                    mr-1
+                    block
+                    w-4
+                  /><span>GitHub</span>
                 </a>
               </MenubarItem>
               <MenubarItem as-child>
-                <a href="https://space.bilibili.com/1631015691" target="_blank">
-                  <span i-simple-icons-bilibili mr-1 block w-4></span>
+                <a
+                  href="https://space.bilibili.com/1631015691"
+                  target="_blank"
+                >
+                  <span
+                    i-simple-icons-bilibili
+                    mr-1
+                    block
+                    w-4
+                  />
                   <span>雷索纳斯官方 Bilibili</span>
                 </a>
               </MenubarItem>
@@ -217,18 +256,30 @@ const settingStore = useSettingStore();
     </nav>
 
     <main>
-      <slot></slot>
+      <slot />
     </main>
 
     <footer class="block pb8 w-full text-center text-base-500">
-      <div border="b-2 base" mb8></div>
-      <div flex items-center justify-center gap1 align-middle>
+      <div
+        border="b-2 base"
+        mb8
+      />
+      <div
+        flex
+        items-center
+        justify-center
+        gap1
+        align-middle
+      >
         <a
           class="flex items-center gap-1 text-gray-500/70 hover:text-gray-500"
           :href="`https://github.com/yjl9903/resonance-market/tree/${sha}`"
           target="_blank"
         >
-          <span i-carbon-logo-github text-lg></span>
+          <span
+            i-carbon-logo-github
+            text-lg
+          />
           <span font-mono>yjl9903/resonance-market</span>
         </a>
       </div>

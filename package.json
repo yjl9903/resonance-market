@@ -22,7 +22,8 @@
     "typecheck": "turbo run typecheck",
     "preversion": "turbo run test:ci",
     "postversion": "turbo run build",
-    "wrangler": "wrangler"
+    "wrangler": "wrangler",
+    "lint": "eslint . -c .eslintrc.cjs --fix --ext .ts,.js,.cjs,.vue,.tsx,.jsx"
   },
   "dependencies": {
     "@formkit/tempo": "^0.0.12",
@@ -52,6 +53,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@antfu/eslint-config-vue": "^0.43.1",
     "@iconify-json/carbon": "^1.1.31",
     "@iconify-json/icon-park": "^1.1.13",
     "@iconify-json/icon-park-outline": "^1.1.15",
@@ -64,10 +66,18 @@
     "@types/better-sqlite3": "^7.6.9",
     "@types/jsdom": "^21.1.6",
     "@types/node": "^20.11.20",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
     "@unocss/nuxt": "^0.58.5",
     "@unocss/reset": "^0.58.5",
     "bumpp": "latest",
     "drizzle-kit": "^0.20.14",
+    "eslint": "^8.57.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-case-police": "^0.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-sonarjs": "^0.24.0",
+    "eslint-plugin-vue": "^9.23.0",
     "jsdom": "^24.0.0",
     "lucide-vue-next": "^0.340.0",
     "nitro-cloudflare-dev": "^0.0.7",

@@ -1,22 +1,23 @@
 import {
   defineConfig,
-  presetUno,
-  presetIcons,
-  presetWebFonts,
   presetAttributify,
+  presetIcons,
   presetTypography,
+  presetUno,
+  presetWebFonts,
   transformerDirectives,
-  transformerVariantGroup
-} from 'unocss';
+  transformerVariantGroup,
+} from 'unocss'
 
-import { presetShadcn } from './shadcn.preset';
+import { presetShadcn } from './shadcn.preset'
+
 // import { presetFlowind } from './flowind.preset';
 
 export default defineConfig({
   content: {
     pipeline: {
-      include: [/\.ts/, /index\.ts$/, /\.vue$/, /\.vue\?vue/]
-    }
+      include: [/\.ts/, /index\.ts$/, /\.vue$/, /\.vue\?vue/],
+    },
   },
   presets: [
     presetUno(),
@@ -25,10 +26,10 @@ export default defineConfig({
     presetIcons({
       scale: 1.1,
       extraProperties: {
-        height: '1em',
+        'height': '1em',
         'flex-shrink': '0',
-        display: 'inline-block'
-      }
+        'display': 'inline-block',
+      },
     }),
     presetWebFonts({
       provider: 'bunny',
@@ -38,11 +39,12 @@ export default defineConfig({
         quicksand: {
           provider: 'fontshare',
           name: 'Quicksand',
-          weights: ['1', '300', '400', '500', '600', '700']
-        }
-      }
+          weights: ['1', '300', '400', '500', '600', '700'],
+        },
+      },
     }),
-    presetShadcn()
+    presetShadcn(),
+
     // presetFlowind()
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
@@ -57,7 +59,7 @@ export default defineConfig({
     'text-base-600': 'text-neutral-600 dark:text-light-600',
     'text-base-700': 'text-neutral-700 dark:text-light-700',
     'text-base-800': 'text-neutral-800 dark:text-light-800',
-    'text-base-900': 'text-neutral-900 dark:text-light-900'
+    'text-base-900': 'text-neutral-900 dark:text-light-900',
   },
   theme: {
     colors: {
@@ -70,7 +72,7 @@ export default defineConfig({
       'main-600': '#525252',
       'main-700': '#404040',
       'main-800': '#262626',
-      'main-900': '#171717'
-    }
-  }
-});
+      'main-900': '#171717',
+    },
+  },
+})

@@ -3,13 +3,13 @@ import {
   TooltipRoot,
   type TooltipRootEmits,
   type TooltipRootProps,
-  useForwardPropsEmits
-} from 'radix-vue';
+  useForwardPropsEmits,
+} from 'radix-vue'
 
-const props = defineProps<TooltipRootProps>();
-const emits = defineEmits<TooltipRootEmits>();
+const props = defineProps<TooltipRootProps>()
+const emits = defineEmits<TooltipRootEmits>()
 
-const forwarded = useForwardPropsEmits(props, emits);
+const forwarded = useForwardPropsEmits(props, emits)
 </script>
 
 <template>

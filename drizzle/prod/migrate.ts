@@ -1,9 +1,9 @@
-import 'dotenv/config';
+import 'dotenv/config'
 
-import { migrate } from 'drizzle-orm/libsql/migrator';
+import { migrate } from 'drizzle-orm/libsql/migrator'
 
-import { connect } from './connect';
+import { connect } from './connect'
 
-const database = connect();
+const database = connect()
 
-migrate(database, { migrationsFolder: './drizzle/migrations' });
+migrate(database, { migrationsFolder: './drizzle/migrations' })

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Giscus from '@giscus/vue';
+import Giscus from '@giscus/vue'
 </script>
 
 <template>
@@ -9,12 +9,12 @@ import Giscus from '@giscus/vue';
         <Giscus
           id="comments"
           repo="yjl9903/resonance-market"
-          repoId="R_kgDOLbiZ1A"
+          repo-id="R_kgDOLbiZ1A"
           mapping="number"
           term="7"
-          reactionsEnabled="0"
-          emitMetadata="0"
-          inputPosition="top"
+          reactions-enabled="0"
+          emit-metadata="0"
+          input-position="top"
           theme="preferred_color_scheme"
           lang="zh-CN"
         />

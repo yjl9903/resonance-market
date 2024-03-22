@@ -1,5 +1,5 @@
-import { queryValuableLogs } from '../api/product.get';
+import { queryValuableLogs } from '../api/product.get'
 
 export async function invalidateValuableLogsCache() {
-  await queryValuableLogs.update(await connectDatabase());
+  await queryValuableLogs.update(await connectDatabase())
 }

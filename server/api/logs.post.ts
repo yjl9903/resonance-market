@@ -1,3 +1,3 @@
-import handler from './log.post';
+import handler from './log.post'
 
-export default handler;
+export default handler
