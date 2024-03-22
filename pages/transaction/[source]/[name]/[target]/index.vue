@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { toast } from 'vue-sonner'
-import { format } from '@formkit/tempo'
-import { Trash } from 'lucide-vue-next'
+import { toast } from 'vue-sonner';
+import { format } from '@formkit/tempo';
+import { Trash } from 'lucide-vue-next';
 
 import {
   Table,
@@ -10,50 +10,46 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
-} from '@/components/ui/table'
+  TableRow
+} from '@/components/ui/table';
 
-const route = useRoute()
+const route = useRoute();
 
-const sourceCityName = route.params.source
-const productName = route.params.name
-const targetCityName = route.params.target
+const sourceCityName = route.params.source;
+const productName = route.params.name;
+const targetCityName = route.params.target;
 
 useHead({
-  title: `贸易 ${sourceCityName} 一 ${productName} → ${targetCityName} | 雷索纳斯市场`,
-})
+  title: `贸易 ${sourceCityName} 一 ${productName} → ${targetCityName} | 雷索纳斯市场`
+});
 
 const { data, refresh } = await useFetch(
-  `/api/log/${sourceCityName}/${productName}/${targetCityName}/`,
-)
+  `/api/log/${sourceCityName}/${productName}/${targetCityName}/`
+);
 
 useIntervalFn(async () => {
-  await refresh()
-}, 10 * 1000)
+  await refresh();
+}, 10 * 1000);
 
 const onDeleteLog = async (id: number) => {
   try {
     await $fetch(`/api/log/${sourceCityName}/${productName}/${targetCityName}/${id}`, {
-      method: 'DELETE',
-    })
-    toast.success('删除成功')
-    await refresh()
+      method: 'DELETE'
+    });
+    toast.success('删除成功');
+    await refresh();
+  } catch (error) {
+    console.error(error);
+    toast.error('删除失败');
   }
-  catch (error) {
-    console.error(error)
-    toast.error('删除失败')
-  }
-}
+};
 </script>
 
 <template>
   <div class="main pb-12">
     <h1 class="font-bold text-lg mb-4">
       贸易
-      <NuxtLink
-        :to="`/product/${sourceCityName}/${productName}`"
-        class="text-link-active"
-      >
+      <NuxtLink :to="`/product/${sourceCityName}/${productName}`" class="text-link-active">
         {{ sourceCityName }} 一 {{ productName }}
       </NuxtLink>
       → {{ targetCityName }}
@@ -64,28 +60,15 @@ const onDeleteLog = async (id: number) => {
         <TableHeader>
           <TableRow class="boder-t">
             <!-- <TableHead class="">#</TableHead> -->
-            <TableHead class="">
-              上报时间
-            </TableHead>
-            <TableHead class="">
-              价格
-            </TableHead>
-            <TableHead class="">
-              价位
-            </TableHead>
-            <TableHead class="">
-              趋势
-            </TableHead>
-            <TableHead class="w-[100px]">
-              操作
-            </TableHead>
+            <TableHead class=""> 上报时间 </TableHead>
+            <TableHead class=""> 价格 </TableHead>
+            <TableHead class=""> 价位 </TableHead>
+            <TableHead class=""> 趋势 </TableHead>
+            <TableHead class="w-[100px]"> 操作 </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow
-            v-for="log in data.latest"
-            :key="log.id"
-          >
+          <TableRow v-for="log in data.latest" :key="log.id">
             <!-- <TableCell>{{ log.id }}</TableCell> -->
             <TableCell>{{ format(log.uploadedAt, { date: 'long', time: 'medium' }) }}</TableCell>
             <TableCell
@@ -93,8 +76,8 @@ const onDeleteLog = async (id: number) => {
               :class="[
                 {
                   'text-red': log.percent < 100,
-                  'text-green': log.percent > 100,
-                },
+                  'text-green': log.percent > 100
+                }
               ]"
             >
               {{ log.price }}
@@ -104,8 +87,8 @@ const onDeleteLog = async (id: number) => {
               :class="[
                 {
                   'text-red': log.percent < 100,
-                  'text-green': log.percent > 100,
-                },
+                  'text-green': log.percent > 100
+                }
               ]"
             >
               {{ log.percent }}%
@@ -119,17 +102,10 @@ const onDeleteLog = async (id: number) => {
                 v-else-if="log.trend === 'down'"
                 class="i-material-symbols-trending-down text-red text-xl"
               />
-              <span
-                v-else
-                class="i-material-symbols-trending-flat text-xl"
-              />
+              <span v-else class="i-material-symbols-trending-flat text-xl" />
             </TableCell>
             <TableCell>
-              <Button
-                variant="destructive"
-                size="icon"
-                @click="onDeleteLog(log.id)"
-              >
+              <Button variant="destructive" size="icon" @click="onDeleteLog(log.id)">
                 <Trash class="w-4 h-4" />
               </Button>
             </TableCell>

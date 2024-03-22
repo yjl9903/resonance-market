@@ -1,70 +1,57 @@
 <script setup lang="ts">
-import { Slider } from '@/components/ui/slider'
+import { Slider } from '@/components/ui/slider';
 
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import {
   FormControl,
   FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
+  FormMessage
+} from '@/components/ui/form';
 
-import type { CityInfo, ProductInfo } from '@/utils/types'
+import type { CityInfo, ProductInfo } from '@/utils/types';
 
-const props = defineProps<{ target: CityInfo; product: ProductInfo }>()
+const props = defineProps<{ target: CityInfo; product: ProductInfo }>();
 
 const { form, onSubmit } = useReportForm({
   sourceCity: props.product.city,
   name: props.product.name,
-  targetCity: props.target.name,
-})
+  targetCity: props.target.name
+});
 
 const changePricePercent = (type: 'add' | 'reduce') => {
-  const percent = form.values.percent?.[0] ?? 100
-  if (type === 'add')
-    form.setFieldValue('percent', [percent + 1])
-  else
-    form.setFieldValue('percent', [percent - 1])
-}
+  const percent = form.values.percent?.[0] ?? 100;
+  if (type === 'add') form.setFieldValue('percent', [percent + 1]);
+  else form.setFieldValue('percent', [percent - 1]);
+};
 </script>
 
 <template>
-  <form
-    class="grid gap-4 py-4"
-    @submit="onSubmit"
-  >
+  <form class="grid gap-4 py-4" @submit="onSubmit">
     <div class="space-x-2 text-lg">
       <span class="font-bold">{{ product.name }}</span>
     </div>
     <div class="space-x-2 text-base">
-      <span class="">从 <span class="underline underline-offset-4">{{ product.city }}</span> 售出到
-        <span class="underline underline-offset-4">{{ target.name }}</span></span>
+      <span class=""
+        >从 <span class="underline underline-offset-4">{{ product.city }}</span> 售出到
+        <span class="underline underline-offset-4">{{ target.name }}</span></span
+      >
     </div>
 
-    <FormField
-      v-slot="{ componentField }"
-      name="price"
-    >
+    <FormField v-slot="{ componentField }" name="price">
       <FormItem>
         <FormLabel>价格</FormLabel>
         <FormControl>
-          <Input
-            type="number"
-            placeholder="售出价格"
-            v-bind="componentField"
-          />
+          <Input type="number" placeholder="售出价格" v-bind="componentField" />
         </FormControl>
         <FormDescription />
         <FormMessage />
       </FormItem>
     </FormField>
 
-    <FormField
-      v-slot="{ componentField }"
-      name="percent"
-    >
+    <FormField v-slot="{ componentField }" name="percent">
       <FormItem>
         <FormLabel>价位</FormLabel>
         <FormControl>
@@ -73,13 +60,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
               class="i-icon-park-outline-reduce-one text-xl cursor-pointer"
               @click="changePricePercent('reduce')"
             />
-            <Slider
-              v-bind="componentField"
-              :default-value="[100]"
-              :max="160"
-              :min="30"
-              :step="1"
-            />
+            <Slider v-bind="componentField" :default-value="[100]" :max="160" :min="30" :step="1" />
             <span
               class="i-icon-park-outline-add-one text-xl cursor-pointer"
               @click="changePricePercent('add')"
@@ -93,23 +74,18 @@ const changePricePercent = (type: 'add' | 'reduce') => {
       </FormItem>
     </FormField>
 
-    <FormField
-      v-slot="{ componentField }"
-      type="radio"
-      name="trend"
-    >
+    <FormField v-slot="{ componentField }" type="radio" name="trend">
       <FormItem class="space-y-3">
         <FormLabel>涨跌趋势</FormLabel>
 
         <FormControl>
-          <RadioGroup
-            class="flex space-x-4"
-            v-bind="componentField"
-          >
+          <RadioGroup class="flex space-x-4" v-bind="componentField">
             <FormItem class="flex items-center space-y-0">
               <FormControl>
                 <RadioGroupItem value="up" />
-                <FormLabel class="flex items-center font-normal text-xl text-green pl-2 cursor-pointer">
+                <FormLabel
+                  class="flex items-center font-normal text-xl text-green pl-2 cursor-pointer"
+                >
                   <span class="i-material-symbols-trending-up text-green" />
                 </FormLabel>
               </FormControl>
@@ -117,7 +93,9 @@ const changePricePercent = (type: 'add' | 'reduce') => {
             <FormItem class="flex items-center space-y-0">
               <FormControl>
                 <RadioGroupItem value="down" />
-                <FormLabel class="flex items-center font-normal text-xl text-red pl-2 cursor-pointer">
+                <FormLabel
+                  class="flex items-center font-normal text-xl text-red pl-2 cursor-pointer"
+                >
                   <span class="i-material-symbols-trending-down text-red" />
                 </FormLabel>
               </FormControl>
@@ -128,8 +106,6 @@ const changePricePercent = (type: 'add' | 'reduce') => {
       </FormItem>
     </FormField>
 
-    <Button type="submit">
-      上报
-    </Button>
+    <Button type="submit"> 上报 </Button>
   </form>
 </template>

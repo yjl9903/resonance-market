@@ -1,67 +1,64 @@
 <script setup lang="ts">
-import { Slider } from '@/components/ui/slider'
+import { Slider } from '@/components/ui/slider';
 import {
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog'
+  DialogTrigger
+} from '@/components/ui/dialog';
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
   SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+  SelectValue
+} from '@/components/ui/select';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import {
   FormControl,
   FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
+  FormMessage
+} from '@/components/ui/form';
 
-import type { ProductInfo } from '@/utils/types'
+import type { ProductInfo } from '@/utils/types';
 
 const props = defineProps<{
-  sourceCityName: string // 原产地城市
-  targetCityName?: string // 目标城市
-  product: ProductInfo // 货物信息
-}>()
+  sourceCityName: string; // 原产地城市
+  targetCityName?: string; // 目标城市
+  product: ProductInfo; // 货物信息
+}>();
 
 const open = defineModel('open', {
   type: Boolean,
-  default: false,
-})
+  default: false
+});
 
 const { form, onSubmit } = useReportForm({
   sourceCity: props.sourceCityName,
   name: props.product.name,
   onSubmitSuccess() {
-    open.value = false
-  },
-})
-
-watch(open, open => {
-  if (open) {
-    form.resetForm()
-    if (props.targetCityName)
-      form.setFieldValue('targetCity', props.targetCityName)
+    open.value = false;
   }
-})
+});
+
+watch(open, (open) => {
+  if (open) {
+    form.resetForm();
+    if (props.targetCityName) form.setFieldValue('targetCity', props.targetCityName);
+  }
+});
 
 const changePricePercent = (type: 'add' | 'reduce') => {
-  const percent = form.values.percent?.[0] ?? 100
-  if (type === 'add')
-    form.setFieldValue('percent', [percent + 1])
-  else
-    form.setFieldValue('percent', [percent - 1])
-}
+  const percent = form.values.percent?.[0] ?? 100;
+  if (type === 'add') form.setFieldValue('percent', [percent + 1]);
+  else form.setFieldValue('percent', [percent - 1]);
+};
 </script>
 
 <template>
@@ -73,10 +70,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
       <DialogHeader>
         <DialogTitle>上报价格变动</DialogTitle>
       </DialogHeader>
-      <form
-        class="grid gap-4 py-4"
-        @submit="onSubmit"
-      >
+      <form class="grid gap-4 py-4" @submit="onSubmit">
         <div class="space-x-2 text-sm">
           <span class="text-right font-bold">商品</span>
           <span class="text-base">
@@ -87,10 +81,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
           </span>
         </div>
 
-        <FormField
-          v-slot="{ componentField }"
-          name="targetCity"
-        >
+        <FormField v-slot="{ componentField }" name="targetCity">
           <FormItem>
             <FormLabel>城市</FormLabel>
             <Select v-bind="componentField">
@@ -101,11 +92,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
               </FormControl>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem
-                    v-for="city in cities"
-                    :key="city.name"
-                    :value="city.name"
-                  >
+                  <SelectItem v-for="city in cities" :key="city.name" :value="city.name">
                     {{ city.name }}
                   </SelectItem>
                 </SelectGroup>
@@ -122,10 +109,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
           </FormItem>
         </FormField>
 
-        <FormField
-          v-slot="{ componentField }"
-          name="price"
-        >
+        <FormField v-slot="{ componentField }" name="price">
           <FormItem>
             <FormLabel>价格</FormLabel>
             <FormControl>
@@ -140,10 +124,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
           </FormItem>
         </FormField>
 
-        <FormField
-          v-slot="{ componentField }"
-          name="percent"
-        >
+        <FormField v-slot="{ componentField }" name="percent">
           <FormItem>
             <FormLabel>价位百分比</FormLabel>
             <FormControl>
@@ -175,23 +156,18 @@ const changePricePercent = (type: 'add' | 'reduce') => {
           </FormItem>
         </FormField>
 
-        <FormField
-          v-slot="{ componentField }"
-          type="radio"
-          name="trend"
-        >
+        <FormField v-slot="{ componentField }" type="radio" name="trend">
           <FormItem class="space-y-3">
             <FormLabel>涨跌趋势</FormLabel>
 
             <FormControl>
-              <RadioGroup
-                class="flex space-x-4"
-                v-bind="componentField"
-              >
+              <RadioGroup class="flex space-x-4" v-bind="componentField">
                 <FormItem class="flex items-center space-y-0">
                   <FormControl>
                     <RadioGroupItem value="up" />
-                    <FormLabel class="flex items-center font-normal text-xl text-green pl-2 cursor-pointer">
+                    <FormLabel
+                      class="flex items-center font-normal text-xl text-green pl-2 cursor-pointer"
+                    >
                       <span class="i-material-symbols-trending-up text-green" />
                     </FormLabel>
                   </FormControl>
@@ -199,7 +175,9 @@ const changePricePercent = (type: 'add' | 'reduce') => {
                 <FormItem class="flex items-center space-y-0">
                   <FormControl>
                     <RadioGroupItem value="down" />
-                    <FormLabel class="flex items-center font-normal text-xl text-red pl-2 cursor-pointer">
+                    <FormLabel
+                      class="flex items-center font-normal text-xl text-red pl-2 cursor-pointer"
+                    >
                       <span class="i-material-symbols-trending-down text-red" />
                     </FormLabel>
                   </FormControl>
@@ -211,9 +189,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
         </FormField>
 
         <DialogFooter>
-          <Button type="submit">
-            上报
-          </Button>
+          <Button type="submit"> 上报 </Button>
         </DialogFooter>
       </form>
     </DialogContent>

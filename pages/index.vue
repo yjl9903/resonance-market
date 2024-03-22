@@ -1,30 +1,29 @@
 <script setup lang="ts">
-import { useStorage } from '@vueuse/core'
+import { useStorage } from '@vueuse/core';
 
-const logStore = useLatestLogs()
+const logStore = useLatestLogs();
 
-await logStore.startGetData()
+await logStore.startGetData();
 
-const selectedCity = ref<CityInfo[]>(cities)
+const selectedCity = ref<CityInfo[]>(cities);
 
-const blockCities = useStorage<string[]>('blockCities', [])
+const blockCities = useStorage<string[]>('blockCities', []);
 
 const switchCityFilter = (targetCity: CityInfo) => {
-  if (selectedCity.value.find(city => city.name === targetCity.name)) {
-    selectedCity.value = selectedCity.value.filter(city => city.name !== targetCity.name)
-    blockCities.value.push(targetCity.name)
+  if (selectedCity.value.find((city) => city.name === targetCity.name)) {
+    selectedCity.value = selectedCity.value.filter((city) => city.name !== targetCity.name);
+    blockCities.value.push(targetCity.name);
+  } else {
+    selectedCity.value = [...selectedCity.value, targetCity];
+    blockCities.value = blockCities.value.filter((city) => city !== targetCity.name);
   }
-  else {
-    selectedCity.value = [...selectedCity.value, targetCity]
-    blockCities.value = blockCities.value.filter(city => city !== targetCity.name)
-  }
-}
+};
 
 onMounted(() => {
-  blockCities.value.forEach(cityName => {
-    selectedCity.value = selectedCity.value.filter(city => city.name !== cityName)
-  })
-})
+  blockCities.value.forEach((cityName) => {
+    selectedCity.value = selectedCity.value.filter((city) => city.name !== cityName);
+  });
+});
 </script>
 
 <template>
@@ -42,11 +41,7 @@ onMounted(() => {
     </div>
 
     <div class="space-y-4">
-      <City
-        v-for="city in selectedCity"
-        :key="city.name"
-        :city="city"
-      />
+      <City v-for="city in selectedCity" :key="city.name" :city="city" />
     </div>
   </div>
 </template>

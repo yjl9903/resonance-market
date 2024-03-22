@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { toast } from 'vue-sonner'
-import { sha } from '~build/git'
+import { toast } from 'vue-sonner';
+import { sha } from '~build/git';
 
 import {
   Menubar,
@@ -11,10 +11,10 @@ import {
   MenubarSub,
   MenubarSubContent,
   MenubarSubTrigger,
-  MenubarTrigger,
-} from '@/components/ui/menubar'
+  MenubarTrigger
+} from '@/components/ui/menubar';
 
-const settingStore = useSettingStore()
+const settingStore = useSettingStore();
 </script>
 
 <template>
@@ -22,37 +22,23 @@ const settingStore = useSettingStore()
     <nav class="border-b pt-12 mb-4">
       <div class="main">
         <div>
-          <NuxtLink
-            to="/"
-            class="text-2xl font-bold hover:text-base-600 select-none"
-          >
+          <NuxtLink to="/" class="text-2xl font-bold hover:text-base-600 select-none">
             雷索纳斯市场
           </NuxtLink>
         </div>
         <Menubar class="mt-4">
           <MenubarButton>
-            <NuxtLink to="/">
-              首页
-            </NuxtLink>
+            <NuxtLink to="/"> 首页 </NuxtLink>
           </MenubarButton>
           <MenubarMenu>
             <MenubarTrigger>商品</MenubarTrigger>
             <MenubarContent>
-              <MenubarSub
-                v-for="city in cities"
-                :key="city.name"
-              >
+              <MenubarSub v-for="city in cities" :key="city.name">
                 <MenubarSubTrigger>{{ city.name }}</MenubarSubTrigger>
                 <MenubarSubContent>
-                  <MenubarItem
-                    v-for="product in city.products"
-                    :key="product.name"
-                    as-child
-                  >
+                  <MenubarItem v-for="product in city.products" :key="product.name" as-child>
                     <NuxtLink :to="`/product/${city.name}/${product.name}`">
-                      {{
-                        product.name
-                      }}
+                      {{ product.name }}
                     </NuxtLink>
                   </MenubarItem>
                 </MenubarSubContent>
@@ -65,11 +51,7 @@ const settingStore = useSettingStore()
               <MenubarSub>
                 <MenubarSubTrigger>在城市买入</MenubarSubTrigger>
                 <MenubarSubContent>
-                  <MenubarItem
-                    v-for="city in cities"
-                    :key="city.name"
-                    as-child
-                  >
+                  <MenubarItem v-for="city in cities" :key="city.name" as-child>
                     <NuxtLink :to="`/report/buy/${city.name}`">
                       {{ city.name }}
                     </NuxtLink>
@@ -79,11 +61,7 @@ const settingStore = useSettingStore()
               <MenubarSub>
                 <MenubarSubTrigger>在城市卖出</MenubarSubTrigger>
                 <MenubarSubContent>
-                  <MenubarItem
-                    v-for="city in cities"
-                    :key="city.name"
-                    as-child
-                  >
+                  <MenubarItem v-for="city in cities" :key="city.name" as-child>
                     <NuxtLink :to="`/report/sell/${city.name}`">
                       {{ city.name }}
                     </NuxtLink>
@@ -215,37 +193,19 @@ const settingStore = useSettingStore()
             </MenubarContent>
           </MenubarMenu>
           <MenubarButton>
-            <NuxtLink to="/discussions">
-              讨论区
-            </NuxtLink>
+            <NuxtLink to="/discussions"> 讨论区 </NuxtLink>
           </MenubarButton>
           <MenubarMenu>
             <MenubarTrigger>关于</MenubarTrigger>
             <MenubarContent>
               <MenubarItem as-child>
-                <a
-                  href="https://github.com/yjl9903/resonance-market"
-                  target="_blank"
-                >
-                  <span
-                    i-carbon-logo-github
-                    mr-1
-                    block
-                    w-4
-                  /><span>GitHub</span>
+                <a href="https://github.com/yjl9903/resonance-market" target="_blank">
+                  <span i-carbon-logo-github mr-1 block w-4 /><span>GitHub</span>
                 </a>
               </MenubarItem>
               <MenubarItem as-child>
-                <a
-                  href="https://space.bilibili.com/1631015691"
-                  target="_blank"
-                >
-                  <span
-                    i-simple-icons-bilibili
-                    mr-1
-                    block
-                    w-4
-                  />
+                <a href="https://space.bilibili.com/1631015691" target="_blank">
+                  <span i-simple-icons-bilibili mr-1 block w-4 />
                   <span>雷索纳斯官方 Bilibili</span>
                 </a>
               </MenubarItem>
@@ -260,26 +220,14 @@ const settingStore = useSettingStore()
     </main>
 
     <footer class="block pb8 w-full text-center text-base-500">
-      <div
-        border="b-2 base"
-        mb8
-      />
-      <div
-        flex
-        items-center
-        justify-center
-        gap1
-        align-middle
-      >
+      <div border="b-2 base" mb8 />
+      <div flex items-center justify-center gap1 align-middle>
         <a
           class="flex items-center gap-1 text-gray-500/70 hover:text-gray-500"
           :href="`https://github.com/yjl9903/resonance-market/tree/${sha}`"
           target="_blank"
         >
-          <span
-            i-carbon-logo-github
-            text-lg
-          />
+          <span i-carbon-logo-github text-lg />
           <span font-mono>yjl9903/resonance-market</span>
         </a>
       </div>

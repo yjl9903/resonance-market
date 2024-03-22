@@ -1,11 +1,11 @@
-import 'dotenv/config'
+import 'dotenv/config';
 
-import { logs } from './drizzle/schema'
-import { connect } from './drizzle/prod/connect'
+import { logs } from './drizzle/schema';
+import { connect } from './drizzle/prod/connect';
 
-const data: any = await fetch('https://resonance.breadio.wiki/api/product').then(r => r.json())
+const data: any = await fetch('https://resonance.breadio.wiki/api/product').then((r) => r.json());
 
-const database = connect()
+const database = connect();
 
 for (const log of data.latest) {
   try {
@@ -20,13 +20,12 @@ for (const log of data.latest) {
         price: log.price,
         percent: log.percent,
         uploadedAt: new Date(log.uploadedAt),
-        uploaderId: 1,
+        uploaderId: 1
       })
-      .onConflictDoNothing()
-  }
-  catch (error) {
-    console.log(error)
-    console.log(log)
-    process.exit()
+      .onConflictDoNothing();
+  } catch (error) {
+    console.log(error);
+    console.log(log);
+    process.exit();
   }
 }

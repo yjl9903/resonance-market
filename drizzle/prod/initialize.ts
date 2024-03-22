@@ -1,19 +1,19 @@
-import 'dotenv/config'
+import 'dotenv/config';
 
-import { and, eq } from 'drizzle-orm'
-import { products as allProducts } from '../../utils/cities'
+import { and, eq } from 'drizzle-orm';
+import { products as allProducts } from '../../utils/cities';
 
-import { products, transactions, users } from '../schema'
+import { products, transactions, users } from '../schema';
 
-import { connect } from './connect'
+import { connect } from './connect';
 
-const database = connect()
+const database = connect();
 
 await database
   .insert(users)
   .values({ id: 1, name: 'anonymous' })
   .onConflictDoNothing()
-  .returning({ id: users.id })
+  .returning({ id: users.id });
 
 for (const product of allProducts) {
   await database
@@ -25,25 +25,25 @@ for (const product of allProducts) {
       valuable: product.valuable,
       baseVolume: product.baseVolume,
       basePrice: product.basePrice,
-      cost: product.cost,
+      cost: product.cost
     })
-    .onConflictDoNothing()
+    .onConflictDoNothing();
 }
 
 for (const product of allProducts) {
   const resp = await database
     .insert(transactions)
     .values(
-      product.transactions.map(transaction => ({
+      product.transactions.map((transaction) => ({
         name: transaction.name,
         sourceCity: transaction.sourceCity,
         targetCity: transaction.targetCity,
         mileage: transaction.mileage,
-        basePrice: transaction.basePrice,
-      })),
+        basePrice: transaction.basePrice
+      }))
     )
     .returning({ id: transactions.id })
-    .onConflictDoNothing()
+    .onConflictDoNothing();
 
   // Do update
   if (resp.length === 0) {
@@ -55,15 +55,15 @@ for (const product of allProducts) {
           sourceCity: transaction.sourceCity,
           targetCity: transaction.targetCity,
           mileage: transaction.mileage,
-          basePrice: transaction.basePrice,
+          basePrice: transaction.basePrice
         })
         .where(
           and(
             eq(transactions.name, transaction.name),
             eq(transactions.sourceCity, transaction.sourceCity),
-            eq(transactions.targetCity, transaction.targetCity),
-          ),
-        )
+            eq(transactions.targetCity, transaction.targetCity)
+          )
+        );
     }
   }
 }

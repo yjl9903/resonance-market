@@ -1,38 +1,38 @@
 export interface CityInfo {
-  name: string
+  name: string;
 
-  products: ProductInfo[]
+  products: ProductInfo[];
 }
 
 export interface ProductInfo {
-  city: string
+  city: string;
 
-  name: string
+  name: string;
 
-  type: 'normal' | 'specialty' | 'manufacture'
+  type: 'normal' | 'specialty' | 'manufacture';
 
-  valuable: boolean
+  valuable: boolean;
 
   // 基础货量，null 表示制造
-  baseVolume: number | null
+  baseVolume: number | null;
 
   // 基准价格
-  basePrice: number
+  basePrice: number;
 
   // 成本，null 表示时价
-  cost: number | null
+  cost: number | null;
 
-  transactions: TransactionInfo[]
+  transactions: TransactionInfo[];
 }
 
 export interface TransactionInfo {
-  name: string
+  name: string;
 
-  sourceCity: string
+  sourceCity: string;
 
-  targetCity: string
+  targetCity: string;
 
-  mileage: number
+  mileage: number;
 
-  basePrice: number
+  basePrice: number;
 }

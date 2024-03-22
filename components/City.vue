@@ -1,59 +1,57 @@
 <script setup lang="ts">
-import Price from './Price.vue'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import Price from './Price.vue';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
-} from '@/components/ui/table'
+  TableRow
+} from '@/components/ui/table';
 
-const props = defineProps<{ city: CityInfo }>()
+const props = defineProps<{ city: CityInfo }>();
 
-const currentCity = props.city
+const currentCity = props.city;
 
-const timestamp = useTimestamp({ interval: 10 * 1000 })
+const timestamp = useTimestamp({ interval: 10 * 1000 });
 
-const logStore = useLatestLogs()
+const logStore = useLatestLogs();
 
-const settingStore = useSettingStore()
+const settingStore = useSettingStore();
 
 // 售出城市列表
 const sellCities = computed(() => {
-  return cities.filter(c => c.name !== currentCity.name)
-})
+  return cities.filter((c) => c.name !== currentCity.name);
+});
 
 // 按设置排序后的城市列表
 const sortCitesWithSetting = (
   filteredCities: CityInfo[],
   sourceCityName: string,
-  productName: string,
+  productName: string
 ) => {
-  if (settingStore.listSortMode === 'byCity')
-    return filteredCities
+  if (settingStore.listSortMode === 'byCity') return filteredCities;
   else if (settingStore.listSortMode === 'byProfit')
-    return sortCitesByProfit(filteredCities, sourceCityName, productName)
-  else
-    return filteredCities
-}
+    return sortCitesByProfit(filteredCities, sourceCityName, productName);
+  else return filteredCities;
+};
 
 // 按单位利润排序城市
 const sortCitesByProfit = (
   filteredCities: CityInfo[],
   sourceCityName: string,
-  productName: string,
+  productName: string
 ) => {
-  const sourceCityPrice
-    = logStore.getLatestLog(sourceCityName, productName, sourceCityName)?.price || 0
+  const sourceCityPrice =
+    logStore.getLatestLog(sourceCityName, productName, sourceCityName)?.price || 0;
 
   // 计算各城市货物利润
-  const citiesProfitMap: { [key: string]: number } = {}
+  const citiesProfitMap: { [key: string]: number } = {};
 
   filteredCities
-    .map(city => {
-      const latestLog = logStore.getLatestLog(sourceCityName, productName, city.name)
+    .map((city) => {
+      const latestLog = logStore.getLatestLog(sourceCityName, productName, city.name);
 
       /**
        * 如果满足以下条件之一，排名最后
@@ -62,33 +60,33 @@ const sortCitesByProfit = (
        * 3. 原产地价格不存在
        */
       if (
-        !latestLog
-        || Date.now() - new Date(latestLog.uploadedAt).valueOf() > 1 * 24 * 60 * 60 * 1000
-        || !sourceCityPrice
-      ) { return { cityName: city.name, profit: -9999 } }
+        !latestLog ||
+        Date.now() - new Date(latestLog.uploadedAt).valueOf() > 1 * 24 * 60 * 60 * 1000 ||
+        !sourceCityPrice
+      ) {
+        return { cityName: city.name, profit: -9999 };
+      }
 
       // 如果最新交易记录无效，排名在有效记录之后，且按顺序排列
       else if (isLogValid(latestLog)) {
         return {
           cityName: city.name,
-          profit: Math.round(latestLog.price * 1.2 * 0.98 - sourceCityPrice * 0.8 * 1.08) - 9000,
-        }
+          profit: Math.round(latestLog.price * 1.2 * 0.98 - sourceCityPrice * 0.8 * 1.08) - 9000
+        };
       }
 
       // 如果最新交易记录有效，按利润高低排名
       else {
         return {
           cityName: city.name,
-          profit: Math.round(latestLog.price * 1.2 * 0.98 - sourceCityPrice * 0.8 * 1.08),
-        }
+          profit: Math.round(latestLog.price * 1.2 * 0.98 - sourceCityPrice * 0.8 * 1.08)
+        };
       }
     })
-    .forEach(cityProfit => (citiesProfitMap[cityProfit.cityName] = cityProfit.profit))
+    .forEach((cityProfit) => (citiesProfitMap[cityProfit.cityName] = cityProfit.profit));
 
-  return filteredCities.toSorted(
-    (a, b) => citiesProfitMap[b.name] - citiesProfitMap[a.name],
-  )
-}
+  return filteredCities.toSorted((a, b) => citiesProfitMap[b.name] - citiesProfitMap[a.name]);
+};
 </script>
 
 <template>
@@ -100,27 +98,20 @@ const sortCitesByProfit = (
       <Table>
         <TableHeader>
           <TableRow class="boder-t">
-            <TableHead class="w-[120px]">
-              商品
-            </TableHead>
+            <TableHead class="w-[120px]"> 商品 </TableHead>
             <!-- 按城市维度排序 -->
             <template v-if="settingStore.listSortMode === 'byCity'">
               <TableHead class="border-r">
                 {{ currentCity.name }}
               </TableHead>
-              <TableHead
-                v-for="city in sellCities"
-                :key="city.name"
-              >
+              <TableHead v-for="city in sellCities" :key="city.name">
                 {{ city.name }}
               </TableHead>
             </template>
             <!-- 按利润排序 -->
             <template v-else>
               <TableHead class="border-r">
-                <div class="w-30">
-                  原产地采购价
-                </div>
+                <div class="w-30">原产地采购价</div>
               </TableHead>
               <TableHead :colspan="sellCities.length">
                 城市售卖报价(按利润高低从左到右降序排序)
@@ -129,10 +120,7 @@ const sortCitesByProfit = (
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow
-            v-for="product in city.products.filter((p) => p.valuable)"
-            :key="product.name"
-          >
+          <TableRow v-for="product in city.products.filter((p) => p.valuable)" :key="product.name">
             <TableCell>
               <NuxtLink :to="`/product/${city.name}/${product.name}`">
                 {{ product.name }}

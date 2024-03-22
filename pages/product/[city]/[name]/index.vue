@@ -1,23 +1,20 @@
 <script setup lang="ts">
-const route = useRoute()
-const cityName = route.params.city as string
-const productName = route.params.name as string
+const route = useRoute();
+const cityName = route.params.city as string;
+const productName = route.params.name as string;
 
 useHead({
-  title: `商品 ${cityName} - ${productName} | 雷索纳斯市场`,
-})
+  title: `商品 ${cityName} - ${productName} | 雷索纳斯市场`
+});
 
-const product = getProductInfo(cityName, productName)!
+const product = getProductInfo(cityName, productName)!;
 
-if (!product)
-  navigateTo('/')
+if (!product) navigateTo('/');
 </script>
 
 <template>
   <div class="main pb-12">
-    <h1 class="font-bold text-lg mb-4">
-      商品 {{ cityName }} - {{ productName }}
-    </h1>
+    <h1 class="font-bold text-lg mb-4">商品 {{ cityName }} - {{ productName }}</h1>
 
     <div class="mb-4 space-y-2">
       <div v-for="tr in product.transactions">

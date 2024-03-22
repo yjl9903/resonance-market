@@ -1,5 +1,5 @@
-import { migrate } from 'drizzle-orm/better-sqlite3/migrator'
+import { migrate } from 'drizzle-orm/better-sqlite3/migrator';
 
-import { database } from './connect'
+import { database } from './connect';
 
-migrate(database, { migrationsFolder: './drizzle/migrations' })
+migrate(database, { migrationsFolder: './drizzle/migrations' });
