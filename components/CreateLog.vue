@@ -148,8 +148,8 @@ const changePricePercent = (type: 'add' | 'reduce') => {
                 <Slider
                   v-bind="componentField"
                   :default-value="[100]"
-                  :max="130"
-                  :min="70"
+                  :max="160"
+                  :min="30"
                   :step="1"
                 />
                 <span
