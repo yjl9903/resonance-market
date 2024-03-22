@@ -20,7 +20,7 @@ export const useLatestLogs = defineStore('latest_logs', () => {
       const key = `${log.name}-from${log.sourceCity}to${log.targetCity}`;
       transactionMap.value.set(key, log);
     });
-  }
+  };
 
   return {
     logs,
