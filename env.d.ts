@@ -1,3 +1,5 @@
+/// <reference types="unplugin-analytics/client" />
+
 declare module '~build/time' {
   const time: Date;
 

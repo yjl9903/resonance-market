@@ -1,6 +1,8 @@
 import { skipHydrate } from 'pinia';
 import { useStorage } from '@vueuse/core';
 
+import { umami } from '~analytics/umami';
+
 export type ListSortMode = 'byCity' | 'byProfit';
 export type ProfitComputeRule = 'maxPriceChange' | 'noChange';
 export type DataDisplayItems = 'profit' | 'perTicketProfit';
@@ -16,11 +18,15 @@ export const useSettingStore = defineStore('setting', () => {
   // 切换列表排序模式
   const switchListSortModeTo = (targetMode: ListSortMode) => {
     listSortMode.value = targetMode;
+
+    umami?.track(`switch list mode to ${targetMode}`).catch(() => {});
   };
 
   // 切换利润计算规则
   const switchProfitComputeRuleTo = (targetRule: ProfitComputeRule) => {
     profitComputeRule.value = targetRule;
+
+    umami?.track(`switch profit compute rule to ${targetRule}`).catch(() => {});
   };
 
   // 切换数据显示项
