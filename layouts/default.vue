@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { toast } from 'vue-sonner'
-import { sha } from '~build/git'
+import { toast } from 'vue-sonner';
+// eslint-disable-next-line import/extensions, import/no-unresolved
+import { sha } from '~build/git';
 
 import {
   Menubar,
@@ -11,10 +12,10 @@ import {
   MenubarSub,
   MenubarSubContent,
   MenubarSubTrigger,
-  MenubarTrigger,
-} from '@/components/ui/menubar'
+  MenubarTrigger
+} from '@/components/ui/menubar';
 
-const settingStore = useSettingStore()
+const settingStore = useSettingStore();
 </script>
 
 <template>
@@ -226,6 +227,7 @@ const settingStore = useSettingStore()
                 <a
                   href="https://github.com/yjl9903/resonance-market"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <span
                     i-carbon-logo-github
@@ -239,6 +241,7 @@ const settingStore = useSettingStore()
                 <a
                   href="https://space.bilibili.com/1631015691"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <span
                     i-simple-icons-bilibili
@@ -275,6 +278,7 @@ const settingStore = useSettingStore()
           class="flex items-center gap-1 text-gray-500/70 hover:text-gray-500"
           :href="`https://github.com/yjl9903/resonance-market/tree/${sha}`"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <span
             i-carbon-logo-github

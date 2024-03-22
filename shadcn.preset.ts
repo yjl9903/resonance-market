@@ -1,17 +1,16 @@
-import { h } from '@unocss/preset-mini/utils'
-import type { Preset } from 'unocss'
-import type { PresetMiniOptions, Theme } from 'unocss/preset-mini'
+import { h } from '@unocss/preset-mini/utils';
+import type { Preset } from 'unocss';
+import type { PresetMiniOptions, Theme } from 'unocss/preset-mini';
 
 export interface PresetShadcnOptions extends PresetMiniOptions {}
 
 const handleMatchNumber = (v: string, defaultVal = '0') =>
-  h.bracket.cssvar.global.auto.fraction.number(v || defaultVal)?.replace('%', '')
+  h.bracket.cssvar.global.auto.fraction.number(v || defaultVal)?.replace('%', '');
 
 const handleMatchRem = (v: string, defaultVal = 'full') =>
-  h.bracket.cssvar.global.auto.fraction.rem(v || defaultVal)
+  h.bracket.cssvar.global.auto.fraction.rem(v || defaultVal);
 
-// eslint-disable-next-line
-export function presetShadcn(options: PresetShadcnOptions = {}): Preset<Theme> {
+export function presetShadcn(_: PresetShadcnOptions = {}): Preset<Theme> {
   return {
     name: 'unocss-preset-shadcn',
     preflights: [
@@ -76,21 +75,21 @@ export function presetShadcn(options: PresetShadcnOptions = {}): Preset<Theme> {
             color: hsl(var(--foreground));
             background: hsl(var(--background));
           }
-        `,
-      },
+        `
+      }
     ],
     rules: [
       [
         'accordion-down',
         {
-          animation: 'shadcn-down 0.2s ease-out',
-        },
+          animation: 'shadcn-down 0.2s ease-out'
+        }
       ],
       [
         'accordion-up',
         {
-          animation: 'shadcn-up 0.2s ease-out',
-        },
+          animation: 'shadcn-up 0.2s ease-out'
+        }
       ],
       [
         'animate-in',
@@ -102,8 +101,8 @@ export function presetShadcn(options: PresetShadcnOptions = {}): Preset<Theme> {
           '--un-enter-scale': 'initial',
           '--un-enter-rotate': 'initial',
           '--un-enter-translate-x': 'initial',
-          '--un-enter-translate-y': 'initial',
-        },
+          '--un-enter-translate-y': 'initial'
+        }
       ],
       [
         'animate-out',
@@ -115,65 +114,65 @@ export function presetShadcn(options: PresetShadcnOptions = {}): Preset<Theme> {
           '--un-exit-scale': 'initial',
           '--un-exit-rotate': 'initial',
           '--un-exit-translate-x': 'initial',
-          '--un-exit-translate-y': 'initial',
-        },
+          '--un-exit-translate-y': 'initial'
+        }
       ],
       [
         /^fade-in-?(.+)?$/,
-        ([, d]) => ({ '--un-enter-opacity': `${Number(handleMatchNumber(d) || 0) / 100}` }),
+        ([, d]) => ({ '--un-enter-opacity': `${Number(handleMatchNumber(d) || 0) / 100}` })
       ],
       [
         /^fade-out-?(.+)?$/,
-        ([, d]) => ({ '--un-exit-opacity': `${Number(handleMatchNumber(d) || 0) / 100}` }),
+        ([, d]) => ({ '--un-exit-opacity': `${Number(handleMatchNumber(d) || 0) / 100}` })
       ],
       [
         /^zoom-in-?(.+)?$/,
-        ([, d]) => ({ '--un-enter-scale': `${Number(handleMatchNumber(d) || 0) / 100}` }),
+        ([, d]) => ({ '--un-enter-scale': `${Number(handleMatchNumber(d) || 0) / 100}` })
       ],
       [
         /^zoom-out-?(.+)?$/,
-        ([, d]) => ({ '--un-exit-scale': `${Number(handleMatchNumber(d) || 0) / 100}` }),
+        ([, d]) => ({ '--un-exit-scale': `${Number(handleMatchNumber(d) || 0) / 100}` })
       ],
       [
         /^spin-in-?(.+)?$/,
-        ([, d]) => ({ '--un-enter-rotate': `${Number(handleMatchNumber(d) || 0)}deg` }),
+        ([, d]) => ({ '--un-enter-rotate': `${Number(handleMatchNumber(d) || 0)}deg` })
       ],
       [
         /^spin-out-?(.+)?$/,
-        ([, d]) => ({ '--un-exit-rotate': `${Number(handleMatchNumber(d) || 0)}deg` }),
+        ([, d]) => ({ '--un-exit-rotate': `${Number(handleMatchNumber(d) || 0)}deg` })
       ],
       [
         /^slide-in-from-top-?(.+)?$/,
-        ([, d]) => ({ '--un-enter-translate-y': `-${handleMatchRem(d)}` }),
+        ([, d]) => ({ '--un-enter-translate-y': `-${handleMatchRem(d)}` })
       ],
       [
         /^slide-in-from-bottom-?(.+)?$/,
-        ([, d]) => ({ '--un-enter-translate-y': handleMatchRem(d) }),
+        ([, d]) => ({ '--un-enter-translate-y': handleMatchRem(d) })
       ],
       [
         /^slide-in-from-left-?(.+)?$/,
-        ([, d]) => ({ '--un-enter-translate-x': `-${handleMatchRem(d)}` }),
+        ([, d]) => ({ '--un-enter-translate-x': `-${handleMatchRem(d)}` })
       ],
       [
         /^slide-in-from-right-?(.+)?$/,
-        ([, d]) => ({ '--un-enter-translate-x': handleMatchRem(d) }),
+        ([, d]) => ({ '--un-enter-translate-x': handleMatchRem(d) })
       ],
       [
         /^slide-out-to-top-?(.+)?$/,
-        ([, d]) => ({ '--un-exit-translate-y': `-${handleMatchRem(d)}` }),
+        ([, d]) => ({ '--un-exit-translate-y': `-${handleMatchRem(d)}` })
       ],
       [/^slide-out-to-bottom-?(.+)?$/, ([, d]) => ({ '--un-exit-translate-y': handleMatchRem(d) })],
       [
         /^slide-out-to-left-?(.+)?$/,
-        ([, d]) => ({ '--un-exit-translate-x': `-${handleMatchRem(d)}` }),
+        ([, d]) => ({ '--un-exit-translate-x': `-${handleMatchRem(d)}` })
       ],
-      [/^slide-out-to-right-?(.+)?$/, ([, d]) => ({ '--un-exit-translate-x': handleMatchRem(d) })],
+      [/^slide-out-to-right-?(.+)?$/, ([, d]) => ({ '--un-exit-translate-x': handleMatchRem(d) })]
     ],
     shortcuts: [
       {
         'animate-accordion-up': 'accordion-up',
-        'animate-accordion-down': 'accordion-down',
-      },
+        'animate-accordion-down': 'accordion-down'
+      }
     ],
     theme: {
       colors: {
@@ -184,38 +183,38 @@ export function presetShadcn(options: PresetShadcnOptions = {}): Preset<Theme> {
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+          foreground: 'hsl(var(--primary-foreground))'
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
+          foreground: 'hsl(var(--secondary-foreground))'
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
+          foreground: 'hsl(var(--destructive-foreground))'
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
+          foreground: 'hsl(var(--muted-foreground))'
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
+          foreground: 'hsl(var(--accent-foreground))'
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+          foreground: 'hsl(var(--popover-foreground))'
         },
         card: {
           DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
-        },
+          foreground: 'hsl(var(--card-foreground))'
+        }
       },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-      },
-    },
-  }
+        sm: 'calc(var(--radius) - 4px)'
+      }
+    }
+  };
 }

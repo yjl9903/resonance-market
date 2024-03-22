@@ -1,24 +1,24 @@
-import { and, desc, eq } from 'drizzle-orm'
+import { and, desc, eq } from 'drizzle-orm';
 
-import { type Log, logs } from '~/drizzle/schema'
+import { type Log, logs } from '~/drizzle/schema';
 
-import { connectDatabase } from '@/server/utils/database'
+import { connectDatabase } from '@/server/utils/database';
 
 export default defineEventHandler(async event => {
-  const sourceCityName = getRouterParam(event, 'source')
-  const productName = getRouterParam(event, 'name')
-  const targetCityName = getRouterParam(event, 'target')
+  const sourceCityName = getRouterParam(event, 'source');
+  const productName = getRouterParam(event, 'name');
+  const targetCityName = getRouterParam(event, 'target');
   if (!sourceCityName || !productName || !targetCityName) {
-    setResponseStatus(event, 400)
+    setResponseStatus(event, 400);
 
-    return { latest: [], error: 'Body is invalid' }
+    return { latest: [], error: 'Body is invalid' };
   }
 
-  const query = getQuery(event)
-  const page = typeof query.page === 'string' && /^\d+&/.test(query.page) ? +query.page : 1
-  const pageSize = 100
+  const query = getQuery(event);
+  const page = typeof query.page === 'string' && /^\d+&/.test(query.page) ? +query.page : 1;
+  const pageSize = 100;
 
-  const db = await connectDatabase()
+  const db = await connectDatabase();
 
   const latestLogs = await db
     .select({
@@ -31,21 +31,21 @@ export default defineEventHandler(async event => {
       price: logs.price,
       percent: logs.percent,
       uploadedAt: logs.uploadedAt,
-      uploaderId: logs.uploaderId,
+      uploaderId: logs.uploaderId
     })
     .from(logs)
     .where(
       and(
         eq(logs.sourceCity, decodeURIComponent(sourceCityName)),
         eq(logs.name, decodeURIComponent(productName)),
-        eq(logs.targetCity, decodeURIComponent(targetCityName)),
-      ),
+        eq(logs.targetCity, decodeURIComponent(targetCityName))
+      )
     )
     .offset(pageSize * (page - 1))
     .limit(pageSize)
-    .orderBy(desc(logs.uploadedAt))
+    .orderBy(desc(logs.uploadedAt));
 
   return {
-    latest: latestLogs as Log[],
-  }
-})
+    latest: latestLogs as Log[]
+  };
+});

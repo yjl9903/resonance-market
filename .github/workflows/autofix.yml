@@ -29,7 +29,7 @@ jobs:
       - name: Install
         run: pnpm install
 
-      - name: Format
-        run: pnpm format
+      - name: ESLint
+        run: pnpm run lint
 
       - uses: autofix-ci/action@d3e591514b99d0fca6779455ff8338516663f7cc

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-const route = useRoute()
-const cityName = route.params.city as string
-const city = cities.filter(c => c.name === cityName)[0]
+const route = useRoute();
+const cityName = route.params.city as string;
+const city = cities.filter(c => c.name === cityName)[0];
 
 if (!city)
-  navigateTo('/')
+  navigateTo('/');
 
 useHead({
-  title: `上报 ${cityName} 商品买入价格 | 雷索纳斯市场`,
-})
+  title: `上报 ${cityName} 商品买入价格 | 雷索纳斯市场`
+});
 </script>
 
 <template>

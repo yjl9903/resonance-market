@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
+    es2021: true
   },
   extends: [
     '@antfu/eslint-config-vue',
@@ -11,17 +11,17 @@ module.exports = {
     'plugin:promise/recommended',
     'plugin:sonarjs/recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:case-police/recommended',
+    'plugin:case-police/recommended'
   ],
   parser: 'vue-eslint-parser',
   parserOptions: {
     ecmaVersion: 13,
     parser: '@typescript-eslint/parser',
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: [
     'vue',
-    '@typescript-eslint',
+    '@typescript-eslint'
   ],
   ignorePatterns: ['node_modules', 'dist', '*.d.ts', 'vendor'],
   rules: {
@@ -36,7 +36,7 @@ module.exports = {
 
     'vue/first-attribute-linebreak': ['error', {
       singleline: 'beside',
-      multiline: 'below',
+      multiline: 'below'
     }],
 
     'antfu/top-level-function': 'off',
@@ -46,7 +46,8 @@ module.exports = {
     'indent': ['error', 2],
 
     // Enforce trailing comma (Already present in TypeScript)
-    'comma-dangle': ['error', 'always-multiline'],
+    'comma-dangle': 'off',
+    '@typescript-eslint/comma-dangle': ['error', 'never'],
 
     // Enforce consistent spacing inside braces of object (Already present in TypeScript)
     'object-curly-spacing': ['error', 'always'],
@@ -58,7 +59,8 @@ module.exports = {
     'max-len': 'off',
 
     // we don't want it
-    'semi': ['error', 'never'],
+    'semi': 'off',
+    '@typescript-eslint/semi': ['error', 'always'],
 
     // add parens ony when required in arrow function
     'arrow-parens': ['error', 'as-needed'],
@@ -78,8 +80,8 @@ module.exports = {
         allowArrayStart: true,
 
         // We don't want to add extra space above closing SECTION
-        ignorePattern: '!SECTION',
-      },
+        ignorePattern: '!SECTION'
+      }
     ],
 
     // Ignore _ as unused variable
@@ -95,7 +97,7 @@ module.exports = {
       { blankLine: 'always', prev: 'expression', next: 'const' },
       { blankLine: 'always', prev: 'const', next: 'expression' },
       { blankLine: 'always', prev: 'multiline-const', next: '*' },
-      { blankLine: 'always', prev: '*', next: 'multiline-const' },
+      { blankLine: 'always', prev: '*', next: 'multiline-const' }
     ],
 
     // Plugin: eslint-plugin-import
@@ -103,7 +105,7 @@ module.exports = {
     'import/newline-after-import': ['error', { count: 1 }],
     'no-restricted-imports': ['error', 'vuetify/components', {
       name: 'vue3-apexcharts',
-      message: 'apexcharts are autoimported',
+      message: 'apexcharts are autoimported'
     }],
 
     // For omitting extension for ts files
@@ -114,8 +116,8 @@ module.exports = {
         js: 'never',
         jsx: 'never',
         ts: 'never',
-        tsx: 'never',
-      },
+        tsx: 'never'
+      }
     ],
 
     // ignore virtual files
@@ -125,8 +127,8 @@ module.exports = {
         'virtual:generated-layouts',
 
         // Ignore vite's ?raw imports
-        '.*\?raw',
-      ],
+        '.*\?raw'
+      ]
     }],
 
     // Thanks: https://stackoverflow.com/a/63961972/10796681
@@ -145,8 +147,8 @@ module.exports = {
     'vue/component-name-in-template-casing': ['error', 'PascalCase', { registeredComponentsOnly: false, ignores: ['/^swiper-/'] }],
     'vue/custom-event-name-casing': ['error', 'camelCase', {
       ignores: [
-        '/^(click):[a-z]+((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?/',
-      ],
+        '/^(click):[a-z]+((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?/'
+      ]
     }],
     'vue/define-macros-order': 'error',
     'vue/html-comment-content-newline': 'error',
@@ -167,9 +169,9 @@ module.exports = {
     'vue/prefer-separate-static-class': 'error',
     'vue/prefer-true-attribute-shorthand': 'error',
     'vue/v-on-function-call': 'error',
-    'vue/no-restricted-class': ['error', '/^(p)(l|r)-/'],
+    'vue/no-restricted-class': ['error'],
     'vue/valid-v-slot': ['error', {
-      allowModifiers: true,
+      allowModifiers: true
     }],
 
     // -- Extension Rules
@@ -178,12 +180,12 @@ module.exports = {
 
     // -- Sonarlint
     'sonarjs/no-duplicate-string': 'off',
-    'sonarjs/no-nested-template-literals': 'off',
+    'sonarjs/no-nested-template-literals': 'off'
   },
   settings: {
     'import/resolver': {
       node: true,
-      typescript: {},
-    },
-  },
-}
+      typescript: {}
+    }
+  }
+};

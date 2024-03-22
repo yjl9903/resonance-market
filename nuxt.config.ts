@@ -11,12 +11,12 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'shadcn-nuxt',
     'unplugin-info/nuxt',
-    'unplugin-analytics/nuxt',
+    'unplugin-analytics/nuxt'
   ],
   nitro: {
     prerender: {
-      autoSubfolderIndex: false,
-    },
+      autoSubfolderIndex: false
+    }
   },
   components: [
     // {
@@ -29,8 +29,8 @@ export default defineNuxtConfig({
     // },
     {
       path: '~/components',
-      pathPrefix: false,
-    },
+      pathPrefix: false
+    }
   ],
   alias: {},
   css: ['@unocss/reset/tailwind.css'],
@@ -39,40 +39,40 @@ export default defineNuxtConfig({
       title: '雷索纳斯市场',
       viewport: 'width=device-width,initial-scale=1,viewport-fit=cover',
       htmlAttrs: {
-        lang: 'zh-CN',
+        lang: 'zh-CN'
       },
       link: [{ rel: 'icon', href: '/favicon.png' }],
       meta: [],
-      script: [],
-    },
+      script: []
+    }
   },
   runtimeConfig: {
     TURSO_URL: import.meta.env.TURSO_URL,
-    TURSO_AUTH_TOKEN: import.meta.env.TURSO_AUTH_TOKEN,
+    TURSO_AUTH_TOKEN: import.meta.env.TURSO_AUTH_TOKEN
   },
   image: {},
   unocss: {
-    preflight: true,
+    preflight: true
   },
   shadcn: {
     prefix: '',
-    componentDir: './components/ui',
+    componentDir: './components/ui'
   },
   colorMode: {
-    classSuffix: '',
+    classSuffix: ''
   },
   info: {
     meta: {
       // ...
-    },
+    }
   },
   analytics: {
     umami: {
       src: 'umami.onekuma.cn',
-      id: '6d532af3-e9bc-43a1-998b-8d3cae5fcbb6',
+      id: '6d532af3-e9bc-43a1-998b-8d3cae5fcbb6'
     },
     clarity: {
-      id: 'lbvx2f1py2',
-    },
-  },
-})
+      id: 'lbvx2f1py2'
+    }
+  }
+});

@@ -5,29 +5,29 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-  CommandList,
-} from '@/components/ui/command'
+  CommandList
+} from '@/components/ui/command';
 
-const route = useRoute()
+const route = useRoute();
 
-const cityName = route.params.city as string
-const city = cities.filter(c => c.name === cityName)[0]
+const cityName = route.params.city as string;
+const city = cities.filter(c => c.name === cityName)[0];
 
 if (!city)
-  navigateTo('/')
+  navigateTo('/');
 
 useHead({
-  title: `上报 ${cityName} 商品出售价格 | 雷索纳斯市场`,
-})
+  title: `上报 ${cityName} 商品出售价格 | 雷索纳斯市场`
+});
 
-const selected = ref<ProductInfo[]>([])
+const selected = ref<ProductInfo[]>([]);
 
 const onSelectProduct = (product: ProductInfo) => {
   if (selected.value.find(p => p.name === product.name && p.city === product.city))
-    return
+    return;
 
-  selected.value.unshift(product)
-}
+  selected.value.unshift(product);
+};
 </script>
 
 <template>
@@ -45,14 +45,14 @@ const onSelectProduct = (product: ProductInfo) => {
             </div>
           </CommandEmpty>
           <CommandGroup
-            v-for="city in cities.filter((c) => c.name !== cityName)"
-            :key="city.name"
-            :heading="city.name"
+            v-for="_city in cities.filter((c) => c.name !== cityName)"
+            :key="_city.name"
+            :heading="_city.name"
           >
             <CommandItem
-              v-for="p in city.products.filter((p) => p.valuable)"
+              v-for="p in _city.products.filter((p) => p.valuable)"
               :key="p.name"
-              :value="`${city.name} - ${p.name}`"
+              :value="`${_city.name} - ${p.name}`"
               @select="onSelectProduct(p)"
             >
               {{ p.name }}

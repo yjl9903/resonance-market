@@ -1,14 +1,14 @@
-import { products as allProducts } from '../../utils/cities'
+import { products as allProducts } from '../../utils/cities';
 
-import { products, transactions, users } from '../schema'
+import { products, transactions, users } from '../schema';
 
-import { database } from './connect'
+import { database } from './connect';
 
 await database
   .insert(users)
   .values({ id: 1, name: 'anonymous' })
   .onConflictDoNothing()
-  .returning({ id: users.id })
+  .returning({ id: users.id });
 
 for (const product of allProducts) {
   await database
@@ -20,9 +20,9 @@ for (const product of allProducts) {
       valuable: product.valuable,
       baseVolume: product.baseVolume,
       basePrice: product.basePrice,
-      cost: product.cost,
+      cost: product.cost
     })
-    .onConflictDoNothing()
+    .onConflictDoNothing();
 }
 
 for (const product of allProducts) {
@@ -34,8 +34,8 @@ for (const product of allProducts) {
         sourceCity: transaction.sourceCity,
         targetCity: transaction.targetCity,
         mileage: transaction.mileage,
-        basePrice: transaction.basePrice,
+        basePrice: transaction.basePrice
       })
-      .onConflictDoNothing()
+      .onConflictDoNothing();
   }
 }

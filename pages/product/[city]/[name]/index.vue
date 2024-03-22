@@ -1,16 +1,16 @@
 <script setup lang="ts">
-const route = useRoute()
-const cityName = route.params.city as string
-const productName = route.params.name as string
+const route = useRoute();
+const cityName = route.params.city as string;
+const productName = route.params.name as string;
 
 useHead({
-  title: `商品 ${cityName} - ${productName} | 雷索纳斯市场`,
-})
+  title: `商品 ${cityName} - ${productName} | 雷索纳斯市场`
+});
 
-const product = getProductInfo(cityName, productName)!
+const product = getProductInfo(cityName, productName)!;
 
 if (!product)
-  navigateTo('/')
+  navigateTo('/');
 </script>
 
 <template>
@@ -20,7 +20,10 @@ if (!product)
     </h1>
 
     <div class="mb-4 space-y-2">
-      <div v-for="tr in product.transactions">
+      <div
+        v-for="tr in product.transactions"
+        :key="tr.name"
+      >
         <NuxtLink
           :to="`/transaction/${tr.sourceCity}/${tr.name}/${tr.targetCity}`"
           class="text-link"

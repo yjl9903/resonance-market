@@ -5,18 +5,18 @@ import {
   primaryKey,
   sqliteTable,
   text,
-  unique,
-} from 'drizzle-orm/sqlite-core'
+  unique
+} from 'drizzle-orm/sqlite-core';
 
 // User
 export const users = sqliteTable('users', {
   id: integer('id').primaryKey({ autoIncrement: true }),
-  name: text('name').notNull().unique(),
-})
+  name: text('name').notNull().unique()
+});
 
-export type User = typeof users.$inferSelect
+export type User = typeof users.$inferSelect;
 
-export type NewUser = typeof users.$inferInsert
+export type NewUser = typeof users.$inferInsert;
 
 // Products
 export const products = sqliteTable(
@@ -28,14 +28,14 @@ export const products = sqliteTable(
     valuable: integer('valuable', { mode: 'boolean' }).notNull(),
     baseVolume: integer('base_volume'),
     basePrice: integer('base_price').notNull(),
-    cost: integer('cost'),
+    cost: integer('cost')
   },
-  table => ({ productPrimaryKey: primaryKey({ columns: [table.city, table.name] }) }),
-)
+  table => ({ productPrimaryKey: primaryKey({ columns: [table.city, table.name] }) })
+);
 
-export type Product = typeof products.$inferSelect
+export type Product = typeof products.$inferSelect;
 
-export type NewProduct = typeof products.$inferInsert
+export type NewProduct = typeof products.$inferInsert;
 
 // Transaction
 export const transactions = sqliteTable(
@@ -46,21 +46,21 @@ export const transactions = sqliteTable(
     sourceCity: text('source_city').notNull(),
     targetCity: text('target_city').notNull(),
     mileage: integer('mileage').notNull(),
-    basePrice: integer('base_price').notNull(),
+    basePrice: integer('base_price').notNull()
   },
   table => ({
     sourceProudctReference: foreignKey({
       columns: [table.sourceCity, table.name],
       foreignColumns: [products.city, products.name],
-      name: 'transaction_source_fk',
+      name: 'transaction_source_fk'
     }),
-    uniqueTransaction: unique().on(table.name, table.sourceCity, table.targetCity),
-  }),
-)
+    uniqueTransaction: unique().on(table.name, table.sourceCity, table.targetCity)
+  })
+);
 
-export type Transaction = typeof transactions.$inferSelect
+export type Transaction = typeof transactions.$inferSelect;
 
-export type NewTransaction = typeof transactions.$inferInsert
+export type NewTransaction = typeof transactions.$inferInsert;
 
 // Logs
 export const logs = sqliteTable(
@@ -77,18 +77,18 @@ export const logs = sqliteTable(
     uploadedAt: integer('uploaded_at', { mode: 'timestamp' }).notNull(),
     uploaderId: integer('uploader_id')
       .notNull()
-      .references(() => users.id),
+      .references(() => users.id)
   },
   table => ({
     productReference: foreignKey({
       columns: [table.sourceCity, table.name],
       foreignColumns: [products.city, products.name],
-      name: 'product_log_fk',
+      name: 'product_log_fk'
     }),
-    uniqueLog: unique().on(table.name, table.sourceCity, table.targetCity, table.uploadedAt),
-  }),
-)
+    uniqueLog: unique().on(table.name, table.sourceCity, table.targetCity, table.uploadedAt)
+  })
+);
 
-export type Log = typeof logs.$inferSelect
+export type Log = typeof logs.$inferSelect;
 
-export type NewLog = typeof logs.$inferInsert
+export type NewLog = typeof logs.$inferInsert;

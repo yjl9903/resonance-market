@@ -1,67 +1,67 @@
 <script setup lang="ts">
-import { Slider } from '@/components/ui/slider'
+import { Slider } from '@/components/ui/slider';
 import {
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog'
+  DialogTrigger
+} from '@/components/ui/dialog';
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
   SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+  SelectValue
+} from '@/components/ui/select';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import {
   FormControl,
   FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
+  FormMessage
+} from '@/components/ui/form';
 
-import type { ProductInfo } from '@/utils/types'
+import type { ProductInfo } from '@/utils/types';
 
 const props = defineProps<{
   sourceCityName: string // 原产地城市
   targetCityName?: string // 目标城市
   product: ProductInfo // 货物信息
-}>()
+}>();
 
 const open = defineModel('open', {
   type: Boolean,
-  default: false,
-})
+  default: false
+});
 
 const { form, onSubmit } = useReportForm({
   sourceCity: props.sourceCityName,
   name: props.product.name,
   onSubmitSuccess() {
-    open.value = false
-  },
-})
-
-watch(open, open => {
-  if (open) {
-    form.resetForm()
-    if (props.targetCityName)
-      form.setFieldValue('targetCity', props.targetCityName)
+    open.value = false;
   }
-})
+});
+
+watch(open, isOpen => {
+  if (isOpen) {
+    form.resetForm();
+    if (props.targetCityName)
+      form.setFieldValue('targetCity', props.targetCityName);
+  }
+});
 
 const changePricePercent = (type: 'add' | 'reduce') => {
-  const percent = form.values.percent?.[0] ?? 100
+  const percent = form.values.percent?.[0] ?? 100;
   if (type === 'add')
-    form.setFieldValue('percent', [percent + 1])
+    form.setFieldValue('percent', [percent + 1]);
   else
-    form.setFieldValue('percent', [percent - 1])
-}
+    form.setFieldValue('percent', [percent - 1]);
+};
 </script>
 
 <template>

@@ -1,33 +1,33 @@
 <script setup lang="ts">
-import { Slider } from '@/components/ui/slider'
+import { Slider } from '@/components/ui/slider';
 
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import {
   FormControl,
   FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
+  FormMessage
+} from '@/components/ui/form';
 
-import type { CityInfo, ProductInfo } from '@/utils/types'
+import type { CityInfo, ProductInfo } from '@/utils/types';
 
-const props = defineProps<{ city: CityInfo; product: ProductInfo }>()
+const props = defineProps<{ city: CityInfo; product: ProductInfo }>();
 
 const { form, onSubmit } = useReportForm({
   sourceCity: props.city.name,
   name: props.product.name,
-  targetCity: props.city.name,
-})
+  targetCity: props.city.name
+});
 
 const changePricePercent = (type: 'add' | 'reduce') => {
-  const percent = form.values.percent?.[0] ?? 100
+  const percent = form.values.percent?.[0] ?? 100;
   if (type === 'add')
-    form.setFieldValue('percent', [percent + 1])
+    form.setFieldValue('percent', [percent + 1]);
   else
-    form.setFieldValue('percent', [percent - 1])
-}
+    form.setFieldValue('percent', [percent - 1]);
+};
 </script>
 
 <template>

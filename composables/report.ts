@@ -1,7 +1,7 @@
-import * as z from 'zod'
-import { toast } from 'vue-sonner'
-import { useForm } from 'vee-validate'
-import { toTypedSchema } from '@vee-validate/zod'
+import * as z from 'zod';
+import { toast } from 'vue-sonner';
+import { useForm } from 'vee-validate';
+import { toTypedSchema } from '@vee-validate/zod';
 
 export interface ReportFormInit {
   sourceCity?: string
@@ -12,7 +12,7 @@ export interface ReportFormInit {
 }
 
 export function useReportForm(init: ReportFormInit) {
-  const store = useLatestLogs()
+  const store = useLatestLogs();
 
   const formSchema = toTypedSchema(
     z.object({
@@ -21,9 +21,9 @@ export function useReportForm(init: ReportFormInit) {
       targetCity: z.string(),
       price: z.number().gt(0),
       percent: z.array(z.number().gt(30).lt(160)),
-      trend: z.enum(['up', 'same', 'down']),
-    }),
-  )
+      trend: z.enum(['up', 'same', 'down'])
+    })
+  );
 
   const form = useForm({
     initialValues: {
@@ -31,10 +31,10 @@ export function useReportForm(init: ReportFormInit) {
       name: init.name,
       targetCity: init.targetCity,
       percent: [100],
-      trend: 'same',
+      trend: 'same'
     },
-    validationSchema: formSchema,
-  })
+    validationSchema: formSchema
+  });
 
   // watch(open, (open) => {
   //   if (open) {
@@ -44,153 +44,152 @@ export function useReportForm(init: ReportFormInit) {
 
   const product = computed(() => {
     if (!form.values.sourceCity || !form.values.name)
-      return undefined
+      return undefined;
 
-    return getProductInfo(form.values.sourceCity, form.values.name)
-  })
+    return getProductInfo(form.values.sourceCity, form.values.name);
+  });
 
   watch(
     () => [product.value, form.values.targetCity] as const,
-    ([product, target], prev) => {
-      if (!product || !target)
-        return
+    ([_product, target], _) => {
+      if (!_product || !target)
+        return;
 
       if (form.isFieldDirty('price') || form.isFieldDirty('percent'))
-        return
+        return;
 
-      const source = product.city
-      const name = product.name
+      const source = _product.city;
+      const name = _product.name;
 
       // 使用最新日志
-      const latest = store.getLatestLog(source, name, target)
+      const latest = store.getLatestLog(source, name, target);
       if (latest) {
-        form.resetField('price', { value: latest.price })
-        form.resetField('percent', { value: [latest.percent] })
-        form.resetField('trend', { value: latest.trend })
+        form.resetField('price', { value: latest.price });
+        form.resetField('percent', { value: [latest.percent] });
+        form.resetField('trend', { value: latest.trend });
 
-        return
+        return;
       }
 
       // 使用基础数据
       if (source === target) {
-        form.resetField('price', { value: product.basePrice })
+        form.resetField('price', { value: _product.basePrice });
       }
       else {
-        const tr = product.transactions.find(tr => tr.targetCity === target)
+        const tr = _product.transactions.find(item => item.targetCity === target);
         if (tr)
-          form.resetField('price', { value: tr.basePrice })
+          form.resetField('price', { value: tr.basePrice });
       }
     },
-    { immediate: true },
-  )
+    { immediate: true }
+  );
 
   watch(
     () => [product.value, form.values.targetCity, form.values.price] as const,
-    ([product, target, price], prev) => {
-      if (!product)
-        return
+    ([_product, target, price], _) => {
+      if (!_product)
+        return;
 
-      // @ts-expect-error
       if (price === '') {
-        form.setFieldValue('price', undefined)
+        form.setFieldValue('price', undefined);
 
-        return
+        return;
       }
 
       if (price === undefined)
-        return
+        return;
       if (!form.values.targetCity)
-        return
+        return;
       if (form.isFieldDirty('percent'))
-        return
+        return;
 
-      if (target === product.city) {
-        const percent = Math.round((100 * price) / product.basePrice)
+      if (target === _product.city) {
+        const percent = Math.round((100 * price) / _product.basePrice);
         if (percent > 0 && percent < 200)
-          form.resetField('percent', { value: [percent] })
+          form.resetField('percent', { value: [percent] });
       }
       else {
-        const transaction = product.transactions.find(
-          tr => tr.targetCity === form.values.targetCity,
-        )
+        const transaction = _product.transactions.find(
+          tr => tr.targetCity === form.values.targetCity
+        );
 
         if (transaction && transaction.basePrice > 0) {
-          const percent = Math.round((100 * price) / transaction.basePrice)
+          const percent = Math.round((100 * price) / transaction.basePrice);
           if (percent > 0 && percent < 200)
-            form.resetField('percent', { value: [percent] })
+            form.resetField('percent', { value: [percent] });
         }
       }
-    },
-  )
+    }
+  );
 
   watch(
     () => [product.value, form.values.targetCity, form.values.percent] as const,
-    ([product, target, percent], prev) => {
-      if (!product)
-        return
+    ([_product, target, percent], prev) => {
+      if (!_product)
+        return;
 
       if (target === prev[0] && percent?.[0] === prev[1]?.[0])
-        return
+        return;
 
       if (percent === undefined)
-        return
+        return;
       if (form.isFieldDirty('price'))
-        return
+        return;
       if (!form.values.targetCity)
-        return
+        return;
 
-      const transaction = product.transactions.find(
-        tr => tr.targetCity === form.values.targetCity,
-      )
+      const transaction = _product.transactions.find(
+        tr => tr.targetCity === form.values.targetCity
+      );
 
-      if (target === product.city) {
-        const price = Math.round((percent[0] / 100.0) * product.basePrice)
+      if (target === _product.city) {
+        const price = Math.round((percent[0] / 100.0) * _product.basePrice);
         if (price > 0)
-          form.resetField('price', { value: price })
+          form.resetField('price', { value: price });
       }
       else {
         if (transaction && transaction.basePrice > 0) {
-          const price = Math.round((percent[0] / 100.0) * transaction.basePrice)
+          const price = Math.round((percent[0] / 100.0) * transaction.basePrice);
           if (price > 0)
-            form.resetField('price', { value: price })
+            form.resetField('price', { value: price });
         }
       }
-    },
-  )
+    }
+  );
 
   const onSubmit = form.handleSubmit(async values => {
     try {
       if (!form.values.sourceCity || !form.values.name) {
-        toast.error(`未找到商品 ${form.values.sourceCity} - ${form.values.name}`)
+        toast.error(`未找到商品 ${form.values.sourceCity} - ${form.values.name}`);
 
-        return
+        return;
       }
-      const product = getProductInfo(form.values.sourceCity, form.values.name)
-      if (!product) {
-        toast.error(`未找到商品 ${form.values.sourceCity} - ${form.values.name}`)
+      const productInfo = getProductInfo(form.values.sourceCity, form.values.name);
+      if (!productInfo) {
+        toast.error(`未找到商品 ${form.values.sourceCity} - ${form.values.name}`);
 
-        return
+        return;
       }
 
       const basePrice
         = values.sourceCity === values.targetCity
-          ? /* 买入 */ product.basePrice
-          : /* 卖出 */ product.transactions.find(tr => tr.targetCity === values.targetCity)
-            ?.basePrice
+          ? /* 买入 */ productInfo.basePrice
+          : /* 卖出 */ productInfo.transactions.find(tr => tr.targetCity === values.targetCity)
+            ?.basePrice;
 
       if (basePrice !== undefined && basePrice !== 0) {
-        const price = values.price
-        const percent = values.percent[0]!
-        const eps = Math.max(5, Math.round(basePrice / 100))
-        const expetecdPrice = Math.round((basePrice * percent) / 100)
+        const price = values.price;
+        const percent = values.percent[0]!;
+        const eps = Math.max(5, Math.round(basePrice / 100));
+        const expetecdPrice = Math.round((basePrice * percent) / 100);
         if (Math.abs(price - expetecdPrice) > eps) {
           toast.error('请确认数据是否有误?', {
-            description: `价格偏差过大, 期望价格范围: [${expetecdPrice - eps}, ${expetecdPrice + eps}]`,
-          })
-          form.resetField('price')
-          form.resetField('percent')
+            description: `价格偏差过大, 期望价格范围: [${expetecdPrice - eps}, ${expetecdPrice + eps}]`
+          });
+          form.resetField('price');
+          form.resetField('percent');
 
-          return
+          return;
         }
       }
 
@@ -204,20 +203,20 @@ export function useReportForm(init: ReportFormInit) {
           trend: values.trend,
           price: values.price,
           percent: values.percent[0],
-          uploadedAt: new Date().getTime(),
-        },
-      })
+          uploadedAt: new Date().getTime()
+        }
+      });
 
-      toast.success('上报成功')
-      store.fetch()
+      toast.success('上报成功');
+      store.fetch();
 
-      init.onSubmitSuccess?.()
+      init.onSubmitSuccess?.();
     }
     catch (error) {
-      console.error(error)
-      toast.error('上报失败')
+      console.error(error);
+      toast.error('上报失败');
     }
-  })
+  });
 
-  return { form, onSubmit }
+  return { form, onSubmit };
 }

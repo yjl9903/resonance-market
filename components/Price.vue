@@ -1,66 +1,67 @@
 <script setup lang="ts">
-import { format } from '@formkit/tempo'
+import { format } from '@formkit/tempo';
 
-import type { Log } from '~/drizzle/schema'
+import type { Log } from '~/drizzle/schema';
 
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const props = defineProps<{
   timestamp: number
   product: ProductInfo
   transaction: TransactionInfo | undefined
   log: Log | undefined
-}>()
+}>();
 
-const settingStore = useSettingStore()
+const settingStore = useSettingStore();
 
-const store = useLatestLogs()
+const store = useLatestLogs();
 
 // 受控的 Tooltip 打开状态
-const openTooltip = ref(false)
+const openTooltip = ref(false);
 
 // 受控的 上报价格对话框 打开状态
-const reportDialogVisible = ref(false)
+const reportDialogVisible = ref(false);
 
 // 记录是否已过期
 const isOutdated = computed(() => {
   if (!props.log)
-    return true
-  props.timestamp
+    return true;
 
-  return isLogValid(props.log)
-})
+  // props.timestamp;
+
+  return isLogValid(props.log);
+});
 
 // 单位利润
 const profit = computed(() => {
   if (!props.log || props.log?.type === 'buy')
-    return undefined
+    return undefined;
 
   const sourceCityLatestLog = store.getLatestLog(
     props.log.sourceCity,
     props.log.name,
-    props.log.sourceCity,
-  )
+    props.log.sourceCity
+  );
 
   if (sourceCityLatestLog)
-    return Math.round(props.log.price * 1.2 * 0.98 - sourceCityLatestLog.price * 0.8 * 1.08)
+    return Math.round(props.log.price * 1.2 * 0.98 - sourceCityLatestLog.price * 0.8 * 1.08);
   else
-    return undefined
-})
+    return undefined;
+});
 
 // 单票利润
 const perTicketProfit = computed(() => {
   if (!props.product || props.log?.type === 'buy')
-    return 0
+    return 0;
 
-  return (profit.value ?? 0) * (props.product.baseVolume ?? 0)
-})
+  return (profit.value ?? 0) * (props.product.baseVolume ?? 0);
+});
 
 // 单位利润颜色
 const profitColor = computed(() => {
   if (profit.value === undefined || isOutdated.value)
-    return undefined
-  const value = +profit.value
+    return undefined;
+  const value = +profit.value;
   if (value < 0) {
     const table = [
       { value: -100, color: 'text-red-200 op-80' },
@@ -71,12 +72,12 @@ const profitColor = computed(() => {
       { value: -600, color: 'text-red-600' },
       { value: -700, color: 'text-red-700' },
       { value: -800, color: 'text-red-800' },
-      { value: Number.MIN_SAFE_INTEGER, color: 'text-red-800' },
-    ]
+      { value: Number.MIN_SAFE_INTEGER, color: 'text-red-800' }
+    ];
 
     for (const cond of table) {
       if (value > cond.value)
-        return cond.color
+        return cond.color;
     }
   }
   else if (value > 0) {
@@ -88,32 +89,33 @@ const profitColor = computed(() => {
       { value: 400, color: 'text-green-500' },
       { value: 600, color: 'text-green-600' },
       { value: 800, color: 'text-green-700' },
-      { value: 1000, color: 'text-green-700 font-bold' },
-    ]
+      { value: 1000, color: 'text-green-700 font-bold' }
+    ];
 
     for (const cond of table.reverse()) {
       if (value > cond.value)
-        return cond.color
+        return cond.color;
     }
   }
-})
+});
 
 const shortTime = computed(() => {
   if (!props.log)
-    return undefined
-  props.timestamp
+    return undefined;
 
-  const now = new Date()
-  const offset = now.getTime() - props.log.uploadedAt.getTime()
+  // props.timestamp;
+
+  const now = new Date();
+  const offset = now.getTime() - props.log.uploadedAt.getTime();
   if (offset <= 60 * 1000)
-    return '刚刚'
+    return '刚刚';
   else if (offset <= 3600 * 1000)
-    return `${Math.floor(offset / (60 * 1000))} 分前`
+    return `${Math.floor(offset / (60 * 1000))} 分前`;
   else if (offset <= 24 * 3600 * 1000)
-    return `${Math.floor(offset / (3600 * 1000))} 小时前`
+    return `${Math.floor(offset / (3600 * 1000))} 小时前`;
 
-  return undefined
-})
+  return undefined;
+});
 </script>
 
 <template>
@@ -121,7 +123,7 @@ const shortTime = computed(() => {
     v-if="log && shortTime"
     :delay-duration="300"
     :skip-delay-duration="100"
-    :disable-closing-trigger="true"
+    disable-closing-trigger
   >
     <Tooltip v-model:open="openTooltip">
       <TooltipTrigger as-child>
