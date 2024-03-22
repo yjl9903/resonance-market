@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { format } from '@formkit/tempo';
-
 import type { Log } from '~/drizzle/schema';
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';

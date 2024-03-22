@@ -1,6 +1,6 @@
 import type { Log } from '~/drizzle/schema';
 
-export function isLogValid(log: Log | undefined | null): log is Log {
+export function isLogValid(log: Log | undefined | null): Log | boolean {
   if (!log)
     return false;
   const uploadedAt = log.uploadedAt.getTime();

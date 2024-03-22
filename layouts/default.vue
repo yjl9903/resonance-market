@@ -51,9 +51,7 @@ const settingStore = useSettingStore();
                     as-child
                   >
                     <NuxtLink :to="`/product/${city.name}/${product.name}`">
-                      {{
-                        product.name
-                      }}
+                      {{ product.name }}
                     </NuxtLink>
                   </MenubarItem>
                 </MenubarSubContent>
