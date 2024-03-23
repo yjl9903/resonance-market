@@ -30,7 +30,8 @@ export default withNuxt(
         }
       }],
       'vue/singleline-html-element-content-newline': 'off', // 单行元素内容换行
-      'vue/multiline-html-element-content-newline': 'off' // 多行元素内容换行
+      'vue/multiline-html-element-content-newline': 'off', // 多行元素内容换行
+      'vue/require-default-prop': 'off' // prop必须有默认值
     }
   }
 );
