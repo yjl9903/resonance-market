@@ -48,7 +48,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
         <FormControl>
           <Input type="number" :placeholder="'售出价格'" v-bind="componentField" />
         </FormControl>
-        <FormDescription></FormDescription>
+        <FormDescription />
         <FormMessage />
       </FormItem>
     </FormField>

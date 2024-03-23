@@ -46,7 +46,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
             v-bind="componentField"
           />
         </FormControl>
-        <FormDescription></FormDescription>
+        <FormDescription />
         <FormMessage />
       </FormItem>
     </FormField>

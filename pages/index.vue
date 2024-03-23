@@ -27,7 +27,7 @@ const switchCityFilter = (targetCity: CityInfo) => {
     </div>
 
     <div class="space-y-4">
-      <City v-for="city in selectedCity" :key="city.name" :city="city"></City>
+      <City v-for="city in selectedCity" :key="city.name" :city="city" />
     </div>
   </div>
 </template>

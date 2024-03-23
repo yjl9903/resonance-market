@@ -65,7 +65,7 @@ const onSelectProduct = (product: ProductInfo) => {
     <div v-if="selected.length === 0">请选择商品</div>
     <div v-else class="grid sm:grid-cols-2 gap-6">
       <div v-for="p in selected" :key="`${p.city} - ${p.name}`" class="rounded border px-4">
-        <SellReportForm :product="p" :target="city"></SellReportForm>
+        <SellReportForm :product="p" :target="city" />
       </div>
     </div>
   </div>

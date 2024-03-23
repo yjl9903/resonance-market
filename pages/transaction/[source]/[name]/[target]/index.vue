@@ -104,7 +104,7 @@ const onDeleteLog = async (id: number) => {
             ></TableCell>
             <TableCell
               ><Button variant="destructive" size="icon" @click="onDeleteLog(log.id)">
-                <Trash class="w-4 h-4"></Trash></Button
+                <Trash class="w-4 h-4" /></Button
             ></TableCell>
           </TableRow>
         </TableBody>
