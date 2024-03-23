@@ -50,7 +50,7 @@ const sortCitesByProfit = (
   const sourceCityPrice = logStore.getLatestLog(sourceCityName, productName, sourceCityName)?.price || 0;
 
   // 计算各城市货物利润
-  let citiesProfitMap: { [key: string]: number } = {};
+  const citiesProfitMap: { [key: string]: number } = {};
   filteredCities
     .map((city) => {
       const latestLog = logStore.getLatestLog(sourceCityName, productName, city.name);
