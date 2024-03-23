@@ -150,9 +150,6 @@ importers:
       nuxt:
         specifier: ^3.10.3
         version: 3.10.3(@types/node@20.11.20)(eslint@8.57.0)(rollup@3.29.4)(typescript@5.3.3)(vite@5.1.4)
-      prettier:
-        specifier: ^3.2.5
-        version: 3.2.5
       shadcn-nuxt:
         specifier: ^0.9.0
         version: 0.9.0(rollup@3.29.4)
@@ -4055,7 +4052,7 @@ packages:
   /@vuedx/compiler-sfc@0.7.1:
     resolution: {integrity: sha512-M+j3COLqmTFgtsDOJEeeijUFCk7FF8x7vQsdORPPxipZF1S2vPvlcLg1bKVE6NF4wh7Gaq9Wvwv0zPi87pWRVA==}
     dependencies:
-      '@vue/compiler-core': 3.4.20
+      '@vue/compiler-core': 3.4.21
       lru-cache: 6.0.0
       source-map: 0.6.1
     dev: true
@@ -4063,7 +4060,7 @@ packages:
   /@vuedx/template-ast-types@0.7.1:
     resolution: {integrity: sha512-Mqugk/F0lFN2u9bhimH6G1kSu2hhLi2WoqgCVxrMvgxm2kDc30DtdvVGRq+UgEmKVP61OudcMtZqkUoGQeFBUQ==}
     dependencies:
-      '@vue/compiler-core': 3.4.20
+      '@vue/compiler-core': 3.4.21
     dev: true
 
   /@vueuse/core@10.8.0(vue@3.4.20):
@@ -5511,8 +5508,8 @@ packages:
     dependencies:
       '@babel/core': 7.23.9
       '@babel/preset-typescript': 7.23.3(@babel/core@7.23.9)
-      '@vue/compiler-dom': 3.4.20
-      '@vue/compiler-sfc': 3.4.20
+      '@vue/compiler-dom': 3.4.21
+      '@vue/compiler-sfc': 3.4.21
       '@vuedx/compiler-sfc': 0.7.1
       '@vuedx/template-ast-types': 0.7.1
       fast-glob: 3.3.2
@@ -9330,12 +9327,6 @@ packages:
   /prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
-    hasBin: true
-    dev: true
-
-  /prettier@3.2.5:
-    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
-    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
