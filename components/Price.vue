@@ -132,9 +132,9 @@ const shortTime = computed(() => {
           <!-- 单票利润 -->
           <div
             v-if="
-              settingStore.dataDisplayItems.includes('perTicketProfit') &&
-              log.type === 'sell' &&
-              product.baseVolume
+              settingStore.dataDisplayItems.includes('perTicketProfit')
+                && log.type === 'sell'
+                && product.baseVolume
             "
             :class="['h-6 flex gap-1 items-center', { 'line-through': isOutdated }]"
           >
