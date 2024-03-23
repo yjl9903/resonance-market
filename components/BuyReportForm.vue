@@ -73,10 +73,10 @@ const changePricePercent = (type: 'add' | 'reduce') => {
             ></span>
           </div>
           <FormDescription class="flex justify-between">
-            <span
-              >{{ form.values.targetCity !== city.name ? '售出价位' : '买入价位' }}
-              {{ form.values.percent?.[0] ?? 100 }}%</span
-            >
+            <span>
+              {{ form.values.targetCity !== city.name ? '售出价位' : '买入价位' }}
+              {{ form.values.percent?.[0] ?? 100 }}%
+            </span>
           </FormDescription>
         </FormControl>
         <FormMessage />

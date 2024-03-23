@@ -36,10 +36,10 @@ const changePricePercent = (type: 'add' | 'reduce') => {
       <span class="font-bold">{{ product.name }}</span>
     </div>
     <div class="space-x-2 text-base">
-      <span class=""
-        >从 <span class="underline underline-offset-4">{{ product.city }}</span> 售出到
-        <span class="underline underline-offset-4">{{ target.name }}</span></span
-      >
+      <span>
+        从 <span class="underline underline-offset-4">{{ product.city }}</span>
+        售出到 <span class="underline underline-offset-4">{{ target.name }}</span>
+      </span>
     </div>
 
     <FormField v-slot="{ componentField }" name="price">

@@ -23,8 +23,7 @@ if (!product) {
         <NuxtLink
           :to="`/transaction/${tr.sourceCity}/${tr.name}/${tr.targetCity}`"
           class="text-link"
-          >{{ tr.sourceCity }} 一 {{ tr.name }} → {{ tr.targetCity }}</NuxtLink
-        >
+        >{{ tr.sourceCity }} 一 {{ tr.name }} → {{ tr.targetCity }}</NuxtLink>
       </div>
     </div>
 

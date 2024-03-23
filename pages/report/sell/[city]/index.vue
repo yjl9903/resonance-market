@@ -38,11 +38,11 @@ const onSelectProduct = (product: ProductInfo) => {
       <Command class="rounded-lg border shadow-md max-w-full">
         <CommandInput placeholder="搜索商品以开始上报..." />
         <CommandList class="h-[500px]">
-          <CommandEmpty
-            ><div class="h-full flex items-center justify-center">
+          <CommandEmpty>
+            <div class="h-full flex items-center justify-center">
               <div>没有找到商品</div>
-            </div></CommandEmpty
-          >
+            </div>
+          </CommandEmpty>
           <CommandGroup
             v-for="city in cities.filter((c) => c.name !== cityName)"
             :key="city.name"
@@ -53,8 +53,7 @@ const onSelectProduct = (product: ProductInfo) => {
               :key="p.name"
               :value="`${city.name} - ${p.name}`"
               @select="onSelectProduct(p)"
-              >{{ p.name }}</CommandItem
-            >
+            >{{ p.name }}</CommandItem>
           </CommandGroup>
           <!-- <CommandGroup heading="Suggestions"> </CommandGroup>
           <CommandSeparator />

@@ -22,8 +22,7 @@ const switchCityFilter = (targetCity: CityInfo) => {
         @click="switchCityFilter(city)"
         :variant="selectedCity.find((item) => item.name == city.name) ? 'default' : 'outline'"
         size="sm"
-        >{{ city.name }}</Button
-      >
+      >{{ city.name }}</Button>
     </div>
 
     <div class="space-y-4">

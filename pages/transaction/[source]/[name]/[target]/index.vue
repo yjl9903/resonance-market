@@ -79,8 +79,7 @@ const onDeleteLog = async (id: number) => {
                 },
                 'font-bold'
               ]"
-              >{{ log.price }}</TableCell
-            >
+            >{{ log.price }}</TableCell>
             <TableCell
               :class="[
                 {
@@ -89,10 +88,9 @@ const onDeleteLog = async (id: number) => {
                 },
                 'font-bold'
               ]"
-              >{{ log.percent }}%</TableCell
-            >
-            <TableCell
-              ><span
+            >{{ log.percent }}%</TableCell>
+            <TableCell>
+              <span
                 v-if="log.trend === 'up'"
                 class="i-material-symbols-trending-up text-green text-xl"
               ></span>
@@ -100,12 +98,13 @@ const onDeleteLog = async (id: number) => {
                 v-else-if="log.trend === 'down'"
                 class="i-material-symbols-trending-down text-red text-xl"
               ></span>
-              <span v-else class="i-material-symbols-trending-flat text-xl"></span
-            ></TableCell>
-            <TableCell
-              ><Button variant="destructive" size="icon" @click="onDeleteLog(log.id)">
-                <Trash class="w-4 h-4" /></Button
-            ></TableCell>
+              <span v-else class="i-material-symbols-trending-flat text-xl"></span>
+            </TableCell>
+            <TableCell>
+              <Button variant="destructive" size="icon" @click="onDeleteLog(log.id)">
+                <Trash class="w-4 h-4" />
+              </Button>
+            </TableCell>
           </TableRow>
         </TableBody>
       </Table>
