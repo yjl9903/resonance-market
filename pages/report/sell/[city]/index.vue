@@ -44,14 +44,14 @@ const onSelectProduct = (product: ProductInfo) => {
             </div>
           </CommandEmpty>
           <CommandGroup
-            v-for="city in cities.filter((c) => c.name !== cityName)"
-            :key="city.name"
-            :heading="city.name"
+            v-for="otherCity in cities.filter((c) => c.name !== cityName)"
+            :key="otherCity.name"
+            :heading="otherCity.name"
           >
             <CommandItem
-              v-for="p in city.products.filter((p) => p.valuable)"
+              v-for="p in otherCity.products.filter((p) => p.valuable)"
               :key="p.name"
-              :value="`${city.name} - ${p.name}`"
+              :value="`${otherCity.name} - ${p.name}`"
               @select="onSelectProduct(p)"
             >{{ p.name }}</CommandItem>
           </CommandGroup>

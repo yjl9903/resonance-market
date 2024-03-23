@@ -102,7 +102,7 @@ const sortCitesByProfit = (
             <!-- 按城市维度排序 -->
             <template v-if="settingStore.listSortMode === 'byCity'">
               <TableHead class="border-r">{{ currentCity.name }}</TableHead>
-              <TableHead v-for="city in sellCities" :key="city.name">{{ city.name }}</TableHead>
+              <TableHead v-for="sellCity in sellCities" :key="sellCity.name">{{ sellCity.name }}</TableHead>
             </template>
             <!-- 按利润排序 -->
             <template v-else>
