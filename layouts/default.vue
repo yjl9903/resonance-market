@@ -22,9 +22,7 @@ const settingStore = useSettingStore();
     <nav class="border-b pt-12 mb-4">
       <div class="main">
         <div>
-          <NuxtLink to="/" class="text-2xl font-bold hover:text-base-600 select-none"
-            >雷索纳斯市场</NuxtLink
-          >
+          <NuxtLink to="/" class="text-2xl font-bold hover:text-base-600 select-none">雷索纳斯市场</NuxtLink>
         </div>
         <Menubar class="mt-4">
           <MenubarButton>
@@ -196,12 +194,12 @@ const settingStore = useSettingStore();
             <MenubarContent>
               <MenubarItem as-child>
                 <a href="https://github.com/yjl9903/resonance-market" target="_blank">
-                  <span i-carbon-logo-github mr-1 block w-4></span><span>GitHub</span>
+                  <span class="i-carbon-logo-github mr-1 block w-4"></span><span>GitHub</span>
                 </a>
               </MenubarItem>
               <MenubarItem as-child>
                 <a href="https://space.bilibili.com/1631015691" target="_blank">
-                  <span i-simple-icons-bilibili mr-1 block w-4></span>
+                  <span class="i-simple-icons-bilibili mr-1 block w-4"></span>
                   <span>雷索纳斯官方 Bilibili</span>
                 </a>
               </MenubarItem>
@@ -216,8 +214,8 @@ const settingStore = useSettingStore();
     </main>
 
     <footer class="block pb8 w-full text-center text-base-500">
-      <div border="b-2 base" mb8></div>
-      <div flex items-center justify-center gap1 align-middle>
+      <div class="b-2 base mb8"></div>
+      <div class="flex items-center justify-center gap1 align-middle">
         <a
           class="flex items-center gap-1 text-gray-500/70 hover:text-gray-500"
           :href="`https://github.com/yjl9903/resonance-market/tree/${sha}`"

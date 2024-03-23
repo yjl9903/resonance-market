@@ -60,7 +60,13 @@ const changePricePercent = (type: 'add' | 'reduce') => {
               class="i-icon-park-outline-reduce-one text-xl cursor-pointer"
               @click="changePricePercent('reduce')"
             ></span>
-            <Slider v-bind="componentField" :default-value="[100]" :max="160" :min="30" :step="1" />
+            <Slider
+              v-bind="componentField"
+              :default-value="[100]"
+              :max="160"
+              :min="30"
+              :step="1"
+            />
             <span
               class="i-icon-park-outline-add-one text-xl cursor-pointer"
               @click="changePricePercent('add')"

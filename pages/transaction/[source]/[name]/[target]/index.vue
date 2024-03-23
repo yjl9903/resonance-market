@@ -49,9 +49,9 @@ const onDeleteLog = async (id: number) => {
   <div class="main pb-12">
     <h1 class="font-bold text-lg mb-4">
       贸易
-      <NuxtLink :to="`/product/${sourceCityName}/${productName}`" class="text-link-active"
-        >{{ sourceCityName }} 一 {{ productName }}</NuxtLink
-      >
+      <NuxtLink :to="`/product/${sourceCityName}/${productName}`" class="text-link-active">
+        {{ sourceCityName }} 一 {{ productName }}
+      </NuxtLink>
       → {{ targetCityName }}
     </h1>
     <div v-if="data">
@@ -103,8 +103,8 @@ const onDeleteLog = async (id: number) => {
               <span v-else class="i-material-symbols-trending-flat text-xl"></span
             ></TableCell>
             <TableCell
-              ><Button variant="destructive" size="icon" @click="onDeleteLog(log.id)"
-                ><Trash class="w-4 h-4"></Trash></Button
+              ><Button variant="destructive" size="icon" @click="onDeleteLog(log.id)">
+                <Trash class="w-4 h-4"></Trash></Button
             ></TableCell>
           </TableRow>
         </TableBody>
