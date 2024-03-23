@@ -4,8 +4,9 @@ export default withNuxt(
   {
     rules: {
       '@typescript-eslint/ban-ts-comment': 'off', // @ts-ignore注释的使用限制
-      '@stylistic/arrow-parens': 'off', // 箭头函数参数括号规则
-      '@typescript-eslint/no-explicit-any': 'off' // any类型限制
+      '@typescript-eslint/no-explicit-any': 'off', // any类型使用限制
+      '@stylistic/arrow-parens': 'off', // 箭头函数参数括号使用规则
+      '@stylistic/quote-props': 'off' // 对象属性名引号使用规则
     }
   },
   {
