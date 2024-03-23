@@ -22,8 +22,8 @@
     "preversion": "turbo run test:ci",
     "postversion": "turbo run build",
     "wrangler": "wrangler",
-    "lint": "eslint -c ./eslint.config.mjs */**",
-    "lint:fix": "eslint -c ./eslint.config.mjs --fix */**"
+    "lint": "eslint -c ./eslint.config.mjs **/*.{ts,vue}",
+    "lint:fix": "eslint -c ./eslint.config.mjs --fix **/*.{ts,vue}"
   },
   "dependencies": {
     "@formkit/tempo": "^0.0.12",
@@ -92,6 +92,5 @@
   "packageManager": "pnpm@8.15.4",
   "engines": {
     "node": ">=v20.10.0"
-  },
-  "eslintIgnore": ["node_modulse/**", ".nuxt/**", ".output/**"]
+  }
 }
