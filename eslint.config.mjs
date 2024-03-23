@@ -29,7 +29,8 @@ export default withNuxt(
           component: 'always' // 组件，强制自闭合
         }
       }],
-      'vue/singleline-html-element-content-newline': 'off' // 单行元素内容换行
+      'vue/singleline-html-element-content-newline': 'off', // 单行元素内容换行
+      'vue/multiline-html-element-content-newline': 'off' // 多行元素内容换行
     }
   }
 );
