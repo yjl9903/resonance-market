@@ -47,8 +47,7 @@ const sortCitesByProfit = (
   sourceCityName: string,
   productName: string
 ) => {
-  const sourceCityPrice =
-    logStore.getLatestLog(sourceCityName, productName, sourceCityName)?.price || 0;
+  const sourceCityPrice = logStore.getLatestLog(sourceCityName, productName, sourceCityName)?.price || 0;
 
   // 计算各城市货物利润
   let citiesProfitMap: { [key: string]: number } = {};
@@ -63,9 +62,9 @@ const sortCitesByProfit = (
        * 3. 原产地价格不存在
        */
       if (
-        !latestLog ||
-        Date.now() - new Date(latestLog.uploadedAt).valueOf() > 1 * 24 * 60 * 60 * 1000 ||
-        !sourceCityPrice
+        !latestLog
+        || Date.now() - new Date(latestLog.uploadedAt).valueOf() > 1 * 24 * 60 * 60 * 1000
+        || !sourceCityPrice
       )
         return { cityName: city.name, profit: -9999 };
       // 如果最新交易记录无效，排名在有效记录之后，且按顺序排列
