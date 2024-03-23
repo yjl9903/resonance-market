@@ -22,7 +22,9 @@
     "typecheck": "turbo run typecheck",
     "preversion": "turbo run test:ci",
     "postversion": "turbo run build",
-    "wrangler": "wrangler"
+    "wrangler": "wrangler",
+    "lint": "eslint -c ./eslint.config.mjs */**",
+    "lint:fix": "eslint -c ./eslint.config.mjs --fix */**"
   },
   "dependencies": {
     "@formkit/tempo": "^0.0.12",
@@ -58,6 +60,7 @@
     "@iconify-json/logos": "^1.1.42",
     "@iconify-json/material-symbols": "^1.1.74",
     "@iconify-json/simple-icons": "^1.1.94",
+    "@nuxt/eslint": "0.3.0-beta.3",
     "@nuxtjs/color-mode": "^3.3.2",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@total-typescript/ts-reset": "^0.5.1",
@@ -68,6 +71,7 @@
     "@unocss/reset": "^0.58.5",
     "bumpp": "latest",
     "drizzle-kit": "^0.20.14",
+    "eslint": "^8.57.0",
     "jsdom": "^24.0.0",
     "lucide-vue-next": "^0.340.0",
     "nitro-cloudflare-dev": "^0.0.7",
@@ -90,5 +94,6 @@
   "packageManager": "pnpm@8.15.4",
   "engines": {
     "node": ">=v20.10.0"
-  }
+  },
+  "eslintIgnore": ["node_modulse/**", ".nuxt/**", ".output/**"]
 }

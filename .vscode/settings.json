@@ -1,0 +1,3 @@
+{
+  "eslint.experimental.useFlatConfig": true // 启用新版本的ESlint配置
+}
