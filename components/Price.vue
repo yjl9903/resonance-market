@@ -70,6 +70,7 @@ const profitColor = computed(() => {
     for (const cond of table) {
       if (value > cond.value) return cond.color;
     }
+    return undefined;
   } else if (value > 0) {
     const table = [
       { value: 0, color: 'text-green-400 op-60' },
@@ -84,7 +85,8 @@ const profitColor = computed(() => {
     for (const cond of table.reverse()) {
       if (value > cond.value) return cond.color;
     }
-  }
+    return undefined;
+  } else return undefined;
 });
 
 const shortTime = computed(() => {
