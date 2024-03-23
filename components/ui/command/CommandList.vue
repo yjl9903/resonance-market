@@ -8,7 +8,7 @@ const props = defineProps<ComboboxContentProps & { class?: HTMLAttributes['class
 const emits = defineEmits<ComboboxContentEmits>();
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props;
+  const { ...delegated } = props;
 
   return delegated;
 });

@@ -15,7 +15,7 @@ const props = defineProps<
 const emits = defineEmits<MenubarItemEmits>();
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props;
+  const { ...delegated } = props;
 
   return delegated;
 });

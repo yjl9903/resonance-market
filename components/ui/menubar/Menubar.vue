@@ -12,7 +12,7 @@ const props = defineProps<MenubarRootProps & { class?: HTMLAttributes['class'] }
 const emits = defineEmits<MenubarRootEmits>();
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props;
+  const { ...delegated } = props;
 
   return delegated;
 });

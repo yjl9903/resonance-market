@@ -14,7 +14,7 @@ const props = defineProps<MenubarSubContentProps & { class?: HTMLAttributes['cla
 const emits = defineEmits<MenubarSubContentEmits>();
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props;
+  const { ...delegated } = props;
 
   return delegated;
 });

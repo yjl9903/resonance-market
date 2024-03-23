@@ -74,7 +74,7 @@ export const queryValuableLogs = memoExternal(
   }
 );
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async () => {
   const db = await connectDatabase();
 
   const query = await queryValuableLogs.get(db);

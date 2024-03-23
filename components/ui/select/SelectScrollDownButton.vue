@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 const props = defineProps<SelectScrollDownButtonProps & { class?: HTMLAttributes['class'] }>();
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props;
+  const { ...delegated } = props;
 
   return delegated;
 });

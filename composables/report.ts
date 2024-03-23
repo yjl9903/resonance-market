@@ -49,7 +49,7 @@ export function useReportForm(init: ReportFormInit) {
 
   watch(
     () => [product.value, form.values.targetCity] as const,
-    ([product, target], prev) => {
+    ([product, target]) => {
       if (!product || !target) return;
 
       if (form.isFieldDirty('price') || form.isFieldDirty('percent')) return;
@@ -81,7 +81,7 @@ export function useReportForm(init: ReportFormInit) {
 
   watch(
     () => [product.value, form.values.targetCity, form.values.price] as const,
-    ([product, target, price], prev) => {
+    ([product, target, price]) => {
       if (!product) return;
 
       // @ts-ignore

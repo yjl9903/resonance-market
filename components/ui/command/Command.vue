@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<ComboboxRootProps & { class?: HTMLAttribu
 const emits = defineEmits<ComboboxRootEmits>();
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props;
+  const { ...delegated } = props;
 
   return delegated;
 });

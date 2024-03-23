@@ -1,14 +1,8 @@
 <script setup lang="ts">
-import * as z from 'zod';
-import { toast } from 'vue-sonner';
-import { useForm } from 'vee-validate';
-import { toTypedSchema } from '@vee-validate/zod';
-
 import { Slider } from '@/components/ui/slider';
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -19,7 +13,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';

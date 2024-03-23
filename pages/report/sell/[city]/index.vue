@@ -5,9 +5,7 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut
+  CommandList
 } from '@/components/ui/command';
 
 const route = useRoute();

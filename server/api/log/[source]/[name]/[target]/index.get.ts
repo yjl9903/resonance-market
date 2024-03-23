@@ -1,6 +1,6 @@
-import { sql, eq, and, desc } from 'drizzle-orm';
+import { eq, and, desc } from 'drizzle-orm';
 
-import { products, logs, type Log } from '~/drizzle/schema';
+import { logs, type Log } from '~/drizzle/schema';
 
 import { connectDatabase } from '@/server/utils/database';
 
