@@ -150,7 +150,7 @@ const settingStore = useSettingStore();
                     >
                       <div class="flex items-center mr-2">
                         <span class="i-icon-park-outline-percentage mr-1 block w-4"></span>
-                        <span>买卖税收8%</span>
+                        <span>买卖税收(8%)</span>
                       </div>
                       <span class="i-material-symbols-check"></span>
                     </a>
@@ -162,7 +162,7 @@ const settingStore = useSettingStore();
                     >
                       <div class="flex items-center mr-2">
                         <span class="i-icon-park-outline-positive-dynamics mr-1 block w-4"></span>
-                        <span>最大砍价抬价</span>
+                        <span>最大砍价抬价(20%)</span>
                       </div>
                       <span
                         v-if="settingStore.priceChangeRate === 0.2"
