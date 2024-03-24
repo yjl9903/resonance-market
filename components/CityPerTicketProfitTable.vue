@@ -46,9 +46,11 @@ const sortedTransactionRoute = computed(() => {
   return transactionRouteWithProfit.toSorted((a, b) => b.profit - a.profit);
 });
 
-const maxTransactionRouteProfit = computed(() => {
-  return sortedTransactionRoute.value[0]?.profit || 0;
-});
+const rankBarWidthPercent = (profit: number) => {
+  const maxProfit = sortedTransactionRoute.value[0].profit;
+  const minProfit = sortedTransactionRoute.value[sortedTransactionRoute.value.length - 1].profit;
+  return ((profit - minProfit) / (maxProfit - minProfit)) * 90;
+};
 
 const getCityProfit = (originatingCity: string, destinationCity: string) => {
   const allProduct = cities.find(city => city.name === originatingCity)?.products;
@@ -93,7 +95,7 @@ const getCityProfit = (originatingCity: string, destinationCity: string) => {
             <TableCell>
               <div class="w-full">
                 {{ route.profit }}
-                <div :style="{ width: `${(route.profit / maxTransactionRouteProfit) * 90}%` }" class="h-2 bg-primary"></div>
+                <div :style="{ width: `${rankBarWidthPercent(route.profit)}%` }" class="h-2 bg-primary"></div>
               </div>
             </TableCell>
           </TableRow>
