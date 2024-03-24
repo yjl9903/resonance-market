@@ -67,7 +67,7 @@ const sortCitesByProfit = (
         || !sourceCityPrice
       ) return { cityName: city.name, profit: -99999 };
       else {
-        const profit = settingStore.getProfitWithRule(latestLog.price, sourceCityPrice);
+        const profit = settingStore.getProfitWithRule(sourceCityPrice, latestLog.price);
         return {
           cityName: city.name,
           profit: profit - (isLogValid(latestLog) ? 0 : 9999) // 如果最新交易记录无效，排名在有效记录之后，且按顺序排列

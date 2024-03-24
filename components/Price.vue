@@ -39,7 +39,7 @@ const profit = computed(() => {
     props.log.sourceCity
   );
   if (sourceCityLatestLog) {
-    return settingStore.getProfitWithRule(props.log.price, sourceCityLatestLog.price);
+    return settingStore.getProfitWithRule(sourceCityLatestLog.price, props.log.price);
   } else {
     return undefined;
   }
