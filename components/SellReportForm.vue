@@ -1,14 +1,5 @@
 <script setup lang="ts">
 import { Slider } from '@/components/ui/slider';
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import {
   FormControl,
@@ -45,10 +36,10 @@ const changePricePercent = (type: 'add' | 'reduce') => {
       <span class="font-bold">{{ product.name }}</span>
     </div>
     <div class="space-x-2 text-base">
-      <span class=""
-        >从 <span class="underline underline-offset-4">{{ product.city }}</span> 售出到
-        <span class="underline underline-offset-4">{{ target.name }}</span></span
-      >
+      <span>
+        从 <span class="underline underline-offset-4">{{ product.city }}</span>
+        售出到 <span class="underline underline-offset-4">{{ target.name }}</span>
+      </span>
     </div>
 
     <FormField v-slot="{ componentField }" name="price">
@@ -57,7 +48,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
         <FormControl>
           <Input type="number" :placeholder="'售出价格'" v-bind="componentField" />
         </FormControl>
-        <FormDescription></FormDescription>
+        <FormDescription />
         <FormMessage />
       </FormItem>
     </FormField>
@@ -71,7 +62,13 @@ const changePricePercent = (type: 'add' | 'reduce') => {
               class="i-icon-park-outline-reduce-one text-xl cursor-pointer"
               @click="changePricePercent('reduce')"
             ></span>
-            <Slider v-bind="componentField" :default-value="[100]" :max="160" :min="30" :step="1" />
+            <Slider
+              v-bind="componentField"
+              :default-value="[100]"
+              :max="160"
+              :min="30"
+              :step="1"
+            />
             <span
               class="i-icon-park-outline-add-one text-xl cursor-pointer"
               @click="changePricePercent('add')"

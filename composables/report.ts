@@ -49,7 +49,7 @@ export function useReportForm(init: ReportFormInit) {
 
   watch(
     () => [product.value, form.values.targetCity] as const,
-    ([product, target], prev) => {
+    ([product, target]) => {
       if (!product || !target) return;
 
       if (form.isFieldDirty('price') || form.isFieldDirty('percent')) return;
@@ -81,7 +81,7 @@ export function useReportForm(init: ReportFormInit) {
 
   watch(
     () => [product.value, form.values.targetCity, form.values.price] as const,
-    ([product, target, price], prev) => {
+    ([product, target, price]) => {
       if (!product) return;
 
       // @ts-ignore
@@ -155,11 +155,11 @@ export function useReportForm(init: ReportFormInit) {
         return;
       }
 
-      const basePrice =
-        values.sourceCity === values.targetCity
+      const basePrice
+        = values.sourceCity === values.targetCity
           ? /* 买入 */ product.basePrice
           : /* 卖出 */ product.transactions.find((tr) => tr.targetCity === values.targetCity)
-              ?.basePrice;
+            ?.basePrice;
       if (basePrice !== undefined && basePrice !== 0) {
         const price = values.price;
         const percent = values.percent[0]!;

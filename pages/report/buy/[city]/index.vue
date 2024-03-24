@@ -21,7 +21,7 @@ useHead({
         :key="p.name"
         class="rounded border px-4"
       >
-        <BuyReportForm :city="city" :product="p"></BuyReportForm>
+        <BuyReportForm :city="city" :product="p" />
       </div>
     </div>
   </div>

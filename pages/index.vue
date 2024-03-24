@@ -35,12 +35,11 @@ onMounted(() => {
         @click="switchCityFilter(city)"
         :variant="selectedCity.find((item) => item.name == city.name) ? 'default' : 'outline'"
         size="sm"
-        >{{ city.name }}</Button
-      >
+      >{{ city.name }}</Button>
     </div>
 
     <div class="space-y-4">
-      <City v-for="city in selectedCity" :key="city.name" :city="city"></City>
+      <City v-for="city in selectedCity" :key="city.name" :city="city" />
     </div>
   </div>
 </template>

@@ -47,11 +47,10 @@ const sortCitesByProfit = (
   sourceCityName: string,
   productName: string
 ) => {
-  const sourceCityPrice =
-    logStore.getLatestLog(sourceCityName, productName, sourceCityName)?.price || 0;
+  const sourceCityPrice = logStore.getLatestLog(sourceCityName, productName, sourceCityName)?.price || 0;
 
   // 计算各城市货物利润
-  let citiesProfitMap: { [key: string]: number } = {};
+  const citiesProfitMap: { [key: string]: number } = {};
   filteredCities
     .map((city) => {
       const latestLog = logStore.getLatestLog(sourceCityName, productName, city.name);
@@ -63,13 +62,12 @@ const sortCitesByProfit = (
        * 3. 原产地价格不存在
        */
       if (
-        !latestLog ||
-        Date.now() - new Date(latestLog.uploadedAt).valueOf() > 1 * 24 * 60 * 60 * 1000 ||
-        !sourceCityPrice
-      )
-        return { cityName: city.name, profit: -9999 };
+        !latestLog
+        || Date.now() - new Date(latestLog.uploadedAt).valueOf() > 1 * 24 * 60 * 60 * 1000
+        || !sourceCityPrice
+      ) return { cityName: city.name, profit: -9999 };
       // 如果最新交易记录无效，排名在有效记录之后，且按顺序排列
-      else if (Boolean(isLogValid(latestLog)))
+      else if (isLogValid(latestLog))
         return {
           cityName: city.name,
           profit: Math.round(latestLog.price * 1.2 * 0.98 - sourceCityPrice * 0.8 * 1.08) - 9000
@@ -103,7 +101,7 @@ const sortCitesByProfit = (
             <!-- 按城市维度排序 -->
             <template v-if="settingStore.listSortMode === 'byCity'">
               <TableHead class="border-r">{{ currentCity.name }}</TableHead>
-              <TableHead v-for="city in sellCities" :key="city.name">{{ city.name }}</TableHead>
+              <TableHead v-for="sellCity in sellCities" :key="sellCity.name">{{ sellCity.name }}</TableHead>
             </template>
             <!-- 按利润排序 -->
             <template v-else>

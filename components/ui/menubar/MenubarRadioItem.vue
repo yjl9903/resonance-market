@@ -14,7 +14,7 @@ const props = defineProps<MenubarRadioItemProps & { class?: HTMLAttributes['clas
 const emits = defineEmits<MenubarRadioItemEmits>();
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props;
+  const { ...delegated } = props;
 
   return delegated;
 });

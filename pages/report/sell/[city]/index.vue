@@ -5,9 +5,7 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut
+  CommandList
 } from '@/components/ui/command';
 
 const route = useRoute();
@@ -40,23 +38,22 @@ const onSelectProduct = (product: ProductInfo) => {
       <Command class="rounded-lg border shadow-md max-w-full">
         <CommandInput placeholder="搜索商品以开始上报..." />
         <CommandList class="h-[500px]">
-          <CommandEmpty
-            ><div class="h-full flex items-center justify-center">
+          <CommandEmpty>
+            <div class="h-full flex items-center justify-center">
               <div>没有找到商品</div>
-            </div></CommandEmpty
-          >
+            </div>
+          </CommandEmpty>
           <CommandGroup
-            v-for="city in cities.filter((c) => c.name !== cityName)"
-            :key="city.name"
-            :heading="city.name"
+            v-for="otherCity in cities.filter((c) => c.name !== cityName)"
+            :key="otherCity.name"
+            :heading="otherCity.name"
           >
             <CommandItem
-              v-for="p in city.products.filter((p) => p.valuable)"
+              v-for="p in otherCity.products.filter((p) => p.valuable)"
               :key="p.name"
-              :value="`${city.name} - ${p.name}`"
+              :value="`${otherCity.name} - ${p.name}`"
               @select="onSelectProduct(p)"
-              >{{ p.name }}</CommandItem
-            >
+            >{{ p.name }}</CommandItem>
           </CommandGroup>
           <!-- <CommandGroup heading="Suggestions"> </CommandGroup>
           <CommandSeparator />
@@ -67,7 +64,7 @@ const onSelectProduct = (product: ProductInfo) => {
     <div v-if="selected.length === 0">请选择商品</div>
     <div v-else class="grid sm:grid-cols-2 gap-6">
       <div v-for="p in selected" :key="`${p.city} - ${p.name}`" class="rounded border px-4">
-        <SellReportForm :product="p" :target="city"></SellReportForm>
+        <SellReportForm :product="p" :target="city" />
       </div>
     </div>
   </div>

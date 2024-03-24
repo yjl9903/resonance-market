@@ -1,14 +1,5 @@
 <script setup lang="ts">
 import { Slider } from '@/components/ui/slider';
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import {
   FormControl,
@@ -55,7 +46,7 @@ const changePricePercent = (type: 'add' | 'reduce') => {
             v-bind="componentField"
           />
         </FormControl>
-        <FormDescription></FormDescription>
+        <FormDescription />
         <FormMessage />
       </FormItem>
     </FormField>
@@ -69,17 +60,23 @@ const changePricePercent = (type: 'add' | 'reduce') => {
               class="i-icon-park-outline-reduce-one text-xl cursor-pointer"
               @click="changePricePercent('reduce')"
             ></span>
-            <Slider v-bind="componentField" :default-value="[100]" :max="160" :min="30" :step="1" />
+            <Slider
+              v-bind="componentField"
+              :default-value="[100]"
+              :max="160"
+              :min="30"
+              :step="1"
+            />
             <span
               class="i-icon-park-outline-add-one text-xl cursor-pointer"
               @click="changePricePercent('add')"
             ></span>
           </div>
           <FormDescription class="flex justify-between">
-            <span
-              >{{ form.values.targetCity !== city.name ? '售出价位' : '买入价位' }}
-              {{ form.values.percent?.[0] ?? 100 }}%</span
-            >
+            <span>
+              {{ form.values.targetCity !== city.name ? '售出价位' : '买入价位' }}
+              {{ form.values.percent?.[0] ?? 100 }}%
+            </span>
           </FormDescription>
         </FormControl>
         <FormMessage />

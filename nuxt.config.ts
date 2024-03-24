@@ -1,5 +1,3 @@
-import { fileURLToPath } from 'node:url';
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   debug: false,
@@ -13,7 +11,8 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'shadcn-nuxt',
     'unplugin-info/nuxt',
-    'unplugin-analytics/nuxt'
+    'unplugin-analytics/nuxt',
+    '@nuxt/eslint' // https://eslint.nuxt.com/packages/module
   ],
   nitro: {
     prerender: {
@@ -75,6 +74,16 @@ export default defineNuxtConfig({
     },
     clarity: {
       id: 'lbvx2f1py2'
+    }
+  },
+  eslint: {
+    config: {
+      stylistic: {
+        indent: 2, // 2空格缩进
+        semi: true, // 语句末尾需要分号
+        commaDangle: 'never', // 不允许逗号结尾
+        braceStyle: '1tbs' // 1tbs大括号风格, https://eslint.style/rules/js/brace-style
+      }
     }
   }
 });

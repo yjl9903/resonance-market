@@ -14,7 +14,7 @@ const props = defineProps<MenubarCheckboxItemProps & { class?: HTMLAttributes['c
 const emits = defineEmits<MenubarCheckboxItemEmits>();
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props;
+  const { ...delegated } = props;
 
   return delegated;
 });

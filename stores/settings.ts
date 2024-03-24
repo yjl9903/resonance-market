@@ -1,6 +1,3 @@
-import { skipHydrate } from 'pinia';
-import { useStorage } from '@vueuse/core';
-
 // import { umami } from '~analytics/umami';
 
 export type ListSortMode = 'byCity' | 'byProfit';
