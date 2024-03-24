@@ -26,7 +26,7 @@ const reportDialogVisible = ref(false);
 const isOutdated = computed(() => {
   if (!props.log) return true;
   props.timestamp;
-  return isLogValid(props.log);
+  return !isLogValid(props.log);
 });
 
 // 单位利润
@@ -39,7 +39,7 @@ const profit = computed(() => {
     props.log.sourceCity
   );
   if (sourceCityLatestLog) {
-    return Math.round(props.log.price * 1.2 * 0.98 - sourceCityLatestLog.price * 0.8 * 1.08);
+    return settingStore.getProfitWithRule(props.log.price, sourceCityLatestLog.price);
   } else {
     return undefined;
   }

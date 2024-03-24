@@ -1,16 +1,15 @@
 // import { umami } from '~analytics/umami';
 
 export type ListSortMode = 'byCity' | 'byProfit';
-export type ProfitComputeRule = 'maxPriceChange' | 'noChange';
 export type DataDisplayItems = 'profit' | 'perTicketProfit';
 
 export const useSettingStore = defineStore('setting', () => {
   // const listSortMode = useStorage<ListSortMode>('listSortMode', 'byCity')
-  // const profitComputeRule = useStorage<ProfitComputeRule>('profitComputeRule', 'noChange')
 
   const listSortMode = ref<ListSortMode>('byCity');
   const dataDisplayItems = ref<DataDisplayItems[]>(['profit', 'perTicketProfit']);
-  const profitComputeRule = ref<ProfitComputeRule>('maxPriceChange');
+  const taxRate = ref<number>(0.08);
+  const priceChangeRate = ref<number>(0.2);
 
   // 切换列表排序模式
   const switchListSortModeTo = (targetMode: ListSortMode) => {
@@ -19,11 +18,18 @@ export const useSettingStore = defineStore('setting', () => {
     // umami?.track(`switch list mode to ${targetMode}`).catch(() => {});
   };
 
-  // 切换利润计算规则
-  const switchProfitComputeRuleTo = (targetRule: ProfitComputeRule) => {
-    profitComputeRule.value = targetRule;
-
-    // umami?.track(`switch profit compute rule to ${targetRule}`).catch(() => {});
+  /**
+   * 根据设置中的配置计算利润
+   * @param sourceCityPrice 买入价格
+   * @param targetCityPrice 卖出价格
+   * @returns
+   */
+  const getProfitWithRule = (sourceCityPrice: number | undefined, targetCityPrice: number) => {
+    // 买入价格不存在时，返回-9999
+    if (!sourceCityPrice) return -9999;
+    const finalSourceCityPrice = sourceCityPrice * (1 - priceChangeRate.value) * (1 + taxRate.value);
+    const finalTargetCityPrice = targetCityPrice * (1 + priceChangeRate.value) * (1 - taxRate.value);
+    return Math.round(finalTargetCityPrice - finalSourceCityPrice);
   };
 
   // 切换数据显示项
@@ -37,13 +43,11 @@ export const useSettingStore = defineStore('setting', () => {
 
   return {
     listSortMode: listSortMode,
-    // listSortMode: skipHydrate(listSortMode),
     switchListSortModeTo,
-    profitComputeRule: profitComputeRule,
-    // profitComputeRule: skipHydrate(profitComputeRule),
-    switchProfitComputeRuleTo,
-    dataDisplayItems: dataDisplayItems,
-    // dataDisplayItems: skipHydrate(dataDisplayItems),
+    taxRate,
+    priceChangeRate,
+    getProfitWithRule,
+    dataDisplayItems,
     switchDataDisplayItems
   };
 });

@@ -155,14 +155,14 @@ const settingStore = useSettingStore();
                   <MenubarItem as-child>
                     <a
                       class="hover:bg-gray-100 cursor-pointer flex justify-between"
-                      @click="toast('功能正在开发中，敬请期待')"
+                      @click="settingStore.priceChangeRate = 0.2"
                     >
                       <div class="flex items-center mr-2">
                         <span class="i-icon-park-outline-positive-dynamics mr-1 block w-4"></span>
                         <span>最大砍价抬价</span>
                       </div>
                       <span
-                        v-if="settingStore.profitComputeRule === 'maxPriceChange'"
+                        v-if="settingStore.priceChangeRate === 0.2"
                         class="i-material-symbols-check"
                       ></span>
                     </a>
@@ -170,14 +170,14 @@ const settingStore = useSettingStore();
                   <MenubarItem as-child>
                     <a
                       class="hover:bg-gray-100 cursor-pointer flex justify-between"
-                      @click="toast('功能正在开发中，敬请期待')"
+                      @click="settingStore.priceChangeRate = 0"
                     >
                       <div class="flex items-center mr-2">
                         <span class="i-icon-park-outline-negative-dynamics mr-1 block w-4"></span>
                         <span>不砍价不抬价</span>
                       </div>
                       <span
-                        v-if="settingStore.profitComputeRule === 'noChange'"
+                        v-if="settingStore.priceChangeRate === 0"
                         class="i-material-symbols-check"
                       ></span>
                     </a>
