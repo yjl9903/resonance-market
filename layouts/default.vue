@@ -24,9 +24,12 @@ const settingStore = useSettingStore();
         <div>
           <NuxtLink to="/" class="text-2xl font-bold hover:text-base-600 select-none">雷索纳斯市场</NuxtLink>
         </div>
-        <Menubar class="mt-4">
+        <Menubar class="mt-4 flex-wrap">
           <MenubarButton>
             <NuxtLink to="/">首页</NuxtLink>
+          </MenubarButton>
+          <MenubarButton>
+            <NuxtLink to="/trading-planning">路线规划</NuxtLink>
           </MenubarButton>
           <MenubarMenu>
             <MenubarTrigger>商品</MenubarTrigger>
