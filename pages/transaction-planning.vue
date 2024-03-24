@@ -17,7 +17,7 @@ const isComeAndGo = ref('往返'); // 是否往返
         <p class="ml-2">希望这份排行能为您的运输之路提供参考。</p>
         <p class="ml-2">祝各位列车长旅途顺利，财源滚滚！</p>
         <p class="my-2">阿妮塔科技敬上</p>
-        注：各位列车长的个性化配置页面正在开发中，目前展示的收益计算参数为（砍价抬价：{{ settingStore.priceChangeRate * 100 }}%，城市税率{{ settingStore.taxRate * 100 }}%，特产品交易量仅为基础值）。
+        注：各位列车长的个性化配置页面正在开发中，目前展示的收益计算参数为（砍价抬价：{{ settingStore.priceChangeRate * 100 }}%，城市税率：{{ settingStore.taxRate * 100 }}%，特产品交易量仅为基础值）。
       </div>
     </div>
 
@@ -32,7 +32,7 @@ const isComeAndGo = ref('往返'); // 是否往返
     </div>
 
     <div class="space-y-4">
-      <CityPerTicketProfitTable :isComeAndGo="isComeAndGo == '往返'" />
+      <PerTicketProfitRouteTable :isComeAndGo="isComeAndGo == '往返'" />
     </div>
   </div>
 </template>

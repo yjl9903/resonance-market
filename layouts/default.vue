@@ -29,7 +29,7 @@ const settingStore = useSettingStore();
             <NuxtLink to="/">首页</NuxtLink>
           </MenubarButton>
           <MenubarButton>
-            <NuxtLink to="/trading-planning">路线规划</NuxtLink>
+            <NuxtLink to="/transaction-planning">路线规划</NuxtLink>
           </MenubarButton>
           <MenubarMenu>
             <MenubarTrigger>商品</MenubarTrigger>
