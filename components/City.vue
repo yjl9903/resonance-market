@@ -65,19 +65,14 @@ const sortCitesByProfit = (
         !latestLog
         || Date.now() - new Date(latestLog.uploadedAt).valueOf() > 1 * 24 * 60 * 60 * 1000
         || !sourceCityPrice
-      ) return { cityName: city.name, profit: -9999 };
-      // 如果最新交易记录无效，排名在有效记录之后，且按顺序排列
-      else if (isLogValid(latestLog))
+      ) return { cityName: city.name, profit: -99999 };
+      else {
+        const profit = settingStore.getProfitWithRule(latestLog.price, sourceCityPrice);
         return {
           cityName: city.name,
-          profit: Math.round(latestLog.price * 1.2 * 0.98 - sourceCityPrice * 0.8 * 1.08) - 9000
+          profit: profit - (isLogValid(latestLog) ? 0 : 9999) // 如果最新交易记录无效，排名在有效记录之后，且按顺序排列
         };
-      // 如果最新交易记录有效，按利润高低排名
-      else
-        return {
-          cityName: city.name,
-          profit: Math.round(latestLog.price * 1.2 * 0.98 - sourceCityPrice * 0.8 * 1.08)
-        };
+      }
     })
     .forEach((cityProfit) => (citiesProfitMap[cityProfit.cityName] = cityProfit.profit));
 

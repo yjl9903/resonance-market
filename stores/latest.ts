@@ -22,11 +22,13 @@ export const useLatestLogs = defineStore('latest_logs', () => {
     });
   };
 
+  const getLatestLog = (sourceCity: string, productName: string, targetCity: string) => {
+    return transactionMap.value.get(`${productName}-from${sourceCity}to${targetCity}`);
+  };
+
   return {
     logs,
-    getLatestLog(sourceCity: string, productName: string, targetCity: string) {
-      return transactionMap.value.get(`${productName}-from${sourceCity}to${targetCity}`);
-    },
+    getLatestLog,
     fetch,
     startGetData
   };

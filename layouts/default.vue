@@ -24,9 +24,12 @@ const settingStore = useSettingStore();
         <div>
           <NuxtLink to="/" class="text-2xl font-bold hover:text-base-600 select-none">雷索纳斯市场</NuxtLink>
         </div>
-        <Menubar class="mt-4">
+        <Menubar class="mt-4 flex-wrap">
           <MenubarButton>
             <NuxtLink to="/">首页</NuxtLink>
+          </MenubarButton>
+          <MenubarButton>
+            <NuxtLink to="/transaction-planning">路线规划</NuxtLink>
           </MenubarButton>
           <MenubarMenu>
             <MenubarTrigger>商品</MenubarTrigger>
@@ -147,7 +150,7 @@ const settingStore = useSettingStore();
                     >
                       <div class="flex items-center mr-2">
                         <span class="i-icon-park-outline-percentage mr-1 block w-4"></span>
-                        <span>买卖税收8%</span>
+                        <span>买卖税收(8%)</span>
                       </div>
                       <span class="i-material-symbols-check"></span>
                     </a>
@@ -155,14 +158,14 @@ const settingStore = useSettingStore();
                   <MenubarItem as-child>
                     <a
                       class="hover:bg-gray-100 cursor-pointer flex justify-between"
-                      @click="toast('功能正在开发中，敬请期待')"
+                      @click="settingStore.priceChangeRate = 0.2"
                     >
                       <div class="flex items-center mr-2">
                         <span class="i-icon-park-outline-positive-dynamics mr-1 block w-4"></span>
-                        <span>最大砍价抬价</span>
+                        <span>最大砍价抬价(20%)</span>
                       </div>
                       <span
-                        v-if="settingStore.profitComputeRule === 'maxPriceChange'"
+                        v-if="settingStore.priceChangeRate === 0.2"
                         class="i-material-symbols-check"
                       ></span>
                     </a>
@@ -170,14 +173,14 @@ const settingStore = useSettingStore();
                   <MenubarItem as-child>
                     <a
                       class="hover:bg-gray-100 cursor-pointer flex justify-between"
-                      @click="toast('功能正在开发中，敬请期待')"
+                      @click="settingStore.priceChangeRate = 0"
                     >
                       <div class="flex items-center mr-2">
                         <span class="i-icon-park-outline-negative-dynamics mr-1 block w-4"></span>
                         <span>不砍价不抬价</span>
                       </div>
                       <span
-                        v-if="settingStore.profitComputeRule === 'noChange'"
+                        v-if="settingStore.priceChangeRate === 0"
                         class="i-material-symbols-check"
                       ></span>
                     </a>

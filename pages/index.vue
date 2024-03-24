@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { useStorage } from '@vueuse/core';
 
-const logStore = useLatestLogs();
-
-await logStore.startGetData();
-
 const selectedCity = ref<CityInfo[]>(cities);
 
 const blockCities = useStorage<string[]>('blockCities', []);
