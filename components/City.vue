@@ -67,7 +67,7 @@ const sortCitesByProfit = (
         || !sourceCityPrice
       ) return { cityName: city.name, profit: -99999 };
       else {
-        const profit = settingStore.getProfitWithRule(sourceCityPrice, latestLog.price);
+        const profit = settingStore.getProfitWithRule(sourceCityPrice, latestLog.price, productName);
         return {
           cityName: city.name,
           profit: profit - (isLogValid(latestLog) ? 0 : 9999) // 如果最新交易记录无效，排名在有效记录之后，且按顺序排列
@@ -110,7 +110,10 @@ const sortCitesByProfit = (
         <TableBody>
           <TableRow v-for="product in city.products.filter((p) => p.valuable)" :key="product.name">
             <TableCell>
-              <NuxtLink :to="`/product/${city.name}/${product.name}`">{{ product.name }}</NuxtLink>
+              <div class="flex flex-col items-start">
+                <NuxtLink :to="`/product/${city.name}/${product.name}`">{{ product.name }}</NuxtLink>
+                <span v-if="product.name=='红茶'" class="px-2 py-1 text-xs bg-rose-800 font-bold rounded-md mt-1">红茶战争</span>
+              </div>
             </TableCell>
             <TableCell class="border-r">
               <Price

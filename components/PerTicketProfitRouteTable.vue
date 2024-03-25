@@ -59,7 +59,7 @@ const getCityProfit = (originatingCity: string, destinationCity: string) => {
     if (!currentProduct.valuable) return result;
     const sourceCityPrice = logStore.getLatestLog(originatingCity, currentProduct.name, originatingCity)?.price || 0;
     const targetCityPrice = logStore.getLatestLog(originatingCity, currentProduct.name, destinationCity)?.price || 0;
-    const profit = settingStore.getProfitWithRule(sourceCityPrice, targetCityPrice);
+    const profit = settingStore.getProfitWithRule(sourceCityPrice, targetCityPrice, currentProduct.name);
     const perTicketProfit = profit * (currentProduct.baseVolume || 0);
 
     return result + perTicketProfit;
