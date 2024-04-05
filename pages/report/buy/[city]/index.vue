@@ -17,11 +17,15 @@ useHead({
     <h1 class="font-bold text-lg mb-4">从 {{ cityName }} 买入商品</h1>
     <div class="grid sm:grid-cols-2 gap-6">
       <div
-        v-for="p in city.products.filter((p) => p.valuable)"
-        :key="p.name"
+        v-for="product in city.products.filter((p) => p.valuable)"
+        :key="product.name"
         class="rounded border px-4"
       >
-        <BuyReportForm :city="city" :product="p" />
+        <ReportLogForm
+          :source-city-name="city.name"
+          :target-city-name="city.name"
+          :product="product"
+        />
       </div>
     </div>
   </div>

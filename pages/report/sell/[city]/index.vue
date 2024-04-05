@@ -55,16 +55,22 @@ const onSelectProduct = (product: ProductInfo) => {
               @select="onSelectProduct(p)"
             >{{ p.name }}</CommandItem>
           </CommandGroup>
-          <!-- <CommandGroup heading="Suggestions"> </CommandGroup>
-          <CommandSeparator />
-          <CommandGroup heading="Settings"> </CommandGroup> -->
         </CommandList>
       </Command>
     </div>
     <div v-if="selected.length === 0">请选择商品</div>
     <div v-else class="grid sm:grid-cols-2 gap-6">
-      <div v-for="p in selected" :key="`${p.city} - ${p.name}`" class="rounded border px-4">
-        <SellReportForm :product="p" :target="city" />
+      <div
+        v-for="product in selected"
+        :key="`${product.city} - ${product.name}`"
+        class="rounded border px-4"
+      >
+        <ReportLogForm
+          :product="product"
+          :source-city-name="product.city"
+          :target-city-name="cityName"
+          @submit-success="selected = selected.filter((p) => p.name !== product.name)"
+        />
       </div>
     </div>
   </div>

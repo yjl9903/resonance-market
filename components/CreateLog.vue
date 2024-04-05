@@ -15,13 +15,10 @@ const open = defineModel('open', {
 
 const reportLogForm = ref<InstanceType<typeof ReportLogForm> | null>(null);
 
-watch(open, (open) => {
+watch(open, open => {
   if (open) {
     nextTick(() => {
       reportLogForm.value?.form.resetForm();
-      if (props.targetCityName) {
-        reportLogForm.value?.form.setFieldValue('targetCity', props.targetCityName);
-      }
     });
   }
 });
@@ -39,9 +36,10 @@ watch(open, (open) => {
 
       <ReportLogForm
         ref="reportLogForm"
-        :sourceCityName="props.sourceCityName"
-        :targetCityName="props.targetCityName"
+        :source-city-name="props.sourceCityName"
+        :target-city-name="props.targetCityName"
         :product="props.product"
+        @submit-success="open = false"
       />
     </DialogContent>
   </Dialog>

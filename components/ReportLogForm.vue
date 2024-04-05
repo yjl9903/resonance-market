@@ -7,9 +7,18 @@ const props = defineProps<{
   product: ProductInfo; // 货物信息
 }>();
 
+// 定义事件
+const emit = defineEmits<{
+  submitSuccess: [];
+}>();
+
 const { form, onSubmit } = useReportForm({
   sourceCity: props.sourceCityName,
-  name: props.product.name
+  targetCity: props.targetCityName || '',
+  name: props.product.name,
+  onSubmitSuccess: () => {
+    emit('submitSuccess');
+  }
 });
 
 const changePricePercent = (type: 'add' | 'reduce') => {
