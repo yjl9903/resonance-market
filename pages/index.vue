@@ -20,6 +20,10 @@ onMounted(() => {
     selectedCity.value = selectedCity.value.filter((city) => city.name !== cityName);
   });
 });
+
+useHead({
+  title: '雷索纳斯市场'
+});
 </script>
 
 <template>

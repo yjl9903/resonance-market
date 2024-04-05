@@ -4,6 +4,10 @@ import { ref } from 'vue';
 const settingStore = useSettingStore();
 
 const isComeAndGo = ref('往返'); // 是否往返
+
+useHead({
+  title: '跑商路线规划 | 雷索纳斯市场'
+});
 </script>
 
 <template>

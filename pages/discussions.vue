@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import Giscus from '@giscus/vue';
+
+useHead({
+  title: '讨论区 | 雷索纳斯市场'
+});
 </script>
 
 <template>
