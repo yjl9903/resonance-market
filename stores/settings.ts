@@ -28,11 +28,11 @@ export const useSettingStore = defineStore('setting', () => {
     // 买入价格不存在时，返回-9999
     if (!sourceCityPrice) return -9999;
     // 红茶战争活动临时特殊逻辑
-    if (productName === '红茶') {
-      const finalSourceCityPrice = sourceCityPrice * (1 - priceChangeRate.value) * (1 + taxRate.value - 0.05);
-      const finalTargetCityPrice = targetCityPrice * (1 + priceChangeRate.value) * (1 - taxRate.value + 0.05);
-      return Math.round(finalTargetCityPrice - finalSourceCityPrice);
-    }
+    // if (productName === '红茶') {
+    //   const finalSourceCityPrice = sourceCityPrice * (1 - priceChangeRate.value) * (1 + taxRate.value - 0.05);
+    //   const finalTargetCityPrice = targetCityPrice * (1 + priceChangeRate.value) * (1 - taxRate.value + 0.05);
+    //   return Math.round(finalTargetCityPrice - finalSourceCityPrice);
+    // }
     const finalSourceCityPrice = sourceCityPrice * (1 - priceChangeRate.value) * (1 + taxRate.value);
     const finalTargetCityPrice = targetCityPrice * (1 + priceChangeRate.value) * (1 - taxRate.value);
     return Math.round(finalTargetCityPrice - finalSourceCityPrice);

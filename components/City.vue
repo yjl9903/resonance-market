@@ -112,7 +112,7 @@ const sortCitesByProfit = (
             <TableCell>
               <div class="flex flex-col items-start">
                 <NuxtLink :to="`/product/${city.name}/${product.name}`">{{ product.name }}</NuxtLink>
-                <span v-if="product.name=='红茶'" class="px-2 py-1 text-xs bg-rose-800 font-bold rounded-md mt-1 text-white">红茶战争</span>
+                <!-- <span v-if="product.name=='红茶'" class="px-2 py-1 text-xs bg-rose-800 font-bold rounded-md mt-1 text-white">红茶战争</span> -->
               </div>
             </TableCell>
             <TableCell class="border-r">

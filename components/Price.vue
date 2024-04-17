@@ -227,9 +227,9 @@ const shortTime = computed(() => {
           <p v-if="log.type === 'buy' && product.baseVolume">
             <span class="font-bold mr-2">基础货量</span>
             <span>{{ product.baseVolume }}</span>
-            <span v-if="product.name == '红茶'">
+            <!-- <span v-if="product.name == '红茶'">
               (30 + <span class="text-rose-600">15</span>)
-            </span>
+            </span> -->
           </p>
           <p v-if="log.type === 'buy' && product.basePrice">
             <span class="font-bold mr-2">基准价格</span>
