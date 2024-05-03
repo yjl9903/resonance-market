@@ -19,6 +19,10 @@ if (!product) {
     <h1 class="font-bold text-lg mb-4">商品 {{ cityName }} - {{ productName }}</h1>
 
     <div class="mb-4 space-y-2">
+      <NuxtLink
+        :to="`/transaction/${product.city}/${product.name}/${product.city}`"
+        class="text-link"
+      >{{ product.city }} 一 {{ product.name }} → {{ product.city }}</NuxtLink>
       <div v-for="tr in product.transactions" :key="tr.targetCity">
         <NuxtLink
           :to="`/transaction/${tr.sourceCity}/${tr.name}/${tr.targetCity}`"
