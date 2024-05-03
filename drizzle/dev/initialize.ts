@@ -22,7 +22,16 @@ for (const product of allProducts) {
       basePrice: product.basePrice,
       cost: product.cost
     })
-    .onConflictDoNothing();
+    .onConflictDoUpdate({
+      target: [products.city, products.name],
+      set: {
+        type: product.type,
+        valuable: product.valuable,
+        baseVolume: product.baseVolume,
+        basePrice: product.basePrice,
+        cost: product.cost
+      }
+    });
 }
 
 for (const product of allProducts) {

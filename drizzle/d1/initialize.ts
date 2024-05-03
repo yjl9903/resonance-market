@@ -25,7 +25,16 @@ export async function initialize(database: Awaited<ReturnType<typeof connect>>) 
         basePrice: product.basePrice,
         cost: product.cost
       })
-      .onConflictDoNothing();
+      .onConflictDoUpdate({
+        target: [products.city, products.name],
+        set: {
+          type: product.type,
+          valuable: product.valuable,
+          baseVolume: product.baseVolume,
+          basePrice: product.basePrice,
+          cost: product.cost
+        }
+      });
   }
 
   // Clear transactions
