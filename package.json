@@ -10,6 +10,7 @@
     "db:prepare:dev": "tsx drizzle/dev/migrate.ts && tsx drizzle/dev/initialize.ts",
     "db:prepare:prod": "tsx drizzle/prod/migrate.ts && tsx drizzle/prod/initialize.ts",
     "deploy": "wrangler deploy",
+    "deploy:cloudflare": "pnpm run build:cloudflare && pnpm run deploy",
     "dev": "nuxt dev",
     "drizzle-kit": "drizzle-kit",
     "generate": "nuxt generate",
