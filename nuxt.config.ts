@@ -16,6 +16,9 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       autoSubfolderIndex: false
+    },
+    experimental: {
+      websocket: true
     }
   },
   components: [
@@ -57,9 +60,6 @@ export default defineNuxtConfig({
   shadcn: {
     prefix: '',
     componentDir: './components/ui'
-  },
-  colorMode: {
-    classSuffix: ''
   },
   info: {
     meta: {
