@@ -93,7 +93,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 782,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "斑节虾",
@@ -207,7 +207,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1137,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "电子配件",
@@ -321,7 +321,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 99,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "海盐",
@@ -435,7 +435,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 839,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "航天纪念品",
@@ -549,7 +549,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 5279,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "桦石发财树",
@@ -663,7 +663,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 231,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "坚果",
@@ -777,7 +777,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 3279,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "年货大礼包",
@@ -891,7 +891,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 130,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "啤酒",
@@ -1005,7 +1005,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1997,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "人工晶花",
@@ -1119,7 +1119,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 2557,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "石墨烯",
@@ -1225,7 +1225,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 2555,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "弹丸加速装置",
@@ -1339,7 +1339,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 3867,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "发动机",
@@ -1453,7 +1453,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 427,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "高档餐具",
@@ -1567,7 +1567,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 129,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "罐头",
@@ -1681,7 +1681,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1039,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "红茶",
@@ -1795,7 +1795,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 950,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "家电",
@@ -1909,7 +1909,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 886,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "汽配零件",
@@ -2023,7 +2023,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 614,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "沃德烤鸡",
@@ -2137,7 +2137,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 90,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "沃德山泉",
@@ -2251,7 +2251,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 2127,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "修格里严选礼包",
@@ -2365,7 +2365,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 55,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "杯面",
@@ -2479,7 +2479,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1929,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "刀具",
@@ -2593,7 +2593,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 563,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "画材",
@@ -2707,7 +2707,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 2403,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "金箔酒",
@@ -2821,7 +2821,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 163,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "纳豆",
@@ -2935,7 +2935,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1229,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "随身听",
@@ -3049,7 +3049,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 755,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "折扇",
@@ -3163,7 +3163,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 718,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "钢筋混凝土轨枕",
@@ -3277,7 +3277,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 750,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "黄铜",
@@ -3391,7 +3391,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 558,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "建材",
@@ -3505,7 +3505,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1461,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "曼德工具箱",
@@ -3619,7 +3619,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 39,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "砂石",
@@ -3733,7 +3733,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 234,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "石材",
@@ -3847,7 +3847,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 2203,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "钛矿石",
@@ -3961,7 +3961,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1436,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "铁轨用特种钢材",
@@ -4067,7 +4067,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 413,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "铁矿石",
@@ -4181,7 +4181,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 4086,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "图形加速卡",
@@ -4295,7 +4295,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 4080,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "宝石工艺品",
@@ -4409,7 +4409,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 117,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "方便食品（军用）",
@@ -4523,7 +4523,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 4697,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "黑松露",
@@ -4637,7 +4637,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 489,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "琴酒",
@@ -4751,7 +4751,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1360,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "手工编织地毯",
@@ -4865,7 +4865,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1854,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "松茸",
@@ -4979,7 +4979,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 980,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "羽绒服",
@@ -5093,7 +5093,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1300,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "大龙虾",
@@ -5207,7 +5207,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 312,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "带鱼",
@@ -5321,7 +5321,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1664,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "单晶硅",
@@ -5435,7 +5435,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 99,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "海角辣椒",
@@ -5549,7 +5549,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 403,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "户外用品",
@@ -5663,7 +5663,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 538,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "行李箱包",
@@ -5777,7 +5777,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 834,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "学会书籍",
@@ -5891,7 +5891,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 248,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "鱿鱼",
@@ -6005,7 +6005,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 4600,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "珍珠",
@@ -6119,7 +6119,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 6489,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "纯金线材",
@@ -6233,7 +6233,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 3090,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "金箔",
@@ -6347,7 +6347,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1780,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "玛瑙",
@@ -6461,7 +6461,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 572,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "漆黑矿渣",
@@ -6575,7 +6575,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1978,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "青金石",
@@ -6689,7 +6689,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 2781,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "沙金",
@@ -6803,7 +6803,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 233,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "石英砂",
@@ -6909,7 +6909,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 413,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "铁矿石",
@@ -7023,7 +7023,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 384,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "火车玩具",
@@ -7137,7 +7137,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 573,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "录像带",
@@ -7251,7 +7251,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 287,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "录音带",
@@ -7365,7 +7365,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1152,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "扬声器",
@@ -7479,7 +7479,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 2875,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "银矿石",
@@ -7593,7 +7593,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 499,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "荧光棒",
@@ -7707,7 +7707,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 3904,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "游戏机",
@@ -7821,7 +7821,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 946,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "游戏卡带",
@@ -7935,7 +7935,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 2979,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "琥珀",
@@ -8049,7 +8049,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 2195,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "孔雀石",
@@ -8163,7 +8163,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1590,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "绿松石",
@@ -8277,7 +8277,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1268,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "棉花",
@@ -8391,7 +8391,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 800,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "铅矿石",
@@ -8505,7 +8505,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 465,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "石墨",
@@ -8619,7 +8619,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 90,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "土豆",
@@ -8733,7 +8733,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 780,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "白兰地",
@@ -8847,7 +8847,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 280,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "橄榄油",
@@ -8961,7 +8961,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 3069,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "高端护肤品",
@@ -9075,7 +9075,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 700,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "化妆品",
@@ -9189,7 +9189,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1781,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "火腿",
@@ -9303,7 +9303,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 520,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "轻奢女装",
@@ -9417,7 +9417,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 171,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "日化用品",
@@ -9531,7 +9531,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 800,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "水晶工艺品",
@@ -9645,7 +9645,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1215,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "香水",
@@ -9759,7 +9759,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 3893,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "鱼子酱",
@@ -9865,7 +9865,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 2555,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "弹丸加速装置",
@@ -9979,7 +9979,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 227,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "靛红五月军用食品",
@@ -10093,7 +10093,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 3587,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "防弹背心",
@@ -10207,7 +10207,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1795,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "精钢",
@@ -10321,7 +10321,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 2069,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "炮弹",
@@ -10435,7 +10435,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 707,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "汽油",
@@ -10549,7 +10549,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1042,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "塑胶炸药",
@@ -10663,7 +10663,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 819,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "子弹",
@@ -10686,16 +10686,16 @@
   {
     "name": "蜂窝防热烧蚀材料",
     "city": "阿妮塔发射中心",
-    "valuable": false,
-    "type": "normal",
-    "baseVolume": 10,
-    "basePrice": 100,
+    "valuable": true,
+    "type": "specialty",
+    "baseVolume": 5,
+    "basePrice": 3741,
     "transactions": [
       {
         "name": "蜂窝防热烧蚀材料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "7号自由港",
-        "basePrice": 100,
+        "basePrice": 4190,
         "mileage": 0,
         "valuable": true
       },
@@ -10703,7 +10703,7 @@
         "name": "蜂窝防热烧蚀材料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "修格里城",
-        "basePrice": 100,
+        "basePrice": 4302,
         "mileage": 0,
         "valuable": true
       },
@@ -10711,7 +10711,7 @@
         "name": "蜂窝防热烧蚀材料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "岚心城",
-        "basePrice": 100,
+        "basePrice": 3965,
         "mileage": 0,
         "valuable": false
       },
@@ -10719,7 +10719,7 @@
         "name": "蜂窝防热烧蚀材料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "曼德矿场",
-        "basePrice": 100,
+        "basePrice": 4527,
         "mileage": 0,
         "valuable": true
       },
@@ -10727,7 +10727,7 @@
         "name": "蜂窝防热烧蚀材料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "沃德镇",
-        "basePrice": 100,
+        "basePrice": 3853,
         "mileage": 0,
         "valuable": false
       },
@@ -10735,7 +10735,7 @@
         "name": "蜂窝防热烧蚀材料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "海角城",
-        "basePrice": 100,
+        "basePrice": 4190,
         "mileage": 0,
         "valuable": false
       },
@@ -10743,7 +10743,7 @@
         "name": "蜂窝防热烧蚀材料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "淘金乐园",
-        "basePrice": 100,
+        "basePrice": 3965,
         "mileage": 0,
         "valuable": true
       },
@@ -10751,7 +10751,7 @@
         "name": "蜂窝防热烧蚀材料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "澄明数据中心",
-        "basePrice": 100,
+        "basePrice": 4414,
         "mileage": 0,
         "valuable": true
       },
@@ -10759,7 +10759,7 @@
         "name": "蜂窝防热烧蚀材料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "荒原站",
-        "basePrice": 100,
+        "basePrice": 4527,
         "mileage": 0,
         "valuable": true
       },
@@ -10767,7 +10767,7 @@
         "name": "蜂窝防热烧蚀材料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "贡露城",
-        "basePrice": 100,
+        "basePrice": 3853,
         "mileage": 0,
         "valuable": false
       },
@@ -10775,7 +10775,7 @@
         "name": "蜂窝防热烧蚀材料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "铁盟哨站",
-        "basePrice": 100,
+        "basePrice": 4527,
         "mileage": 0,
         "valuable": true
       },
@@ -10783,7 +10783,7 @@
         "name": "蜂窝防热烧蚀材料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "阿妮塔战备工厂",
-        "basePrice": 100,
+        "basePrice": 4190,
         "mileage": 0,
         "valuable": true
       },
@@ -10791,7 +10791,7 @@
         "name": "蜂窝防热烧蚀材料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "阿妮塔能源研究所",
-        "basePrice": 100,
+        "basePrice": 4078,
         "mileage": 0,
         "valuable": true
       }
@@ -10802,7 +10802,7 @@
     "city": "阿妮塔发射中心",
     "valuable": false,
     "type": "normal",
-    "baseVolume": 13,
+    "baseVolume": 8,
     "basePrice": 1631,
     "transactions": [
       {
@@ -10914,16 +10914,16 @@
   {
     "name": "航天半导体",
     "city": "阿妮塔发射中心",
-    "valuable": false,
-    "type": "normal",
-    "baseVolume": 10,
-    "basePrice": 100,
+    "valuable": true,
+    "type": "specialty",
+    "baseVolume": 2,
+    "basePrice": 7741,
     "transactions": [
       {
         "name": "航天半导体",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "7号自由港",
-        "basePrice": 100,
+        "basePrice": 8515,
         "mileage": 0,
         "valuable": true
       },
@@ -10931,7 +10931,7 @@
         "name": "航天半导体",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "修格里城",
-        "basePrice": 100,
+        "basePrice": 8593,
         "mileage": 0,
         "valuable": true
       },
@@ -10939,7 +10939,7 @@
         "name": "航天半导体",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "岚心城",
-        "basePrice": 100,
+        "basePrice": 7973,
         "mileage": 0,
         "valuable": false
       },
@@ -10947,7 +10947,7 @@
         "name": "航天半导体",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "曼德矿场",
-        "basePrice": 100,
+        "basePrice": 8902,
         "mileage": 0,
         "valuable": true
       },
@@ -10955,7 +10955,7 @@
         "name": "航天半导体",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "沃德镇",
-        "basePrice": 100,
+        "basePrice": 7973,
         "mileage": 0,
         "valuable": false
       },
@@ -10963,7 +10963,7 @@
         "name": "航天半导体",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "海角城",
-        "basePrice": 100,
+        "basePrice": 8438,
         "mileage": 0,
         "valuable": false
       },
@@ -10971,7 +10971,7 @@
         "name": "航天半导体",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "淘金乐园",
-        "basePrice": 100,
+        "basePrice": 7973,
         "mileage": 0,
         "valuable": true
       },
@@ -10979,7 +10979,7 @@
         "name": "航天半导体",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "澄明数据中心",
-        "basePrice": 100,
+        "basePrice": 8825,
         "mileage": 0,
         "valuable": true
       },
@@ -10987,7 +10987,7 @@
         "name": "航天半导体",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "荒原站",
-        "basePrice": 100,
+        "basePrice": 8902,
         "mileage": 0,
         "valuable": true
       },
@@ -10995,7 +10995,7 @@
         "name": "航天半导体",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "贡露城",
-        "basePrice": 100,
+        "basePrice": 7973,
         "mileage": 0,
         "valuable": false
       },
@@ -11003,7 +11003,7 @@
         "name": "航天半导体",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "铁盟哨站",
-        "basePrice": 100,
+        "basePrice": 8980,
         "mileage": 0,
         "valuable": true
       },
@@ -11011,7 +11011,7 @@
         "name": "航天半导体",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "阿妮塔战备工厂",
-        "basePrice": 100,
+        "basePrice": 8515,
         "mileage": 0,
         "valuable": true
       },
@@ -11019,121 +11019,121 @@
         "name": "航天半导体",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "阿妮塔能源研究所",
-        "basePrice": 100,
+        "basePrice": 8360,
         "mileage": 0,
         "valuable": true
       }
     ]
   },
   {
-    "name": "航天元器件",
+    "name": "火箭拼装玩具",
     "city": "阿妮塔发射中心",
     "valuable": false,
     "type": "normal",
-    "baseVolume": 10,
-    "basePrice": 100,
+    "baseVolume": 55,
+    "basePrice": 561,
     "transactions": [
       {
-        "name": "航天元器件",
+        "name": "火箭拼装玩具",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "7号自由港",
-        "basePrice": 100,
+        "basePrice": 640,
         "mileage": 0,
         "valuable": true
       },
       {
-        "name": "航天元器件",
+        "name": "火箭拼装玩具",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "修格里城",
-        "basePrice": 100,
+        "basePrice": 668,
         "mileage": 0,
         "valuable": true
       },
       {
-        "name": "航天元器件",
+        "name": "火箭拼装玩具",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "岚心城",
-        "basePrice": 100,
+        "basePrice": 561,
         "mileage": 0,
         "valuable": false
       },
       {
-        "name": "航天元器件",
+        "name": "火箭拼装玩具",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "曼德矿场",
-        "basePrice": 100,
+        "basePrice": 696,
         "mileage": 0,
         "valuable": true
       },
       {
-        "name": "航天元器件",
+        "name": "火箭拼装玩具",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "沃德镇",
-        "basePrice": 100,
+        "basePrice": 561,
         "mileage": 0,
         "valuable": false
       },
       {
-        "name": "航天元器件",
+        "name": "火箭拼装玩具",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "海角城",
-        "basePrice": 100,
+        "basePrice": 628,
         "mileage": 0,
         "valuable": false
       },
       {
-        "name": "航天元器件",
+        "name": "火箭拼装玩具",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "淘金乐园",
-        "basePrice": 100,
+        "basePrice": 595,
         "mileage": 0,
         "valuable": true
       },
       {
-        "name": "航天元器件",
+        "name": "火箭拼装玩具",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "澄明数据中心",
-        "basePrice": 100,
+        "basePrice": 651,
         "mileage": 0,
         "valuable": true
       },
       {
-        "name": "航天元器件",
+        "name": "火箭拼装玩具",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "荒原站",
-        "basePrice": 100,
+        "basePrice": 712,
         "mileage": 0,
         "valuable": true
       },
       {
-        "name": "航天元器件",
+        "name": "火箭拼装玩具",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "贡露城",
-        "basePrice": 100,
+        "basePrice": 561,
         "mileage": 0,
         "valuable": false
       },
       {
-        "name": "航天元器件",
+        "name": "火箭拼装玩具",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "铁盟哨站",
-        "basePrice": 100,
+        "basePrice": 673,
         "mileage": 0,
         "valuable": true
       },
       {
-        "name": "航天元器件",
+        "name": "火箭拼装玩具",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "阿妮塔战备工厂",
-        "basePrice": 100,
+        "basePrice": 640,
         "mileage": 0,
         "valuable": true
       },
       {
-        "name": "航天元器件",
+        "name": "火箭拼装玩具",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "阿妮塔能源研究所",
-        "basePrice": 100,
+        "basePrice": 617,
         "mileage": 0,
         "valuable": true
       }
@@ -11144,14 +11144,14 @@
     "city": "阿妮塔发射中心",
     "valuable": false,
     "type": "normal",
-    "baseVolume": 10,
-    "basePrice": 100,
+    "baseVolume": 13,
+    "basePrice": 1421,
     "transactions": [
       {
         "name": "镍基高温合金",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "7号自由港",
-        "basePrice": 100,
+        "basePrice": 1620,
         "mileage": 0,
         "valuable": true
       },
@@ -11159,7 +11159,7 @@
         "name": "镍基高温合金",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "修格里城",
-        "basePrice": 100,
+        "basePrice": 1691,
         "mileage": 0,
         "valuable": true
       },
@@ -11167,7 +11167,7 @@
         "name": "镍基高温合金",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "岚心城",
-        "basePrice": 100,
+        "basePrice": 1506,
         "mileage": 0,
         "valuable": false
       },
@@ -11175,7 +11175,7 @@
         "name": "镍基高温合金",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "曼德矿场",
-        "basePrice": 100,
+        "basePrice": 1805,
         "mileage": 0,
         "valuable": true
       },
@@ -11183,7 +11183,7 @@
         "name": "镍基高温合金",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "沃德镇",
-        "basePrice": 100,
+        "basePrice": 1464,
         "mileage": 0,
         "valuable": false
       },
@@ -11191,7 +11191,7 @@
         "name": "镍基高温合金",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "海角城",
-        "basePrice": 100,
+        "basePrice": 1634,
         "mileage": 0,
         "valuable": false
       },
@@ -11199,7 +11199,7 @@
         "name": "镍基高温合金",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "淘金乐园",
-        "basePrice": 100,
+        "basePrice": 1464,
         "mileage": 0,
         "valuable": true
       },
@@ -11207,7 +11207,7 @@
         "name": "镍基高温合金",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "澄明数据中心",
-        "basePrice": 100,
+        "basePrice": 1691,
         "mileage": 0,
         "valuable": true
       },
@@ -11215,7 +11215,7 @@
         "name": "镍基高温合金",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "荒原站",
-        "basePrice": 100,
+        "basePrice": 1805,
         "mileage": 0,
         "valuable": true
       },
@@ -11223,7 +11223,7 @@
         "name": "镍基高温合金",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "贡露城",
-        "basePrice": 100,
+        "basePrice": 1464,
         "mileage": 0,
         "valuable": false
       },
@@ -11231,7 +11231,7 @@
         "name": "镍基高温合金",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "铁盟哨站",
-        "basePrice": 100,
+        "basePrice": 1790,
         "mileage": 0,
         "valuable": true
       },
@@ -11239,7 +11239,7 @@
         "name": "镍基高温合金",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "阿妮塔战备工厂",
-        "basePrice": 100,
+        "basePrice": 1620,
         "mileage": 0,
         "valuable": true
       },
@@ -11247,7 +11247,7 @@
         "name": "镍基高温合金",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "阿妮塔能源研究所",
-        "basePrice": 100,
+        "basePrice": 1563,
         "mileage": 0,
         "valuable": true
       }
@@ -11256,16 +11256,16 @@
   {
     "name": "太阳电池阵",
     "city": "阿妮塔发射中心",
-    "valuable": false,
-    "type": "normal",
-    "baseVolume": 10,
-    "basePrice": 100,
+    "valuable": true,
+    "type": "specialty",
+    "baseVolume": 3,
+    "basePrice": 5291,
     "transactions": [
       {
         "name": "太阳电池阵",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "7号自由港",
-        "basePrice": 100,
+        "basePrice": 5873,
         "mileage": 0,
         "valuable": true
       },
@@ -11273,7 +11273,7 @@
         "name": "太阳电池阵",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "修格里城",
-        "basePrice": 100,
+        "basePrice": 5979,
         "mileage": 0,
         "valuable": true
       },
@@ -11281,7 +11281,7 @@
         "name": "太阳电池阵",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "岚心城",
-        "basePrice": 100,
+        "basePrice": 5608,
         "mileage": 0,
         "valuable": false
       },
@@ -11289,7 +11289,7 @@
         "name": "太阳电池阵",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "曼德矿场",
-        "basePrice": 100,
+        "basePrice": 6243,
         "mileage": 0,
         "valuable": true
       },
@@ -11297,7 +11297,7 @@
         "name": "太阳电池阵",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "沃德镇",
-        "basePrice": 100,
+        "basePrice": 5608,
         "mileage": 0,
         "valuable": false
       },
@@ -11305,7 +11305,7 @@
         "name": "太阳电池阵",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "海角城",
-        "basePrice": 100,
+        "basePrice": 5847,
         "mileage": 0,
         "valuable": false
       },
@@ -11313,7 +11313,7 @@
         "name": "太阳电池阵",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "淘金乐园",
-        "basePrice": 100,
+        "basePrice": 5608,
         "mileage": 0,
         "valuable": true
       },
@@ -11321,7 +11321,7 @@
         "name": "太阳电池阵",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "澄明数据中心",
-        "basePrice": 100,
+        "basePrice": 5979,
         "mileage": 0,
         "valuable": true
       },
@@ -11329,7 +11329,7 @@
         "name": "太阳电池阵",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "荒原站",
-        "basePrice": 100,
+        "basePrice": 6402,
         "mileage": 0,
         "valuable": true
       },
@@ -11337,7 +11337,7 @@
         "name": "太阳电池阵",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "贡露城",
-        "basePrice": 100,
+        "basePrice": 5450,
         "mileage": 0,
         "valuable": false
       },
@@ -11345,7 +11345,7 @@
         "name": "太阳电池阵",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "铁盟哨站",
-        "basePrice": 100,
+        "basePrice": 6270,
         "mileage": 0,
         "valuable": true
       },
@@ -11353,7 +11353,7 @@
         "name": "太阳电池阵",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "阿妮塔战备工厂",
-        "basePrice": 100,
+        "basePrice": 5873,
         "mileage": 0,
         "valuable": true
       },
@@ -11361,7 +11361,7 @@
         "name": "太阳电池阵",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "阿妮塔能源研究所",
-        "basePrice": 100,
+        "basePrice": 5741,
         "mileage": 0,
         "valuable": true
       }
@@ -11372,14 +11372,14 @@
     "city": "阿妮塔发射中心",
     "valuable": false,
     "type": "normal",
-    "baseVolume": 10,
-    "basePrice": 100,
+    "baseVolume": 34,
+    "basePrice": 741,
     "transactions": [
       {
         "name": "无刷电机",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "7号自由港",
-        "basePrice": 100,
+        "basePrice": 845,
         "mileage": 0,
         "valuable": true
       },
@@ -11387,7 +11387,7 @@
         "name": "无刷电机",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "修格里城",
-        "basePrice": 100,
+        "basePrice": 904,
         "mileage": 0,
         "valuable": true
       },
@@ -11395,7 +11395,7 @@
         "name": "无刷电机",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "岚心城",
-        "basePrice": 100,
+        "basePrice": 763,
         "mileage": 0,
         "valuable": false
       },
@@ -11403,7 +11403,7 @@
         "name": "无刷电机",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "曼德矿场",
-        "basePrice": 100,
+        "basePrice": 963,
         "mileage": 0,
         "valuable": true
       },
@@ -11411,7 +11411,7 @@
         "name": "无刷电机",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "沃德镇",
-        "basePrice": 100,
+        "basePrice": 763,
         "mileage": 0,
         "valuable": false
       },
@@ -11419,7 +11419,7 @@
         "name": "无刷电机",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "海角城",
-        "basePrice": 100,
+        "basePrice": 852,
         "mileage": 0,
         "valuable": false
       },
@@ -11427,7 +11427,7 @@
         "name": "无刷电机",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "淘金乐园",
-        "basePrice": 100,
+        "basePrice": 785,
         "mileage": 0,
         "valuable": true
       },
@@ -11435,7 +11435,7 @@
         "name": "无刷电机",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "澄明数据中心",
-        "basePrice": 100,
+        "basePrice": 882,
         "mileage": 0,
         "valuable": true
       },
@@ -11443,7 +11443,7 @@
         "name": "无刷电机",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "荒原站",
-        "basePrice": 100,
+        "basePrice": 941,
         "mileage": 0,
         "valuable": true
       },
@@ -11451,7 +11451,7 @@
         "name": "无刷电机",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "贡露城",
-        "basePrice": 100,
+        "basePrice": 763,
         "mileage": 0,
         "valuable": false
       },
@@ -11459,7 +11459,7 @@
         "name": "无刷电机",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "铁盟哨站",
-        "basePrice": 100,
+        "basePrice": 934,
         "mileage": 0,
         "valuable": true
       },
@@ -11467,7 +11467,7 @@
         "name": "无刷电机",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "阿妮塔战备工厂",
-        "basePrice": 100,
+        "basePrice": 845,
         "mileage": 0,
         "valuable": true
       },
@@ -11475,7 +11475,7 @@
         "name": "无刷电机",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "阿妮塔能源研究所",
-        "basePrice": 100,
+        "basePrice": 815,
         "mileage": 0,
         "valuable": true
       }
@@ -11486,14 +11486,14 @@
     "city": "阿妮塔发射中心",
     "valuable": false,
     "type": "normal",
-    "baseVolume": 10,
-    "basePrice": 100,
+    "baseVolume": 21,
+    "basePrice": 841,
     "transactions": [
       {
         "name": "液氧甲烷燃料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "7号自由港",
-        "basePrice": 100,
+        "basePrice": 908,
         "mileage": 0,
         "valuable": true
       },
@@ -11501,7 +11501,7 @@
         "name": "液氧甲烷燃料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "修格里城",
-        "basePrice": 100,
+        "basePrice": 1001,
         "mileage": 0,
         "valuable": true
       },
@@ -11509,7 +11509,7 @@
         "name": "液氧甲烷燃料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "岚心城",
-        "basePrice": 100,
+        "basePrice": 841,
         "mileage": 0,
         "valuable": false
       },
@@ -11517,7 +11517,7 @@
         "name": "液氧甲烷燃料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "曼德矿场",
-        "basePrice": 100,
+        "basePrice": 1043,
         "mileage": 0,
         "valuable": true
       },
@@ -11525,7 +11525,7 @@
         "name": "液氧甲烷燃料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "沃德镇",
-        "basePrice": 100,
+        "basePrice": 841,
         "mileage": 0,
         "valuable": false
       },
@@ -11533,7 +11533,7 @@
         "name": "液氧甲烷燃料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "海角城",
-        "basePrice": 100,
+        "basePrice": 942,
         "mileage": 0,
         "valuable": false
       },
@@ -11541,7 +11541,7 @@
         "name": "液氧甲烷燃料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "淘金乐园",
-        "basePrice": 100,
+        "basePrice": 841,
         "mileage": 0,
         "valuable": true
       },
@@ -11549,7 +11549,7 @@
         "name": "液氧甲烷燃料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "澄明数据中心",
-        "basePrice": 100,
+        "basePrice": 976,
         "mileage": 0,
         "valuable": true
       },
@@ -11557,7 +11557,7 @@
         "name": "液氧甲烷燃料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "荒原站",
-        "basePrice": 100,
+        "basePrice": 1043,
         "mileage": 0,
         "valuable": true
       },
@@ -11565,7 +11565,7 @@
         "name": "液氧甲烷燃料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "贡露城",
-        "basePrice": 100,
+        "basePrice": 841,
         "mileage": 0,
         "valuable": false
       },
@@ -11573,7 +11573,7 @@
         "name": "液氧甲烷燃料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "铁盟哨站",
-        "basePrice": 100,
+        "basePrice": 1034,
         "mileage": 0,
         "valuable": true
       },
@@ -11581,7 +11581,7 @@
         "name": "液氧甲烷燃料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "阿妮塔战备工厂",
-        "basePrice": 100,
+        "basePrice": 934,
         "mileage": 0,
         "valuable": true
       },
@@ -11589,7 +11589,7 @@
         "name": "液氧甲烷燃料",
         "sourceCity": "阿妮塔发射中心",
         "targetCity": "阿妮塔能源研究所",
-        "basePrice": 100,
+        "basePrice": 875,
         "mileage": 0,
         "valuable": true
       }
@@ -11697,7 +11697,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 3815,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "阿妮塔202军用无人机",
@@ -11811,7 +11811,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 4536,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "负片炮弹",
@@ -11925,7 +11925,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 949,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "高导磁硅钢片",
@@ -12039,7 +12039,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 791,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "黄铜线圈",
@@ -12153,7 +12153,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 7770,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "火澄石",
@@ -12267,7 +12267,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 3108,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "抗污染防护服",
@@ -12381,7 +12381,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 2722,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "钛合金",
@@ -12495,7 +12495,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1596,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "碳纤维",
@@ -12609,7 +12609,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1155,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "形态共振瞄准器",
@@ -12723,7 +12723,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1659,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "阿妮塔101民用无人机",
@@ -12837,7 +12837,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 7439,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "阿妮塔小型桦树发电机",
@@ -12951,7 +12951,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 300,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "充电电池",
@@ -13065,7 +13065,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 1244,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "家用太阳能电池组",
@@ -13179,7 +13179,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 799,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "锂电池",
@@ -13293,7 +13293,7 @@
         "targetCity": "阿妮塔发射中心",
         "basePrice": 4070,
         "mileage": 0,
-        "valuable": false
+        "valuable": true
       },
       {
         "name": "石墨烯电池",

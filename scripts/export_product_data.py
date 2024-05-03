@@ -40,7 +40,11 @@ specialty_product_name_list = [
   '曼德工具箱',
   '沙金',
   '青金石',
-  '玛瑙'
+  '玛瑙',
+  # 阿妮塔发射中心
+  '蜂窝防热烧蚀材料',
+  '航天半导体',
+  '太阳电池阵',
 ]
 
 # 手工制作商品名称列表
@@ -69,7 +73,8 @@ valueable_city_name_list = [
   '阿妮塔能源研究所',
   '荒原站',
   '曼德矿场',
-  '淘金乐园'
+  '淘金乐园',
+  '阿妮塔发射中心',
 ]
 
 # 请求索思学会市场实时数据
@@ -124,6 +129,6 @@ current_path = os.path.dirname(os.path.abspath(__file__))
 # 使用 os.path.join 来连接路径
 json_file_path = os.path.join(current_path, "../utils/products.json")
 # 将商品基准数据写入JSON文件，UTF-8编码
-with open(json_file_path, "w", encoding="utf-8") as f:
+with open(json_file_path, "w", encoding="utf-8", newline="\n") as f:
   f.write(json.dumps(product_metadata, ensure_ascii=False, indent=2))
   print("商品基准数据写入成功")
