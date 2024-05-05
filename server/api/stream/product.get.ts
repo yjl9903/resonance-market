@@ -1,11 +1,11 @@
 import { memoAsync } from 'memofunc';
 
-import { connectDatabase } from '~/server/utils/database';
-import { queryValuableLogs } from '~/server/utils/query';
+// import { connectDatabase } from '~/server/utils/database';
+// import { queryValuableLogs } from '~/server/utils/query';
 import { addHandler, removeHandler, type HandlerFn } from '~/server/utils/cache';
 
 export default defineEventHandler(async (event) => {
-  const db = await connectDatabase();
+  // const db = await connectDatabase();
 
   const eventStream = createEventStream(event);
 
@@ -20,13 +20,13 @@ export default defineEventHandler(async (event) => {
     await eventStream.close();
   });
 
-  setTimeout(async () => {
-    try {
-      await query(await queryValuableLogs(db));
-    } catch {
-      //
-    }
-  }, 0);
+  // setTimeout(async () => {
+  //   try {
+  //     await query(await queryValuableLogs(db));
+  //   } catch {
+  //     //
+  //   }
+  // }, 0);
 
   return eventStream.send();
 });

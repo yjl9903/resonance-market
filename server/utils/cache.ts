@@ -31,17 +31,19 @@ async function broadcast(res: Awaited<ReturnType<typeof queryValuableLogs>>) {
   );
 }
 
-let lastHash = '';
-setInterval(async () => {
-  try {
-    const db = await connectDatabase();
-    const res = await queryValuableLogs.update(db);
-    const hsh = hash(res);
-    if (hsh !== lastHash) {
-      lastHash = hsh;
-      broadcast(res);
-    }
-  } catch (error) {
-    //
-  }
-}, 10 * 1000);
+// {
+//   let lastHash = '';
+//   setInterval(async () => {
+//     try {
+//       const db = await connectDatabase();
+//       const res = await queryValuableLogs.update(db);
+//       const hsh = hash(res);
+//       if (hsh !== lastHash) {
+//         lastHash = hsh;
+//         broadcast(res);
+//       }
+//     } catch (error) {
+//       //
+//     }
+//   }, 10 * 1000);
+// }
