@@ -20,17 +20,17 @@ export const useLatestLogs = defineStore('latest_logs', () => {
     // 每隔 10 秒重新获取数据
     // setTimeout(startGetData, 10 * 1000);
 
-    if (!import.meta.env.SSR) {
-      // Server send events
-      const eventSource = new EventSource('/api/stream/product');
-      eventSource.addEventListener('message', (event) => {
-        const resp = JSON.parse(event.data) as any;
-        console.log(`Receive ${resp.latest.length} latest logs at ${new Date().toLocaleString()}`);
-        if (Array.isArray(resp.latest) && resp.latest.length > 0) {
-          update(resp.latest as any);
-        }
-      });
-    }
+    // if (!import.meta.env.SSR) {
+    //   // Server send events
+    //   const eventSource = new EventSource('/api/stream/product');
+    //   eventSource.addEventListener('message', (event) => {
+    //     const resp = JSON.parse(event.data) as any;
+    //     console.log(`Receive ${resp.latest.length} latest logs at ${new Date().toLocaleString()}`);
+    //     if (Array.isArray(resp.latest) && resp.latest.length > 0) {
+    //       update(resp.latest as any);
+    //     }
+    //   });
+    // }
   };
 
   const fetch = async () => {
