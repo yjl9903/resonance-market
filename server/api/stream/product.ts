@@ -20,13 +20,8 @@ export default defineEventHandler(async (event) => {
     await eventStream.close();
   });
 
-  // setTimeout(async () => {
-  //   try {
-  //     await query(await queryValuableLogs(db));
-  //   } catch {
-  //     //
-  //   }
-  // }, 0);
+  // Start scheduling
+  // startTimer();
 
   return eventStream.send();
 });

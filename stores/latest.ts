@@ -26,14 +26,18 @@ export const useLatestLogs = defineStore('latest_logs', () => {
       eventSource.addEventListener('message', (event) => {
         const resp = JSON.parse(event.data) as any;
         console.log(`Receive ${resp.latest.length} latest logs at ${new Date().toLocaleString()}`);
-        update(resp.latest);
+        if (Array.isArray(resp.latest) && resp.latest.length > 0) {
+          update(resp.latest as any);
+        }
       });
     }
   };
 
   const fetch = async () => {
     const resp = await $fetch(`/api/product`, { retry: 3 });
-    update(resp.latest as any);
+    if (Array.isArray(resp.latest) && resp.latest.length > 0) {
+      update(resp.latest as any);
+    }
   };
 
   const getLatestLog = (sourceCity: string, productName: string, targetCity: string) => {

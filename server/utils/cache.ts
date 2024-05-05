@@ -1,4 +1,6 @@
 import { hash } from 'ohash';
+import { memoAsync } from 'memofunc';
+
 import { queryValuableLogs } from './query';
 
 export type HandlerFn = (result: Awaited<ReturnType<typeof queryValuableLogs>>) => Promise<void>;
@@ -25,25 +27,30 @@ async function broadcast(res: Awaited<ReturnType<typeof queryValuableLogs>>) {
       try {
         await handler(res);
       } catch (error) {
-        //
+        console.error(error);
       }
     })
   );
 }
 
-// {
-//   let lastHash = '';
-//   setInterval(async () => {
-//     try {
-//       const db = await connectDatabase();
-//       const res = await queryValuableLogs.update(db);
-//       const hsh = hash(res);
-//       if (hsh !== lastHash) {
-//         lastHash = hsh;
-//         broadcast(res);
-//       }
-//     } catch (error) {
-//       //
-//     }
-//   }, 10 * 1000);
-// }
+export const startTimer = memoAsync(async () => {
+  const db = await connectDatabase();
+
+  let lastHash = '';
+  const fn = async () => {
+    try {
+      const res = await queryValuableLogs.update(db);
+      const hsh = hash(res);
+      if (hsh !== lastHash) {
+        lastHash = hsh;
+        broadcast(res);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setTimeout(fn, 10 * 1000);
+    }
+  };
+
+  setTimeout(fn, 10 * 1000);
+});
